@@ -8,17 +8,20 @@
     "start": "next start"
   },
   "dependencies": {
+    "hls.js": "^0.14.16",
     "next": "10.0.1",
+    "plyr": "^3.6.3",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "swr": "^0.3.9"
   },
   "devDependencies": {
-    "eslint": "^7.13.0",
-    "eslint-plugin-react": "^7.21.5",
     "@types/node": "^14.14.7",
     "@types/react": "^16.9.56",
     "@types/styled-components": "^5.1.4",
+    "eslint": "^7.13.0",
+    "eslint-plugin-react": "^7.21.5",
     "prettier": "^2.1.2",
     "typescript": "^4.0.5"
   }

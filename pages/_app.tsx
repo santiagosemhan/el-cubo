@@ -1,9 +1,11 @@
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
-import AppLayout from '../layouts/AppLayout';
+import { SWRConfig } from 'swr';
+import fetcher from '../libs/fetcher';
 
 function MyApp({ Component, pageProps }) {
+  console.log({ pageProps });
   return (
     <>
       <Head>
@@ -21,9 +23,13 @@ function MyApp({ Component, pageProps }) {
         <meta property="og:site_name" content="El Cubo." />
       </Head>
       <ThemeProvider theme={theme}>
-        <AppLayout>
+        <SWRConfig
+          value={{
+            fetcher: fetcher,
+          }}
+        >
           <Component {...pageProps} />
-        </AppLayout>
+        </SWRConfig>
       </ThemeProvider>
     </>
   );

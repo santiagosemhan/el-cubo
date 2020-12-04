@@ -6,7 +6,10 @@
 
 // next.js configuration
 const nextConfig = {
-  env: {},
+  env: {
+    API_URL: 'https://play-rtvcplay-cms.rtvc.gov.co',
+    MEDIA_CONTENT_URL: 'https://rtvcplay-media-content.s3.amazonaws.com',
+  },
   typescript: {
     ignoreBuildErrors: true,
   },
