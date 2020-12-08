@@ -1,32 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const RTVCStyles = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700');
-@font-face {
-    font-family: 'BebasNeue Regular';
-    src: url('/fonts/BebasNeue Regular.eot');
-    src: local('☺'), url('/fonts/BebasNeue Regular.woff') format('woff'), url('/fonts/BebasNeue Regular.ttf') format('truetype'), url('/fonts/BebasNeue Regular.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'BebasNeue Book';
-    src: url('/fonts/BebasNeue Book.eot');
-    src: local('☺'), url('/fonts/BebasNeue Book.woff') format('woff'), url('/fonts/BebasNeue Book.ttf') format('truetype'), url('/fonts/BebasNeue Book.svg') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-}
-
-* {
-    font-size: 16px;
-}
 
 /* sc-component-id: Fonts__shareButton-sc-1duggyd-26 */
 
