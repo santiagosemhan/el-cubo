@@ -13,9 +13,8 @@ const AppLayout = ({ children }) => {
     <>
       <RTVCStyles />
       <GlobalStyles />
-      {/* {data?.date} */}
       <Header />
-      <div>{children}</div>
+      <div className="app-elcubo">{children}</div>
       <Footer />
     </>
   );

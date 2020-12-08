@@ -99,6 +99,7 @@ if (link_ninos) {
 
 // Leave header
 const header_container = document.querySelector('header');
+
 if (header_container) {
   header_container.addEventListener('mouseleave', (e) => {
     var elems = document.querySelectorAll('.submenu');
@@ -139,77 +140,4 @@ function getCoords(elem) {
     bottom: box.bottom + window.pageYOffset,
     left: box.left + window.pageXOffset,
   };
-}
-
-// Cursor
-if (window.matchMedia('(min-width: 768px)').matches) {
-  let mousePosX = 0,
-    mousePosY = 0,
-    mouseCircle = document.getElementById('mouse-circle');
-  if (mouseCircle) {
-    document.onmousemove = (e) => {
-      mousePosX = e.pageX;
-      mousePosY = e.pageY;
-    };
-
-    let delay = 3,
-      revisedMousePosX = 0,
-      revisedMousePosY = 0;
-
-    function delayMouseFollow() {
-      requestAnimationFrame(delayMouseFollow);
-
-      revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
-      revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
-
-      mouseCircle.style.top = revisedMousePosY + 'px';
-      mouseCircle.style.left = revisedMousePosX + 'px';
-    }
-    delayMouseFollow();
-  }
-}
-
-// Hover link-texto active
-
-const link_texto_0 = document.getElementsByClassName('hero-0')[0];
-if (link_texto_0) {
-  link_texto_0.addEventListener('mouseenter', (e) => {
-    const mouseCircle = document.getElementById('mouse-circle');
-    if (mouseCircle) {
-      mouseCircle.classList.remove('big');
-      mouseCircle.classList.remove('is-hidden');
-    }
-  });
-}
-
-const link_texto_1 = document.getElementsByClassName('hero-1')[0];
-if (link_texto_1) {
-  link_texto_1.addEventListener('mouseenter', (e) => {
-    const mouseCircle = document.getElementById('mouse-circle');
-    if (mouseCircle) {
-      mouseCircle.classList.add('big');
-      mouseCircle.classList.remove('is-hidden');
-    }
-  });
-}
-
-const link_texto_2 = document.getElementsByClassName('hero-2')[0];
-if (link_texto_2) {
-  link_texto_2.addEventListener('mouseenter', (e) => {
-    const mouseCircle = document.getElementById('mouse-circle');
-    if (mouseCircle) {
-      mouseCircle.classList.add('big');
-      mouseCircle.classList.remove('is-hidden');
-    }
-  });
-}
-
-const link_footer = document.querySelector('footer');
-if (link_footer) {
-  link_footer.addEventListener('mouseenter', (e) => {
-    const mouseCircle = document.getElementById('mouse-circle');
-    if (mouseCircle) {
-      mouseCircle.classList.add('is-hidden');
-    }
-  });
 }

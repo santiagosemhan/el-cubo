@@ -44,15 +44,15 @@ const VideoPlayer = ({ source, poster, title }) => {
     const playControl = container.querySelector('[data-plyr="play"]');
     playControl.insertAdjacentHTML(
       'afterend',
-      `<button class="plyr__controls__item plyr__control back" data-plyr="back">Back</button>
-       <button class="plyr__controls__item plyr__control next" data-plyr="next">Next</button>
+      `<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>
+       <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>
       `,
     );
 
     const menuControl = container.querySelector('[data-plyr="settings"]');
     menuControl.insertAdjacentHTML(
       'afterend',
-      '<button class="plyr__controls__item plyr__control" data-plyr="chapters">chapters</button>',
+      '<button class="plyr__controls__item plyr__control" data-plyr="chapters">ver cronología</button>',
     );
 
     const backButton = container.querySelector('[data-plyr="back"]');

@@ -81,7 +81,7 @@ const Footer = () => {
           </div>
           <div className="OrFooter__SocialButtons-wp3gjy-3 bgPYDJ">
             <p>
-              <span style={{ color: '#b4b4b4;' }}>Síguenos </span>
+              <span style={{ color: '#b4b4b4' }}>Síguenos </span>
               <a href="https://twitter.com/rtvcplay" target="_blank">
                 <img
                   alt="Twitter"
