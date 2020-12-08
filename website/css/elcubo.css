@@ -628,6 +628,7 @@ footer {
 
 .is-hidden {
     display: none;
+    transition: display .5s;
 }
 
 /* Page 2 */
@@ -869,6 +870,7 @@ parent:focus .playButton {
     }
     .hero-characters .pane {
         width: 85%;
+        right: -100%;
     }
 }
 
@@ -966,4 +968,41 @@ parent:focus .playButton {
 
 .selector .header-top {
     display: none;
+}
+
+.selector-mode {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    z-index: 90;
+    transition: 2s all ease;
+    display: block;
+}
+
+.selector-mode.is-hidden {
+    display: block;
+    opacity: 0;
+}
+
+.selector-cover {
+    width: 350px;
+    margin: auto;
+}
+
+.selector-cover img,
+.selector-cover ul {
+    float: left;
+}
+
+.selector-cover ul {
+    opacity: 0;
+    transition: 0.5s all ease;
+}
+
+.selector-cover:hover ul {
+    opacity: 1;
+}
+
+.selector-cover img {
+    margin-left: 40px;
 }
