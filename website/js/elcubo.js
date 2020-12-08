@@ -21,34 +21,44 @@ function show() {
 
 // Click Button Cookies
 const button = document.getElementById('AtCookieAlert__Button');
-button.addEventListener('click', event => {
-    document.getElementsByClassName('app__CookieAlert')[0].classList.add('hidden');
-});
+if (button) {
+    button.addEventListener('click', event => {
+        document.getElementsByClassName('app__CookieAlert')[0].classList.add('hidden');
+    });
+}
 
 // Click search
 const search_button = document.getElementsByClassName('iconsearch')[0];
-search_button.addEventListener('click', event => {
-    event.preventDefault();
-    document.getElementById('cover-search').classList.toggle("hidden");
-});
+if (search_button) {
+    search_button.addEventListener('click', event => {
+        event.preventDefault();
+        document.getElementById('cover-search').classList.toggle("hidden");
+    });
+}
 
 // Close search
 const search_close = document.getElementsByClassName('AtSearchFocus__AtIconButtonCloseModal')[0];
-search_close.addEventListener('click', event => {
-    document.getElementById('cover-search').classList.toggle("hidden");
-    event.stopPropagation();
-});
+if (search_close) {
+    search_close.addEventListener('click', event => {
+        document.getElementById('cover-search').classList.toggle("hidden");
+        event.stopPropagation();
+    });
+}
 
 const search_this_close = document.getElementById('cover-search');
-search_this_close.addEventListener('click', event => {
-    search_this_close.classList.toggle("hidden");
-    event.stopPropagation();
-});
+if (search_this_close) {
+    search_this_close.addEventListener('click', event => {
+        search_this_close.classList.toggle("hidden");
+        event.stopPropagation();
+    });
+}
 
 const input_search = document.getElementById('inputsearch');
-input_search.addEventListener('click', event => {
-    event.stopPropagation();
-});
+if (input_search) {
+    input_search.addEventListener('click', event => {
+        event.stopPropagation();
+    });
+}
 
 document.addEventListener('keydown', function (event) {
     if (event.key === "Escape" && !(search_this_close.classList.contains("hidden"))) {
@@ -83,37 +93,44 @@ nav_links.forEach(function (link) {
 
 // Hover Ninos
 const link_ninos = document.getElementById('link-ninos');
-
-link_ninos.addEventListener('mouseenter', e => {
-  var elems = document.querySelectorAll(".submenu");
-    [].forEach.call(elems, function (el) {
-        el.classList.remove("visible");
+if (link_ninos) {
+    link_ninos.addEventListener('mouseenter', e => {
+        var elems = document.querySelectorAll(".submenu");
+        [].forEach.call(elems, function (el) {
+            el.classList.remove("visible");
+        });
     });
-});
+}
 
 // Leave header
 const header_container = document.querySelector('header');
-header_container.addEventListener('mouseleave', e => {
-    var elems = document.querySelectorAll(".submenu");
-    [].forEach.call(elems, function (el) {
-        el.classList.remove("visible");
+if (header_container) {
+    header_container.addEventListener('mouseleave', e => {
+        var elems = document.querySelectorAll(".submenu");
+        [].forEach.call(elems, function (el) {
+            el.classList.remove("visible");
+        });
+        document.getElementById('mouse-circle').classList.add("is-hidden");
     });
-    document.getElementById('mouse-circle').classList.add("is-hidden");
-});
+}
 
 // Menu Mobile
 const button_menu_mobile = document.getElementById('menu-mobile-button');
-button_menu_mobile.addEventListener('click', e => {
-    document.getElementById('menu-mobile-container').classList.toggle("is-open");
-    event.stopPropagation();
-});
+if (button_menu_mobile) {
+    button_menu_mobile.addEventListener('click', e => {
+        document.getElementById('menu-mobile-container').classList.toggle("is-open");
+        event.stopPropagation();
+    });
+}
 
 // Menu Mobile Close
 const close_menu_mobile = document.getElementById('menu-mobile-close');
-close_menu_mobile.addEventListener('click', e => {
-    document.getElementById('menu-mobile-container').classList.toggle("is-open");
-    event.stopPropagation();
-});
+if (close_menu_mobile) {
+    close_menu_mobile.addEventListener('click', e => {
+        document.getElementById('menu-mobile-container').classList.toggle("is-open");
+        event.stopPropagation();
+    });
+}
 
 // Get Coordenadas del elemento
 function getCoords(elem) {
@@ -133,54 +150,155 @@ if (window.matchMedia("(min-width: 768px)").matches) {
     let mousePosX = 0,
         mousePosY = 0,
         mouseCircle = document.getElementById("mouse-circle");
+    if (mouseCircle) {
+        document.onmousemove = (e) => {
+            mousePosX = e.pageX;
+            mousePosY = e.pageY;
+        };
 
-    document.onmousemove = (e) => {
-        mousePosX = e.pageX;
-        mousePosY = e.pageY;
-    };
+        let delay = 3,
+            revisedMousePosX = 0,
+            revisedMousePosY = 0;
 
-    let delay = 3,
-        revisedMousePosX = 0,
-        revisedMousePosY = 0;
+        function delayMouseFollow() {
+            requestAnimationFrame(delayMouseFollow);
 
-    function delayMouseFollow() {
-        requestAnimationFrame(delayMouseFollow);
+            revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
+            revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
 
-        revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
-        revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
-
-        mouseCircle.style.top = revisedMousePosY + "px";
-        mouseCircle.style.left = revisedMousePosX + "px";
+            mouseCircle.style.top = revisedMousePosY + "px";
+            mouseCircle.style.left = revisedMousePosX + "px";
+        }
+        delayMouseFollow();
     }
-    delayMouseFollow();
 }
 
 
 // Hover link-texto active
 
 const link_texto_0 = document.getElementsByClassName('hero-0')[0];
-link_texto_0.addEventListener('mouseenter', e => {
-  document.getElementById('mouse-circle').classList.remove("big");
-  document.getElementById('mouse-circle').classList.remove("is-hidden");
-});
-
+if (link_texto_0) {
+    link_texto_0.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.remove("big");
+        document.getElementById('mouse-circle').classList.remove("is-hidden");
+    });
+}
 
 const link_texto_1 = document.getElementsByClassName('hero-1')[0];
-link_texto_1.addEventListener('mouseenter', e => {
-  document.getElementById('mouse-circle').classList.add("big");
-  document.getElementById('mouse-circle').classList.remove("is-hidden");
-});
+if (link_texto_1) {
+    link_texto_1.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.remove("big");
+        document.getElementById('mouse-circle').classList.remove("is-hidden");
+    });
+}
 
 const link_texto_2 = document.getElementsByClassName('hero-2')[0];
-link_texto_2.addEventListener('mouseenter', e => {
-  document.getElementById('mouse-circle').classList.add("big");
-  document.getElementById('mouse-circle').classList.remove("is-hidden");
-});
+if (link_texto_2) {
+    link_texto_2.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.add("big");
+        document.getElementById('mouse-circle').classList.remove("is-hidden");
+    });
+}
+
+const link_texto_3 = document.getElementsByClassName('hero-3')[0];
+if (link_texto_3) {
+    link_texto_3.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.add("big");
+        document.getElementById('mouse-circle').classList.remove("is-hidden");
+    });
+}
+
+const link_texto_4 = document.getElementsByClassName('hero-4')[0];
+if (link_texto_4) {
+    link_texto_4.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.add("big");
+        document.getElementById('mouse-circle').classList.remove("is-hidden");
+    });
+}
 
 const link_footer = document.querySelector('footer');
-link_footer.addEventListener('mouseenter', e => {
-  document.getElementById('mouse-circle').classList.add("is-hidden");
-});
+if (link_footer) {
+    link_footer.addEventListener('mouseenter', e => {
+        document.getElementById('mouse-circle').classList.add("is-hidden");
+    });
+}
 
 
 
+// Pane Slide
+const button_open = document.querySelectorAll('.toggle');
+const button_close = document.querySelector('.close');
+const pane = document.querySelector('.pane');
+const pane_cover = document.querySelector('.pane-cover');
+
+if (button_open) {
+    button_open.forEach(function (link) {
+        link.addEventListener('click', () => {
+            pane.classList.add('open');
+            pane_cover.classList.toggle('visible');
+            document.getElementById('video1').src = link.dataset.video;
+            document.getElementById('select-personaje').dataset.personaje = link.dataset.personaje;
+            document.getElementById('name-personaje').innerHTML = link.dataset.personaje;
+
+            myVideo.play();
+        });
+    });
+}
+
+if (button_close) {
+    button_close.addEventListener('click', () => {
+        pane.classList.toggle('open');
+        pane_cover.classList.toggle('visible');
+        myVideo.pause();
+        myVideo.currentTime = 0;
+    });
+}
+
+
+const button_select = document.getElementById('select-personaje');
+let character = "unselect";
+
+if (button_select) {
+    button_select.addEventListener('click', () => {
+
+        character = button_select.dataset.personaje;
+
+        pane.classList.toggle('open');
+        pane_cover.classList.toggle('visible');
+        myVideo.pause();
+        myVideo.currentTime = 0;
+
+        var personaje_child = document.querySelectorAll(".child");
+        [].forEach.call(personaje_child, function (el) {
+            el.classList.remove("is-selected");
+        });
+
+        document.getElementsByClassName(button_select.dataset.personaje)[0].classList.add("is-selected");
+
+        console.log(character);
+    });
+
+}
+
+let myVideo = document.getElementById("video1");
+if (myVideo) {
+    function playPause() {
+        if (myVideo.paused)
+            myVideo.play();
+        else
+            myVideo.pause();
+    }
+
+    function makeBig() {
+        myVideo.width = 560;
+    }
+
+    function makeSmall() {
+        myVideo.width = 320;
+    }
+
+    function makeNormal() {
+        myVideo.width = 420;
+    }
+
+}
