@@ -1,0 +1,468 @@
+/* Image zoom on hover + Overlay colour */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    margin: 0;
+    background: black;
+}
+
+:root {
+    /* Full grid area variable */
+    --fullGrid: 1 / 1 / -1 / -1;
+}
+
+.header-top {
+    width: 100%;
+}
+
+.logo-elcubo {
+    margin: auto;
+    z-index: 11;
+}
+
+.nav {
+    position: absolute;
+    right: 50px;
+    top: 130px;
+    z-index: 11;
+}
+
+.logo--image {
+    width: 60px;
+    height: auto;
+    position: absolute;
+    top: 160px;
+    left: 40px;
+    z-index: 11;
+}
+
+.icon-bell {
+    width: 16px;
+    height: 16px;
+    background: #45B4C1;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.hero {
+    /* Create grid spanning viewport width & height */
+    display: grid;
+    grid-template-rows: 100vh;
+    overflow: hidden;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.video-bg {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Re-size video to cover full screen while maintaining aspect ratio */
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    /* Display video below overlay */
+    z-index: -1;
+}
+
+.video-bg::-webkit-media-controls {
+    display: none !important;
+}
+
+.video-overlay {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Center Content */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+}
+
+.copy-cover {
+    width: 100vw;
+}
+
+.hero .copy {
+    margin: 0;
+    z-index: 100;
+    width: 75vw;
+    margin: auto;
+    text-align: center;
+    font-family: 'Inter';
+}
+
+.hero .copy p {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.hero-onboarding button {
+    border: 1px solid #1A2839;
+    color: #1A2839;
+    background-color: #45B4C1;
+    font-size: 20px;
+    border-radius: 25px;
+    line-height: 2em;
+    padding: 5px 30px;
+    font-weight: 600;
+}
+
+.hero-onboarding .copy button svg {
+    float: right;
+    margin-left: 10px;
+}
+
+.parent {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    float: left;
+    display: flex;
+}
+
+.child {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-transition: all 1.5s;
+    -moz-transition: all 1.5s;
+    -o-transition: all 1.5s;
+    transition: all 1.5s;
+}
+
+/* Several different images */
+
+#menu-mobile-container.is-open {
+    display: block;
+}
+
+#menu-mobile-container.is-open #menu-mobile {
+    left: 0;
+}
+
+/* Page characters */
+
+.is-hidden {
+    display: none;
+}
+
+.some-page-wrapper {
+    height: 100vh;
+}
+
+.some-page-wrapper .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.some-page-wrapper .row.row-first {
+    height: 100vh;
+}
+
+@media only screen and (max-width: 600px) {
+    .some-page-wrapper .row.row-first .column {
+        width: 33.33%;
+        flex: none;
+        height: 50vh;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+    width: 16.67%;
+}
+
+.parent .child {
+    background-color: black;
+    cursor: pointer;
+}
+
+.parent .child img.img-bn {
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    z-index: 1;
+}
+
+.parent .child img.img-color {
+    position: absolute;
+    top: 10vh;
+    width: 100%;
+    z-index: 0;
+}
+
+.parent:hover .child img.img-color,
+.parent:focus .child img.img-color,
+.parent .child.is-selected img.img-color {
+    z-index: 1;
+}
+
+.icon-selected {
+    display: none;
+    width: 30px;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    bottom: 400px;
+    left: 42%;
+}
+
+.is-selected .icon-selected {
+    display: block;
+}
+
+.name {
+    display: none;
+    font-size: 30px;
+    font-family: 'Inter';
+    color: #45B4C1;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    bottom: 350px;
+    right: 0;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.is-selected .name {
+    display: block;
+    color: white;
+}
+
+.projectButton {
+    display: none;
+    font-family: 'Inter';
+    font-size: 13px;
+    color: #45B4C1;
+    text-align: center;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 300px;
+    cursor: pointer;
+    border: 2px solid #45B4C1;
+    padding: 5px;
+    width: 130px;
+    border-radius: 30px;
+    text-decoration: none;
+    z-index: 2;
+}
+
+.parent:hover .child,
+.parent:focus .child {
+    -ms-transform: scale(1.06);
+    -moz-transform: scale(1.06);
+    -webkit-transform: scale(1.06);
+    -o-transform: scale(1.06);
+    transform: scale(1.06);
+}
+
+.parent .child.is-selected {
+    -ms-transform: scale(1.3);
+    -moz-transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    -o-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
+.parent:hover a,
+.parent:focus a {
+    display: block;
+}
+
+.parent:hover .name,
+parent:focus .playButton {
+    display: block;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 960px) {
+    .parent {
+        width: 100%;
+        margin: 20px 0px
+    }
+    .parent .child img.img-color,
+    .parent .child img.img-bn {
+        top: 0;
+    }
+    .hero-characters .pane {
+        width: 85%;
+        right: -100%;
+    }
+}
+
+/* Pane Slide */
+
+.pane {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    right: -50%;
+    padding: 1rem 2rem;
+    height: 100vh;
+    width: 30%;
+    background: black;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    transition: 0.5s all ease;
+    overflow: hidden;
+}
+
+.pane-cover {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    background: black;
+    opacity: 0.3;
+    z-index: 20;
+}
+
+.pane-cover.visible {
+    display: flex;
+}
+
+.pane video {
+    width: 150%;
+    margin-left: -20%;
+}
+
+.pane-content {
+    text-align: center;
+    font-family: 'Inter';
+    color: white;
+    position: absolute;
+    bottom: 25vh;
+    z-index: 99;
+}
+
+.pane h2 {
+    font-family: 'Inter';
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #45B4C1 !important;
+    margin: 0;
+}
+
+.pane-content a {
+    width: 60px;
+    border-radius: 30px;
+    line-height: 1em;
+    padding: 8px 20px;
+    background: #45B4C1;
+    color: #1A2839;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.pane a img {
+    cursor: pointer;
+}
+
+.bg-video {
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+}
+
+.pane-content a:hover {
+    cursor: pointer;
+}
+
+.pane p {
+    font-size: 16px;
+    line-height: 1.4;
+    padding: 20px 30px 40px 30px;
+    margin: 0;
+}
+
+.pane.open {
+    right: 0vw;
+}
+
+/* hide menu */
+
+.selector-mode {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    z-index: 90;
+    transition: 2s all ease;
+    display: block;
+}
+
+.selector-mode.is-hidden {
+    display: block;
+    opacity: 0;
+}
+
+.selector-cover {
+    width: 380px;
+    margin: auto;
+}
+
+.selector-cover img,
+.selector-cover ul {
+    float: left;
+}
+
+.selector-cover ul {
+    opacity: 0;
+    color: #45B4C1;
+    font-family: 'Inter';
+    font-weight: 600;
+    font-size: 20px;
+    list-style-type: none;
+    transition: 0.5s all ease;
+}
+
+.selector-cover:hover ul {
+    opacity: 1;
+}
+
+.selector-cover ul li {
+    line-height: 1.3em;
+    margin-bottom: 10px;
+}
+
+.selector-cover ul li a {
+    color: #45B4C1;
+    text-decoration: none;
+}
+
+.selector-cover ul li:hover,
+.selector-cover ul li:hover a {
+    color: white;
+}
+
+.selector-cover ul li:nth-child(1) img {
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.selector-cover ul li:nth-child(2) img {
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
+.selector-cover ul li:nth-child(3) img {
+    margin-top: 3px;
+    margin-right: 10px;
+    margin-left: 8px;
+}
+
+.selector-cover img {
+    margin-left: 0px;
+    margin-top: 20px;
+}

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>El Cubo</title>
+    <link rel="stylesheet" href="css/selector.css">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+</head>
+
+<body id="body" style="opacity: 0;">
+
+    <div class="app-elcubo selector">
+
+        <div class="header-top">
+            <div class="header-top-inner">
+                <div class="logo-elcubo">
+                    <a href="#" class="logo--link">
+                        <img class="logo--image" src="img/logo-elcubo.png" />
+                    </a>
+                </div>
+                <nav class="nav">
+                    <a href="#" class="menu-elcubo">
+                        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.33325 11H36.6666" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.33325 22H36.6666" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M7.33325 33H36.6666" stroke="white" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <div class="icon-bell">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6.66675 3.33333C6.66675 2.97971 6.80722 2.64057 7.05727 2.39052C7.30732 2.14048 7.64646 2 8.00008 2C8.3537 2 8.69284 2.14048 8.94289 2.39052C9.19294 2.64057 9.33341 2.97971 9.33341 3.33333C10.099 3.69535 10.7517 4.25888 11.2214 4.96353C11.6912 5.66818 11.9604 6.48738 12.0001 7.33333V9.33333C12.0503 9.7478 12.197 10.1447 12.4286 10.4921C12.6602 10.8395 12.9701 11.1276 13.3334 11.3333H2.66675C3.03004 11.1276 3.33995 10.8395 3.57154 10.4921C3.80312 10.1447 3.94991 9.7478 4.00008 9.33333V7.33333C4.03979 6.48738 4.30895 5.66818 4.77871 4.96353C5.24848 4.25888 5.90114 3.69535 6.66675 3.33333"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M6 11.333V11.9997C6 12.5301 6.21071 13.0388 6.58579 13.4139C6.96086 13.789 7.46957 13.9997 8 13.9997C8.53043 13.9997 9.03914 13.789 9.41421 13.4139C9.78929 13.0388 10 12.5301 10 11.9997V11.333"
+                                    stroke="white" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+
+        <div class="hero-characters" class="is-hidden">
+            <div class="pane-cover"></div>
+            <div class="pane">
+                <a class="close">
+                    <img src="img/pane-close.svg" />
+                </a>
+                <div class="pane-content">
+                    <h2 id="name-personaje">Carey</h2>
+                    <p> lum sagittis tempus. Donec commodo luctus varius. Mauris elementum rhoncus nulla id elementum. Sed ac
+                        fringilla arcu.
+                    </p>
+                    <a id="select-personaje" href="#" data-personaje="" class="cyan-dark">
+                        Elegir
+                    </a>
+                </div>
+                <div style="text-align:center; overflow: hidden;">
+                    <img class="bg-video" src="img/bg-video.png" />
+                    <video id="video1" width="420">
+                        <source src="img/intro-carey.mp4" type="video/mp4" data-personaje="carey"> Your browser does not support HTML video.
+                    </video>
+                </div>
+            </div>
+
+            <div class='some-page-wrapper'>
+                <div class='row row-first'>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-one alba toggle" data-video="img/intro-carey.mp4" data-personaje="alba">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Alba</h2>
+                                <img class="img-bn" src="img/alba_01.jpg" />
+                                <img class="img-color" src="img/alba_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-two carey toggle" data-video="img/intro-carey.mp4" data-personaje="carey">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Carey</h2>
+                                <img class="img-bn" src="img/carey_01.jpg" />
+                                <img class="img-color" src="img/carey_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-three elvira toggle" data-video="img/intro-sales.mp4" data-personaje="elvira">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Elvira</h2>
+                                <img class="img-bn" src="img/elvira_01.jpg" />
+                                <img class="img-color" src="img/elvira_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-four marina toggle" data-video="img/intro-mercado.mp4" data-personaje="marina">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Marina</h2>
+                                <img class="img-bn" src="img/marina_01.jpg" />
+                                <img class="img-color" src="img/marina_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-five mercado toggle" data-video="img/intro-mercado.mp4" data-personaje="mercado">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Mercado</h2>
+                                <img class="img-bn" src="img/mercado_01.jpg" />
+                                <img class="img-color" src="img/mercado_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class='column'>
+                        <div class="parent">
+                            <div class="child bg-six sales toggle" data-video="img/intro-sales.mp4" data-personaje="sales">
+                                <img class="icon-selected" src="img/is-selected.svg" />
+                                <h2 class="name">Sales</h2>
+                                <img class="img-bn" src="img/sales_01.jpg" />
+                                <img class="img-color" src="img/sales_02.jpg" />
+                                <a class="projectButton">Conóceme más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="selector-mode is-hidden">
+                <div class="selector-cover">
+                    <img src="img/selector-cubo.svg" />
+                    <ul>
+                        <li>
+                            <img src="img/selector-0.svg" />
+                            <a href="" class="cronologico">Modo Cronologico</a>
+                        </li>
+                        <li>
+                            <img src="img/selector-1.svg" />Modo Laberinto</li>
+                        <li>
+                            <img src="img/selector-2.svg" />Modo Reflexivo</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <script src="js/selector.js"></script>
+
+
+</body>
+
+</html>
