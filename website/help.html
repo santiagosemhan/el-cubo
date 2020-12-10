@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>El Cubo</title>
+    <link rel="stylesheet" href="css/help.css">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+</head>
+
+<body id="body">
+
+    <div class="app-elcubo selector">
+
+
+        <div class="header-top">
+            <div class="header-top-inner">
+                <nav class="nav">
+                    <ul>
+                        <li>
+                            <a href="#" class="toggle-help open_modal">
+                                <span>Ayuda</span>
+                                <div class="icon-help-close">
+                                    <img src="img/icon-help-close.svg" />
+                                </div>
+
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="toggle menu-elcubo">
+
+                                <div class="icon-bell">
+                                    <img src="img/icon-bell.svg" />
+                                </div>
+                                <img src="img/icon-menu.svg" />
+                            </a>
+                        </li>
+                </nav>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="modal__content">
+                <div class="modal__header">
+                    <button type="button" class="close_modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+
+                <div class="help">
+                    <div id="help-step" class="help-step">
+                        <ul class="progress-bar">
+                            <li class="progress-bar__dot full"></li>
+                            <li class="progress-bar__connector"></li>
+                            <li class="progress-bar__dot"></li>
+                            <li class="progress-bar__connector"></li>
+                            <li class="progress-bar__dot"></li>
+                        </ul>
+
+                        <div class="step step1">
+                            uno
+                        </div>
+
+                        <div class="step step2 hidden">
+                            dos
+                        </div>
+
+                        <div class="step step3 hidden">
+                            tres
+                        </div>
+
+                        <div class="button-group">
+                            <button id="previous" class="disabled button" disabled>
+                                Anterior
+                            </button>
+                            <button id="next" class="button">
+                                Siguiente
+                            </button>
+                        </div>
+                        <div class="button-group">
+                            <button id="validate" class="hidden button">
+                                Comenzar la experiencia
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="hero">
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+    <script src="js/help.js"></script>
+
+
+</body>
+
+</html>
