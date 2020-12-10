@@ -1,13 +1,15 @@
 import React from 'react';
 import Plyr from 'plyr';
 import HLS from 'hls.js';
+import { useRouter } from 'next/router';
 
 import 'plyr/dist/plyr.css';
 import { VideoPlayerWrapper } from './VideoPlayer.style';
 
-const VideoPlayer = ({ source, poster, title }) => {
+const VideoPlayer = ({ source, poster, title, showBackButton = false, backLink = '/' }) => {
   const wrapperRef = React.useRef();
   const videoRef = React.useRef();
+  const router = useRouter();
 
   React.useEffect(() => {
     const video: HTMLMediaElement = videoRef.current;
@@ -21,6 +23,11 @@ const VideoPlayer = ({ source, poster, title }) => {
       captions: { active: true, update: true, language: 'es' },
       settings: ['captions', 'quality', 'speed', 'loop'],
     });
+
+    if (wrapperRef.current) {
+      player.on('enterfullscreen', () => wrapperRef.current.classList.add('in-fullscreen'));
+      player.on('exitfullscreen', () => wrapperRef.current.classList.remove('in-fullscreen'));
+    }
 
     if (!HLS.isSupported()) {
       video.src = source;
@@ -40,6 +47,14 @@ const VideoPlayer = ({ source, poster, title }) => {
     }
 
     const container: HTMLElement = wrapperRef.current;
+
+    if (showBackButton) {
+      router.prefetch(backLink);
+      const controls = container.getElementsByClassName('plyr__controls')[0];
+      controls.insertAdjacentHTML('afterend', `<button class="back-to-season"> Volver </div>`);
+      const backToButton = container.getElementsByClassName('back-to-season')[0];
+      backToButton.addEventListener('click', () => router.push(backLink));
+    }
 
     const playControl = container.querySelector('[data-plyr="play"]');
     playControl.insertAdjacentHTML(

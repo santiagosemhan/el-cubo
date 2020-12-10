@@ -51,10 +51,17 @@ body.fade {
 
 .hero {
     /* Create grid spanning viewport width & height */
+    position: relative;
     display: grid;
     grid-template-rows: 100vh;
     overflow: hidden;
     box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
+
+
+    .image-bg {
+        position: absolute;
+        z-index: -10;
+    }
 }
 
 .hero-0 {
@@ -303,16 +310,14 @@ h2 {
     left: 49vw;
 }
 
-.arrow-down img {}
-
 .arrow-down img {
     width: 40px;
-    /*transform: scale(1.2);*/
+
     animation: bounce .6s infinite;
     -webkit-animation-delay: 2s;
     -ms-animation-delay: 18s;
     animation-delay: 18s;
-    /*opacity: 0;*/
+
 }
 
 @keyframes bounce {

@@ -8,14 +8,14 @@
 const nextConfig = {
   env: {
     API_URL: 'https://play-rtvcplay-cms.rtvc.gov.co',
-    MEDIA_CONTENT_URL: 'https://rtvcplay-media-content.s3.amazonaws.com',
+    MEDIA_CONTENT_URL: 'https://rtvcplay-v2.s3.amazonaws.com',
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
-    // deviceSizes: [320, 375, 420, 768, 1024, 1200, 1600],
-    // domains: ['domain.com'],
+    deviceSizes: [320, 375, 420, 768, 1024, 1200, 1600],
+    domains: ['rtvcplay-v2.s3.amazonaws.com'],
   },
   crossOrigin: 'anonymous',
   webpack: (config) => {

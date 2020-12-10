@@ -8,7 +8,7 @@ import fetch from 'libs/fetcher';
 import MouseCircle from 'components/MouseCircle/MouseCircle';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 
-export default function Temporada({ data }) {
+export default function SeasonPage({ data }) {
   // if (process.browser) {
   //   console.log({ data });
   // }
@@ -37,7 +37,12 @@ export default function Temporada({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
-        <MouseCircle href="/" text="Empezar experiencia" isBig={bigMouse} show={showMouse} />
+        <MouseCircle
+          href="/el-cubo/temporada-1/1"
+          text="Empezar experiencia"
+          isBig={bigMouse}
+          show={showMouse}
+        />
 
         <div className="header-top" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <div className="header-top-inner">
@@ -46,14 +51,14 @@ export default function Temporada({ data }) {
                 <img className="logo--image" src="/images/logo-elcubo.png" />
               </a>
             </div>
-            <nav className="nav">
+            {/* <nav className="nav">
               <a href="#" className="nav--link cyan-light">
                 Ingreso
               </a>
               <a href="#" className="nav--link cyan-light">
                 Registro
               </a>
-            </nav>
+            </nav> */}
           </div>
         </div>
 
@@ -159,7 +164,7 @@ export default function Temporada({ data }) {
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { slug: 'temporada-1' } }],
+    paths: [{ params: { season: 'temporada-1' } }],
     fallback: false,
   };
 }

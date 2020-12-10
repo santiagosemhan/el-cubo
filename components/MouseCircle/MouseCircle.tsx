@@ -27,8 +27,10 @@ const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text })
           requestAnimationFrame(delayMouseFollow);
           revisedMousePosX += (mousePosX - revisedMousePosX) / delay;
           revisedMousePosY += (mousePosY - revisedMousePosY) / delay;
-          ref.current.style.top = revisedMousePosY + 'px';
-          ref.current.style.left = revisedMousePosX + 'px';
+          if (ref.current) {
+            ref.current.style.top = revisedMousePosY + 'px';
+            ref.current.style.left = revisedMousePosX + 'px';
+          }
         }
         delayMouseFollow();
       }

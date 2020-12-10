@@ -5,17 +5,23 @@ import { RTVCStyles } from '../styles/rtvc';
 import Footer from 'components/Footer/Footer';
 // import useSWR, { mutate } from 'swr';
 
-const AppLayout = ({ children }) => {
+const AppLayout = ({ onlyContent = false, children }) => {
   // const { data } = useSWR('/ping');
   // mutate('/api/user', { hola: 'mundo' }, false);
   // console.log(data);
   return (
     <>
-      <RTVCStyles />
       <GlobalStyles />
-      <Header />
-      <div className="app-elcubo">{children}</div>
-      <Footer />
+      {onlyContent ? (
+        <div className="app-elcubo">{children}</div>
+      ) : (
+        <>
+          <RTVCStyles />
+          <Header />
+          <div className="app-elcubo">{children}</div>
+          <Footer />
+        </>
+      )}
     </>
   );
 };

@@ -159,7 +159,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
+      {/* 
       <div className="app__CookieAlert app__CookieAlert-sc-18l6pk9-1 bCNNrX AtCookieAlert__Container-sc-5vjnka-0 cwEQLm">
         <div className="AtCookieAlert__Body-sc-5vjnka-1 bxecrI">
           <p className="AtCookieAlert__Text-sc-5vjnka-2 iGSySS">
@@ -180,6 +180,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
+     */}
     </>
   );
 };
