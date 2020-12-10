@@ -19,3 +19,19 @@ if (button_close) {
         pane_cover.classList.toggle('visible');
     });
 }
+
+
+const li_count = document.querySelectorAll(".list-chrono li").length;
+
+
+if (li_count > 10) {
+    document.getElementById("list-chrono").classList.add('height-small');
+}
+
+if (li_count <= 10 && li_count >= 6) {
+    document.getElementById("list-chrono").classList.add('height-medium');
+}
+
+if (li_count < 6) {
+    document.getElementById("list-chrono").classList.add('height-big');
+}
