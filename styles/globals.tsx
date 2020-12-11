@@ -284,10 +284,14 @@ h2 {
     font-size: 2rem;
 }
 
-.second {
+
+.copy .second,
+.copy-final .second {
     font-size: 3rem;
     font-weight: 500;
+    margin-top: 0;
     margin-left: 30px;
+    font-family: 'Bitter';
 }
 
 .third {
@@ -371,6 +375,7 @@ h2 {
     letter-spacing: 1px;
     float: left;
     clear: both;
+    width: 100%;
 }
 
 .hero-1 .copy-cover {
@@ -964,4 +969,7 @@ parent:focus .playButton {
 .selector-cover img {
     margin-left: 40px;
 }
+
+/* Button Mobile */
+
 `;

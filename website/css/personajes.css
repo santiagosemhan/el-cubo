@@ -257,7 +257,7 @@ body {
 }
 
 .parent:hover .name,
-parent:focus .playButton {
+.parent:focus .playButton {
     display: block;
 }
 
@@ -442,4 +442,43 @@ parent:focus .playButton {
 .selector-cover img {
     margin-left: 0px;
     margin-top: 20px;
+}
+
+.selector-mode.selector-mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+    .logo--image {
+        width: 60px;
+        top: 80px;
+        left: 20px;
+    }
+    .selector-mode {
+        display: none;
+    }
+    .selector-mode.selector-mobile {
+        display: block;
+        bottom: 46%;
+        z-index: 10;
+    }
+    .selector-mode.is-hidden {
+        z-index: -2;
+    }
+    .selector-mode.selector-mobile .selector-cover ul {
+        opacity: 1;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .selector-mode.selector-mobile .selector-cover img {
+        float: none;
+        width: auto;
+    }
+    .selector-mode.selector-mobile .selector-cover ul li {
+        width: 33.33%;
+        float: left;
+        font-size: 16px;
+    }
 }

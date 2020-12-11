@@ -68,7 +68,12 @@ if (button_select) {
         });
 
         document.getElementsByClassName(button_select.dataset.personaje)[0].classList.add("is-selected");
-        document.getElementsByClassName('selector-mode')[0].classList.remove('is-hidden');
+
+        var selector = document.querySelectorAll(".selector-mode");
+        [].forEach.call(selector, function (el) {
+            el.classList.remove('is-hidden');
+        });
+
 
         console.log(character);
     });
