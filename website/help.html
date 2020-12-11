@@ -21,21 +21,12 @@
                 <nav class="nav">
                     <ul>
                         <li>
-                            <a href="#" class="toggle-help open_modal">
+                            <a href="#" class="toggle-help open-modal">
                                 <span>Ayuda</span>
-                                <div class="icon-help-close">
-                                    <img src="img/icon-help-close.svg" />
+                                <div class="icon-help">
+                                    <img class="icon-help-open" src="img/icon-help-open.svg" />
                                 </div>
 
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="toggle menu-elcubo">
-
-                                <div class="icon-bell">
-                                    <img src="img/icon-bell.svg" />
-                                </div>
-                                <img src="img/icon-menu.svg" />
                             </a>
                         </li>
                 </nav>
@@ -44,11 +35,6 @@
 
         <div class="modal">
             <div class="modal__content">
-                <div class="modal__header">
-                    <button type="button" class="close_modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
 
                 <div class="help">
                     <div id="help-step" class="help-step">
@@ -61,15 +47,30 @@
                         </ul>
 
                         <div class="step step1">
-                            uno
+                            <h2>Ayuda</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
+                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
                         </div>
 
                         <div class="step step2 hidden">
-                            dos
+
+                            <h2>
+                                <span class="step-number">
+                                    1
+                                </span>Escoge uno de los personajes
+                            </h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
+                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
                         </div>
 
                         <div class="step step3 hidden">
-                            tres
+                            <h2>
+                                <span class="step-number">
+                                    2
+                                </span>Escoge el modo de navegación
+                            </h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
+                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
                         </div>
 
                         <div class="button-group">
@@ -79,12 +80,11 @@
                             <button id="next" class="button">
                                 Siguiente
                             </button>
-                        </div>
-                        <div class="button-group">
                             <button id="validate" class="hidden button">
-                                Comenzar la experiencia
+                                Empieza tu experiencia
                             </button>
                         </div>
+
 
                     </div>
                 </div>

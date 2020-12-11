@@ -289,7 +289,9 @@ parent:focus .playButton {
     height: 100vh;
     width: 30%;
     background: black;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     transition: 0.5s all ease;
     overflow: hidden;
 }
@@ -338,7 +340,7 @@ parent:focus .playButton {
     background: #45B4C1;
     color: #1A2839;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .pane a img {

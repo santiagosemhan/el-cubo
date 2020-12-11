@@ -1,16 +1,20 @@
-const openModalTriggerEl = document.querySelector('.open_modal');
-const closeModalTriggerEl = document.querySelector('.close_modal');
+const openModalTriggerEl = document.querySelector('.open-modal');
+const closeModalTriggerEl = document.querySelector('.close-modal');
 const modalEl = document.querySelector('.modal');
 let currentTab = 0;
 
 function modal() {
-    openModalTriggerEl.addEventListener('click', () => {
-        modalEl.classList.add('open');
-        currentTab = 0;
-    });
-    closeModalTriggerEl.addEventListener('click', () => {
-        modalEl.classList.remove('open');
-    });
+    if (openModalTriggerEl) {
+        openModalTriggerEl.addEventListener('click', () => {
+            modalEl.classList.add('open');
+            currentTab = 0;
+        });
+    }
+    if (closeModalTriggerEl) {
+        closeModalTriggerEl.addEventListener('click', () => {
+            modalEl.classList.remove('open');
+        });
+    }
     window.addEventListener('click', () => {
         if (event.target === modalEl) {
             modalEl.classList.remove('open');
@@ -23,12 +27,12 @@ modal();
 
 
 /* Wizard */
-const previousButton = document.getElementById("previous")
-const nextButton = document.getElementById("next")
-const submitButton = document.getElementById('validate')
-const dots = document.getElementsByClassName('progress-bar__dot')
-const numberOfSteps = 3
-let currentStep = 1
+const previousButton = document.getElementById("previous");
+const nextButton = document.getElementById("next");
+const submitButton = document.getElementById('validate');
+const dots = document.getElementsByClassName('progress-bar__dot');
+const numberOfSteps = 3;
+let currentStep = 1;
 
 for (let i = 0; i < dots.length; ++i) {
     dots[i].addEventListener('click', () => {
@@ -36,40 +40,39 @@ for (let i = 0; i < dots.length; ++i) {
     })
 }
 
-previousButton.onclick = goPrevious
-nextButton.onclick = goNext
-
+previousButton.onclick = goPrevious;
+nextButton.onclick = goNext;
 
 function goNext(e) {
-    e.preventDefault()
-    currentStep += 1
-    goToStep(currentStep)
+    e.preventDefault();
+    currentStep += 1;
+    goToStep(currentStep);
 }
 
 function goPrevious(e) {
-    e.preventDefault()
-    currentStep -= 1
-    goToStep(currentStep)
+    e.preventDefault();
+    currentStep -= 1;
+    goToStep(currentStep);
 }
 
 function goToStep(stepNumber) {
-    currentStep = stepNumber
+    currentStep = stepNumber;
 
-    let inputsToHide = document.getElementsByClassName('step')
-    let inputs = document.getElementsByClassName(`step${currentStep}`)
-    let indicators = document.getElementsByClassName('progress-bar__dot')
+    let inputsToHide = document.getElementsByClassName('step');
+    let inputs = document.getElementsByClassName(`step${currentStep}`);
+    let indicators = document.getElementsByClassName('progress-bar__dot');
 
     for (let i = indicators.length - 1; i >= currentStep; --i) {
-        indicators[i].classList.remove('full')
+        indicators[i].classList.remove('full');
     }
 
     for (let i = 0; i < currentStep; ++i) {
-        indicators[i].classList.add('full')
+        indicators[i].classList.add('full');
     }
 
     //hide all input
     for (let i = 0; i < inputsToHide.length; ++i) {
-        hide(inputsToHide[i])
+        hide(inputsToHide[i]);
     }
 
     //only show the right one
@@ -79,20 +82,20 @@ function goToStep(stepNumber) {
 
     //if we reached final step
     if (currentStep === numberOfSteps) {
-        enable(previousButton)
-        disable(nextButton)
-        show(submitButton)
+        enable(previousButton);
+        disable(nextButton);
+        show(submitButton);
     }
 
     //else if first step
     else if (currentStep === 1) {
-        disable(previousButton)
-        enable(next)
-        hide(submitButton)
+        disable(previousButton);
+        enable(next);
+        hide(submitButton);
     } else {
-        enable(previousButton)
-        enable(next)
-        hide(submitButton)
+        enable(previousButton);
+        enable(next);
+        hide(submitButton);
     }
 }
 
@@ -107,9 +110,12 @@ function disable(elem) {
 }
 
 function show(elem) {
-    elem.classList.remove('hidden')
+    elem.classList.remove('hidden');
+    let str = elem.className;
+    let res = str.charAt(str.length - 1)
+    modalEl.className = 'modal open step-' + res;
 }
 
 function hide(elem) {
-    elem.classList.add('hidden')
+    elem.classList.add('hidden');
 }

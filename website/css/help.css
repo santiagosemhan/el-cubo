@@ -44,36 +44,20 @@ body {
     margin-right: 5px;
 }
 
-nav ul li:first-child span {
+nav ul span {
     float: left;
 }
 
-.icon-help-close {
+.icon-help {
     display: inline;
 }
 
-.icon-help-close img {
+.icon-help img {
     float: left;
 }
 
-.nav ul li:first-child {
-    width: 100px;
-    margin-top: 5px;
-}
-
-.nav ul li:last-child {
-    width: 44px;
+nav ul li:last-child {
     float: right;
-}
-
-.icon-bell {
-    width: 16px;
-    height: 16px;
-    background: #45B4C1;
-    border-radius: 50%;
-    padding: 2px;
-    position: absolute;
-    right: -5px;
 }
 
 /* Modal */
@@ -89,7 +73,7 @@ nav ul li:first-child span {
     background: #2c3344;
 }
 
-.trigger_modal: hover {
+.trigger_modal:hover {
     cursor: pointer;
 }
 
@@ -108,13 +92,12 @@ nav ul li:first-child span {
 }
 
 .modal__content {
-    background: #2C3344;
-    width: 80%;
-    max-width: 640px;
-    margin: 3rem auto;
-    border-radius: 4px;
-    padding: 4rem 2rem;
-    position: relative;
+    background: #192538;
+    max-width: 455px;
+    border-radius: 10px;
+    position: absolute;
+    top: 165px;
+    right: 20px;
     animation: 0.3s slideDown;
 }
 
@@ -122,11 +105,11 @@ nav ul li:first-child span {
 
 @keyframes slideDown {
     from {
-        top: -100px;
+        top: 0px;
         opacity: 0;
     }
     to {
-        top: 0;
+        top: 165;
         opacity: 1;
     }
 }
@@ -148,7 +131,7 @@ nav ul li:first-child span {
     left: 10px;
     font-size: 4rem;
     background: transparent;
-    boder: 0;
+    border: 0;
     outline: 0;
 }
 
@@ -171,24 +154,22 @@ nav ul li:first-child span {
 }
 
 .button {
-    width: 140px;
+    width: 100px;
     cursor: pointer;
-    padding: 1em;
-    border-radius: 0.2em;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 1em;
+    padding: 7px 15px;
+    border-radius: 30px;
+    border: 2px solid #45B4C1;
+    color: #45B4C1;
+    font-size: 14px;
+    font-weight: 600;
     transition: all 0.5s ease;
-    background-color: #ff8552;
-}
-
-.button:hover {
-    background-color: #ff4f05;
+    background: transparent;
+    outline: none;
 }
 
 .button.disabled {
     opacity: 0.5;
+    display: none;
 }
 
 .button.disabled:hover {
@@ -196,16 +177,13 @@ nav ul li:first-child span {
 }
 
 .help-step {
-    width: 20em;
     margin: auto;
-    margin-top: 5em;
-    padding: 5em;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    background-color: white;
-    font-family: "Raleway", sans-serif;
-    color: #33312e;
-    border-radius: 0.2em;
+    float: left;
+    padding: 35px;
+    background-color: #192538;
+    font-family: 'Inter';
+    color: white;
+    border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -215,7 +193,8 @@ nav ul li:first-child span {
     display: flex;
     padding: 0;
     justify-content: center;
-    margin-bottom: 3.5em;
+    margin-bottom: 30px;
+    margin-top: 0;
 }
 
 .help-step .progress-bar li.progress-bar__dot {
@@ -223,14 +202,15 @@ nav ul li:first-child span {
     width: 0.6em;
     border-radius: 1000em;
     height: 0.6em;
-    border: 0.2em solid #ff8552;
-    background-color: white;
+    border: 0.2em solid #45B4C1;
+    background-color: #45B4C1;
     cursor: pointer;
     transition: all 0.5s ease;
 }
 
 .help-step .progress-bar li.progress-bar__dot.full {
-    background-color: #ff8552;
+    background-color: white;
+    border: 0.2em solid white;
 }
 
 .help-step .progress-bar li.progress-bar__connector {
@@ -238,23 +218,56 @@ nav ul li:first-child span {
     width: 5em;
     border-radius: 1000em;
     height: 0.1em;
-    background-color: #ff8552;
+    background-color: #45B4C1;
     margin-top: 0.45em;
+}
+
+.help-step h2 {
+    font-size: 18px;
+}
+
+.step-number {
+    border-radius: 50%;
+    background: #090C15;
+    width: 30px;
+    height: 30px;
+    float: left;
+    text-align: center;
+    margin-top: -4px;
+    line-height: 1.7;
+    margin-right: 10px;
 }
 
 .button-group {
     width: 100%;
-    display: flex;
+    display: block;
+    float: left;
     justify-content: space-between;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 button#validate {
     margin: auto;
-    background-color: #1a936f;
-    width: 12em;
+    background-color: #45B4C1;
+    color: black;
+    width: 260px;
+    float: right;
 }
 
 button#validate:hover {
-    background-color: #12684e;
+    background-color: #45B4C1;
+    color: black;
+}
+
+.modal.step-2 .modal__content,
+.modal.step-n .modal__content {
+    max-width: 455px;
+    border-radius: 10px;
+    position: relative;
+    margin: auto;
+    transition: all 0.5s ease;
+}
+
+.modal.step-2 .modal__content #next {
+    float: right;
 }
