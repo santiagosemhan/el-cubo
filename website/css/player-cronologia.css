@@ -181,6 +181,16 @@ ul.list-chrono.height-medium li span.circle {
     margin-top: 26px;
 }
 
+.line-right {
+    position: absolute;
+    height: 320px;
+    width: 1px;
+    background: #858585;
+    right: 4px;
+    top: 80px;
+    opacity: .4;
+}
+
 /* mobile */
 
 .list-chrono-mobile {

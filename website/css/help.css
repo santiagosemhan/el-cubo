@@ -179,7 +179,7 @@ nav ul li:last-child {
 .help-step {
     margin: auto;
     float: left;
-    padding: 35px;
+    padding: 20px 30px;
     background-color: #192538;
     font-family: 'Inter';
     color: white;
@@ -195,6 +195,7 @@ nav ul li:last-child {
     justify-content: center;
     margin-bottom: 30px;
     margin-top: 0;
+    display: none;
 }
 
 .help-step .progress-bar li.progress-bar__dot {
@@ -270,4 +271,109 @@ button#validate:hover {
 
 .modal.step-2 .modal__content #next {
     float: right;
+}
+
+/* Selector help */
+
+.selector-help {
+    width: 100%;
+    position: absolute;
+    bottom: 60px;
+}
+
+.selector-help-cover {
+    width: 900px;
+    margin: auto;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.selector-help-mobile {
+    display: none;
+}
+
+.modal.step-n .selector-help-cover {
+    opacity: 1;
+}
+
+.selector-column {
+    width: 33.33%;
+    color: white;
+    float: left;
+    text-align: center;
+    font-family: 'Inter';
+}
+
+.selector-column h2 {
+    font-size: 22px;
+}
+
+.selector-column h2 img {
+    margin-right: 10px;
+}
+
+.selector-column p {
+    font-size: 16px;
+}
+
+.selector-column-cubo {
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+    .selector-help {
+        bottom: 30px;
+    }
+    .selector-column-cubo.cubo-pc {
+        display: none;
+    }
+    .selector-help-mobile {
+        display: block;
+    }
+    .selector-help-cover {
+        width: auto;
+    }
+    .selector-help-pc {
+        margin-bottom: 30px;
+        float: left;
+    }
+    .selector-help-pc .selector-column {
+        text-align: left;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .selector-help-pc .selector-column p {
+        padding: 0;
+    }
+    .selector-column h2 {
+        font-size: 16px;
+        margin: 0;
+    }
+    .selector-column h2 img {
+        margin-right: 12px;
+    }
+    .selector-column p {
+        font-size: 12px;
+    }
+    .selector-help-pc .selector-column {
+        width: auto;
+    }
+    .selector-column span {
+        color: #45B4C1;
+    }
+    .modal__content {
+        top: 180px;
+        right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+        background: transparent;
+        z-index: 100;
+    }
+    button#validate {
+        width: 200px;
+    }
+    .cubo-help {
+        width: 70px;
+    }
 }
