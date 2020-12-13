@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export const ListChronoCover = styled.div`
-  // position: absolute;
+  position: absolute;
   right: 30px;
-  top: 20vh;
+  top: 5vh;
   color: white;
   font-family: 'Inter';
-
+  z-index: 10;
   h2 {
     color: white;
     font-family: 'Inter';

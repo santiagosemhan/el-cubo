@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import Plyr from 'plyr';
 import HLS from 'hls.js';
 import { useRouter } from 'next/router';
@@ -21,6 +23,9 @@ const VideoPlayer = ({
   onVideoEnded,
   onControlsHidden,
   onControlsShown,
+  onVideoPause,
+  onVideoPlaying,
+  children,
 }) => {
   const wrapperRef = React.useRef();
   const videoRef = React.useRef();
@@ -29,7 +34,6 @@ const VideoPlayer = ({
 
   React.useEffect(() => {
     const video: HTMLMediaElement = videoRef.current;
-
     playerRef.current = new Plyr(video, {
       enabled: true,
       // quality: {
@@ -52,8 +56,6 @@ const VideoPlayer = ({
     if (!HLS.isSupported()) {
       video.src = source;
     } else {
-      console.log(video);
-
       // For more Hls.js options, see https://github.com/dailymotion/hls.js
       const hls = new HLS();
       hls.loadSource(source);
@@ -67,17 +69,30 @@ const VideoPlayer = ({
     }
     const container: HTMLElement = wrapperRef.current;
 
+    const controls = container.getElementsByClassName('plyr__controls')[0];
+    controls.insertAdjacentHTML(
+      'afterend',
+      `
+      <div class="plyr__extra_controls">
+        <div id="plyr__portal" class="plyr__portal"></div>
+      </div>
+    `,
+    );
+
     if (showBackButton) {
       router.prefetch(backLink);
-      const controls = container.getElementsByClassName('plyr__controls')[0];
+      const controls = container.getElementsByClassName('plyr__portal')[0];
       controls.insertAdjacentHTML(
         'afterend',
-        `<button class="back-to-season">
+        `
+          <button class="back-to-season">
             <img src="/images/icon-arrow-back.svg" />
             <span>Volver al inicio</span>
-         </div>`,
+          </button>
+        `,
       );
       const backToButton = container.getElementsByClassName('back-to-season')[0];
+
       backToButton.addEventListener('click', () => router.push(backLink));
     }
 
@@ -87,6 +102,13 @@ const VideoPlayer = ({
       `<button class="plyr__controls__item plyr__control" data-plyr="chapters">${chapterButtonName}</button>`,
     );
   }, []);
+
+  React.useEffect(() => {
+    // const plyr = container.getElementsByClassName('plyr')[0];
+    const portal = document.getElementById('plyr__portal');
+    console.log({ children });
+    ReactDOM.render(children, portal);
+  }, [children]);
 
   React.useEffect(() => {
     const container: HTMLElement = wrapperRef.current;
@@ -144,19 +166,13 @@ const VideoPlayer = ({
   }, [onVideoEnded]);
 
   React.useEffect(() => {
-    console.log('hidden');
     if (playerRef.current) {
-      playerRef.current.on('controlshidden', (e) => onControlsHidden(e, playerRef.current));
+      playerRef.current.on('controlsshown', onControlsShown);
+      playerRef.current.on('controlshidden', onControlsHidden);
+      playerRef.current.on('playing', onVideoPlaying);
+      playerRef.current.on('pause', onVideoPause);
     }
-  }, [onControlsHidden]);
-
-  React.useEffect(() => {
-    console.log('shown');
-
-    if (playerRef.current) {
-      playerRef.current.on('controlsshown', (e) => onControlsShown(e, playerRef.current));
-    }
-  }, [onControlsShown]);
+  }, [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying]);
 
   return (
     <VideoPlayerWrapper ref={wrapperRef}>

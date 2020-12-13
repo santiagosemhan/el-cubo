@@ -1,3 +1,4 @@
+import { ListChronoCover } from 'components/PlayerChronology/PlayerChronology.style';
 import styled from 'styled-components';
 
 export const VideoPlayerWrapper = styled.div`
@@ -47,13 +48,17 @@ export const VideoPlayerWrapper = styled.div`
     .back-to-season {
       top: 80px;
     }
+
+    ${ListChronoCover} {
+      top: 80px;
+    }
   }
 
   .plyr--video {
     overflow: hidden !important;
 
     &.plyr--hide-controls {
-      .back-to-season {
+      .plyr__extra_controls {
         opacity: 0;
       }
     }
