@@ -260,7 +260,6 @@ body {
     top: 0;
     z-index: 10;
     right: -50%;
-    padding: 1rem 2rem;
     height: 100vh;
     width: 30%;
     background: black;
@@ -297,7 +296,7 @@ body {
     position: absolute;
     bottom: 25vh;
     z-index: 99;
-    width: 85%;
+    width: 100%;
 }
 
 .pane h2 {
@@ -319,13 +318,21 @@ body {
     font-weight: 600;
 }
 
-.pane a img {
+.pane a.close {
     cursor: pointer;
+    padding: 20px;
+    float: left;
+}
+
+.pane-video {
+    overflow: hidden;
+    clear: both;
 }
 
 .bg-video {
     position: absolute;
     width: 100%;
+    height: 100%;
     z-index: 20;
 }
 
@@ -425,6 +432,22 @@ body {
     display: none;
 }
 
+/* Reset Highlights */
+
+button,
+textarea,
+input,
+select,
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 @media only screen and (max-width: 1024px) {
     .logo--image {
         width: 30px;
@@ -435,8 +458,12 @@ body {
     .some-page-wrapper .row.row-first .column {
         width: 33.33%;
         flex: none;
-        height: 50vh;
+        float: left;
+        height: 45vh;
         z-index: 11;
+    }
+    .some-page-wrapper .row.row-first .column .parent {
+        height: 45vh;
     }
     .pane.open {
         width: 100%;
@@ -446,8 +473,14 @@ body {
         bottom: 0;
         height: 100vh;
     }
-    .close img {
-        margin-left: 20px;
+    .pane a.close {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 100;
+    }
+    .pane-video {
+        margin-top: 60px;
     }
     .parent .child.alba img.img-bn,
     .parent .child.elvira img.img-bn,
@@ -462,6 +495,9 @@ body {
     }
     .parent .child img.img-color {
         top: 0px;
+    }
+    .some-page-wrapper .row {
+        display: block;
     }
     .selector-desktop {
         display: none;

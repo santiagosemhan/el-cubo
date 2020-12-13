@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 body {
     margin: 0;
-    background: rgb(37, 35, 35);
 }
 
 :root {
@@ -98,6 +97,7 @@ nav ul li:last-child {
     position: absolute;
     top: 165px;
     right: 20px;
+    z-index: 100;
     animation: 0.3s slideDown;
 }
 
@@ -261,7 +261,7 @@ button#validate:hover {
 }
 
 .modal.step-2 .modal__content,
-.modal.step-n .modal__content {
+.modal.step-l .modal__content {
     max-width: 455px;
     border-radius: 10px;
     position: relative;
@@ -322,6 +322,10 @@ button#validate:hover {
 }
 
 @media only screen and (max-width: 1024px) {
+    .nav {
+        right: 20px;
+        top: 80px;
+    }
     .selector-help {
         bottom: 30px;
     }

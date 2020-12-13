@@ -12,7 +12,7 @@ function show() {
     opacity = Number(window.getComputedStyle(body)
         .getPropertyValue("opacity"));
     if (opacity < 1) {
-        opacity = opacity + 0.3;
+        opacity = opacity + 0.4;
         body.style.opacity = opacity
     } else {
         clearInterval(intervalID);
@@ -221,4 +221,27 @@ if (link_footer) {
     link_footer.addEventListener('mouseenter', e => {
         document.getElementById('mouse-circle').classList.add("is-hidden");
     });
+}
+
+/* Scroll to element */
+const hanchors = document.querySelectorAll('.arrow-down a[href*="#"]');
+
+/*Loop through each link to add the click event*/
+for (let i = 0; i < hanchors.length; i++) {
+    hanchors[i].onclick = function (e) {
+        /*prevent default behavior [clicking through]*/
+        e.preventDefault();
+        console.log(this);
+        let b = this;
+
+        let c = b.getAttribute("href").substring(1);
+        let el = document.getElementById(c);
+        console.log(el);
+
+        /*scroll to that position*/
+        window.scrollTo({
+            top: el.offsetTop - 20,
+            behavior: "smooth"
+        });
+    };
 }

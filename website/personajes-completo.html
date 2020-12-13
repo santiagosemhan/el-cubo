@@ -56,8 +56,8 @@
 
                         <div class="step step1">
                             <h2>Ayuda</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
-                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
+                            <p>Para conocer esta historia de diferentes maneras deberás seleccionar uno de seis personajes y
+                                elegir uno de tres modos narrativos para navegar. </p>
                         </div>
 
                         <div class="step step2 hidden">
@@ -67,8 +67,8 @@
                                     1
                                 </span>Escoge uno de los personajes
                             </h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
-                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
+                            <p>Dependiendo del personaje que elijas, el énfasis de la historia y sus matices serán diferentes.
+                                ¡Escoge al azar o por intuición, vamos!</p>
                         </div>
 
                         <div class="step step3 hidden">
@@ -77,8 +77,8 @@
                                     2
                                 </span>Escoge el modo de navegación
                             </h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis nec metus eu sapien auctor facilisis
-                                suscipit sodales ipsum. Pellentesque id aliquet massa</p>
+                            <p>Dependiendo del modo que elijas, los hechos serán narrados con un orden y una intención diferentes.
+                            </p>
                         </div>
 
                         <div class="button-group">
@@ -88,7 +88,7 @@
                             <button id="next" class="button">
                                 Siguiente
                             </button>
-                            <button id="validate" class="hidden button">
+                            <button id="validate" class="hidden button close-modal">
                                 Empieza tu experiencia
                             </button>
                         </div>
@@ -173,7 +173,7 @@
                         Elegir
                     </a>
                 </div>
-                <div style="text-align:center; overflow: hidden;">
+                <div class="pane-video">
                     <img class="bg-video" src="img/bg-video.png" />
                     <video id="video1" width="420">
                         <source src="img/intro-carey.mp4" type="video/mp4" data-personaje="carey"> Your browser does not support HTML video.
@@ -207,7 +207,8 @@
                     </div>
                     <div class='column'>
                         <div class="parent">
-                            <div class="child bg-three elvira toggle" data-video="img/intro-elvira.mp4" data-personaje="elvira" data-nombre="Elvira">
+                            <div class="child bg-three elvira toggle" data-video="img/intro-elvira.mp4" data-personaje="elvira" data-nombre="Elvira"
+                                data-desc="Enfermera con trayectoria en salud estética.">
                                 <img class="icon-selected" src="img/is-selected.svg" />
                                 <h2 class="name">Elvira</h2>
                                 <img class="img-bn" src="img/elvira_01.jpg" />
@@ -218,7 +219,7 @@
                     </div>
                     <div class='column'>
                         <div class="parent">
-                            <div class="child bg-four marina toggle" data-video="img/intro-marina.mp4" data-personaje="marina" data-nombre="Marina">
+                            <div class="child bg-four marina toggle" data-video="img/intro-marina.mp4" data-personaje="marina" data-nombre="Marina" data-desc="Ejecutiva con amplia experiencia en gerencia.">
                                 <img class="icon-selected" src="img/is-selected.svg" />
                                 <h2 class="name">Marina</h2>
                                 <img class="img-bn" src="img/marina_01.jpg" />
@@ -229,7 +230,8 @@
                     </div>
                     <div class='column'>
                         <div class="parent">
-                            <div class="child bg-five mercado toggle" data-video="img/intro-mercado.mp4" data-personaje="mercado" data-nombre="Félix Mercado">
+                            <div class="child bg-five mercado toggle" data-video="img/intro-mercado.mp4" data-personaje="mercado" data-nombre="Félix Mercado"
+                                data-desc="Gerente del año. Lidera una importante multinacional.">
                                 <img class="icon-selected" src="img/is-selected.svg" />
                                 <h2 class="name">Mercado</h2>
                                 <img class="img-bn" src="img/mercado_01.jpg" />
@@ -240,7 +242,7 @@
                     </div>
                     <div class='column'>
                         <div class="parent">
-                            <div class="child bg-six sales toggle" data-video="img/intro-sales.mp4" data-personaje="sales" data-nombre="Sales">
+                            <div class="child bg-six sales toggle" data-video="img/intro-sales.mp4" data-personaje="sales" data-nombre="Sales" data-desc="Médico especializado en cirugía estética.">
                                 <img class="icon-selected" src="img/is-selected.svg" />
                                 <h2 class="name">Sales</h2>
                                 <img class="img-bn" src="img/sales_01.jpg" />

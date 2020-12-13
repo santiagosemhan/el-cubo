@@ -20,6 +20,12 @@ function modal() {
             modalEl.classList.remove('open');
         }
     })
+
+    function keyPress(e) {
+        if (e.key === "Escape") {
+            modalEl.classList.remove('open');
+        }
+    }
 }
 
 modal();
@@ -110,10 +116,13 @@ function disable(elem) {
 }
 
 function show(elem) {
-    elem.classList.remove('hidden');
-    let str = elem.className;
-    let res = str.charAt(str.length - 1)
-    modalEl.className = 'modal open step-' + res;
+    if (elem) {
+        elem.classList.remove('hidden');
+
+        let str = elem.className;
+        let res = str.charAt(str.length - 1)
+        modalEl.className = 'modal open step-' + res;
+    }
 }
 
 function hide(elem) {
