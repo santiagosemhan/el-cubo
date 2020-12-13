@@ -6,15 +6,31 @@ import { useRouter } from 'next/router';
 import 'plyr/dist/plyr.css';
 import { VideoPlayerWrapper } from './VideoPlayer.style';
 
-const VideoPlayer = ({ source, poster, title, showBackButton = false, backLink = '/' }) => {
+const VideoPlayer = ({
+  source,
+  poster,
+  title,
+  showBackButton = false,
+  backLink = '/',
+  chapterButtonName = 'Chapters',
+  showPrevButton = true,
+  showNextButton = true,
+  onBackClick,
+  onNextClick,
+  onChaptersClick,
+  onVideoEnded,
+  onControlsHidden,
+  onControlsShown,
+}) => {
   const wrapperRef = React.useRef();
   const videoRef = React.useRef();
+  const playerRef = React.useRef();
   const router = useRouter();
 
   React.useEffect(() => {
     const video: HTMLMediaElement = videoRef.current;
 
-    const player = new Plyr(video, {
+    playerRef.current = new Plyr(video, {
       enabled: true,
       // quality: {
       //   default: 576,
@@ -25,8 +41,12 @@ const VideoPlayer = ({ source, poster, title, showBackButton = false, backLink =
     });
 
     if (wrapperRef.current) {
-      player.on('enterfullscreen', () => wrapperRef.current.classList.add('in-fullscreen'));
-      player.on('exitfullscreen', () => wrapperRef.current.classList.remove('in-fullscreen'));
+      playerRef.current.on('enterfullscreen', () =>
+        wrapperRef.current.classList.add('in-fullscreen'),
+      );
+      playerRef.current.on('exitfullscreen', () =>
+        wrapperRef.current.classList.remove('in-fullscreen'),
+      );
     }
 
     if (!HLS.isSupported()) {
@@ -45,38 +65,109 @@ const VideoPlayer = ({ source, poster, title, showBackButton = false, backLink =
       //   setTimeout(() => (hls.subtitleTrack = player.currentTrack), 50);
       // });
     }
-
     const container: HTMLElement = wrapperRef.current;
 
     if (showBackButton) {
       router.prefetch(backLink);
       const controls = container.getElementsByClassName('plyr__controls')[0];
-      controls.insertAdjacentHTML('afterend', `<button class="back-to-season"> Volver </div>`);
+      controls.insertAdjacentHTML(
+        'afterend',
+        `<button class="back-to-season">
+            <img src="/images/icon-arrow-back.svg" />
+            <span>Volver al inicio</span>
+         </div>`,
+      );
       const backToButton = container.getElementsByClassName('back-to-season')[0];
       backToButton.addEventListener('click', () => router.push(backLink));
     }
 
+    const menuControl = container.querySelector('.plyr__volume');
+    menuControl.insertAdjacentHTML(
+      'afterend',
+      `<button class="plyr__controls__item plyr__control" data-plyr="chapters">${chapterButtonName}</button>`,
+    );
+  }, []);
+
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
+
+    const listener = (event) => {
+      console.log('click', event.target.dataset);
+      const { plyr } = event.target.dataset;
+      if (plyr) {
+        if (plyr === 'chapters') onChaptersClick && onChaptersClick();
+        if (plyr === 'back') onBackClick && onBackClick();
+        if (plyr === 'next') onNextClick && onNextClick();
+      }
+    };
+    container.addEventListener('click', listener);
+
+    return () => container.removeEventListener('click', listener);
+  }, [onChaptersClick, onBackClick, onNextClick]);
+
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
     const playControl = container.querySelector('[data-plyr="play"]');
     playControl.insertAdjacentHTML(
       'afterend',
-      `<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>
-       <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>
+      `
+        ${
+          showPrevButton
+            ? '<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>'
+            : ''
+        } 
+        ${
+          showNextButton
+            ? ' <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>'
+            : ''
+        } 
       `,
     );
+  }, [showPrevButton, showNextButton]);
 
-    const menuControl = container.querySelector('[data-plyr="settings"]');
-    menuControl.insertAdjacentHTML(
-      'afterend',
-      '<button class="plyr__controls__item plyr__control" data-plyr="chapters">ver cronología</button>',
-    );
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
+    const chaptersButton = container.querySelector('[data-plyr="chapters"]');
+    chaptersButton.innerHTML = chapterButtonName;
+  }, [chapterButtonName]);
 
-    const backButton = container.querySelector('[data-plyr="back"]');
-    backButton.addEventListener('click', () => alert('back'));
-  }, []);
+  React.useEffect(() => {
+    console.log(videoRef.current);
+    if (videoRef.current && onVideoEnded) {
+      videoRef.current.onended = onVideoEnded;
+    }
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.onended = undefined;
+      }
+    };
+  }, [onVideoEnded]);
+
+  React.useEffect(() => {
+    console.log('hidden');
+    if (playerRef.current) {
+      playerRef.current.on('controlshidden', (e) => onControlsHidden(e, playerRef.current));
+    }
+  }, [onControlsHidden]);
+
+  React.useEffect(() => {
+    console.log('shown');
+
+    if (playerRef.current) {
+      playerRef.current.on('controlsshown', (e) => onControlsShown(e, playerRef.current));
+    }
+  }, [onControlsShown]);
 
   return (
     <VideoPlayerWrapper ref={wrapperRef}>
-      <video ref={videoRef} controls crossOrigin="true" playsInline poster={poster}></video>
+      <video
+        ref={videoRef}
+        controls
+        crossOrigin="true"
+        playsInline
+        poster={poster}
+        autoPlay={true}
+      />
     </VideoPlayerWrapper>
   );
 };

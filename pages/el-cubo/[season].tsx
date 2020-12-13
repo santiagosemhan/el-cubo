@@ -13,7 +13,7 @@ export default function SeasonPage({ data }) {
   //   console.log({ data });
   // }
   // const { title, field_ec_contents_paragraph_json } = data[0];
-  // console.log(JSON.parse(field_ec_contents_paragraph_json));
+  // console.log(JSON.parse(field_ec_contents_page_ref_json));
   const ref = useRef();
   const refHeader = useRef();
   const [bigMouse, setBigMouse] = React.useState(false);
@@ -170,8 +170,7 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await fetch(`/api/v1/el-cubo/page/5364`);
-
+  const data = await fetch(`/api/v1/elcubo/season/4731`);
   return {
     props: { data }, // will be passed to the page component as props
   };

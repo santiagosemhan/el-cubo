@@ -16,17 +16,30 @@ export const VideoPlayerWrapper = styled.div`
     transition: all 0.3s ease;
     will-change: opacity;
     outline: none;
-    color: white;
-    font-size: 18px;
-    font-weight: 400;
+
     background: transparent;
     border: none;
     cursor: pointer;
     border-radius: 3px;
-    padding: 5px 20px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+
+    & span {
+      color: white;
+      margin-left: 5px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      will-change: opacity;
+      font-family: Inter;
+      font-size: 16px;
+      font-weight: 500;
+    }
 
     &:hover {
-      background: rgba(0, 0, 0, 0.7);
+      span {
+        opacity: 1;
+      }
     }
   }
 
@@ -43,6 +56,10 @@ export const VideoPlayerWrapper = styled.div`
       .back-to-season {
         opacity: 0;
       }
+    }
+
+    .plyr__control[data-plyr='chapters'] {
+      display: none;
     }
   }
 `;
