@@ -297,6 +297,7 @@ body {
     position: absolute;
     bottom: 25vh;
     z-index: 99;
+    width: 85%;
 }
 
 .pane h2 {

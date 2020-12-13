@@ -102,6 +102,12 @@ body.fade {
     text-align: left;
 }
 
+.img-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 h1,
 h2,
 h3,
@@ -688,7 +694,7 @@ footer {
 /* Mobile */
 
 .button-mobile {
-    /*display: none;*/
+    display: none;
     border: 1px solid #1A2839;
     color: #1A2839;
     background-color: #45B4C1;
@@ -701,14 +707,22 @@ footer {
     text-decoration: none;
 }
 
+.nav {
+    display: none;
+}
+
 @media only screen and (max-width: 1024px) {
+    .video-bg {
+        display: none;
+    }
     .logo--image {
         width: 60px;
         top: 80px;
         left: 20px;
     }
     .button-mobile {
-        display: inline;
+        display: block;
+        float: left;
     }
     /* Home */
     .hero-0 .copy,

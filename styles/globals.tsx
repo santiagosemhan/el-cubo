@@ -972,4 +972,113 @@ parent:focus .playButton {
 
 /* Button Mobile */
 
+/* Mobile */
+
+.button-mobile {
+    display: none;
+    border: 1px solid #1A2839;
+    color: #1A2839;
+    background-color: #45B4C1;
+    font-size: 14px;
+    border-radius: 25px;
+    line-height: 2em;
+    padding: 10px 30px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav {
+    display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+    .logo--image {
+        width: 60px;
+        top: 80px;
+        left: 20px;
+    }
+    .button-mobile {
+        display: block;
+        float: left;
+    }
+    /* Home */
+    .hero-0 .copy,
+    .hero-0 .copy-final {
+        left: 5%;
+    }
+    .first {
+        font-size: 19px;
+        float: left;
+        line-height: 1;
+    }
+    .copy .second,
+    .copy-final .second {
+        font-size: 26px;
+        margin-left: 60px;
+        margin-top: 5px;
+        line-height: 1;
+    }
+    .hero-1 .video-overlay,
+    .hero-2 .video-overlay,
+    .hero-1 .copy-cover,
+    .hero-2 .copy-cover,
+    .paragraph-message {
+        width: auto;
+    }
+    .hero-1 .paragraph-message {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .hero-2 .video-overlay {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .hero-2 .first {
+        font-size: 26px;
+    }
+    .paragraph-message p {
+        font-size: 16px;
+    }
+    /* Pagina temporada */
+    .hero-3,
+    .hero-4 {
+        grid-template-rows: auto;
+    }
+    .hero-4 {
+        padding-top: 40px;
+    }
+    .hero-3 .video-overlay,
+    .hero-4 .video-overlay,
+    .hero-3 .copy-cover,
+    .hero-4 .copy-cover,
+    .hero-3 .paragraph-message,
+    .hero-4 .paragraph-message {
+        width: auto;
+    }
+    .hero-3 .video-overlay,
+    .hero-4 .video-overlay {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+    .copy-cover-2 {
+        text-align: center;
+    }
+    .hero-3 .button-mobile,
+    .hero-4 .button-mobile {
+        width: 190px;
+        margin: auto;
+        margin-bottom: 100px;
+    }
+    .hero-3 .copy {
+        margin-left: 16%;
+        margin-top: 160px;
+        margin-bottom: 40px;
+    }
+    .hero-4 .paragraph-message {
+        margin-bottom: 40px;
+    }
+}
+
 `;

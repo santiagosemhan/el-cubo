@@ -32,7 +32,9 @@ if (button_open) {
             pane_cover.classList.toggle('visible');
             document.getElementById('video1').src = link.dataset.video;
             document.getElementById('select-personaje').dataset.personaje = link.dataset.personaje;
-            document.getElementById('name-personaje').innerHTML = link.dataset.personaje;
+            document.getElementById('name-personaje').innerHTML = link.dataset.nombre;
+            document.getElementById('desc-personaje').innerHTML = link.dataset.desc;
+
 
             myVideo.play();
         });
