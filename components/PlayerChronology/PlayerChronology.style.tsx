@@ -6,7 +6,7 @@ export const ListChronoCover = styled.div`
   top: 5vh;
   color: white;
   font-family: 'Inter';
-  z-index: 10;
+  z-index: 2;
   h2 {
     color: white;
     font-family: 'Inter';

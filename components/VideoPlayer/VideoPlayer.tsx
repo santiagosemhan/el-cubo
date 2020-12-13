@@ -34,14 +34,60 @@ const VideoPlayer = ({
 
   React.useEffect(() => {
     const video: HTMLMediaElement = videoRef.current;
+    function updateQuality(newQuality) {
+      if (window.hls) {
+        window.hls.levels.forEach((level, levelIndex) => {
+          console.log(level.height, newQuality);
+          if (level.height === newQuality) {
+            console.log('Found quality match with ' + newQuality);
+            window.hls.currentLevel = levelIndex;
+          }
+        });
+      }
+    }
+
     playerRef.current = new Plyr(video, {
       enabled: true,
-      // quality: {
-      //   default: 576,
-      //   options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240],
-      // },
+      quality: {
+        default: 720,
+        options: [720, 360, 270],
+        forced: true,
+        onChange: (e) => updateQuality(e),
+      },
+      i18n: {
+        restart: 'Restart',
+        rewind: 'Rewind {seektime} secs',
+        play: 'Play',
+        pause: 'Pause',
+        fastForward: 'Forward {seektime} secs',
+        seek: 'Seek',
+        played: 'Played',
+        buffered: 'Buffered',
+        currentTime: 'Current time',
+        duration: 'Duration',
+        volume: 'Volume',
+        mute: 'Mute',
+        unmute: 'Unmute',
+        enableCaptions: 'Enable captions',
+        disableCaptions: 'Disable captions',
+        enterFullscreen: 'Enter fullscreen',
+        exitFullscreen: 'Exit fullscreen',
+        frameTitle: 'Player for {title}',
+        captions: 'Subtítulos',
+        settings: 'Configuraciones',
+        speed: 'Velocidad',
+        normal: 'Normal',
+        quality: 'Calidad',
+        loop: 'Loop',
+        start: 'Start',
+        end: 'End',
+        all: 'All',
+        reset: 'Reset',
+        disabled: 'Disabled',
+        advertisement: 'Ad',
+      },
       captions: { active: true, update: true, language: 'es' },
-      settings: ['captions', 'quality', 'speed', 'loop'],
+      settings: ['quality'],
     });
 
     if (wrapperRef.current) {
@@ -92,7 +138,6 @@ const VideoPlayer = ({
         `,
       );
       const backToButton = container.getElementsByClassName('back-to-season')[0];
-
       backToButton.addEventListener('click', () => router.push(backLink));
     }
 
@@ -106,7 +151,6 @@ const VideoPlayer = ({
   React.useEffect(() => {
     // const plyr = container.getElementsByClassName('plyr')[0];
     const portal = document.getElementById('plyr__portal');
-    console.log({ children });
     ReactDOM.render(children, portal);
   }, [children]);
 
@@ -114,7 +158,6 @@ const VideoPlayer = ({
     const container: HTMLElement = wrapperRef.current;
 
     const listener = (event) => {
-      console.log('click', event.target.dataset);
       const { plyr } = event.target.dataset;
       if (plyr) {
         if (plyr === 'chapters') onChaptersClick && onChaptersClick();
