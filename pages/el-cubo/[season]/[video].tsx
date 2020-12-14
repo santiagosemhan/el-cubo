@@ -14,6 +14,9 @@ import CharacterSelector from 'components/CharacterSelector/CharacterSelector';
 import { setTimeout } from 'timers';
 import { VideoPlayerWrapper } from 'components/VideoPlayer/VideoPlayer.style';
 import { ListChronoCover } from 'components/PlayerChronology/PlayerChronology.style';
+import { ElcuboGlobalStyles } from 'styles/elcubo.style';
+import HeaderTop from 'components/HeaderTop/HeaderTop';
+import { MenuPlayerStyle } from 'styles/menu-player.style';
 
 const FullPlayerWrapper = styled.div`
   width: 100%;
@@ -39,8 +42,10 @@ const VideoPage = ({ video, srcVideo, poster }) => {
   const [showChapters, setShowChapters] = useState(true);
   const [showPrevButton, setShowPrevButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
+  const [characterList, setCharacterList] = useState([]);
 
   React.useEffect(() => {
+    console.log(chronology);
     let character;
     let chronologyList = [];
     if (chronology) {
@@ -48,7 +53,6 @@ const VideoPage = ({ video, srcVideo, poster }) => {
       characterChronology = chronology.find((c) => c.field_ec_character === personaje);
       const characterData = JSON.parse(characterChronology.field_ec_character_term_json);
       character = characterData[0].character_name;
-
       if (modo === 'cronologico' && chronology) {
         if (chronology && chronology.length && personaje) {
           const { field_ec_episodes, field_ec_episodes_node_json } = characterChronology;
@@ -75,6 +79,20 @@ const VideoPage = ({ video, srcVideo, poster }) => {
           }
           setCharacter(character);
           setChronologyList(chronologyList);
+
+          // console.log({ chronology });
+          const characterList = chronology.map((cr) => {
+            const name = JSON.parse(cr.field_ec_character_term_json)[0].character_name;
+            const video = cr.field_ec_episodes.split(',').map((e) => e.trim())[0];
+            const character = cr.field_ec_character;
+
+            return {
+              name,
+              active: personaje === character,
+              link: `/el-cubo/temporada-1/${video}?personaje=${character}&modo=cronologico`,
+            };
+          });
+          setCharacterList(characterList);
         }
       }
     }
@@ -114,31 +132,47 @@ const VideoPage = ({ video, srcVideo, poster }) => {
 
   return (
     <AppLayout onlyContent>
+      <ElcuboGlobalStyles />
+      <MenuPlayerStyle />
       <Container>
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-          <FullPlayerWrapper>
-            {/* <CharacterSelector /> */}
-            <VideoPlayer
-              showBackButton
-              backLink="/el-cubo/temporada-1"
-              title="title"
-              poster={poster}
-              source={srcVideo}
-              onBackClick={handleBackClick}
-              onNextClick={handleNextClick}
-              onChaptersClick={handleChapterClick}
-              chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
-              showPrevButton={showPrevButton}
-              showNextButton={showNextButton}
-              onVideoEnded={handleVideoEnded}
-            >
-              {showChapters && modo === 'cronologico' && chronology && (
-                <PlayerChronology character={character} chronology={chronologyList} />
-              )}
-            </VideoPlayer>
-          </FullPlayerWrapper>
+          <>
+            <div className="header-top">
+              <div className="header-top-inner">
+                <nav className="nav">
+                  <a href="#" className="toggle menu-elcubo">
+                    <div className="icon-bell">
+                      <img src="/images/icon-bell.svg" />
+                    </div>
+                    <img src="/images/icon-menu.svg" />
+                  </a>
+                </nav>
+              </div>
+            </div>
+            <CharacterSelector list={characterList} />
+            <FullPlayerWrapper>
+              <VideoPlayer
+                showBackButton
+                backLink="/el-cubo/temporada-1"
+                title="title"
+                poster={poster}
+                source={srcVideo}
+                onBackClick={handleBackClick}
+                onNextClick={handleNextClick}
+                onChaptersClick={handleChapterClick}
+                chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
+                showPrevButton={showPrevButton}
+                showNextButton={showNextButton}
+                onVideoEnded={handleVideoEnded}
+              >
+                {showChapters && modo === 'cronologico' && chronology && (
+                  <PlayerChronology character={character} chronology={chronologyList} />
+                )}
+              </VideoPlayer>
+            </FullPlayerWrapper>
+          </>
         )}
       </Container>
     </AppLayout>

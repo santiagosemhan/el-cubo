@@ -7,6 +7,8 @@ import AppLayout from 'layouts/AppLayout';
 import fetch from 'libs/fetcher';
 import MouseCircle from 'components/MouseCircle/MouseCircle';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
+import HeaderTop from 'components/HeaderTop/HeaderTop';
+import { ElcuboGlobalStyles } from 'styles/elcubo.style';
 
 export default function SeasonPage({ data }) {
   // if (process.browser) {
@@ -31,23 +33,24 @@ export default function SeasonPage({ data }) {
   });
 
   const { title, field_ec_contents, field_ec_contents_paragraph } = data;
-  const content = field_ec_contents.split(',');
 
   return (
     <AppLayout>
+      <ElcuboGlobalStyles />
+
       <Head>
         <title>{title} - El cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
         <MouseCircle
-          href="/el-cubo/temporada-1/1"
+          href="/el-cubo/temporada-1/personajes"
           text="Empezar experiencia"
           isBig={bigMouse}
           show={showMouse}
         />
 
-        <div className="header-top" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
+        {/* <div className="header-top" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <div className="header-top-inner">
             <div className="logo-elcubo">
               <a href="/" className="logo--link">
@@ -55,9 +58,12 @@ export default function SeasonPage({ data }) {
               </a>
             </div>
           </div>
+        </div> */}
+        <div ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
+          <HeaderTop />
         </div>
 
-        {content.map((c, index) => {
+        {field_ec_contents.map((c, index) => {
           const paragraph = field_ec_contents_paragraph.find((p) => p.id[0].value === Number(c));
           // console.log({ paragraph });
           let videoOverlayHTML = '<div></div>';
@@ -125,17 +131,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   const { field_ec_contents, field_ec_contents_paragraph_json, title } = data[0];
 
-  let field_ec_contents_paragraph;
-  if (field_ec_contents_paragraph_json) {
-    field_ec_contents_paragraph = JSON.parse(field_ec_contents_paragraph_json);
-  }
-
   return {
     props: {
       data: {
         title,
-        field_ec_contents,
-        field_ec_contents_paragraph,
+        field_ec_contents: field_ec_contents.split(',').map((c) => c.trim()),
+        field_ec_contents_paragraph: JSON.parse(field_ec_contents_paragraph_json),
       },
     },
   };

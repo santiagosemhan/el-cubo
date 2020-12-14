@@ -1,24 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700');
-@font-face {
-  font-family: 'BebasNeue Regular';
-  src: url('/fonts/BebasNeue Regular.eot');
-  src: local('☺'), url('/fonts/BebasNeue Regular.woff') format('woff'),
-    url('/fonts/BebasNeue Regular.ttf') format('truetype'),
-    url('/fonts/BebasNeue Regular.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
+import { createGlobalStyle } from 'styled-components';
 
-@font-face {
-  font-family: 'BebasNeue Book';
-  src: url('/fonts/BebasNeue Book.eot');
-  src: local('☺'), url('/fonts/BebasNeue Book.woff') format('woff'),
-    url('/fonts/BebasNeue Book.ttf') format('truetype'),
-    url('/fonts/BebasNeue Book.svg') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
+export const RTVCGlobalStyles = createGlobalStyle`
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -2357,7 +2339,6 @@ body {
 
 .fegtQU {
   display: block;
-  background-image: url();
   opacity: 0.8;
 }
 
@@ -2368,7 +2349,6 @@ body {
 
 .bzWmGU {
   display: block;
-  background-image: url();
   opacity: 1;
 }
 
@@ -4381,3 +4361,4 @@ body {
     transform: translatex(0);
   }
 }
+`;

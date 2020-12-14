@@ -5,7 +5,6 @@ import { SWRConfig } from 'swr';
 import fetcher from '../libs/fetcher';
 
 function MyApp({ Component, pageProps }) {
-  console.log({ pageProps });
   return (
     <>
       <Head>
