@@ -7,13 +7,7 @@ const PlayerChronology = ({ character, chronology }) => {
   }
 
   return (
-    <ListChronoCover
-      onMouseEnter={(e) => e.stopPropagation()}
-      onMouseLeave={(e) => e.stopPropagation()}
-      onMouseOut={(e) => e.stopPropagation()}
-      onMouseOver={(e) => e.stopPropagation()}
-      onMouseMove={(e) => e.stopPropagation()}
-    >
+    <ListChronoCover>
       <h2>{character}</h2>
       <h3>Cronología</h3>
       <div className="line-right"></div>

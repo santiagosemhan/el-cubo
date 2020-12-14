@@ -2593,7 +2593,8 @@ export const RTVCStyles = createGlobalStyle`
     -ms-flex-direction: column;
     flex-direction: column;
     position: fixed;
-    width: 320px;
+    width: 360px;
+    max-width: 100%;
     height: 100vh;
     top: 0;
     left: -320px;

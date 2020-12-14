@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { GetStaticProps } from 'next';
 import VideoPlayer from 'components/VideoPlayer/VideoPlayer';
 import { Container } from 'styles/Home';
@@ -11,6 +12,8 @@ import PlayerChronology from 'components/PlayerChronology/PlayerChronology';
 import useSWR from 'swr';
 import CharacterSelector from 'components/CharacterSelector/CharacterSelector';
 import { setTimeout } from 'timers';
+import { VideoPlayerWrapper } from 'components/VideoPlayer/VideoPlayer.style';
+import { ListChronoCover } from 'components/PlayerChronology/PlayerChronology.style';
 
 const FullPlayerWrapper = styled.div`
   width: 100%;
@@ -33,7 +36,7 @@ const VideoPage = ({ video, srcVideo, poster }) => {
   const { data: chronology, error } = useSWR(`/api/v1/elcubo/season/4731/chrono`);
   const [character, setCharacter] = useState();
   const [chronologyList, setChronologyList] = useState([]);
-  const [showChapters, setShowChapter] = useState(true);
+  const [showChapters, setShowChapters] = useState(true);
   const [showPrevButton, setShowPrevButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
 
@@ -107,21 +110,7 @@ const VideoPage = ({ video, srcVideo, poster }) => {
     }
   }, [chronologyList]);
 
-  const handleChapterClick = () => setShowChapter(!showChapters);
-
-  const handleControlsHidden = (e, player) => {
-    console.log('hidden', e, player);
-    if (showChapters) {
-      setShowChapter(false);
-    }
-  };
-
-  const handleControlsShown = () => {
-    console.log('shown');
-    if (!showChapters) {
-      setShowChapter(true);
-    }
-  };
+  const handleChapterClick = () => setShowChapters(!showChapters);
 
   return (
     <AppLayout onlyContent>
@@ -144,12 +133,11 @@ const VideoPage = ({ video, srcVideo, poster }) => {
               showPrevButton={showPrevButton}
               showNextButton={showNextButton}
               onVideoEnded={handleVideoEnded}
-              onControlsHidden={handleControlsHidden}
-              onControlsShown={handleControlsShown}
-            />
-            {showChapters && modo === 'cronologico' && chronology && (
-              <PlayerChronology character={character} chronology={chronologyList} />
-            )}
+            >
+              {showChapters && modo === 'cronologico' && chronology && (
+                <PlayerChronology character={character} chronology={chronologyList} />
+              )}
+            </VideoPlayer>
           </FullPlayerWrapper>
         )}
       </Container>

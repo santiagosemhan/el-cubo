@@ -6,7 +6,6 @@ import AppLayout from '../layouts/AppLayout';
 import fetch from 'libs/fetcher';
 import MouseCircle from 'components/MouseCircle/MouseCircle';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
-import Image from 'next/image';
 
 export default function Home({ data }) {
   // if (process.browser) {
@@ -48,14 +47,6 @@ export default function Home({ data }) {
                 <img className="logo--image" src="images/logo-elcubo.png" />
               </a>
             </div>
-            {/* <nav className="nav">
-              <a href="#" className="nav--link cyan-light">
-                Ingreso
-              </a>
-              <a href="#" className="nav--link cyan-light">
-                Registro
-              </a>
-            </nav> */}
           </div>
         </div>
 
@@ -71,7 +62,9 @@ export default function Home({ data }) {
                 ${copyCoverHTML}
               </div>
               <div class="arrow-down no-link">
-                <img src="images/arrow-down-cyan.svg" />
+                  <a href="#hero-1">
+                      <img src="/images/arrow-down-cyan.svg" />
+                  </a>
               </div>
             `;
           } else {
@@ -83,6 +76,7 @@ export default function Home({ data }) {
 
           return (
             <div
+              id={`hero-${index}`}
               key={c}
               className={`hero hero-${index} no-link`}
               onMouseEnter={index === 2 ? handleMouseEnter : undefined}
@@ -91,13 +85,8 @@ export default function Home({ data }) {
               <video className="video-bg" autoPlay muted loop>
                 <source src={desktopVideoURL} type="video/mp4" />
               </video>
-              {/* <img className="image-bg" src={paragraph.field_ec_image[0].url} /> */}
-              <Image
-                className="image-bg"
-                src={paragraph.field_ec_image[0].url}
-                quality={90}
-                layout={'fill'}
-              />
+              <img className="img-bg-pc" src={paragraph.field_ec_image[0].url} />
+              <img className="img-bg-mobile" src={paragraph.field_ec_image_mb[0].url} />
 
               <div
                 className="video-overlay"

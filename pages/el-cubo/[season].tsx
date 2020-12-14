@@ -30,10 +30,13 @@ export default function SeasonPage({ data }) {
     setBigMouse(true);
   });
 
+  const { title, field_ec_contents, field_ec_contents_paragraph } = data;
+  const content = field_ec_contents.split(',');
+
   return (
     <AppLayout>
       <Head>
-        <title>Temporada 1 - El cubo</title>
+        <title>{title} - El cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
@@ -51,112 +54,56 @@ export default function SeasonPage({ data }) {
                 <img className="logo--image" src="/images/logo-elcubo.png" />
               </a>
             </div>
-            {/* <nav className="nav">
-              <a href="#" className="nav--link cyan-light">
-                Ingreso
-              </a>
-              <a href="#" className="nav--link cyan-light">
-                Registro
-              </a>
-            </nav> */}
           </div>
         </div>
 
-        <div className="hero hero-3">
-          <video className="video-bg" autoPlay muted loop>
-            <source src="/videos/2.mp4" type="video/mp4" />
-            <source src="/videos/video.webm" type="video/webm" />
-          </video>
+        {content.map((c, index) => {
+          const paragraph = field_ec_contents_paragraph.find((p) => p.id[0].value === Number(c));
+          // console.log({ paragraph });
+          let videoOverlayHTML = '<div></div>';
+          if (paragraph.type[0].target_id === 'ec_hero_title') {
+            let copyCoverHTML = paragraph.field_ec_text.map((t) => t.value).join('');
+            // console.log({ copyCoverHTML });
+            videoOverlayHTML = `
+              <div class="copy-cover">
+                ${copyCoverHTML}
+              </div>
+            `;
+          } else {
+            videoOverlayHTML = paragraph.field_ec_full_text[0].processed;
+          }
 
-          <div className="video-overlay">
-            <div className="copy-cover-2">
-              <h1 className="copy">
-                <span className="first cyan-strong">Quién tiene</span>
-                <br />
-                <span className="second white"> el Poder...</span>
-                <br />
-                <span className="third cyan-strong">Temporada 1</span>
-              </h1>
+          let desktopVideoURL = paragraph.field_ec_video[0].url;
+          let mobileVideoURL = paragraph.field_ec_video_mb[0].url;
+
+          return (
+            <div
+              key={c}
+              id={`hero-${index + 3}`}
+              className={`hero hero-${index + 3} no-link`}
+              onMouseEnter={index === 2 ? handleMouseEnter : undefined}
+              ref={index === 2 ? ref : undefined}
+            >
+              <video className="video-bg" autoPlay muted loop>
+                <source src={desktopVideoURL} type="video/mp4" />
+              </video>
+              <img className="img-bg-pc" src={paragraph.field_ec_image[0].url} />
+              <img className="img-bg-mobile" src={paragraph.field_ec_image_mb[0].url} />
+
+              <div
+                className="video-overlay"
+                dangerouslySetInnerHTML={{ __html: videoOverlayHTML }}
+              />
+              {index === 0 && (
+                <div className="arrow-down no-link">
+                  <a href="#hero-4">
+                    <img src="/images/arrow-down-cyan.svg" />
+                  </a>
+                </div>
+              )}
             </div>
-
-            <div className="paragraph-message">
-              <p>
-                Explora esta historia escrita y dirigida por
-                <strong> Fabio Rubiano</strong> en la que el abuso, la manipulación, la doble vida y
-                los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
-                cuestionar tu percepción sobre el
-                <strong>PODER</strong>, la honestidad, los valores y la moral.
-              </p>
-            </div>
-
-            <div className="arrow-down no-link">
-              <img src="/images/arrow-down-cyan.svg" />
-            </div>
-          </div>
-        </div>
-
-        <div className="hero hero-4">
-          <video className="video-bg" autoPlay muted loop>
-            <source src="/videos/1.mp4" type="video/mp4" />
-            <source src="/videos/video.webm" type="video/webm" />
-          </video>
-
-          <div className="video-overlay">
-            <div className="copy-cover-2">
-              <h1 className="copy">
-                <span className="fourth cyan-strong">
-                  poder
-                  <sup>1</sup>
-                </span>
-              </h1>
-            </div>
-
-            <div className="paragraph-message">
-              <p>
-                Del lat. vulg.
-                <em>*potēre</em>, creado sobre ciertas formas del verbo lat. posse 'poder1', como
-                potes 'puedes',
-                <em>potĕram</em> 'podía',
-                <em>potuisti</em> 'pudiste', etc.
-                <br /> Conjug. modelo. ◆ U. solo en 3.ª pers. en acep. 6.
-              </p>
-
-              <ol>
-                <li>Tener expedita la facultad o potencia de hacer algo.</li>
-                <li>Tener facilidad, tiempo o lugar de hacer algo. U. m. con neg.</li>
-                <li>
-                  tr. coloq. Tener más fuerza que alguien, vencerlo luchando cuerpo a cuerpo.
-                  <strong>
-                    <em>Puedo a Roberto</em>
-                  </strong>
-                  .
-                </li>
-                <li>
-                  Ser más fuerte que alguien, ser capaz de vencerlo.
-                  <strong>
-                    <em>No pudo CON su rival</em>
-                  </strong>
-                  .
-                </li>
-                <li>
-                  Aguantar o soportar algo o a alguien que producen rechazo. U. con el verbo en
-                  forma negativa.
-                  <strong>
-                    <em>No puedo CON sus impertinencias</em>
-                  </strong>
-                  .
-                </li>
-                <li>
-                  intr. Ser contingente o posible que suceda algo.
-                  <strong>
-                    <em>Puede que llueva mañana</em>
-                  </strong>
-                  .
-                </li>
-              </ol>
-            </div>
-          </div>
-        </div>
+          );
+        })}
       </Container>
     </AppLayout>
   );
@@ -170,8 +117,26 @@ export async function getStaticPaths() {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await fetch(`/api/v1/elcubo/season/4731`);
+  const data = await fetch(`/api/v1/el-cubo/page/5365`);
+
+  if (!data.length) {
+    return { props: { data: {} } };
+  }
+
+  const { field_ec_contents, field_ec_contents_paragraph_json, title } = data[0];
+
+  let field_ec_contents_paragraph;
+  if (field_ec_contents_paragraph_json) {
+    field_ec_contents_paragraph = JSON.parse(field_ec_contents_paragraph_json);
+  }
+
   return {
-    props: { data }, // will be passed to the page component as props
+    props: {
+      data: {
+        title,
+        field_ec_contents,
+        field_ec_contents_paragraph,
+      },
+    },
   };
 };
