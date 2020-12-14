@@ -517,6 +517,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         chronology: chronology || null,
       },
     },
+    revalidate: 900,
   };
 };
 
