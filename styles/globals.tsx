@@ -58,9 +58,15 @@ body.fade {
     box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
 
 
-    .image-bg {
+    .img-bg-pc {
         position: absolute;
-        z-index: -10;
+        width: 100%;
+        z-index: -2;
+    }
+    
+    .img-bg-mobile {
+        display: none;
+        z-index: 1;
     }
 }
 
@@ -358,6 +364,9 @@ h2 {
 
 .hero-1 .paragraph-message {
     margin: auto;
+    z-index: 10;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
 .paragraph-message hr {
@@ -993,17 +1002,39 @@ parent:focus .playButton {
 }
 
 @media only screen and (max-width: 1024px) {
-
+    footer {
+        position: relative;
+        z-index: 10;
+    }
     .logo--image {
         width: 60px;
         top: 80px;
         left: 20px;
     }
+    .video-bg {
+        height: 100vh;
+        background: black;
+        display: none;
+    }
     .button-mobile {
-        display: block;
-        float: left;
+        display: inline;
     }
     /* Home */
+    .img-bg-pc {
+        display: none;
+    }
+    .img-bg-mobile {
+        display: block !important;
+        position: absolute;
+        width: 100%;
+        z-index: 0;
+    }
+    .video-bg {
+        z-index: 1;
+    }
+    .hero {
+        background: black;
+    }
     .hero-0 .copy,
     .hero-0 .copy-final {
         left: 5%;
@@ -1030,6 +1061,7 @@ parent:focus .playButton {
     .hero-1 .paragraph-message {
         padding-left: 40px;
         padding-right: 40px;
+        z-index: 10;
     }
     .hero-2 .video-overlay {
         padding-left: 40px;
@@ -1045,9 +1077,10 @@ parent:focus .playButton {
     .hero-3,
     .hero-4 {
         grid-template-rows: auto;
+        height: auto;
     }
-    .hero-4 {
-        padding-top: 40px;
+    .hero-3 .arrow-down {
+        display: none;
     }
     .hero-3 .video-overlay,
     .hero-4 .video-overlay,
@@ -1056,11 +1089,15 @@ parent:focus .playButton {
     .hero-3 .paragraph-message,
     .hero-4 .paragraph-message {
         width: auto;
+        z-index: 10;
     }
     .hero-3 .video-overlay,
     .hero-4 .video-overlay {
         padding-left: 40px;
         padding-right: 40px;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        height: auto;
     }
     .copy-cover-2 {
         text-align: center;
@@ -1078,6 +1115,10 @@ parent:focus .playButton {
     }
     .hero-4 .paragraph-message {
         margin-bottom: 40px;
+    }
+    .video-overlay {
+        height: 100vh;
+        z-index: 10;
     }
 }
 
