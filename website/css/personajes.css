@@ -2,6 +2,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    margin: 0;
+}
+
+:root {
+    /* Full grid area variable */
+    --fullGrid: 1 / 1 / -1 / -1;
+}
+
 .header-top {
     width: 100%;
 }
