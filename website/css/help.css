@@ -11,57 +11,53 @@ body {
 
 /* Header */
 
-.header-top {
-    width: 100%;
-}
-
-.nav {
+.help .nav {
     position: absolute;
     right: 50px;
     top: 130px;
     z-index: 11;
 }
 
-.nav ul {
+.help .nav ul {
     width: 150px;
     list-style-type: none;
     margin: 0;
     padding: 0;
 }
 
-.nav ul li {
+.help .nav ul li {
     float: left;
 }
 
-.nav ul li a {
+.help .nav ul li a {
     color: white;
     font-family: "Inter";
 }
 
-.nav ul li a span {
+.help .nav ul li a span {
     line-height: 2;
     margin-right: 5px;
 }
 
-nav ul span {
+.help .nav ul span {
     float: left;
 }
 
-.icon-help {
+.help .icon-help {
     display: inline;
 }
 
-.icon-help img {
+.help .icon-help img {
     float: left;
 }
 
-nav ul li:last-child {
+.help .nav ul li:last-child {
     float: right;
 }
 
 /* Modal */
 
-.trigger_modal {
+.help .trigger_modal {
     display: block;
     margin: 2rem auto;
     text-align: center;
@@ -72,13 +68,13 @@ nav ul li:last-child {
     background: #2c3344;
 }
 
-.trigger_modal:hover {
+.help .trigger_modal:hover {
     cursor: pointer;
 }
 
 /** Modal Styles **/
 
-.modal {
+.help .modal {
     display: none;
     position: fixed;
     z-index: 9999;
@@ -86,11 +82,11 @@ nav ul li:last-child {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.8);
     padding-top: 0px;
 }
 
-.modal__content {
+.help .modal__content {
     background: #192538;
     max-width: 455px;
     border-radius: 10px;
@@ -114,17 +110,17 @@ nav ul li:last-child {
     }
 }
 
-.open {
+.help .open {
     display: block;
 }
 
-.modal__title {
+.help .modal__title {
     text-align: center;
     font-family: sans-serif;
     color: white;
 }
 
-.close_modal {
+.help .close_modal {
     position: absolute;
     color: #ddd7ce;
     top: 0px;
@@ -135,11 +131,11 @@ nav ul li:last-child {
     outline: 0;
 }
 
-.close_modal:hover {
+.help .close_modal:hover {
     cursor: pointer;
 }
 
-.modal__body {
+.help .modal__body {
     padding: 2rem;
     text-align: center;
     font-family: sans-serif;
@@ -149,11 +145,11 @@ nav ul li:last-child {
 
 /* Wizard */
 
-.hidden {
+.help .hidden {
     display: none;
 }
 
-.button {
+.help .button {
     width: 100px;
     cursor: pointer;
     padding: 7px 15px;
@@ -167,16 +163,16 @@ nav ul li:last-child {
     outline: none;
 }
 
-.button.disabled {
+.help .button.disabled {
     opacity: 0.5;
     display: none;
 }
 
-.button.disabled:hover {
+.help .button.disabled:hover {
     background-color: #ff8552;
 }
 
-.help-step {
+.help .help-step {
     margin: auto;
     float: left;
     padding: 20px 30px;
@@ -187,7 +183,7 @@ nav ul li:last-child {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.help-step .progress-bar {
+.help .help-step .progress-bar {
     width: 100%;
     list-style-type: none;
     display: flex;
@@ -198,7 +194,7 @@ nav ul li:last-child {
     display: none;
 }
 
-.help-step .progress-bar li.progress-bar__dot {
+.help .help-step .progress-bar li.progress-bar__dot {
     display: block;
     width: 0.6em;
     border-radius: 1000em;
@@ -209,12 +205,12 @@ nav ul li:last-child {
     transition: all 0.5s ease;
 }
 
-.help-step .progress-bar li.progress-bar__dot.full {
+.help .help-step .progress-bar li.progress-bar__dot.full {
     background-color: white;
     border: 0.2em solid white;
 }
 
-.help-step .progress-bar li.progress-bar__connector {
+.help .help-step .progress-bar li.progress-bar__connector {
     display: block;
     width: 5em;
     border-radius: 1000em;
@@ -223,11 +219,11 @@ nav ul li:last-child {
     margin-top: 0.45em;
 }
 
-.help-step h2 {
+.help .help-step h2 {
     font-size: 18px;
 }
 
-.step-number {
+.help .step-number {
     border-radius: 50%;
     background: #090C15;
     width: 30px;
@@ -239,7 +235,7 @@ nav ul li:last-child {
     margin-right: 10px;
 }
 
-.button-group {
+.help .button-group {
     width: 100%;
     display: block;
     float: left;
@@ -247,7 +243,7 @@ nav ul li:last-child {
     margin-top: 0px;
 }
 
-button#validate {
+.help button#validate {
     margin: auto;
     background-color: #45B4C1;
     color: black;
@@ -255,13 +251,13 @@ button#validate {
     float: right;
 }
 
-button#validate:hover {
+.help button#validate:hover {
     background-color: #45B4C1;
     color: black;
 }
 
-.modal.step-2 .modal__content,
-.modal.step-l .modal__content {
+.help .modal.step-2 .modal__content,
+.help .modal.step-l .modal__content {
     max-width: 455px;
     border-radius: 10px;
     position: relative;
@@ -269,34 +265,34 @@ button#validate:hover {
     transition: all 0.5s ease;
 }
 
-.modal.step-2 .modal__content #next {
+.help .modal.step-2 .modal__content #next {
     float: right;
 }
 
 /* Selector help */
 
-.selector-help {
+.help .selector-help {
     width: 100%;
     position: absolute;
     bottom: 60px;
 }
 
-.selector-help-cover {
+.help .selector-help-cover {
     width: 900px;
     margin: auto;
     transition: all 0.5s ease;
     opacity: 0;
 }
 
-.selector-help-mobile {
+.help .selector-help-mobile {
     display: none;
 }
 
-.modal.step-n .selector-help-cover {
+.help .modal.step-l .selector-help-cover {
     opacity: 1;
 }
 
-.selector-column {
+.help .selector-column {
     width: 33.33%;
     color: white;
     float: left;
@@ -304,69 +300,74 @@ button#validate:hover {
     font-family: 'Inter';
 }
 
-.selector-column h2 {
+.help .selector-column h2 {
     font-size: 22px;
 }
 
-.selector-column h2 img {
+.help .selector-column h2 img {
     margin-right: 10px;
 }
 
-.selector-column p {
+.help .selector-column p {
     font-size: 16px;
 }
 
-.selector-column-cubo {
+.help .selector-column-cubo {
     width: 100%;
     text-align: center;
 }
 
 @media only screen and (max-width: 1024px) {
-    .nav {
+    .help .logo--image {
+        width: 30px;
+        top: 80px;
+        left: 20px;
+    }
+    .help .nav {
         right: 20px;
         top: 80px;
     }
-    .selector-help {
+    .help .selector-help {
         bottom: 30px;
     }
-    .selector-column-cubo.cubo-pc {
+    .help .selector-column-cubo.cubo-pc {
         display: none;
     }
-    .selector-help-mobile {
+    .help .selector-help-mobile {
         display: block;
     }
-    .selector-help-cover {
+    .help .selector-help-cover {
         width: auto;
     }
-    .selector-help-pc {
+    .help .selector-help-pc {
         margin-bottom: 30px;
         float: left;
     }
-    .selector-help-pc .selector-column {
+    .help .selector-help-pc .selector-column {
         text-align: left;
         padding-left: 20px;
         padding-right: 20px;
     }
-    .selector-help-pc .selector-column p {
+    .help .selector-help-pc .selector-column p {
         padding: 0;
     }
-    .selector-column h2 {
+    .help .selector-column h2 {
         font-size: 16px;
         margin: 0;
     }
-    .selector-column h2 img {
+    .help .selector-column h2 img {
         margin-right: 12px;
     }
-    .selector-column p {
+    .help .selector-column p {
         font-size: 12px;
     }
-    .selector-help-pc .selector-column {
+    .help .selector-help-pc .selector-column {
         width: auto;
     }
-    .selector-column span {
+    .help .selector-column span {
         color: #45B4C1;
     }
-    .modal__content {
+    .help .modal__content {
         top: 180px;
         right: 0;
         padding-left: 20px;
@@ -374,10 +375,10 @@ button#validate:hover {
         background: transparent;
         z-index: 100;
     }
-    button#validate {
+    .help button#validate {
         width: 200px;
     }
-    .cubo-help {
+    .help .cubo-help {
         width: 70px;
     }
 }
