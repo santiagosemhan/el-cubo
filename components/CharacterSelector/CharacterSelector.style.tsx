@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
 export const CharacterSelectorWrapper = styled.div`
+  body {
+  background: black;
+  }
+
+  footer{
+    font-family: 'Dosis';
+  }    
+
   .nav {
     position: absolute;
     right: 50px;
@@ -32,7 +40,7 @@ export const CharacterSelectorWrapper = styled.div`
   .pane {
     position: fixed;
     top: 0;
-    z-index: 100;
+    z-index: 10001;
     right: -50%;
     padding: 1rem 2rem;
     height: 100vh;

@@ -184,7 +184,7 @@ body {
 .characters .pane {
     position: fixed;
     top: 0;
-    z-index: 10;
+    z-index: 10001;
     right: -50%;
     height: 100vh;
     width: 30%;
