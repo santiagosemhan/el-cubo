@@ -2,16 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-body {
-    margin: 0;
-    background: black;
-}
-
-:root {
-    /* Full grid area variable */
-    --fullGrid: 1 / 1 / -1 / -1;
-}
-
 .header-top {
     width: 100%;
 }
@@ -30,75 +20,7 @@ body {
     z-index: 11;
 }
 
-.hero {
-    /* Create grid spanning viewport width & height */
-    display: grid;
-    grid-template-rows: 100vh;
-    overflow: hidden;
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
-}
-
-.video-bg {
-    /* Span the full grid */
-    grid-area: var(--fullGrid);
-    /* Re-size video to cover full screen while maintaining aspect ratio */
-    min-width: 100%;
-    min-height: 100%;
-    object-fit: cover;
-    /* Display video below overlay */
-    z-index: -1;
-}
-
-.video-bg::-webkit-media-controls {
-    display: none !important;
-}
-
-.video-overlay {
-    /* Span the full grid */
-    grid-area: var(--fullGrid);
-    /* Center Content */
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    text-align: left;
-}
-
-.copy-cover {
-    width: 100vw;
-}
-
-.hero .copy {
-    margin: 0;
-    z-index: 100;
-    width: 75vw;
-    margin: auto;
-    text-align: center;
-    font-family: 'Inter';
-}
-
-.hero .copy p {
-    color: white;
-    font-size: 30px;
-    font-weight: 300;
-}
-
-.hero-onboarding button {
-    border: 1px solid #1A2839;
-    color: #1A2839;
-    background-color: #45B4C1;
-    font-size: 20px;
-    border-radius: 25px;
-    line-height: 2em;
-    padding: 5px 30px;
-    font-weight: 600;
-}
-
-.hero-onboarding .copy button svg {
-    float: right;
-    margin-left: 10px;
-}
-
-.parent {
+.characters .parent {
     width: 100%;
     height: 100vh;
     overflow: hidden;
@@ -107,7 +29,7 @@ body {
     display: flex;
 }
 
-.child {
+.characters .child {
     height: 100%;
     width: 100%;
     background-size: cover;
@@ -120,26 +42,22 @@ body {
 
 /* Page characters */
 
-.is-hidden {
-    display: none;
-}
-
-.some-page-wrapper {
+.characters-wrapper {
     height: 100vh;
 }
 
-.some-page-wrapper .row {
+.characters-wrapper .row {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
 }
 
-.some-page-wrapper .row.row-first {
+.characters-wrapper .row.row-first {
     height: 100vh;
 }
 
-.column {
+.characters .column {
     display: flex;
     flex-direction: column;
     flex-basis: 100%;
@@ -147,32 +65,32 @@ body {
     width: 16.67%;
 }
 
-.parent .child {
+.characters .parent .child {
     background-color: black;
     cursor: pointer;
 }
 
-.parent .child img.img-bn {
+.characters .parent .child img.img-bn {
     position: absolute;
     top: 10vh;
     width: 100%;
     z-index: 1;
 }
 
-.parent .child img.img-color {
+.characters .parent .child img.img-color {
     position: absolute;
     top: 10vh;
     width: 100%;
     z-index: 0;
 }
 
-.parent:hover .child img.img-color,
-.parent:focus .child img.img-color,
-.parent .child.is-selected img.img-color {
+.characters .parent:hover .child img.img-color,
+.characters .parent:focus .child img.img-color,
+.characters .parent .child.is-selected img.img-color {
     z-index: 1;
 }
 
-.icon-selected {
+.characters .icon-selected {
     display: none;
     width: 30px;
     height: auto;
@@ -182,11 +100,11 @@ body {
     left: 42%;
 }
 
-.is-selected .icon-selected {
+.characters .is-selected .icon-selected {
     display: block;
 }
 
-.name {
+.characters .name {
     display: none;
     font-size: 30px;
     font-family: 'Inter';
@@ -201,12 +119,12 @@ body {
     z-index: 2;
 }
 
-.is-selected .name {
+.characters .is-selected .name {
     display: block;
     color: white;
 }
 
-.projectButton {
+.characters .projectButton {
     display: none;
     font-family: 'Inter';
     font-size: 13px;
@@ -226,8 +144,8 @@ body {
     z-index: 2;
 }
 
-.parent:hover .child,
-.parent:focus .child {
+.characters .parent:hover .child,
+.characters .parent:focus .child {
     -ms-transform: scale(1.06);
     -moz-transform: scale(1.06);
     -webkit-transform: scale(1.06);
@@ -235,7 +153,7 @@ body {
     transform: scale(1.06);
 }
 
-.parent .child.is-selected {
+.characters .parent .child.is-selected {
     -ms-transform: scale(1.3);
     -moz-transform: scale(1.3);
     -webkit-transform: scale(1.3);
@@ -243,19 +161,19 @@ body {
     transform: scale(1.3);
 }
 
-.parent:hover a,
-.parent:focus a {
+.characters .parent:hover a,
+.characters .parent:focus a {
     display: block;
 }
 
-.parent:hover .name,
-.parent:focus .playButton {
+.characters .parent:hover .name,
+.characters .parent:focus .playButton {
     display: block;
 }
 
 /* Pane Slide */
 
-.pane {
+.characters .pane {
     position: fixed;
     top: 0;
     z-index: 10;
@@ -270,7 +188,7 @@ body {
     overflow: hidden;
 }
 
-.pane-cover {
+.characters .pane-cover {
     width: 100%;
     height: 100%;
     display: none;
@@ -280,16 +198,16 @@ body {
     z-index: 20;
 }
 
-.pane-cover.visible {
+.characters .pane-cover.visible {
     display: flex;
 }
 
-.pane video {
+.characters .pane video {
     width: 150%;
     margin-left: -23%;
 }
 
-.pane-content {
+.characters .pane-content {
     text-align: center;
     font-family: 'Inter';
     color: white;
@@ -299,7 +217,7 @@ body {
     width: 100%;
 }
 
-.pane h2 {
+.characters .pane h2 {
     font-family: 'Inter';
     font-size: 30px;
     text-transform: capitalize;
@@ -307,7 +225,7 @@ body {
     margin: 0;
 }
 
-.pane-content a {
+.characters .pane-content a {
     width: 60px;
     border-radius: 30px;
     line-height: 1em;
@@ -318,43 +236,43 @@ body {
     font-weight: 600;
 }
 
-.pane a.close {
+.characters .pane a.close {
     cursor: pointer;
     padding: 20px;
     float: left;
 }
 
-.pane-video {
+.characters .pane-video {
     overflow: hidden;
     clear: both;
 }
 
-.bg-video {
+.characters .bg-video {
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 20;
 }
 
-.pane-content a:hover {
+.characters .pane-content a:hover {
     cursor: pointer;
 }
 
-.pane p {
+.characters .pane p {
     font-size: 16px;
     line-height: 1.4;
     padding: 20px 30px 40px 30px;
     margin: 0;
 }
 
-.pane.open {
+.characters .pane.open {
     right: 0vw;
     z-index: 100;
 }
 
 /* hide menu */
 
-.selector-mode {
+.characters .selector-mode {
     width: 100%;
     position: absolute;
     bottom: 40px;
@@ -363,22 +281,22 @@ body {
     opacity: 1;
 }
 
-.selector-mode.is-hidden {
+.characters .selector-mode.is-hidden {
     display: block;
     opacity: 0;
 }
 
-.selector-cover {
+.characters .selector-cover {
     width: 380px;
     margin: auto;
 }
 
-.selector-cover img,
-.selector-cover ul {
+.characters .selector-cover img,
+.characters .selector-cover ul {
     float: left;
 }
 
-.selector-cover ul {
+.characters .selector-cover ul {
     opacity: 0;
     color: #45B4C1;
     font-family: 'Inter';
@@ -388,47 +306,47 @@ body {
     transition: 0.5s all ease;
 }
 
-.selector-cover:hover ul {
+.characters .selector-cover:hover ul {
     opacity: 1;
 }
 
-.selector-cover ul li {
+.characters .selector-cover ul li {
     line-height: 1.3em;
     margin-bottom: 10px;
 }
 
-.selector-cover ul li a {
+.characters .selector-cover ul li a {
     color: #45B4C1;
     text-decoration: none;
 }
 
-.selector-cover ul li:hover,
-.selector-cover ul li:hover a {
+.characters .selector-cover ul li:hover,
+.characters .selector-cover ul li:hover a {
     color: white;
 }
 
-.selector-cover ul li:nth-child(1) img {
+.characters .selector-cover ul li:nth-child(1) img {
     margin-top: 7px;
     margin-right: 10px;
 }
 
-.selector-cover ul li:nth-child(2) img {
+.characters .selector-cover ul li:nth-child(2) img {
     margin-top: 3px;
     margin-right: 10px;
 }
 
-.selector-cover ul li:nth-child(3) img {
+.characters .selector-cover ul li:nth-child(3) img {
     margin-top: 3px;
     margin-right: 10px;
     margin-left: 8px;
 }
 
-.selector-cover img {
+.characters .selector-cover img {
     margin-left: 0px;
     margin-top: 20px;
 }
 
-.selector-mode.selector-mobile {
+.characters .selector-mode.selector-mobile {
     display: none;
 }
 
@@ -449,60 +367,54 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
-    .logo--image {
-        width: 30px;
-        top: 80px;
-        left: 20px;
-        z-index: 12;
-    }
-    .some-page-wrapper .row.row-first .column {
+    .characters-wrapper .row.row-first .column {
         width: 33.33%;
         flex: none;
         float: left;
         height: 45vh;
         z-index: 11;
     }
-    .some-page-wrapper .row.row-first .column .parent {
+    .characters-wrapper .row.row-first .column .parent {
         height: 45vh;
     }
-    .pane.open {
+    .characters .pane.open {
         width: 100%;
         padding-right: 0;
     }
-    .bg-video {
+    .characters .bg-video {
         bottom: 0;
         height: 100vh;
     }
-    .pane a.close {
+    .characters .pane a.close {
         position: absolute;
         left: 0;
         top: 0;
         z-index: 100;
     }
-    .pane-video {
+    .characters .pane-video {
         margin-top: 60px;
     }
-    .parent .child.alba img.img-bn,
-    .parent .child.elvira img.img-bn,
-    .parent .child.carey img.img-bn,
-    .parent .child.alba img.img-color,
-    .parent .child.elvira img.img-color,
-    .parent .child.carey img.img-color {
+    .characters .parent .child.alba img.img-bn,
+    .characters .parent .child.elvira img.img-bn,
+    .characters .parent .child.carey img.img-bn,
+    .characters .parent .child.alba img.img-color,
+    .characters .parent .child.elvira img.img-color,
+    .characters .parent .child.carey img.img-color {
         top: 40px;
     }
-    .parent .child img.img-bn {
+    .characters .parent .child img.img-bn {
         top: 0px;
     }
-    .parent .child img.img-color {
+    .characters .parent .child img.img-color {
         top: 0px;
     }
-    .some-page-wrapper .row {
+    .characters-wrapper .row {
         display: block;
     }
-    .selector-desktop {
+    .characters .selector-desktop {
         display: none;
     }
-    .selector-mode.selector-mobile {
+    .characters .selector-mode.selector-mobile {
         display: block;
         bottom: 40px;
         z-index: 12;
@@ -510,52 +422,52 @@ a {
         opacity: 1;
         text-align: center;
     }
-    .selector-mode.is-hidden {
+    .characters .selector-mode.is-hidden {
         z-index: -2;
         transition: 1s all ease;
         opacity: 0;
     }
-    .selector-mode.selector-mobile .selector-cover ul {
+    .characters .selector-mode.selector-mobile .selector-cover ul {
         opacity: 1;
         width: 100%;
         margin: 0;
         padding: 0;
         text-align: center;
     }
-    .selector-mode.selector-mobile .selector-cover img {
+    .characters .selector-mode.selector-mobile .selector-cover img {
         float: none;
         width: 40px;
         margin-bottom: 10px;
     }
-    .selector-mode.selector-mobile .selector-cover ul li {
+    .characters .selector-mode.selector-mobile .selector-cover ul li {
         width: 33.33%;
         float: left;
         font-size: 16px;
     }
-    .projectButton {
+    .characters .projectButton {
         display: none;
     }
-    .parent:hover a,
-    .parent:focus a {
+    .characters .parent:hover a,
+    .characters .parent:focus a {
         display: none;
     }
-    .name {
+    .characters .name {
         display: block;
         bottom: 150px;
         font-size: 20px;
     }
-    .icon-selected {
+    .characters .icon-selected {
         bottom: 130px;
         width: 20px;
     }
-    .parent .child.mercado .name,
-    .parent .child.marina .name,
-    .parent .child.sales .name {
+    .characters .parent .child.mercado .name,
+    .characters .parent .child.marina .name,
+    .characters .parent .child.sales .name {
         bottom: 200px;
     }
-    .parent .child.mercado .icon-selected,
-    .parent .child.marina .icon-selected,
-    .parent .child.sales .icon-selected {
+    .characters .parent .child.mercado .icon-selected,
+    .characters .parent .child.marina .icon-selected,
+    .characters .parent .child.sales .icon-selected {
         bottom: 180px;
     }
 }
