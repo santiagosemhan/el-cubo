@@ -10,7 +10,7 @@ import { HelpGlobalStyle } from 'styles/help.style';
 import { Container } from 'styles/Home';
 import { PersonajesGlobalStyle } from 'styles/personajes.style';
 
-const CharactersPage = ({ data }) => {
+const CharactersPage = ({ data = {} }) => {
   console.log({ data });
   const { isFallback } = useRouter();
 
@@ -509,7 +509,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 
   const { field_ec_characters, field_ec_characters_terms_json } = data[0];
-
   return {
     props: {
       data: {
