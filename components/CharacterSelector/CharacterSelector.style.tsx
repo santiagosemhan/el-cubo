@@ -49,12 +49,15 @@ export const CharacterSelectorWrapper = styled.div`
 
   .pane h2,
   .pane ul {
+    font-family: 'Inter';
     font-size: 20px;
     font-weight: 400;
   }
 
-  .pane h2 {
+  .pane .pane-content h2 {
     margin-left: 10px;
+    color: white;
+    text-align: left;
   }
 
   .pane ul {
