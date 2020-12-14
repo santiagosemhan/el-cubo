@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const ListChronoCover = styled.div`
   position: absolute;
   right: 30px;
-  top: 100px;
+  top: 50%;
+  transform: translateY(-50%);
   color: white;
   font-family: 'Inter';
   z-index: 2;
