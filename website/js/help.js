@@ -116,6 +116,7 @@ function disable(elem) {
 }
 
 function show(elem) {
+    console.log(elem);
     if (elem) {
         elem.classList.remove('hidden');
 

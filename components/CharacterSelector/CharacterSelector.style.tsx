@@ -116,4 +116,10 @@ export const CharacterSelectorWrapper = styled.div`
   .pane.open {
     right: 0vw;
   }
+
+  @media only screen and (max-width: 1024px) {
+  .pane.open {
+    width: 60%;
+  }
+  }
 `;

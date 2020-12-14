@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const PersonajesGlobalStyle = createGlobalStyle`
 body {
     margin: 0;
+    background: black;
 }
 
 :root {
@@ -167,6 +168,10 @@ body {
     -webkit-transform: scale(1.3);
     -o-transform: scale(1.3);
     transform: scale(1.3);
+}
+
+.characters .parent .child.is-selected .name {
+    font-size: 1.5em;
 }
 
 .characters .parent:hover a,
@@ -460,7 +465,6 @@ a {
         display: none;
     }
     .characters .name {
-        display: block;
         bottom: 150px;
         font-size: 20px;
     }

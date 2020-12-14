@@ -18,9 +18,13 @@ body {
 
 .help-wrapper .nav {
   position: absolute;
-  right: 50px;
-  top: 130px;
+  right: 65px;
+  top: 120px;
   z-index: 11;
+}
+
+.logo--image {
+  top: 120px;
 }
 
 .help-wrapper .nav ul {
@@ -60,6 +64,12 @@ body {
   float: right;
 }
 
+.help-wrapper .peak {    
+  position: absolute;
+  right: 40px;
+  top: -20px;
+}
+
 /* Modal */
 
 .help-wrapper .trigger_modal {
@@ -96,7 +106,7 @@ body {
   max-width: 455px;
   border-radius: 10px;
   position: absolute;
-  top: 165px;
+  top: 195px;
   right: 20px;
   z-index: 100;
   animation: 0.3s slideDown;
@@ -326,6 +336,12 @@ body {
   .help-wrapper .nav {
     right: 20px;
     top: 80px;
+  }
+
+  .help-wrapper .logo--image {
+    top: 80px;
+    left: 20px;
+    width: 40px;
   }
   .help-wrapper .selector-help {
     bottom: 30px;

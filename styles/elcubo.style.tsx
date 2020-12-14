@@ -45,7 +45,7 @@ body.fade {
   width: 100px;
   height: auto;
   position: absolute;
-  top: 160px;
+  top: 120px;
   z-index: 11;
 }
 
