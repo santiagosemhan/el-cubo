@@ -8,6 +8,7 @@ export const ListChronoCover = styled.div`
   color: white;
   font-family: 'Inter';
   z-index: 2;
+
   h2 {
     color: white;
     font-family: 'Inter';
@@ -112,4 +113,9 @@ export const ListChronoCover = styled.div`
     top: 40px;
     opacity: 0.4;
   }
+
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+
 `;
