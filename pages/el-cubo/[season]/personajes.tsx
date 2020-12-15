@@ -476,8 +476,8 @@ const CharactersPage = ({ data = {} }) => {
                             >
                               <img className="icon-selected" src="/images/is-selected.svg" />
                               <h2 className="name">{character.character_name}</h2>
-                              <img className="img-bn" src={character.field_ec_avatar_gray} />
-                              <img className="img-color" src={character.field_ec_avatar_color} />
+                              <img className="img-bn" width="100%" src={character.field_ec_avatar_gray} />
+                              <img className="img-color" width="100%" src={character.field_ec_avatar_color} />
                               <a className="projectButton">Conóceme más</a>
                             </div>
                           </div>
