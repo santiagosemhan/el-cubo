@@ -17,6 +17,7 @@ import { ListChronoCover } from 'components/PlayerChronology/PlayerChronology.st
 import { ElcuboGlobalStyles } from 'styles/elcubo.style';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { MenuPlayerStyle } from 'styles/menu-player.style';
+import Head from 'next/head';
 
 const FullPlayerWrapper = styled.div`
   width: 100%;
@@ -28,7 +29,7 @@ const FullPlayerWrapper = styled.div`
   position: relative;
 `;
 
-const VideoPage = ({ video, srcVideo, poster }) => {
+const VideoPage = ({ title, video, srcVideo, poster }) => {
   const { isFallback, query } = useRouter();
 
   const { modo, personaje } = query;
@@ -132,6 +133,9 @@ const VideoPage = ({ video, srcVideo, poster }) => {
 
   return (
     <AppLayout onlyContent>
+      <Head>
+        <title>{title} - El cubo</title>
+      </Head>
       <ElcuboGlobalStyles />
       <MenuPlayerStyle />
       <Container>
@@ -197,12 +201,14 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const chapter = await fetch(`/api/v1/elcubo/season/4731/episode/${params.video}`);
+
   let srcVideoId = chapter[0]?.field_ec_asset_id_TEMP;
   const srcVideo = srcVideoId
     ? `https://rtvcplay-media-content.s3.amazonaws.com/vod-content/${srcVideoId}/${srcVideoId}.m3u8`
     : undefined;
   return {
     props: {
+      title: chapter[0].title,
       video: params.video,
       srcVideo: srcVideo || null,
       poster: chapter[0]?.field_ec_video_preview_TEMP || null,
