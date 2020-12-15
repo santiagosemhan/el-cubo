@@ -25,7 +25,7 @@ const CharactersPage = ({ data = {} }) => {
   React.useEffect(() => {
     // Pane Slide
     const button_open = document.querySelectorAll('.toggle');
-    const button_close = document.querySelector('.close');
+    const button_close = document.querySelectorAll('.close');
     const pane = document.querySelector('.pane');
     const pane_cover = document.querySelector('.pane-cover');
 
@@ -44,11 +44,13 @@ const CharactersPage = ({ data = {} }) => {
     }
 
     if (button_close) {
-      button_close.addEventListener('click', () => {
-        pane.classList.toggle('open');
-        pane_cover.classList.toggle('visible');
-        myVideo.pause();
-        myVideo.currentTime = 0;
+      button_close.forEach(function (link) {
+        link.addEventListener('click', () => {
+          pane.classList.toggle('open');
+          pane_cover.classList.toggle('visible');
+          myVideo.pause();
+          myVideo.currentTime = 0;
+        });
       });
     }
 

@@ -380,6 +380,12 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+
+    .characters-wrapper .row.row-first {
+        height: 90vh;
+        margin-top: 10vh;
+    }
+
     .characters-wrapper .row.row-first .column {
         width: 33.33%;
         flex: none;
@@ -407,14 +413,7 @@ a {
     .characters .pane-video {
         margin-top: 60px;
     }
-    .characters .parent .child.alba img.img-bn,
-    .characters .parent .child.elvira img.img-bn,
-    .characters .parent .child.carey img.img-bn,
-    .characters .parent .child.alba img.img-color,
-    .characters .parent .child.elvira img.img-color,
-    .characters .parent .child.carey img.img-color {
-        top: 40px;
-    }
+
     .characters .parent .child img.img-bn {
         top: 0px;
     }
@@ -429,7 +428,7 @@ a {
     }
     .characters .selector-mode.selector-mobile {
         display: block;
-        bottom: 40px;
+        bottom: 0px;
         z-index: 12;
         transition: 2s all ease;
         opacity: 1;
