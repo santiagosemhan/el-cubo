@@ -411,7 +411,7 @@ const CharactersPage = ({ data = {} }) => {
                         <div className="column" key={character.tid}>
                           <div className="parent">
                             <div
-                              className={`child bg-six toggle ${character.tid}`}
+                              className={`child bg-six toggle char-${character.tid} ${character.tid}`}
                               data-video={character.field_ec_avatar_video}
                               data-personaje={character.tid}
                               data-nombre={character.character_name}

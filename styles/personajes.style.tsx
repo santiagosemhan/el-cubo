@@ -456,6 +456,24 @@ a {
         float: left;
         font-size: 16px;
     }
+
+    .characters .parent:hover .child,
+    .characters .parent:focus .child {
+    -ms-transform: scale(1);
+    -moz-transform: scale(1);
+    -webkit-transform: scale(1);
+    -o-transform: scale(1);
+    transform: scale(1);
+    }
+
+    .characters .parent .child.is-selected {
+        -ms-transform: scale(1);
+        -moz-transform: scale(1);
+        -webkit-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+
     .characters .projectButton {
         display: none;
     }
@@ -471,14 +489,24 @@ a {
         bottom: 130px;
         width: 20px;
     }
-    .characters .parent .child.mercado .name,
-    .characters .parent .child.marina .name,
-    .characters .parent .child.sales .name {
+
+    .characters .parent .child.char-4727 img.img-bn,
+    .characters .parent .child.char-4728 img.img-bn,
+    .characters .parent .child.char-4730 img.img-bn,
+    .characters .parent .child.char-4727 img.img-color,
+    .characters .parent .child.char-4728 img.img-color,
+    .characters .parent .child.char-4730 img.img-color {
+        top: -55px;
+    }
+  
+    .characters .parent .child.char-4727 .name,
+    .characters .parent .child.char-4728 .name,
+    .characters .parent .child.char-4730 .name {
         bottom: 200px;
     }
-    .characters .parent .child.mercado .icon-selected,
-    .characters .parent .child.marina .icon-selected,
-    .characters .parent .child.sales .icon-selected {
+    .characters .parent .child.char-4727 .icon-selected,
+    .characters .parent .child.char-4728 .icon-selected,
+    .characters .parent .child.char-4730 .icon-selected {
         bottom: 180px;
     }
 }
