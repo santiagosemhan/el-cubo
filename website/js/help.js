@@ -1,22 +1,26 @@
 const openModalTriggerEl = document.querySelector('.open-modal');
 const closeModalTriggerEl = document.querySelector('.close-modal');
 const modalEl = document.querySelector('.modal');
-let currentTab = 0;
 
 function modal() {
     if (openModalTriggerEl) {
         openModalTriggerEl.addEventListener('click', () => {
             modalEl.classList.add('open');
-            currentTab = 0;
+            console.log(openModalTriggerEl);
+            openModalTriggerEl.classList.toggle('is-active');
         });
     }
     if (closeModalTriggerEl) {
         closeModalTriggerEl.addEventListener('click', () => {
+            goToStep(1);
+            openModalTriggerEl.classList.toggle('is-active');
             modalEl.classList.remove('open');
         });
     }
     window.addEventListener('click', () => {
         if (event.target === modalEl) {
+            goToStep(1);
+            openModalTriggerEl.classList.toggle('is-active');
             modalEl.classList.remove('open');
         }
     })
@@ -89,13 +93,11 @@ function goToStep(stepNumber) {
     //if we reached final step
     if (currentStep === numberOfSteps) {
         enable(previousButton);
-        disable(nextButton);
         show(submitButton);
     }
 
     //else if first step
     else if (currentStep === 1) {
-        disable(previousButton);
         enable(next);
         hide(submitButton);
     } else {
@@ -106,17 +108,20 @@ function goToStep(stepNumber) {
 }
 
 function enable(elem) {
-    elem.classList.remove("disabled");
-    elem.disabled = false;
+    if (elem) {
+        elem.classList.remove("disabled");
+        elem.disabled = false;
+    }
 }
 
 function disable(elem) {
-    elem.classList.add("disabled");
-    elem.disabled = true;
+    if (elem) {
+        elem.classList.add("disabled");
+        elem.disabled = true;
+    }
 }
 
 function show(elem) {
-    console.log(elem);
     if (elem) {
         elem.classList.remove('hidden');
 
@@ -127,5 +132,7 @@ function show(elem) {
 }
 
 function hide(elem) {
-    elem.classList.add('hidden');
+    if (elem) {
+        elem.classList.add('hidden');
+    }
 }

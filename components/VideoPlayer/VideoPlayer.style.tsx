@@ -46,7 +46,7 @@ export const VideoPlayerWrapper = styled.div`
 
   &.in-fullscreen {
     .back-to-season {
-      top: 50%;
+      top: 30px;
     }
 
     ${ListChronoCover} {

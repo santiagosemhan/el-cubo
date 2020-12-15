@@ -60,6 +60,18 @@ body {
   float: left;
 }
 
+.help-wrapper .icon-help .icon-help-close {
+  display: none;
+}
+
+.help-wrapper .is-active .icon-help .icon-help-open {
+  display: none;
+}
+
+.help-wrapper .is-active .icon-help .icon-help-close {
+  display: inline;
+}
+
 .help-wrapper nav ul li:last-child {
   float: right;
 }
@@ -178,15 +190,6 @@ body {
   outline: none;
 }
 
-.help-wrapper .button.disabled {
-  opacity: 0.5;
-  display: none;
-}
-
-.help-wrapper .button.disabled:hover {
-  background-color: #ff8552;
-}
-
 .help-wrapper .help-step {
   margin: auto;
   float: left;
@@ -272,6 +275,19 @@ body {
   background-color: #45b4c1;
   color: black;
 }
+
+.help-wrapper .help-step #previous {
+  display: none;
+}
+.help-wrapper .step-2 .help-step #previous,
+.help-wrapper .step-l #previous {
+  display: inline;
+}
+
+.help-wrapper .step-l #next {
+  display: none;
+}
+
 
 .help-wrapper .modal.step-2 .modal__content {
   top: 55%;

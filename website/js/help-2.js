@@ -5,7 +5,10 @@ const modalEl = document.querySelector('.modal');
 function modal() {
     if (openModalTriggerEl) {
         openModalTriggerEl.addEventListener('click', () => {
+            console.log('hola');
+            currentStep = 1;
             modalEl.classList.add('open');
+
         });
     }
     if (closeModalTriggerEl) {
