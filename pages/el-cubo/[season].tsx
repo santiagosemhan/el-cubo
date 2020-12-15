@@ -5,10 +5,12 @@ import { GetStaticProps } from 'next';
 import { Container } from 'styles/Home';
 import AppLayout from 'layouts/AppLayout';
 import fetch from 'libs/fetcher';
-import MouseCircle from 'components/MouseCircle/MouseCircle';
+
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { ElcuboGlobalStyles } from 'styles/elcubo.style';
+import dynamic from 'next/dynamic';
+const MouseCircle = dynamic(() => import('components/MouseCircle/MouseCircle'), { ssr: false });
 
 export default function SeasonPage({ data }) {
   // if (process.browser) {

@@ -159,7 +159,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
             <FullPlayerWrapper>
               <VideoPlayer
                 showBackButton
-                backLink="/el-cubo/temporada-1"
+                backLink="/el-cubo/temporada-1/personajes"
                 title="title"
                 poster={poster}
                 source={srcVideo}

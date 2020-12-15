@@ -86,6 +86,18 @@ const VideoPlayer = ({
         disabled: 'Disabled',
         advertisement: 'Ad',
       },
+      controls: [
+        'play-large',
+        'play',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'captions',
+        'settings',
+        'airplay',
+        'fullscreen',
+      ],
       captions: { active: true, update: true, language: 'es' },
       settings: ['quality'],
     });

@@ -144,7 +144,7 @@ function getCoords(elem) {
 
 /* Scroll to element */
 const hanchors = document.querySelectorAll('.arrow-down a[href*="#"]');
-console.log(hanchors);
+// console.log(hanchors);
 /*Loop through each link to add the click event*/
 for (let i = 0; i < hanchors.length; i++) {
   hanchors[i].onclick = function (e) {

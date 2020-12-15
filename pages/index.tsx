@@ -4,11 +4,15 @@ import Head from 'next/head';
 import { Container } from '../styles/Home';
 import AppLayout from '../layouts/AppLayout';
 import fetch from 'libs/fetcher';
-import MouseCircle from 'components/MouseCircle/MouseCircle';
+
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { RTVCGlobalStyles } from 'styles/rtvc.style';
 import { ElcuboGlobalStyles } from 'styles/elcubo.style';
+
+import dynamic from 'next/dynamic';
+
+const MouseCircle = dynamic(() => import('components/MouseCircle/MouseCircle'), { ssr: false });
 
 export default function Home({ data }) {
   const ref = useRef();
@@ -31,11 +35,6 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        {/* <div id="mouse-circle" className="is-hidden">
-          <span>
-            <a href="/el-cubo">Ver más</a>
-          </span>
-        </div> */}
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
         <HeaderTop />
@@ -43,7 +42,7 @@ export default function Home({ data }) {
         {field_ec_contents.map((c, index) => {
           const paragraph = field_ec_contents_paragraph.find((p) => p.id[0].value === Number(c));
           // console.log({ paragraph });
-          let videoOverlayHTML = '<div></div>';
+          let videoOverlayHTML = '';
           if (paragraph.type[0].target_id === 'ec_hero_title') {
             let copyCoverHTML = paragraph.field_ec_text.map((t) => t.value).join('');
             // console.log({ copyCoverHTML });
@@ -63,7 +62,7 @@ export default function Home({ data }) {
 
           let desktopVideoURL = paragraph.field_ec_video[0].url;
           let mobileVideoURL = paragraph.field_ec_video_mb[0].url;
-
+          // console.log({ videoOverlayHTML });
           return (
             <div
               id={`hero-${index}`}

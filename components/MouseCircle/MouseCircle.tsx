@@ -3,9 +3,7 @@ import { StyledMouseCircle } from './MouseCircle.style';
 
 const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text }) => {
   const ref = React.useRef();
-  const [isMobile] = useState(
-    process.browser ? !window.matchMedia('(min-width: 768px)').matches : false,
-  );
+  const [isMobile] = useState(!window.matchMedia('(min-width: 768px)').matches);
 
   React.useEffect(() => {
     // Cursor
@@ -42,15 +40,17 @@ const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text })
       <StyledMouseCircle
         ref={ref}
         className={`
-      ${isBig ? 'big' : ''}
-      ${!show ? 'is-hidden' : ''}
-    `}
+          ${isBig ? 'big' : ''}
+          ${!show ? 'is-hidden' : ''}
+        `}
         onMouseMove={(e) => e.stopPropagation()}
       >
-        {!noLink && (
+        {!noLink ? (
           <span>
             <a href={href}>{text}</a>
           </span>
+        ) : (
+          ''
         )}
       </StyledMouseCircle>
     )
