@@ -430,6 +430,10 @@ a {
     .characters .selector-desktop {
         display: none;
     }
+
+    .characters .selector-cover {
+        width: 100% !important;
+    }
     .characters .selector-mode.selector-mobile {
         display: block;
         bottom: 20px;
