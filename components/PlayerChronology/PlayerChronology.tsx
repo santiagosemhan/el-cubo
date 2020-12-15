@@ -10,7 +10,7 @@ const PlayerChronology = ({ character, chronology }) => {
     <ListChronoCover>
       <h2>{character}</h2>
       <h3>Cronología</h3>
-      <div className="line-right"></div>
+      <img className="line-right" src="/images/line-chrono.png" />
       <ul className="list-chrono">
         {chronology.map((chrono) => (
           <li key={chrono.id}>

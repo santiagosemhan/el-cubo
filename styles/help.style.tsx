@@ -196,6 +196,7 @@ body {
   color: white;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  position: relative;
 }
 
 .help-wrapper .help-step .progress-bar {
@@ -264,11 +265,26 @@ body {
   color: black;
   width: 260px;
   float: right;
+  position: relative;
 }
 
 .help-wrapper button#validate:hover {
   background-color: #45b4c1;
   color: black;
+}
+
+.help-wrapper .modal.step-2 .modal__content {
+  top: 55%;
+}
+
+.help-wrapper .modal.step-2 .modal__content .peak {
+  right: 46%;
+}
+
+.help-wrapper .modal.step-l .modal__content .peak {
+  right: 46%;
+  bottom: -20px;
+  top: auto;
 }
 
 .help-wrapper .modal.step-2 .modal__content,
@@ -392,7 +408,7 @@ body {
     z-index: 100;
   }
   .help-wrapper button#validate {
-    width: 200px;
+    width: 190px;
   }
   .help-wrapper .cubo-help {
     width: 70px;

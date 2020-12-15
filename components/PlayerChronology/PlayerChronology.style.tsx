@@ -106,11 +106,10 @@ export const ListChronoCover = styled.div`
 
   .line-right {
     position: absolute;
-    height: 320px;
+    height: 100%;
     width: 1px;
-    background: #858585;
     right: 4px;
-    top: 80px;
+    top: 40px;
     opacity: 0.4;
   }
 `;

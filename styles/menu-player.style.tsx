@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const MenuPlayerStyle = createGlobalStyle`
+
+body {
+  background: black;
+}
+
 .nav {
   position: absolute;
   right: 30px;

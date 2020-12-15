@@ -11,8 +11,8 @@ export const CharacterSelectorWrapper = styled.div`
 
   .nav {
     position: absolute;
-    right: 50px;
-    top: 130px;
+    right: 30px;
+    top: 20px;
     z-index: 11;
   }
 
