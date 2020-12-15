@@ -29,10 +29,16 @@ const CharactersPage = ({ data = {} }) => {
     const pane = document.querySelector('.pane');
     const pane_cover = document.querySelector('.pane-cover');
 
+    window.onload = function () {
+      disableScroll();
+    };
+
+
     if (button_open) {
       button_open.forEach(function (link) {
         link.addEventListener('click', () => {
           pane.classList.add('open');
+          disableScroll();
           pane_cover.classList.toggle('visible');
           document.getElementById('video1').src = link.dataset.video;
           document.getElementById('select-personaje').dataset.personaje = link.dataset.personaje;
@@ -47,6 +53,7 @@ const CharactersPage = ({ data = {} }) => {
       button_close.forEach(function (link) {
         link.addEventListener('click', () => {
           pane.classList.toggle('open');
+          enableScroll();
           pane_cover.classList.toggle('visible');
           myVideo.pause();
           myVideo.currentTime = 0;
@@ -62,6 +69,8 @@ const CharactersPage = ({ data = {} }) => {
         character = button_select.dataset.personaje;
 
         pane.classList.toggle('open');
+        enableScroll();
+
         pane_cover.classList.toggle('visible');
         myVideo.pause();
         myVideo.currentTime = 0;
@@ -105,13 +114,14 @@ const CharactersPage = ({ data = {} }) => {
       if (openModalTriggerEl) {
         openModalTriggerEl.addEventListener('click', () => {
           modalEl.classList.add('open');
-          console.log(openModalTriggerEl);
+          disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
         });
       }
       if (closeModalTriggerEl) {
         closeModalTriggerEl.addEventListener('click', () => {
           goToStep(1);
+          enableScroll();
           openModalTriggerEl.classList.toggle('is-active');
           modalEl.classList.remove('open');
         });
@@ -119,6 +129,7 @@ const CharactersPage = ({ data = {} }) => {
       window.addEventListener('click', () => {
         if (event.target === modalEl) {
           goToStep(1);
+          enableScroll();
           openModalTriggerEl.classList.toggle('is-active');
           modalEl.classList.remove('open');
         }
@@ -224,6 +235,52 @@ const CharactersPage = ({ data = {} }) => {
         elem.classList.add('hidden');
       }
     }
+
+
+    // Enable Disable Scroll
+
+    // left: 37, up: 38, right: 39, down: 40,
+    // spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+    let keys = { 37: 1, 38: 1, 39: 1, 40: 1 };
+
+    function preventDefault(e) {
+      e.preventDefault();
+    }
+
+    function preventDefaultForScrollKeys(e) {
+      if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+      }
+    }
+
+    // modern Chrome requires { passive: false } when adding event
+    let supportsPassive = false;
+    try {
+      window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
+        get: function () { supportsPassive = true; }
+      }));
+    } catch (e) { }
+
+    let wheelOpt = supportsPassive ? { passive: false } : false;
+    let wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
+
+    // call this to Disable
+    function disableScroll() {
+      window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+      window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+      window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+      window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+    }
+
+    // call this to Enable
+    function enableScroll() {
+      window.removeEventListener('DOMMouseScroll', preventDefault, false);
+      window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+      window.removeEventListener('touchmove', preventDefault, wheelOpt);
+      window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+    }
+
   }, []);
 
   return (
