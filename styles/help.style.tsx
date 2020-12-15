@@ -278,6 +278,12 @@ body {
 
 .help-wrapper .help-step #previous {
   display: none;
+  float: left;
+  margin-right: 10px;
+}
+
+.help-wrapper .help-step #next {
+  float: left;
 }
 .help-wrapper .step-2 .help-step #previous,
 .help-wrapper .step-l #previous {
@@ -312,9 +318,6 @@ body {
   transition: all 0.5s ease;
 }
 
-.help-wrapper .modal.step-2 .modal__content #next {
-  float: right;
-}
 
 /* Selector help */
 
@@ -368,6 +371,18 @@ body {
   .help-wrapper .nav {
     right: 20px;
     top: 80px;
+  }
+
+  .help-wrapper .help-step h2 {
+    font-size: 14px;
+  }
+
+  .help-wrapper .help-step p {
+    font-size: 12px;
+  }
+
+  .help-wrapper .button {
+    font-size: 12px;
   }
 
   .help-wrapper .logo--image {
@@ -424,7 +439,7 @@ body {
     z-index: 100;
   }
   .help-wrapper button#validate {
-    width: 190px;
+    width: 180px;
   }
   .help-wrapper .cubo-help {
     width: 70px;

@@ -428,7 +428,7 @@ a {
     }
     .characters .selector-mode.selector-mobile {
         display: block;
-        bottom: 0px;
+        bottom: 20px;
         z-index: 12;
         transition: 2s all ease;
         opacity: 1;
