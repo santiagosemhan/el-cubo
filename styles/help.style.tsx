@@ -385,6 +385,18 @@ body {
     font-size: 12px;
   }
 
+  .help-wrapper .step-l #previous {
+    display: none;
+  }
+
+  .help-wrapper .button-group {
+    text-align: center;
+  }
+
+  .help-wrapper button#validate {
+    float: none;
+  }
+
   .help-wrapper .logo--image {
     top: 80px;
     left: 20px;
@@ -431,15 +443,25 @@ body {
     color: #45b4c1;
   }
   .help-wrapper .modal__content {
-    top: 180px;
+    top: 140px;
     right: 0;
     padding-left: 20px;
     padding-right: 20px;
     background: transparent;
     z-index: 100;
   }
+
+  .help-wrapper .modal.step-2 .modal__content {
+    top: 30%;
+  }
+
+  .help-wrapper .modal.step-l .modal__content {
+    top: 80px;
+  }
+
+
   .help-wrapper button#validate {
-    width: 180px;
+    width: 200px;
   }
   .help-wrapper .cubo-help {
     width: 70px;
