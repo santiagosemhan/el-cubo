@@ -439,6 +439,10 @@ body {
   .help-wrapper .selector-help-pc .selector-column {
     width: auto;
   }
+
+  .help-wrapper .selector-help-pc {
+    margin-bottom: 10px;
+  }
   .help-wrapper .selector-column span {
     color: #45b4c1;
   }
@@ -463,6 +467,11 @@ body {
   .help-wrapper button#validate {
     width: 200px;
   }
+
+  .characters .selector-cover {
+    width: 100%;
+  }
+
   .help-wrapper .cubo-help {
     width: 70px;
   }
