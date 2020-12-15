@@ -831,6 +831,10 @@ footer {
     margin-top: 160px;
     margin-bottom: 40px;
   }
+
+  .hero-3 .third {
+    font-size: 1.5rem !important;
+  }
   .hero-4 .paragraph-message {
     margin-bottom: 40px;
   }
