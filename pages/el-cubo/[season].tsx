@@ -47,9 +47,10 @@ export default function SeasonPage({ data }) {
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
         <MouseCircle
           href="/el-cubo/temporada-1/personajes"
-          text="Empezar experiencia"
+          text="Empezar"
           isBig={bigMouse}
           show={showMouse}
+          className="circle-temp"
         />
 
         {/* <div className="header-top" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>

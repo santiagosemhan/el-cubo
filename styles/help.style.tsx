@@ -318,6 +318,10 @@ body {
   transition: all 0.5s ease;
 }
 
+.help-wrapper .modal.step-l .modal__content {
+  top: 35vh;
+}
+
 
 /* Selector help */
 

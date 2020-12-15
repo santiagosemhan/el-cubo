@@ -42,7 +42,7 @@ body.fade {
 }
 
 .logo--image {
-  width: 100px;
+  width: 200px;
   height: auto;
   position: absolute;
   top: 120px;
@@ -621,15 +621,15 @@ footer {
 #mouse-circle.big span {
   display: block;
   text-align: center;
-  line-height: 90px;
   transition: display 0.5s;
 }
 
 #mouse-circle.big span a {
   color: #1a2839;
   font-weight: 500;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  float: left;
   text-decoration: none;
   font-size: 12px;
 }
