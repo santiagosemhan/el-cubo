@@ -517,6 +517,9 @@ a {
     .characters .parent .child.char-4730 .icon-selected {
         bottom: 180px;
     }
+    .input-search, #menu-mobile-button {
+        display: none;
+    }
 }
 
 /* Input search */
