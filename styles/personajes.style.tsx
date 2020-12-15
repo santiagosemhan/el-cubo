@@ -380,6 +380,10 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+    body {
+        width: 100vw;
+        overflow: hidden;
+    }
 
     .characters-wrapper .row.row-first {
         height: 90vh;
