@@ -238,249 +238,249 @@ const CharactersPage = ({ data = {} }) => {
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-            <>
-              <div className="help-wrapper">
-                <HeaderTop
-                  nav={
-                    <nav className="nav">
-                      <ul>
-                        <li>
-                          <a href="#" className="toggle-help open-modal">
-                            <span>Ayuda</span>
-                            <div className="icon-help">
-                              <img className="icon-help-open" src="/images/icon-help-open.svg" />
-                            </div>
-                          </a>
-                        </li>
+          <>
+            <div className="help-wrapper">
+              <HeaderTop
+                nav={
+                  <nav className="nav">
+                    <ul>
+                      <li>
+                        <a href="#" className="toggle-help open-modal">
+                          <span>Ayuda</span>
+                          <div className="icon-help">
+                            <img className="icon-help-open" src="/images/icon-help-open.svg" />
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                }
+              />
+
+              <div className="modal open">
+                <div className="modal__content">
+                  <div className="help">
+                    <div id="help-step" className="help-step">
+                      <img className="peak" src="/images/peak.svg" />
+
+                      <ul className="progress-bar">
+                        <li className="progress-bar__dot full"></li>
+                        <li className="progress-bar__connector"></li>
+                        <li className="progress-bar__dot"></li>
+                        <li className="progress-bar__connector"></li>
+                        <li className="progress-bar__dot"></li>
                       </ul>
-                    </nav>
-                  }
-                />
 
-                <div className="modal open">
-                  <div className="modal__content">
-                    <div className="help">
-                      <div id="help-step" class="help-step">
-                        <img class="peak" src="/images/peak.svg" />
-
-                        <ul className="progress-bar">
-                          <li className="progress-bar__dot full"></li>
-                          <li className="progress-bar__connector"></li>
-                          <li className="progress-bar__dot"></li>
-                          <li className="progress-bar__connector"></li>
-                          <li className="progress-bar__dot"></li>
-                        </ul>
-
-                        <div className="step step1">
-                          <h2>Ayuda</h2>
-                          <p>
-                            Para conocer esta historia de diferentes maneras deberás seleccionar uno
+                      <div className="step step1">
+                        <h2>Ayuda</h2>
+                        <p>
+                          Para conocer esta historia de diferentes maneras deberás seleccionar uno
                           de seis personajes y elegir uno de tres modos narrativos para navegar.{' '}
-                          </p>
-                        </div>
-
-                        <div className="step step2 hidden">
-                          <h2>
-                            <span className="step-number">1</span>Escoge uno de los personajes
-                        </h2>
-                          <p>
-                            Dependiendo del personaje que elijas, el énfasis de la historia y sus
-                            matices serán diferentes. ¡Escoge al azar o por intuición, vamos!
                         </p>
-                        </div>
+                      </div>
 
-                        <div className="step step3 hidden">
-                          <h2>
-                            <span className="step-number">2</span>Escoge el modo de navegación
+                      <div className="step step2 hidden">
+                        <h2>
+                          <span className="step-number">1</span>Escoge uno de los personajes
                         </h2>
-                          <p>
-                            Dependiendo del modo que elijas, los hechos serán narrados con un orden y
-                            una intención diferentes.
+                        <p>
+                          Dependiendo del personaje que elijas, el énfasis de la historia y sus
+                          matices serán diferentes. ¡Escoge al azar o por intuición, vamos!
                         </p>
-                        </div>
+                      </div>
 
-                        <div className="button-group">
-                          <button id="previous" className="disabled button" disabled>
-                            Anterior
+                      <div className="step step3 hidden">
+                        <h2>
+                          <span className="step-number">2</span>Escoge el modo de navegación
+                        </h2>
+                        <p>
+                          Dependiendo del modo que elijas, los hechos serán narrados con un orden y
+                          una intención diferentes.
+                        </p>
+                      </div>
+
+                      <div className="button-group">
+                        <button id="previous" className="disabled button" disabled>
+                          Anterior
                         </button>
-                          <button id="next" className="button">
-                            Siguiente
+                        <button id="next" className="button">
+                          Siguiente
                         </button>
-                          <button id="validate" className="hidden button close-modal">
-                            Empieza tu experiencia
+                        <button id="validate" className="hidden button close-modal">
+                          Empieza tu experiencia
                         </button>
-                        </div>
                       </div>
                     </div>
                   </div>
+                </div>
 
-                  <div className="selector-help">
-                    <div className="selector-help-cover">
-                      <div className="selector-help-pc">
-                        <div className="selector-column">
-                          <h2>
-                            <img src="/images/selector-0.svg" />
-                            Modo Cronologico
+                <div className="selector-help">
+                  <div className="selector-help-cover">
+                    <div className="selector-help-pc">
+                      <div className="selector-column">
+                        <h2>
+                          <img src="/images/selector-0.svg" />
+                          Modo Cronologico
                         </h2>
-                          <p>
-                            Explora esta historia en la línea de tiempo en que sucedieron los hechos.
+                        <p>
+                          Explora esta historia en la línea de tiempo en que sucedieron los hechos.
                         </p>
-                        </div>
-                        <div className="selector-column">
-                          <h2>
-                            <img src="/images/selector-1.svg" />
-                            Modo Laberinto
-                        </h2>
-                          <p>Escoge ruta de entrada y recorre el cubo a tu manera.</p>
-                        </div>
-                        <div className="selector-column">
-                          <h2>
-                            <img src="/images/selector-2.svg" />
-                            Modo Reflexivo
-                        </h2>
-                          <p>
-                            ¿Tú qué opinas? Descubre cómo encaja tu forma de pensar en el universo de
-                            opiniones de la sociedad.
-                        </p>
-                        </div>
-                        <div className="selector-column-cubo cubo-pc">
-                          <img className="cubo-help" src="/images/selector-cubo.svg" />
-                        </div>
                       </div>
+                      <div className="selector-column">
+                        <h2>
+                          <img src="/images/selector-1.svg" />
+                          Modo Laberinto
+                        </h2>
+                        <p>Escoge ruta de entrada y recorre el cubo a tu manera.</p>
+                      </div>
+                      <div className="selector-column">
+                        <h2>
+                          <img src="/images/selector-2.svg" />
+                          Modo Reflexivo
+                        </h2>
+                        <p>
+                          ¿Tú qué opinas? Descubre cómo encaja tu forma de pensar en el universo de
+                          opiniones de la sociedad.
+                        </p>
+                      </div>
+                      <div className="selector-column-cubo cubo-pc">
+                        <img className="cubo-help" src="/images/selector-cubo.svg" />
+                      </div>
+                    </div>
 
-                      <div className="selector-help-mobile">
-                        <div className="selector-column-cubo cubo-mobile">
-                          <img className="cubo-help" src="/images/selector-cubo.svg" />
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
+                    <div className="selector-help-mobile">
+                      <div className="selector-column-cubo cubo-mobile">
+                        <img className="cubo-help" src="/images/selector-cubo.svg" />
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
                           <br />
-                            Cronologico
+                          Cronologico
                         </span>
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
                           <br />
-                            Laberinto
+                          Laberinto
                         </span>
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
                           <br />
-                            Reflexivo
+                          Reflexivo
                         </span>
-                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="characters is-hidden">
-                <div className="pane-cover"></div>
-                <div className="pane">
-                  <a className="close">
-                    <img src="/images/pane-close.svg" />
+            </div>
+            <div className="characters is-hidden">
+              <div className="pane-cover"></div>
+              <div className="pane">
+                <a className="close">
+                  <img src="/images/pane-close.svg" />
+                </a>
+                <div className="pane-content">
+                  <h2 id="name-personaje"></h2>
+                  <p id="desc-personaje"></p>
+                  <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
+                    Elegir
                   </a>
-                  <div className="pane-content">
-                    <h2 id="name-personaje"></h2>
-                    <p id="desc-personaje"></p>
-                    <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
-                      Elegir
-                  </a>
-                  </div>
-                  <div className="pane-video">
-                    <img className="bg-video" src="/images/bg-video.png" />
-                    <video id="video1" width="420">
-                      <source src="" type="video/mp4" data-personaje="" /> Your browser does not
-                      support HTML video.
-                  </video>
-                  </div>
                 </div>
+                <div className="pane-video">
+                  <img className="bg-video" src="/images/bg-video.png" />
+                  <video id="video1" width="420">
+                    <source src="" type="video/mp4" data-personaje="" /> Your browser does not
+                    support HTML video.
+                  </video>
+                </div>
+              </div>
 
-                <div className="characters-wrapper">
-                  <div className="row row-first">
-                    {field_ec_characters.map((c) => {
-                      const character = field_ec_characters_terms_json.find(
-                        (ch) => Number(ch.tid) === Number(c),
-                      );
-                      return (
-                        <div className="column" key={character.tid}>
-                          <div className="parent">
-                            <div
-                              className={`child bg-six toggle ${character.tid}`}
-                              data-video={character.field_ec_avatar_video}
-                              data-personaje={character.tid}
-                              data-nombre={character.character_name}
-                              data-desc={character.description_value}
-                            >
-                              <img className="icon-selected" src="/images/is-selected.svg" />
-                              <h2 className="name">{character.character_name}</h2>
-                              <img className="img-bn" src={character.field_ec_avatar_gray} />
-                              <img className="img-color" src={character.field_ec_avatar_color} />
-                              <a className="projectButton">Conóceme más</a>
-                            </div>
+              <div className="characters-wrapper">
+                <div className="row row-first">
+                  {field_ec_characters.map((c) => {
+                    const character = field_ec_characters_terms_json.find(
+                      (ch) => Number(ch.tid) === Number(c),
+                    );
+                    return (
+                      <div className="column" key={character.tid}>
+                        <div className="parent">
+                          <div
+                            className={`child bg-six toggle ${character.tid}`}
+                            data-video={character.field_ec_avatar_video}
+                            data-personaje={character.tid}
+                            data-nombre={character.character_name}
+                            data-desc={character.description_value}
+                          >
+                            <img className="icon-selected" src="/images/is-selected.svg" />
+                            <h2 className="name">{character.character_name}</h2>
+                            <img className="img-bn" src={character.field_ec_avatar_gray} />
+                            <img className="img-color" src={character.field_ec_avatar_color} />
+                            <a className="projectButton">Conóceme más</a>
                           </div>
                         </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="selector-mode is-hidden selector-desktop">
-                  <div className="selector-cover">
-                    <img src="/images/selector-cubo.svg" />
-                    <ul>
-                      <li>
-                        <img src="/images/selector-0.svg" />
-                        <a href={videoLink} className="cronologico">
-                          Modo Cronologico
-                      </a>
-                      </li>
-                      <li>
-                        <img src="/images/selector-1.svg" />
-                        Modo Laberinto
-                    </li>
-                      <li>
-                        <img src="/images/selector-2.svg" />
-                        Modo Reflexivo
-                    </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div className="selector-mode selector-mobile is-hidden">
-                  <div className="selector-cover">
-                    <img src="/images/selector-cubo.svg" />
-                    <ul>
-                      <li>
-                        <a
-                          href="https://elcubo.vercel.app/el-cubo/temporada-1/5366?personaje=4726&modo=cronologico"
-                          className="cronologico"
-                        >
-                          Modo
-                        <br />
-                          Cronologico
-                      </a>
-                      </li>
-                      <li>
-                        Modo
-                      <br />
-                        Laberinto
-                    </li>
-                      <li>
-                        Modo
-                      <br />
-                        Reflexivo
-                    </li>
-                    </ul>
-                  </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
-            </>
-          )}
+
+              <div className="selector-mode is-hidden selector-desktop">
+                <div className="selector-cover">
+                  <img src="/images/selector-cubo.svg" />
+                  <ul>
+                    <li>
+                      <img src="/images/selector-0.svg" />
+                      <a href={videoLink} className="cronologico">
+                        Modo Cronologico
+                      </a>
+                    </li>
+                    <li>
+                      <img src="/images/selector-1.svg" />
+                      Modo Laberinto
+                    </li>
+                    <li>
+                      <img src="/images/selector-2.svg" />
+                      Modo Reflexivo
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="selector-mode selector-mobile is-hidden">
+                <div className="selector-cover">
+                  <img src="/images/selector-cubo.svg" />
+                  <ul>
+                    <li>
+                      <a
+                        href="https://elcubo.vercel.app/el-cubo/temporada-1/5366?personaje=4726&modo=cronologico"
+                        className="cronologico"
+                      >
+                        Modo
+                        <br />
+                        Cronologico
+                      </a>
+                    </li>
+                    <li>
+                      Modo
+                      <br />
+                      Laberinto
+                    </li>
+                    <li>
+                      Modo
+                      <br />
+                      Reflexivo
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </Container>
     </AppLayout>
   );
