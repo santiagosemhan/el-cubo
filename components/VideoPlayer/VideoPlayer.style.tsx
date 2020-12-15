@@ -67,4 +67,27 @@ export const VideoPlayerWrapper = styled.div`
       display: none;
     }
   }
+
+  .plyr--full-ui input[type=range] {
+    color: #45B4C1;
+  }
+  
+  .plyr__control--overlaid {
+    background: rgba(69, 180, 193, .5);
+  }
+  
+  .plyr--video .plyr__control.plyr__tab-focus,
+  .plyr--video .plyr__control:hover,
+  .plyr--video .plyr__control[aria-expanded=true] {
+    background: #45B4C1;
+  }
+  
+  .plyr__control.plyr__tab-focus {
+    box-shadow: 0 0 0 5px rgba(#45B4C1, .5);
+  }
+  
+  .plyr__menu__container .plyr__control[role=menuitemradio][aria-checked=true]::before {
+    background: #45B4C1;
+  }
+
 `;

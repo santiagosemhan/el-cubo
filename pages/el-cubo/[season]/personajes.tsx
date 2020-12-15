@@ -458,7 +458,7 @@ const CharactersPage = ({ data = {} }) => {
                     <ul>
                       <li>
                         <a
-                          href="https://elcubo.vercel.app/el-cubo/temporada-1/5366?personaje=4726&modo=cronologico"
+                          href={videoLink}
                           className="cronologico"
                         >
                           Modo
