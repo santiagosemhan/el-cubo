@@ -842,6 +842,11 @@ footer {
     height: 100vh;
     z-index: 10;
   }
+
+  .input-search, #menu-mobile-button {
+    display: none;
+  }
+
 }
 
 
