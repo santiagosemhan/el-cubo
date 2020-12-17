@@ -45,7 +45,7 @@ body.fade {
   width: 200px;
   height: auto;
   position: absolute;
-  top: 120px;
+  top: 190px;
   z-index: 11;
 }
 
@@ -367,7 +367,7 @@ h2 {
 }
 
 .paragraph-message p {
-  font-size: 18px;
+  font-size: 1.5rem;
   line-height: 1.4;
   letter-spacing: 1px;
   float: left;
@@ -376,7 +376,7 @@ h2 {
 }
 
 .hero-1 .copy-cover {
-  width: 500px;
+  width: 600px;
   margin: auto;
   margin-top: 30%;
 }
@@ -641,13 +641,20 @@ footer {
 
 /* Page 2 */
 
-.hero-3 .paragraph-message,
-.hero-4 .paragraph-message {
+.hero-3 {
+  grid-template-rows: auto;
+  padding-bottom: 200px;
+}
+
+.hero-3 .arrow-down{
+  display: none;
+}
+
+.hero-3 .paragraph-message {
   width: 640px;
 }
 
-.hero-3 .paragraph-message p,
-.hero-4 .paragraph-message p {
+.hero-3 .paragraph-message p {
   font-family: 'Bitter';
   font-weight: 100;
   font-size: 16px;
@@ -657,27 +664,28 @@ footer {
   font-weight: 600;
 }
 
-.hero-4 h1 {
-  margin: 0;
-}
 
-.hero-4 .paragraph-message em {
+.hero-3 .paragraph-message em {
   color: #276899;
 }
 
-.hero-4 ol {
+.hero-3 ol {
   font-family: 'Bitter';
   font-weight: 100;
   font-size: 16px;
   margin-top: 20px;
 }
 
-.hero-4 ol li {
+.hero-3 ol li {
   line-height: 1.6em;
 }
 
-.hero-4 .paragraph-message strong em {
+.hero-3 .paragraph-message strong em {
   color: white;
+}
+
+.hero-3 .copy-cover-2.cover-first {
+  margin-top: 250px;
 }
 
 .temporada-1 #mouse-circle.big span {
@@ -792,8 +800,7 @@ footer {
     font-size: 16px;
   }
   /* Pagina temporada */
-  .hero-3,
-  .hero-4 {
+  .hero-3 {
     grid-template-rows: auto;
     height: auto;
   }
@@ -801,16 +808,12 @@ footer {
     display: none;
   }
   .hero-3 .video-overlay,
-  .hero-4 .video-overlay,
   .hero-3 .copy-cover,
-  .hero-4 .copy-cover,
-  .hero-3 .paragraph-message,
-  .hero-4 .paragraph-message {
+  .hero-3 .paragraph-message {
     width: auto;
     z-index: 10;
   }
-  .hero-3 .video-overlay,
-  .hero-4 .video-overlay {
+  .hero-3 .video-overlay {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 60px;
@@ -820,8 +823,7 @@ footer {
   .copy-cover-2 {
     text-align: center;
   }
-  .hero-3 .button-mobile,
-  .hero-4 .button-mobile {
+  .hero-3 .button-mobile {
     width: 190px;
     margin: auto;
     margin-bottom: 100px;
@@ -835,13 +837,12 @@ footer {
   .hero-3 .third {
     font-size: 1.5rem !important;
   }
-  .hero-4 .paragraph-message {
-    margin-bottom: 40px;
-  }
+
   .video-overlay {
     height: 100vh;
     z-index: 10;
   }
+
 
   .input-search, #menu-mobile-button {
     display: none;

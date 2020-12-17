@@ -310,7 +310,7 @@ body {
 }
 
 .characters .selector-cover ul {
-    opacity: 0;
+    /*opacity: 0;*/
     color: #45B4C1;
     font-family: 'Inter';
     font-weight: 600;
@@ -319,11 +319,13 @@ body {
     transition: 0.5s all ease;
 }
 
+/*
 .characters .selector-cover:hover ul {
     opacity: 1;
-}
+}*/
 
 .characters .selector-cover ul li {
+    font-size: 20px;
     line-height: 1.3em;
     margin-bottom: 10px;
 }
