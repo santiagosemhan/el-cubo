@@ -11,6 +11,10 @@ body {
     --fullGrid: 1 / 1 / -1 / -1;
 }
 
+footer {
+    font-family: 'Dosis';
+}
+
 .header-top {
     width: 100%;
 }
@@ -333,6 +337,7 @@ body {
 .characters .selector-cover ul li a {
     color: #45B4C1;
     text-decoration: none;
+    font-size: 20px;
 }
 
 .characters .selector-cover ul li:hover,
