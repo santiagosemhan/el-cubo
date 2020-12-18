@@ -219,6 +219,18 @@ footer {
     z-index: 10000;
 }
 
+.fake-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+
+.fake-cover.visible {
+    display: flex;
+    z-index: 10000;
+}
+
 .characters .pane video {
     width: 150%;
     margin-left: -23%;
@@ -525,6 +537,10 @@ a {
         bottom: 180px;
     }
     .input-search, #menu-mobile-button {
+        display: none;
+    }
+
+    .fake-cover {
         display: none;
     }
 }

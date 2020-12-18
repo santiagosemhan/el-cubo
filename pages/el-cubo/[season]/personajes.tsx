@@ -28,6 +28,8 @@ const CharactersPage = ({ data = {} }) => {
     const button_close = document.querySelectorAll('.close');
     const pane = document.querySelector('.pane');
     const pane_cover = document.querySelector('.pane-cover');
+    const fake_cover = document.querySelector('.fake-cover');
+
 
     window.onload = function () {
       disableScroll();
@@ -75,6 +77,8 @@ const CharactersPage = ({ data = {} }) => {
         myVideo.pause();
         myVideo.currentTime = 0;
 
+        fake_cover.classList.toggle('visible');
+
         var personaje_child = document.querySelectorAll('.child');
         [].forEach.call(personaje_child, function (el) {
           el.classList.remove('is-selected');
@@ -105,6 +109,11 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
+    // Disabled fake cover 
+    fake_cover.addEventListener('mousemove', () => {
+      fake_cover.classList.remove('visible');
+    });
+
     // Modal Help
     const openModalTriggerEl = document.querySelector('.open-modal');
     const closeModalTriggerEl = document.querySelector('.close-modal');
@@ -123,6 +132,7 @@ const CharactersPage = ({ data = {} }) => {
           goToStep(1);
           enableScroll();
           openModalTriggerEl.classList.toggle('is-active');
+          fake_cover.classList.toggle('visible');
           modalEl.classList.remove('open');
         });
       }
@@ -438,6 +448,7 @@ const CharactersPage = ({ data = {} }) => {
               </div>
               <div className="characters is-hidden">
                 <div className="pane-cover close"></div>
+
                 <div className="pane">
                   <a className="close">
                     <img src="/images/pane-close.svg" />
@@ -459,6 +470,7 @@ const CharactersPage = ({ data = {} }) => {
                 </div>
 
                 <div className="characters-wrapper">
+                  <div className="fake-cover"></div>
                   <div className="row row-first">
                     {field_ec_characters.map((c) => {
                       const character = field_ec_characters_terms_json.find(
