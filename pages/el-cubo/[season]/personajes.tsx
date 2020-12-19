@@ -501,20 +501,33 @@ const CharactersPage = ({ data = {} }) => {
 
                 <div className="selector-mode is-hidden selector-desktop">
                   <div className="selector-cover">
-                    <img src="/images/selector-cubo.svg" />
+                    <div id="mainDiv">
+                      <div id="boxDiv">
+                        <div id="front"></div>
+                        <div id="back"></div>
+                        <div id="left"><img src="https://i.imgur.com/TPcfnZm.jpeg" /></div>
+                        <div id="right">
+
+                        </div>
+                        <div id="top"></div>
+                        <div id="bottom"></div>
+
+                        <div class="shadow"></div>
+                      </div>
+                    </div>
                     <ul>
                       <li>
-                        <img src="/images/selector-0.svg" />
+
                         <a href={videoLink} className="cronologico">
                           Modo Cronologico
                       </a>
                       </li>
                       <li>
-                        <img src="/images/selector-1.svg" />
+
                         Modo Laberinto
                     </li>
                       <li>
-                        <img src="/images/selector-2.svg" />
+
                         Modo Reflexivo
                     </li>
                     </ul>

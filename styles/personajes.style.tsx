@@ -316,7 +316,7 @@ footer {
 }
 
 .characters .selector-cover {
-    width: 380px;
+    width: 600px;
     margin: auto;
 }
 
@@ -333,6 +333,9 @@ footer {
     font-size: 20px;
     list-style-type: none;
     transition: 0.5s all ease;
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
 
 /*
@@ -344,6 +347,9 @@ footer {
     font-size: 20px;
     line-height: 1.3em;
     margin-bottom: 10px;
+    float: left;
+    text-align: center;
+    width: 33.33%;
 }
 
 .characters .selector-cover ul li a {
@@ -381,6 +387,111 @@ footer {
 .characters .selector-mode.selector-mobile {
     display: none;
 }
+
+/* Cube */
+#mainDiv {
+    width: 60px;
+    height: 60px;
+    margin: 0px auto 40px auto;
+    perspective: 150px;
+}
+
+#left img {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+}
+
+#boxDiv {
+    width: 60px;   
+    transform-style: preserve-3d; 
+    animation: rotate 5s linear infinite;
+}
+
+#boxDiv div {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    opacity: 0.9;
+    color: white;
+}
+
+#front {
+    transform: translateZ(30px);
+    background:#45B4C1;
+    /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 0px solid black;
+}
+
+
+#back {
+    transform: rotateY(180deg) translateZ(30px);
+    background: #45B4C1;
+    /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);
+    background-position: center;*/
+    background-repeat: no-repeat;  
+    border: 0px solid black;
+}
+
+#left {
+    transform: rotateY(-90deg) translateX(-30px);
+    transform-origin: left;
+    background: #45B4C1;
+    /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
+    background-position: center;
+    background-repeat: no-repeat;  
+    border: 0px solid black;
+    opacity: 1;
+}
+
+#right {
+    transform: rotateY(90deg) translateX(30px);
+    transform-origin: right;
+    background: black;  
+    background-image: url('https://elcubo.vercel.app/images/logo-elcubo.png');
+    background-position: center;
+    background-size: 40%;
+    background-repeat: no-repeat; 
+    border: 0px solid black;
+}
+
+#top {
+    transform: rotateX(-90deg) translateY(-30px);
+    transform-origin: top;
+    background: #45B4C1;
+    background-image: /*url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
+    background-position: center;
+    background-repeat: no-repeat;  
+    border: 0px solid black;
+}
+
+#bottom {
+    transform: rotateX(90deg) translateY(30px);
+    transform-origin: bottom;
+    background: #45B4C1; 
+    /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
+    background-position: center;
+    background-repeat: no-repeat; 
+    border: 0px solid black;
+}
+
+@keyframes rotate {
+    0% { transform: rotateY(0); }
+    100% { transform: rotateY(360deg); }
+}
+
+
+.shadow {
+    width:100px;
+    height:100px;
+    background: rgba(69,180,193,0.2);
+    box-shadow: 0 0 50px 50px rgba(69,180,193,0.2);
+    -webkit-transform: rotateX(90deg) translateZ(-60px) rotateY(180deg) translateX(0px);
+}
+
+
 
 /* Reset Highlights */
 
