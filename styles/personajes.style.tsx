@@ -397,8 +397,8 @@ footer {
 }
 
 #left img {
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
     margin: auto;
 }
 
@@ -410,9 +410,9 @@ footer {
 
 #boxDiv div {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    opacity: 0.9;
+    width: 59px;
+    height: 59px;
+    opacity: 0.7;
     color: white;
 }
 
@@ -422,7 +422,7 @@ footer {
     /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
     background-position: center;
     background-repeat: no-repeat;
-    border: 0px solid black;
+    border: 1px solid black;
 }
 
 
@@ -432,7 +432,7 @@ footer {
     /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);
     background-position: center;*/
     background-repeat: no-repeat;  
-    border: 0px solid black;
+    border: 1px solid black;
 }
 
 #left {
@@ -442,7 +442,7 @@ footer {
     /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
     background-position: center;
     background-repeat: no-repeat;  
-    border: 0px solid black;
+    border: 1px solid black;
     opacity: 1;
 }
 
@@ -454,7 +454,7 @@ footer {
     background-position: center;
     background-size: 40%;
     background-repeat: no-repeat; 
-    border: 0px solid black;
+    border: 1px solid black;
 }
 
 #top {
@@ -464,7 +464,7 @@ footer {
     background-image: /*url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
     background-position: center;
     background-repeat: no-repeat;  
-    border: 0px solid black;
+    border: 1px solid black;
 }
 
 #bottom {
@@ -474,7 +474,7 @@ footer {
     /*background-image: url(http://i72.photobucket.com/albums/i189/MrMagic13/a_logo_white2.png);*/
     background-position: center;
     background-repeat: no-repeat; 
-    border: 0px solid black;
+    border: 1px solid black;
 }
 
 @keyframes rotate {

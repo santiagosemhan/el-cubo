@@ -9,6 +9,7 @@ import React from 'react';
 import { HelpGlobalStyle } from 'styles/help.style';
 import { Container } from 'styles/Home';
 import { PersonajesGlobalStyle } from 'styles/personajes.style';
+import { isNull } from 'util';
 
 const CharactersPage = ({ data = {} }) => {
   console.log({ data });
@@ -93,6 +94,9 @@ const CharactersPage = ({ data = {} }) => {
           el.classList.remove('is-hidden');
         });
 
+        // Set image cube
+        document.querySelector('#left img').src = "/images/thumbs/" + button_select.dataset.personaje + ".jpg";
+
         const chrono = chronology.find((cr) => cr.field_ec_character === character);
         const episodes = chrono.field_ec_episodes.split(',').map((ep) => ep.trim());
         console.log(episodes[0]);
@@ -101,6 +105,7 @@ const CharactersPage = ({ data = {} }) => {
       });
     }
 
+    // Video popup
     let myVideo = document.getElementById('video1');
     if (myVideo) {
       function playPause() {
@@ -134,6 +139,10 @@ const CharactersPage = ({ data = {} }) => {
           openModalTriggerEl.classList.toggle('is-active');
           fake_cover.classList.toggle('visible');
           modalEl.classList.remove('open');
+
+          // Set local storage 1 help
+          localStorage.setItem('help', '1');
+
         });
       }
       window.addEventListener('click', () => {
@@ -142,6 +151,9 @@ const CharactersPage = ({ data = {} }) => {
           enableScroll();
           openModalTriggerEl.classList.toggle('is-active');
           modalEl.classList.remove('open');
+
+          // Set local storage 1 help
+          localStorage.setItem('help', '1');
         }
       })
 
@@ -154,6 +166,12 @@ const CharactersPage = ({ data = {} }) => {
 
     modal();
 
+
+    // Test help
+    let data_help = localStorage.getItem('help');
+    if (data_help === '1') {
+      modalEl.classList.toggle('open');
+    }
 
 
     /* Wizard Help */
@@ -483,6 +501,7 @@ const CharactersPage = ({ data = {} }) => {
                               className={`child bg-six toggle char-${character.tid} ${character.tid}`}
                               data-video={character.field_ec_avatar_video}
                               data-personaje={character.tid}
+                              data-thumb={character.tid}
                               data-nombre={character.character_name}
                               data-desc={character.description_value}
                             >
@@ -505,7 +524,7 @@ const CharactersPage = ({ data = {} }) => {
                       <div id="boxDiv">
                         <div id="front"></div>
                         <div id="back"></div>
-                        <div id="left"><img src="https://i.imgur.com/TPcfnZm.jpeg" /></div>
+                        <div id="left"><img src="/images/thumbs/0.jpg " /></div>
                         <div id="right">
 
                         </div>

@@ -31,6 +31,7 @@ body {
   padding: 2px;
   position: absolute;
   right: -5px;
+  display: none;
 }
 
 /* Pane Slide */
