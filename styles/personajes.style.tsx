@@ -412,7 +412,7 @@ footer {
     position: absolute;
     width: 59px;
     height: 59px;
-    opacity: 0.7;
+    opacity: 0.8;
     color: white;
 }
 

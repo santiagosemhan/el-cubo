@@ -67,6 +67,8 @@ const CharactersPage = ({ data = {} }) => {
     const button_select = document.getElementById('select-personaje');
     let character = 'unselect';
 
+    let selector = document.querySelectorAll('.selector-mode');
+
     if (button_select) {
       button_select.addEventListener('click', () => {
         character = button_select.dataset.personaje;
@@ -89,10 +91,14 @@ const CharactersPage = ({ data = {} }) => {
           .getElementsByClassName(button_select.dataset.personaje)[0]
           .classList.add('is-selected');
 
-        var selector = document.querySelectorAll('.selector-mode');
-        [].forEach.call(selector, function (el) {
-          el.classList.remove('is-hidden');
-        });
+        // Show selector mode
+        selector[0].classList.remove('is-hidden');
+        if (!selector[0].classList.contains('active')) {
+          selector[0].classList.add('active');
+        }
+        //[].forEach.call(selector, function (el) {
+        //  el.classList.remove('is-hidden');
+        //});
 
         // Set image cube
         document.querySelector('#left img').src = "/images/thumbs/" + button_select.dataset.personaje + ".jpg";
@@ -130,6 +136,15 @@ const CharactersPage = ({ data = {} }) => {
           modalEl.classList.add('open');
           disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
+
+          // Hide selector    
+          if (selector[0].classList.contains('active')) {
+            console.log('here');
+            selector[0].classList.add('is-hidden');
+          }
+          //document.getElementsByClassName('selector-mode')[0].classList.remove('is-hidden');
+          //document.getElementsByClassName('selector-mode')[0].classList.add('is-hidden');
+
         });
       }
       if (closeModalTriggerEl) {
@@ -143,6 +158,12 @@ const CharactersPage = ({ data = {} }) => {
           // Set local storage 1 help
           localStorage.setItem('help', '1');
 
+          // Hide selector  
+          if (selector[0].classList.contains('active')) {
+            selector[0].classList.remove('is-hidden');
+          }
+
+
         });
       }
       window.addEventListener('click', () => {
@@ -154,6 +175,12 @@ const CharactersPage = ({ data = {} }) => {
 
           // Set local storage 1 help
           localStorage.setItem('help', '1');
+
+          if (selector[0].classList.contains('active')) {
+            console.log('here');
+            selector[0].classList.remove('is-hidden');
+          }
+
         }
       })
 
@@ -405,7 +432,7 @@ const CharactersPage = ({ data = {} }) => {
                       <div className="selector-help-pc">
                         <div className="selector-column">
                           <h2>
-                            <img src="/images/selector-0.svg" />
+
                             Modo Cronologico
                         </h2>
                           <p>
@@ -414,14 +441,14 @@ const CharactersPage = ({ data = {} }) => {
                         </div>
                         <div className="selector-column">
                           <h2>
-                            <img src="/images/selector-1.svg" />
+
                             Modo Laberinto
                         </h2>
                           <p>Escoge ruta de entrada y recorre el cubo a tu manera.</p>
                         </div>
                         <div className="selector-column">
                           <h2>
-                            <img src="/images/selector-2.svg" />
+
                             Modo Reflexivo
                         </h2>
                           <p>
