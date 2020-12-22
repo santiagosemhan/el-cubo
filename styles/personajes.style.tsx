@@ -42,6 +42,10 @@ footer {
     display: flex;
 }
 
+.characters.hide {
+    display: none;
+}
+
 .characters .child {
     height: 100%;
     width: 100%;
@@ -489,6 +493,117 @@ footer {
     background: rgba(69,180,193,0.2);
     box-shadow: 0 0 50px 50px rgba(69,180,193,0.2);
     -webkit-transform: rotateX(90deg) translateZ(-60px) rotateY(180deg) translateX(0px);
+}
+
+/* Onboard TEMP */
+
+#hero-onboarding.is-hidden {
+    opacity: 0;
+    height: 0;
+}
+
+#hero-onboarding {
+    height: 100vh;
+    display: 1;
+-webkit-transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -ms-transition: opacity 1s ease-in-out;
+    -o-transition: opacity 1s ease-in-out;
+    opacity: 1;
+}
+
+.hero {
+    /* Create grid spanning viewport width & height */
+    display: grid;
+    grid-template-rows: 100vh;
+    overflow: hidden;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.video-bg {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Re-size video to cover full screen while maintaining aspect ratio */
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    /* Display video below overlay */
+    z-index: -1;
+}
+
+.video-bg::-webkit-media-controls {
+    display: none !important;
+}
+
+.video-overlay {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Center Content */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+}
+
+.image-bg {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100vh;
+}
+
+.copy-cover {
+    width: 100vw;
+}
+
+.hero .copy {
+    margin: 0;
+    z-index: 100;
+    width: 60vw;
+    margin: auto;
+    text-align: center;
+    font-family: 'Bitter';
+}
+
+.hero .copy p {
+    color: white;
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.3;
+    margin-top: 35vh;
+    margin-bottom: 80px;
+}
+
+.hero .copy p strong {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.hero-onboarding .copy .cover-link {
+    width: 230px;
+    margin: auto;
+}
+.hero-onboarding a {
+    border: 1px solid #1A2839;
+    color: #1A2839;
+    background-color: #45B4C1;
+    padding: 3px 10px 3px 30px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-family:'Inter';
+    text-decoration: none;
+    float: left;
+}
+
+.hero-onboarding .copy a span {
+    font-size: 20px;
+    line-height: 2.2em;
+    float: left;
+}
+
+.hero-onboarding .copy a img {
+    margin-left: 10px;
+    margin-top: 3px;
 }
 
 

@@ -23,6 +23,10 @@ body {
   z-index: 11;
 }
 
+.nav.hide {
+  display: none;
+}
+
 .logo--image {
   top: 120px;
 }

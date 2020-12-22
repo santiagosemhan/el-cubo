@@ -291,6 +291,20 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
+    // TEMPO onboard 
+    let link_temp = document.getElementsByClassName('cronologico')[0];
+    if (link_temp) {
+      link_temp.addEventListener('click', (ev) => {
+        ev.preventDefault();
+
+        document.getElementById('link-onboard').href = link_temp.href;
+        document.getElementById('hero-onboarding').classList.remove('is-hidden');
+
+        document.getElementsByClassName('characters')[0].classList.add('hide');
+        document.getElementsByClassName('nav')[0].classList.add('hide');
+      });
+    }
+
 
     // Enable Disable Scroll
 
@@ -336,6 +350,9 @@ const CharactersPage = ({ data = {} }) => {
       window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
     }
 
+
+
+
   }, []);
 
   return (
@@ -369,6 +386,29 @@ const CharactersPage = ({ data = {} }) => {
                     </nav>
                   }
                 />
+
+
+                <div id="hero-onboarding" className="hero hero-onboarding is-hidden">
+                  <img className="image-bg" src="/images/onboard.jpg" />
+
+                  <div className="video-overlay">
+                    <div className="copy-cover">
+                      <h1 className="copy">
+                        <p>
+                          Explora esta historia en la que el abuso, la manipulación, la doble vida y los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los valores y la moral.
+                </p>
+                        <div class="cover-link">
+                          <a id="link-onboard" href="#" className="cyan-dark">
+                            <span>Continuar</span>
+                            <img src="/images/icon-arrow-init.svg" />
+
+                          </a>
+                        </div>
+
+                      </h1>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="modal open">
                   <div className="modal__content">
