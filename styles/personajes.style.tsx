@@ -672,42 +672,23 @@ a {
     .characters-wrapper .row {
         display: block;
     }
-    .characters .selector-desktop {
-        display: none;
-    }
 
     .characters .selector-cover {
         width: 100% !important;
     }
-    .characters .selector-mode.selector-mobile {
-        display: block;
-        bottom: 20px;
-        z-index: 12;
-        transition: 2s all ease;
-        opacity: 1;
-        text-align: center;
-    }
+    
     .characters .selector-mode.is-hidden {
         z-index: -2;
         transition: 1s all ease;
         opacity: 0;
     }
-    .characters .selector-mode.selector-mobile .selector-cover ul {
-        opacity: 1;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        text-align: center;
+
+    .characters .selector-mode {
+        bottom: 10px;
     }
-    .characters .selector-mode.selector-mobile .selector-cover img {
-        float: none;
-        width: 40px;
-        margin-bottom: 10px;
-    }
-    .characters .selector-mode.selector-mobile .selector-cover ul li {
-        width: 33.33%;
-        float: left;
-        font-size: 16px;
+
+    #mainDiv {
+        margin: 0px auto 20px auto;
     }
 
     .characters .parent:hover .child,

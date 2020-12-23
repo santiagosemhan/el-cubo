@@ -23,7 +23,46 @@ body {
   z-index: 11;
 }
 
-.nav.hide {
+.help-wrapper .nav a.back-to-season {
+  display: none;
+}
+
+.help-wrapper .nav.hide a.back-to-season {
+  display: inline;
+}
+
+.help-wrapper .nav.hide {
+  left: 20px;
+}
+
+
+.help-wrapper .nav.hide a.back-to-season img,
+.help-wrapper .nav.hide a.back-to-season span {
+  float: left;
+}
+
+.help-wrapper .nav.hide a.back-to-season span {
+  color: white;
+  margin-left: 5px;
+  margin-top: 5px;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  will-change: opacity;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.help-wrapper .nav.hide a.back-to-season:hover span {
+  opacity: 1;
+}
+
+.nav.hide ul {
+  display: none;
+}
+
+.logo-elcubo.hide {
   display: none;
 }
 
@@ -68,11 +107,11 @@ body {
   display: none;
 }
 
-.help-wrapper .is-active .icon-help .icon-help-open {
+.help-wrapper .is-active.open .icon-help .icon-help-open {
   display: none;
 }
 
-.help-wrapper .is-active .icon-help .icon-help-close {
+.help-wrapper .is-active.open .icon-help .icon-help-close {
   display: inline;
 }
 

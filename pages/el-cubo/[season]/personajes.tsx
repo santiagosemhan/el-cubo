@@ -55,7 +55,7 @@ const CharactersPage = ({ data = {} }) => {
     if (button_close) {
       button_close.forEach(function (link) {
         link.addEventListener('click', () => {
-          pane.classList.toggle('open');
+          pane.classList.remove('open');
           enableScroll();
           pane_cover.classList.toggle('visible');
           myVideo.pause();
@@ -73,7 +73,7 @@ const CharactersPage = ({ data = {} }) => {
       button_select.addEventListener('click', () => {
         character = button_select.dataset.personaje;
 
-        pane.classList.toggle('open');
+        pane.classList.remove('open');
         enableScroll();
 
         pane_cover.classList.toggle('visible');
@@ -102,6 +102,9 @@ const CharactersPage = ({ data = {} }) => {
 
         // Set image cube
         document.querySelector('#left img').src = "/images/thumbs/" + button_select.dataset.personaje + ".jpg";
+
+        // Set image onboard
+        document.querySelector('#hero-onboarding img').src = "/images/onboard/" + button_select.dataset.personaje + ".jpg";
 
         const chrono = chronology.find((cr) => cr.field_ec_character === character);
         const episodes = chrono.field_ec_episodes.split(',').map((ep) => ep.trim());
@@ -184,20 +187,26 @@ const CharactersPage = ({ data = {} }) => {
         }
       })
 
-      function keyPress(e) {
-        if (e.key === "Escape") {
-          modalEl.classList.remove('open');
-        }
-      }
+
     }
 
     modal();
 
 
+    // Esc  
+    document.onkeydown = function (evt) {
+      evt = evt || window.event;
+      if (evt.keyCode == 27) {
+        modalEl.classList.remove('open');
+        pane.classList.remove('open');
+      }
+    };
+
+
     // Test help
     let data_help = localStorage.getItem('help');
     if (data_help === '1') {
-      modalEl.classList.toggle('open');
+      modalEl.classList.remove('open');
     }
 
 
@@ -291,7 +300,7 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
-    // TEMPO onboard 
+    // TEMP onboard 
     let link_temp = document.getElementsByClassName('cronologico')[0];
     if (link_temp) {
       link_temp.addEventListener('click', (ev) => {
@@ -302,6 +311,7 @@ const CharactersPage = ({ data = {} }) => {
 
         document.getElementsByClassName('characters')[0].classList.add('hide');
         document.getElementsByClassName('nav')[0].classList.add('hide');
+        document.getElementsByClassName('logo-elcubo')[0].classList.add('hide');
       });
     }
 
@@ -369,9 +379,15 @@ const CharactersPage = ({ data = {} }) => {
         ) : (
             <>
               <div className="help-wrapper">
+
+
                 <HeaderTop
                   nav={
                     <nav className="nav">
+                      <a href="/el-cubo/temporada-1/personajes" className="back-to-season">
+                        <img src="/images/icon-arrow-back.svg" />
+                        <span>Volver al inicio</span>
+                      </a>
                       <ul>
                         <li>
                           <a href="#" className="toggle-help open-modal is-active">
@@ -389,7 +405,7 @@ const CharactersPage = ({ data = {} }) => {
 
 
                 <div id="hero-onboarding" className="hero hero-onboarding is-hidden">
-                  <img className="image-bg" src="/images/onboard.jpg" />
+                  <img id="image-onboard" className="image-bg" src="/images/onboard.jpg" />
 
                   <div className="video-overlay">
                     <div className="copy-cover">
@@ -474,7 +490,7 @@ const CharactersPage = ({ data = {} }) => {
                         <div className="selector-column">
                           <h2>
 
-                            Modo Cronologico
+                            Modo Cronológico
                         </h2>
                           <p>
                             Explora esta historia en la línea de tiempo en que sucedieron los hechos.
@@ -510,7 +526,7 @@ const CharactersPage = ({ data = {} }) => {
                           <span>
                             Modo
                           <br />
-                            Cronologico
+                            Cronológico
                         </span>
                         </div>
                         <div className="selector-column">
@@ -606,7 +622,7 @@ const CharactersPage = ({ data = {} }) => {
                       <li>
 
                         <a href={videoLink} className="cronologico">
-                          Modo Cronologico
+                          Modo Cronológico
                       </a>
                       </li>
                       <li>
@@ -621,33 +637,7 @@ const CharactersPage = ({ data = {} }) => {
                   </div>
                 </div>
 
-                <div className="selector-mode selector-mobile is-hidden">
-                  <div className="selector-cover">
-                    <img src="/images/selector-cubo.svg" />
-                    <ul>
-                      <li>
-                        <a
-                          href={videoLink}
-                          className="cronologico"
-                        >
-                          Modo
-                        <br />
-                          Cronologico
-                      </a>
-                      </li>
-                      <li>
-                        Modo
-                      <br />
-                        Laberinto
-                    </li>
-                      <li>
-                        Modo
-                      <br />
-                        Reflexivo
-                    </li>
-                    </ul>
-                  </div>
-                </div>
+
               </div>
             </>
           )}
@@ -675,7 +665,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fetcher(`/api/v1/elcubo/season/4731/chrono`),
   ]);
 
-  // console.log({ data });
+  // console.log({data});
   if (!data || !data.length) {
     return { props: { data: {} } };
   }
