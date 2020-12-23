@@ -730,7 +730,7 @@ a {
     .characters .parent .child.char-4727 img.img-color,
     .characters .parent .child.char-4728 img.img-color,
     .characters .parent .child.char-4730 img.img-color {
-        top: -55px;
+        top: -54px;
     }
   
     .characters .parent .child.char-4727 .name,
