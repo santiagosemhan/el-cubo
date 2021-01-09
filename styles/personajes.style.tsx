@@ -750,6 +750,12 @@ a {
     .fake-cover {
         display: none;
     }
+
+    #hero-onboarding .copy p {
+        font-size: 14px;
+        margin-top: 0vh;
+        margin-bottom: 40px;
+    }
 }
 
 /* Input search */
