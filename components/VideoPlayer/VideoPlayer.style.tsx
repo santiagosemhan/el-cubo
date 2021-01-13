@@ -92,5 +92,12 @@ export const VideoPlayerWrapper = styled.div`
 
   .plyr__portal__title {
     color: white;
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-weight: 300;
+    position: absolute;
+    left: 20px;
+    top: 10vh;
+    z-index: 100;
   }
 `;
