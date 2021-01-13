@@ -101,13 +101,17 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
           // console.log({ chronology });
           const characterList = chronology.map((cr) => {
             const name = JSON.parse(cr.field_ec_character_term_json)[0].character_name;
-            const video = cr.field_ec_episodes_items.split(',').map((e) => e.trim())[0];
             const character = cr.field_ec_character;
+
+            const id = cr.field_ec_episodes_items.split(',').map((e) => e.trim())[0];
+            const episodes = JSON.parse(cr.field_ec_episodes_items_json);
+            const episode = episodes.find((e) => e.id === id);
+            const episodeView = JSON.parse(episode.view);
 
             return {
               name,
               active: personaje === character,
-              link: `/el-cubo/temporada-1/${video}?personaje=${character}&modo=cronologico`,
+              link: `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${character}&modo=cronologico`,
             };
           });
           setCharacterList(characterList);
