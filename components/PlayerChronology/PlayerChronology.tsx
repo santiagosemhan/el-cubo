@@ -5,7 +5,6 @@ const PlayerChronology = ({ character, chronology }) => {
   if (!chronology.length) {
     return <> </>;
   }
-
   return (
     <ListChronoCover>
       <h2>{character}</h2>

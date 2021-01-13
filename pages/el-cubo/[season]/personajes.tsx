@@ -31,11 +31,9 @@ const CharactersPage = ({ data = {} }) => {
     const pane_cover = document.querySelector('.pane-cover');
     const fake_cover = document.querySelector('.fake-cover');
 
-
     window.onload = function () {
       disableScroll();
     };
-
 
     if (button_open) {
       button_open.forEach(function (link) {
@@ -101,16 +99,23 @@ const CharactersPage = ({ data = {} }) => {
         //});
 
         // Set image cube
-        document.querySelector('#left img').src = "/images/thumbs/" + button_select.dataset.personaje + ".jpg";
+        document.querySelector('#left img').src =
+          '/images/thumbs/' + button_select.dataset.personaje + '.jpg';
 
         // Set image onboard
-        document.querySelector('#hero-onboarding img').src = "/images/onboard/" + button_select.dataset.personaje + ".jpg";
+        document.querySelector('#hero-onboarding img').src =
+          '/images/onboard/' + button_select.dataset.personaje + '.jpg';
 
         const chrono = chronology.find((cr) => cr.field_ec_character === character);
-        const episodes = chrono.field_ec_episodes.split(',').map((ep) => ep.trim());
-        console.log(episodes[0]);
-        console.log(character);
-        setVideoLink(`/el-cubo/temporada-1/${episodes[0]}?personaje=${character}&modo=cronologico`);
+        const episodes = chrono.field_ec_episodes_items.split(',').map((ep) => ep.trim());
+        const episodesItems = JSON.parse(chrono.field_ec_episodes_items_json);
+        const episode = episodesItems.find((ep) => ep.id === episodes[0]);
+        const episodeView = JSON.parse(episode.view);
+        // debugger;
+        // console.log(`/el-cubo/temporada-1/${episodes[0]}?personaje=${character}&modo=cronologico`);
+        setVideoLink(
+          `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${character}&modo=cronologico`,
+        );
       });
     }
 
@@ -123,7 +128,7 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
-    // Disabled fake cover 
+    // Disabled fake cover
     fake_cover.addEventListener('mousemove', () => {
       fake_cover.classList.remove('visible');
     });
@@ -140,14 +145,13 @@ const CharactersPage = ({ data = {} }) => {
           disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
 
-          // Hide selector    
+          // Hide selector
           if (selector[0].classList.contains('active')) {
             console.log('here');
             selector[0].classList.add('is-hidden');
           }
           //document.getElementsByClassName('selector-mode')[0].classList.remove('is-hidden');
           //document.getElementsByClassName('selector-mode')[0].classList.add('is-hidden');
-
         });
       }
       if (closeModalTriggerEl) {
@@ -161,12 +165,10 @@ const CharactersPage = ({ data = {} }) => {
           // Set local storage 1 help
           localStorage.setItem('help', '1');
 
-          // Hide selector  
+          // Hide selector
           if (selector[0].classList.contains('active')) {
             selector[0].classList.remove('is-hidden');
           }
-
-
         });
       }
       window.addEventListener('click', () => {
@@ -183,17 +185,13 @@ const CharactersPage = ({ data = {} }) => {
             console.log('here');
             selector[0].classList.remove('is-hidden');
           }
-
         }
-      })
-
-
+      });
     }
 
     modal();
 
-
-    // Esc  
+    // Esc
     document.onkeydown = function (evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
@@ -202,17 +200,15 @@ const CharactersPage = ({ data = {} }) => {
       }
     };
 
-
     // Test help
     let data_help = localStorage.getItem('help');
     if (data_help === '1') {
       modalEl.classList.remove('open');
     }
 
-
     /* Wizard Help */
-    const previousButton = document.getElementById("previous");
-    const nextButton = document.getElementById("next");
+    const previousButton = document.getElementById('previous');
+    const nextButton = document.getElementById('next');
     const submitButton = document.getElementById('validate');
     const dots = document.getElementsByClassName('progress-bar__dot');
     const numberOfSteps = 3;
@@ -220,8 +216,8 @@ const CharactersPage = ({ data = {} }) => {
 
     for (let i = 0; i < dots.length; ++i) {
       dots[i].addEventListener('click', () => {
-        goToStep(i + 1)
-      })
+        goToStep(i + 1);
+      });
     }
 
     previousButton.onclick = goPrevious;
@@ -252,7 +248,7 @@ const CharactersPage = ({ data = {} }) => {
 
       //only show the right one
       for (let i = 0; i < inputs.length; ++i) {
-        show(inputs[i])
+        show(inputs[i]);
       }
 
       //if we reached final step
@@ -279,7 +275,7 @@ const CharactersPage = ({ data = {} }) => {
 
     function disable(elem) {
       if (elem) {
-        elem.classList.add("disabled");
+        elem.classList.add('disabled');
         elem.disabled = true;
       }
     }
@@ -289,7 +285,7 @@ const CharactersPage = ({ data = {} }) => {
         elem.classList.remove('hidden');
 
         let str = elem.className;
-        let res = str.charAt(str.length - 1)
+        let res = str.charAt(str.length - 1);
         modalEl.className = 'modal open step-' + res;
       }
     }
@@ -300,7 +296,7 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
-    // TEMP onboard 
+    // TEMP onboard
     let link_temp = document.getElementsByClassName('cronologico')[0];
     if (link_temp) {
       link_temp.addEventListener('click', (ev) => {
@@ -314,7 +310,6 @@ const CharactersPage = ({ data = {} }) => {
         document.getElementsByClassName('logo-elcubo')[0].classList.add('hide');
       });
     }
-
 
     // Enable Disable Scroll
 
@@ -336,10 +331,16 @@ const CharactersPage = ({ data = {} }) => {
     // modern Chrome requires { passive: false } when adding event
     let supportsPassive = false;
     try {
-      window.addEventListener("test", null, Object.defineProperty({}, 'passive', {
-        get: function () { supportsPassive = true; }
-      }));
-    } catch (e) { }
+      window.addEventListener(
+        'test',
+        null,
+        Object.defineProperty({}, 'passive', {
+          get: function () {
+            supportsPassive = true;
+          },
+        }),
+      );
+    } catch (e) {}
 
     let wheelOpt = supportsPassive ? { passive: false } : false;
     let wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
@@ -359,10 +360,6 @@ const CharactersPage = ({ data = {} }) => {
       window.removeEventListener('touchmove', preventDefault, wheelOpt);
       window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
     }
-
-
-
-
   }, []);
 
   return (
@@ -377,270 +374,257 @@ const CharactersPage = ({ data = {} }) => {
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-            <>
-              <div className="help-wrapper">
-
-
-                <HeaderTop
-                  nav={
-                    <nav className="nav">
-                      <a href="/el-cubo/temporada-1/personajes" className="back-to-season">
-                        <img src="/images/icon-arrow-back.svg" />
-                        <span>Volver al inicio</span>
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="#" className="toggle-help open-modal is-active">
-                            <span>Ayuda</span>
-                            <div className="icon-help">
-                              <img className="icon-help-open" src="/images/icon-help-open.svg" />
-                              <img className="icon-help-close" src="/images/icon-help-close.svg" />
-                            </div>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  }
-                />
-
-
-                <div id="hero-onboarding" className="hero hero-onboarding is-hidden">
-                  <img id="image-onboard" className="image-bg" src="/images/onboard.jpg" />
-
-                  <div className="video-overlay">
-                    <div className="copy-cover">
-                      <h1 className="copy">
-                        <p>
-                          Explora esta historia en la que el abuso, la manipulación, la doble vida y los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el <strong>PODER</strong>,
-                          la honestidad, los valores y la moral.
-                </p>
-                        <div class="cover-link">
-                          <a id="link-onboard" href="#" className="cyan-dark">
-                            <span>Continuar</span>
-                            <img src="/images/icon-arrow-init.svg" />
-
-                          </a>
-                        </div>
-
-                      </h1>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="modal open">
-                  <div className="modal__content">
-                    <div className="help">
-                      <div id="help-step" className="help-step">
-                        <img className="peak" src="/images/peak.svg" />
-
-                        <ul className="progress-bar">
-                          <li className="progress-bar__dot full"></li>
-                          <li className="progress-bar__connector"></li>
-                          <li className="progress-bar__dot"></li>
-                          <li className="progress-bar__connector"></li>
-                          <li className="progress-bar__dot"></li>
-                        </ul>
-
-                        <div className="step step1">
-                          <h2>Ayuda</h2>
-                          <p>
-                            Para conocer esta historia de diferentes maneras deberás seleccionar uno
-                          de seis personajes y elegir uno de tres modos narrativos para navegar.{' '}
-                          </p>
-                        </div>
-
-                        <div className="step step2 hidden">
-                          <h2>
-                            <span className="step-number">1</span>Escoge uno de los personajes
-                        </h2>
-                          <p>
-                            Dependiendo del personaje que elijas, el énfasis de la historia y sus
-                            matices serán diferentes. ¡Escoge al azar o por intuición, vamos!
-                        </p>
-                        </div>
-
-                        <div className="step step3 hidden">
-                          <h2>
-                            <span className="step-number">2</span>Escoge el modo de navegación
-                        </h2>
-                          <p>
-                            Dependiendo del modo que elijas, los hechos serán narrados con un orden y
-                            una intención diferentes.
-                        </p>
-                        </div>
-
-                        <div className="button-group">
-                          <button id="previous" className="disabled button">
-                            Anterior
-                        </button>
-                          <button id="next" className="button">
-                            Siguiente
-                        </button>
-                          <button id="validate" className="hidden button close-modal">
-                            Empieza tu experiencia
-                        </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="selector-help">
-                    <div className="selector-help-cover">
-                      <div className="selector-help-pc">
-                        <div className="selector-column">
-                          <h2>
-
-                            Modo Cronológico
-                        </h2>
-                          <p>
-                            Explora esta historia en la línea de tiempo en que sucedieron los hechos.
-                        </p>
-                        </div>
-                        <div className="selector-column">
-                          <h2>
-
-                            Modo Laberinto
-                        </h2>
-                          <p>Escoge ruta de entrada y recorre el cubo a tu manera.</p>
-                        </div>
-                        <div className="selector-column">
-                          <h2>
-
-                            Modo Reflexivo
-                        </h2>
-                          <p>
-                            ¿Tú qué opinas? Descubre cómo encaja tu forma de pensar en el universo de
-                            opiniones de la sociedad.
-                        </p>
-                        </div>
-                        <div className="selector-column-cubo cubo-pc">
-                          <img className="cubo-help" src="/images/selector-cubo.svg" />
-                        </div>
-                      </div>
-
-                      <div className="selector-help-mobile">
-                        <div className="selector-column-cubo cubo-mobile">
-                          <img className="cubo-help" src="/images/selector-cubo.svg" />
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
-                          <br />
-                            Cronológico
-                        </span>
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
-                          <br />
-                            Laberinto
-                        </span>
-                        </div>
-                        <div className="selector-column">
-                          <span>
-                            Modo
-                          <br />
-                            Reflexivo
-                        </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="characters is-hidden">
-                <div className="pane-cover close"></div>
-
-                <div className="pane">
-                  <a className="close">
-                    <img src="/images/pane-close.svg" />
-                  </a>
-                  <div className="pane-content">
-                    <h2 id="name-personaje"></h2>
-                    <p id="desc-personaje"></p>
-                    <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
-                      Elegir
-                  </a>
-                  </div>
-                  <div className="pane-video">
-                    <img className="bg-video" src="/images/bg-video.png" />
-                    <video id="video1" width="420">
-                      <source src="" type="video/mp4" data-personaje="" /> Your browser does not
-                      support HTML video.
-                  </video>
-                  </div>
-                </div>
-
-                <div className="characters-wrapper">
-                  <div className="fake-cover"></div>
-                  <div className="row row-first">
-                    {field_ec_characters.map((c) => {
-                      const character = field_ec_characters_terms_json.find(
-                        (ch) => Number(ch.tid) === Number(c),
-                      );
-                      return (
-                        <div className="column" key={character.tid}>
-                          <div className="parent">
-                            <div
-                              className={`child bg-six toggle char-${character.tid} ${character.tid}`}
-                              data-video={character.field_ec_avatar_video}
-                              data-personaje={character.tid}
-                              data-thumb={character.tid}
-                              data-nombre={character.character_name}
-                              data-desc={character.description_value}
-                            >
-                              <img className="icon-selected" src="/images/is-selected.svg" />
-                              <h2 className="name">{character.character_name}</h2>
-                              <img className="img-bn" width="100%" src={character.field_ec_avatar_gray} />
-                              <img className="img-color" width="100%" src={character.field_ec_avatar_color} />
-                              <a className="projectButton">Conóceme más</a>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="selector-mode is-hidden selector-desktop">
-                  <div className="selector-cover">
-                    <div id="mainDiv">
-                      <div id="boxDiv">
-                        <div id="front"></div>
-                        <div id="back"></div>
-                        <div id="left"><img src="/images/thumbs/0.jpg " /></div>
-                        <div id="right">
-
-                        </div>
-                        <div id="top"></div>
-                        <div id="bottom"></div>
-
-                        <div class="shadow"></div>
-                      </div>
-                    </div>
+          <>
+            <div className="help-wrapper">
+              <HeaderTop
+                nav={
+                  <nav className="nav">
+                    <a href="/el-cubo/temporada-1/personajes" className="back-to-season">
+                      <img src="/images/icon-arrow-back.svg" />
+                      <span>Volver al inicio</span>
+                    </a>
                     <ul>
                       <li>
-
-                        <a href={videoLink} className="cronologico">
-                          Modo Cronológico
-                      </a>
+                        <a href="#" className="toggle-help open-modal is-active">
+                          <span>Ayuda</span>
+                          <div className="icon-help">
+                            <img className="icon-help-open" src="/images/icon-help-open.svg" />
+                            <img className="icon-help-close" src="/images/icon-help-close.svg" />
+                          </div>
+                        </a>
                       </li>
-                      <li>
-
-                        Modo Laberinto
-                    </li>
-                      <li>
-
-                        Modo Reflexivo
-                    </li>
                     </ul>
+                  </nav>
+                }
+              />
+
+              <div id="hero-onboarding" className="hero hero-onboarding is-hidden">
+                <img id="image-onboard" className="image-bg" src="/images/onboard.jpg" />
+
+                <div className="video-overlay">
+                  <div className="copy-cover">
+                    <h1 className="copy">
+                      <p>
+                        Explora esta historia en la que el abuso, la manipulación, la doble vida y
+                        los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
+                        cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
+                        valores y la moral.
+                      </p>
+                      <div class="cover-link">
+                        <a id="link-onboard" href="#" className="cyan-dark">
+                          <span>Continuar</span>
+                          <img src="/images/icon-arrow-init.svg" />
+                        </a>
+                      </div>
+                    </h1>
+                  </div>
+                </div>
+              </div>
+
+              <div className="modal open">
+                <div className="modal__content">
+                  <div className="help">
+                    <div id="help-step" className="help-step">
+                      <img className="peak" src="/images/peak.svg" />
+
+                      <ul className="progress-bar">
+                        <li className="progress-bar__dot full"></li>
+                        <li className="progress-bar__connector"></li>
+                        <li className="progress-bar__dot"></li>
+                        <li className="progress-bar__connector"></li>
+                        <li className="progress-bar__dot"></li>
+                      </ul>
+
+                      <div className="step step1">
+                        <h2>Ayuda</h2>
+                        <p>
+                          Para conocer esta historia de diferentes maneras deberás seleccionar uno
+                          de seis personajes y elegir uno de tres modos narrativos para navegar.{' '}
+                        </p>
+                      </div>
+
+                      <div className="step step2 hidden">
+                        <h2>
+                          <span className="step-number">1</span>Escoge uno de los personajes
+                        </h2>
+                        <p>
+                          Dependiendo del personaje que elijas, el énfasis de la historia y sus
+                          matices serán diferentes. ¡Escoge al azar o por intuición, vamos!
+                        </p>
+                      </div>
+
+                      <div className="step step3 hidden">
+                        <h2>
+                          <span className="step-number">2</span>Escoge el modo de navegación
+                        </h2>
+                        <p>
+                          Dependiendo del modo que elijas, los hechos serán narrados con un orden y
+                          una intención diferentes.
+                        </p>
+                      </div>
+
+                      <div className="button-group">
+                        <button id="previous" className="disabled button">
+                          Anterior
+                        </button>
+                        <button id="next" className="button">
+                          Siguiente
+                        </button>
+                        <button id="validate" className="hidden button close-modal">
+                          Empieza tu experiencia
+                        </button>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
+                <div className="selector-help">
+                  <div className="selector-help-cover">
+                    <div className="selector-help-pc">
+                      <div className="selector-column">
+                        <h2>Modo Cronológico</h2>
+                        <p>
+                          Explora esta historia en la línea de tiempo en que sucedieron los hechos.
+                        </p>
+                      </div>
+                      <div className="selector-column">
+                        <h2>Modo Laberinto</h2>
+                        <p>Escoge ruta de entrada y recorre el cubo a tu manera.</p>
+                      </div>
+                      <div className="selector-column">
+                        <h2>Modo Reflexivo</h2>
+                        <p>
+                          ¿Tú qué opinas? Descubre cómo encaja tu forma de pensar en el universo de
+                          opiniones de la sociedad.
+                        </p>
+                      </div>
+                      <div className="selector-column-cubo cubo-pc">
+                        <img className="cubo-help" src="/images/selector-cubo.svg" />
+                      </div>
+                    </div>
 
+                    <div className="selector-help-mobile">
+                      <div className="selector-column-cubo cubo-mobile">
+                        <img className="cubo-help" src="/images/selector-cubo.svg" />
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
+                          <br />
+                          Cronológico
+                        </span>
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
+                          <br />
+                          Laberinto
+                        </span>
+                      </div>
+                      <div className="selector-column">
+                        <span>
+                          Modo
+                          <br />
+                          Reflexivo
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </>
-          )}
+            </div>
+            <div className="characters is-hidden">
+              <div className="pane-cover close"></div>
+
+              <div className="pane">
+                <a className="close">
+                  <img src="/images/pane-close.svg" />
+                </a>
+                <div className="pane-content">
+                  <h2 id="name-personaje"></h2>
+                  <p id="desc-personaje"></p>
+                  <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
+                    Elegir
+                  </a>
+                </div>
+                <div className="pane-video">
+                  <img className="bg-video" src="/images/bg-video.png" />
+                  <video id="video1" width="420">
+                    <source src="" type="video/mp4" data-personaje="" /> Your browser does not
+                    support HTML video.
+                  </video>
+                </div>
+              </div>
+
+              <div className="characters-wrapper">
+                <div className="fake-cover"></div>
+                <div className="row row-first">
+                  {field_ec_characters.map((c) => {
+                    const character = field_ec_characters_terms_json.find(
+                      (ch) => Number(ch.tid) === Number(c),
+                    );
+                    return (
+                      <div className="column" key={character.tid}>
+                        <div className="parent">
+                          <div
+                            className={`child bg-six toggle char-${character.tid} ${character.tid}`}
+                            data-video={character.field_ec_avatar_video}
+                            data-personaje={character.tid}
+                            data-thumb={character.tid}
+                            data-nombre={character.character_name}
+                            data-desc={character.description_value}
+                          >
+                            <img className="icon-selected" src="/images/is-selected.svg" />
+                            <h2 className="name">{character.character_name}</h2>
+                            <img
+                              className="img-bn"
+                              width="100%"
+                              src={character.field_ec_avatar_gray}
+                            />
+                            <img
+                              className="img-color"
+                              width="100%"
+                              src={character.field_ec_avatar_color}
+                            />
+                            <a className="projectButton">Conóceme más</a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="selector-mode is-hidden selector-desktop">
+                <div className="selector-cover">
+                  <div id="mainDiv">
+                    <div id="boxDiv">
+                      <div id="front"></div>
+                      <div id="back"></div>
+                      <div id="left">
+                        <img src="/images/thumbs/0.jpg " />
+                      </div>
+                      <div id="right"></div>
+                      <div id="top"></div>
+                      <div id="bottom"></div>
+
+                      <div className="shadow"></div>
+                    </div>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href={videoLink} className="cronologico">
+                        Modo Cronológico
+                      </a>
+                    </li>
+                    <li>Modo Laberinto</li>
+                    <li>Modo Reflexivo</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </Container>
     </AppLayout>
   );

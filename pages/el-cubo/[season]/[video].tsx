@@ -33,6 +33,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
   const { isFallback, query } = useRouter();
 
   const { modo, personaje } = query;
+
   if (!isFallback && !video) {
     return <Error statusCode={404} title="Video could not be found" />;
   }
@@ -44,32 +45,48 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
   const [showPrevButton, setShowPrevButton] = useState(false);
   const [showNextButton, setShowNextButton] = useState(false);
   const [characterList, setCharacterList] = useState([]);
+  const [videoTitle, setVideoTitle] = useState();
 
   React.useEffect(() => {
-    console.log(chronology);
     let character;
     let chronologyList = [];
     if (chronology) {
       let characterChronology;
       characterChronology = chronology.find((c) => c.field_ec_character === personaje);
+      console.log(characterChronology);
       const characterData = JSON.parse(characterChronology.field_ec_character_term_json);
       character = characterData[0].character_name;
       if (modo === 'cronologico' && chronology) {
         if (chronology && chronology.length && personaje) {
-          const { field_ec_episodes, field_ec_episodes_node_json } = characterChronology;
-          const episodesData = JSON.parse(field_ec_episodes_node_json);
-          const episodesList = field_ec_episodes.split(',');
+          const { field_ec_episodes_items, field_ec_episodes_items_json } = characterChronology;
+          const episodesData = JSON.parse(field_ec_episodes_items_json);
+          const episodesList = field_ec_episodes_items.split(',').map((i) => i.trim());
 
-          chronologyList = episodesList.map((e) => {
-            const episode = episodesData.find((ep) => Number(ep.nid) === Number(e));
-            return {
-              id: episode.nid,
-              link: `/el-cubo/temporada-1/${episode.nid}?personaje=${personaje}&modo=${modo}`,
-              name: episode.title,
-              active: Number(video) === Number(episode.nid),
-              image: episode.field_ec_video_preview_TEMP,
-            };
-          });
+          chronologyList = episodesList
+            .map((e) => {
+              const episode = episodesData.find((ep) => Number(ep.id) === Number(e));
+              if (!episode) {
+                return;
+              }
+              const episodeView = JSON.parse(episode.view);
+              // debugger;
+
+              const isActive = Number(video) === Number(episodeView[0].nid);
+
+              if (isActive) {
+                setVideoTitle(episode.field_ec_title);
+              }
+
+              return {
+                id: episodeView[0].nid,
+                link: `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${personaje}&modo=${modo}`,
+                name: episode.field_ec_title,
+                active: isActive,
+                image: episodeView[0].field_ec_video_preview_TEMP,
+              };
+            })
+            .filter((i) => i !== undefined);
+
           const index = chronologyList.findIndex((el) => el.id === video);
           console.log(index);
           if (index > 0) {
@@ -84,7 +101,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
           // console.log({ chronology });
           const characterList = chronology.map((cr) => {
             const name = JSON.parse(cr.field_ec_character_term_json)[0].character_name;
-            const video = cr.field_ec_episodes.split(',').map((e) => e.trim())[0];
+            const video = cr.field_ec_episodes_items.split(',').map((e) => e.trim())[0];
             const character = cr.field_ec_character;
 
             return {
@@ -160,7 +177,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
               <VideoPlayer
                 showBackButton
                 backLink="/el-cubo/temporada-1/personajes"
-                title="title"
+                title={videoTitle}
                 poster={poster}
                 source={srcVideo}
                 onBackClick={handleBackClick}
@@ -185,6 +202,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
 
 export async function getStaticPaths() {
   const episodes = await fetch(`/api/v1/elcubo/season/4731/episode/all`);
+
   const paths = episodes.map((ep) => ({
     params: {
       season: 'temporada-1',
@@ -194,7 +212,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

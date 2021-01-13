@@ -204,6 +204,14 @@ const VideoPlayer = ({
 
   React.useEffect(() => {
     const container: HTMLElement = wrapperRef.current;
+    if (title) {
+      const controls = container.getElementsByClassName('plyr__portal')[0];
+      controls.insertAdjacentHTML('afterend', `<h2 class="plyr__portal__title">${title}</h2>`);
+    }
+  }, [title]);
+
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
     const chaptersButton = container.querySelector('[data-plyr="chapters"]');
     chaptersButton.innerHTML = chapterButtonName;
   }, [chapterButtonName]);
