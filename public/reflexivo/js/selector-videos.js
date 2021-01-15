@@ -43,6 +43,9 @@ if (button_open) {
             loadPlayer(link.dataset.video);
             player.play();
 
+            // Hide temp progress
+            document.querySelectorAll('.progress-0')[0].classList.add('hide');
+
 
         });
     });
@@ -345,6 +348,7 @@ if (answer_select) {
 
             if (next_select) {
                 next_select.classList.add('selected');
+                next_select.href = link.dataset.rel;
             }
         });
     });

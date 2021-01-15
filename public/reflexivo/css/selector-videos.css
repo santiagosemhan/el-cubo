@@ -77,6 +77,7 @@ body {
     margin-bottom: 20px;
 }
 
+
 .is-viewed .row.row-cero {
     opacity: 0;
 }
@@ -85,6 +86,12 @@ body {
     height: 483px;
     width: 1024px;
     margin: auto;
+}
+
+
+.columns-2 .row.row-cero,
+.columns-2 .row.row-first {
+    width: 682px;
 }
 
 .row.row-first .parent {
@@ -391,6 +398,10 @@ body {
 
 .characters .selector-mode.selector-mobile {
     display: none;
+}
+
+.selector .copy-cover {
+    margin-top: 0;
 }
 
 /* Reset Highlights */

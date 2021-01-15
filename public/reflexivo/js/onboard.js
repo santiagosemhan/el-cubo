@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         captions: {
             active: true,
             update: true,
-            language: 'en'
+            language: 'es'
         }
     });
 
@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('end');
             document.getElementsByClassName('pane-video')[0].classList.add('hide');
             document.getElementsByClassName('hero-onboarding')[0].classList.remove('hide');
+            document.getElementsByClassName('hero-onboarding')[0].classList.add('visible');
         });
     }
 
