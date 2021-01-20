@@ -77,6 +77,7 @@ export const CharacterSelectorWrapper = styled.div`
 
   .pane a:hover {
     cursor: pointer;
+    text-decoration: none;
   }
 
   .pane ul a {
