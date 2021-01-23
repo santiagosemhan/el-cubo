@@ -408,7 +408,7 @@ const CharactersPage = ({ data = {} }) => {
                           Explora esta historia en la que el abuso, la manipulación, la doble vida y
                           los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
                         cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
-                          valores y la moral.
+                              valores y la moral.
                       </p>
                         <div class="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">
@@ -619,7 +619,7 @@ const CharactersPage = ({ data = {} }) => {
                       </li>
                       <li>Modo Laberinto</li>
                       <li>
-                        <a href="https://elcubo.vercel.app/reflexivo/sales-onboard.html" className="cronologico">
+                        <a href="/reflexivo/sales/sales-onboard.html" className="cronologico">
                           Modo Reflexivo
                       </a>
                       </li>
