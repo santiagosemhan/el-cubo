@@ -233,3 +233,8 @@ body {
 .plyr__control--overlaid {
     background: rgb(69, 180, 193);
 }
+
+.pane-video,
+.pane-video .plyr {
+    height: 100%;
+}
