@@ -100,4 +100,17 @@ export const VideoPlayerWrapper = styled.div`
     top: 10vh;
     z-index: 100;
   }
+
+  .plyr {
+    height: 100vh;
+}
+
+.plyr video {
+    object-fit: fill;
+}
+
+.plyr__video-wrapper {
+    height: auto !important;
+}
+
 `;

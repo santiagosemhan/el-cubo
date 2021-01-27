@@ -510,6 +510,7 @@ footer {
     -ms-transition: opacity 1s ease-in-out;
     -o-transition: opacity 1s ease-in-out;
     opacity: 1;
+    background-size: cover;
 }
 
 .hero {
@@ -543,6 +544,7 @@ footer {
     justify-content: center;
     align-content: center;
     text-align: left;
+    background: rgba(0,0,0,.6);
 }
 
 .image-bg {

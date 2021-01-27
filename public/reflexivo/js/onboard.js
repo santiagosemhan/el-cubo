@@ -31,11 +31,7 @@ function loadPlayer(sURL) {
         // For more options see: https://github.com/sampotts/plyr/#options
         // captions.update is required for captions to work with hls.js
         const player = new Plyr(video, {
-            captions: {
-                active: true,
-                update: true,
-                language: 'es'
-            }
+            ratio: "16:9"
         });
 
         if (!Hls.isSupported()) {

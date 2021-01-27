@@ -104,8 +104,10 @@ const CharactersPage = ({ data = {} }) => {
           '/images/thumbs/' + button_select.dataset.personaje + '.jpg';
 
         // Set image onboard
-        document.querySelector('#hero-onboarding img').src =
-          '/images/onboard/' + button_select.dataset.personaje + '.jpg';
+        /*document.querySelector('#hero-onboarding img').src =
+          '/images/onboard/' + button_select.dataset.personaje + '.jpg';*/
+
+        document.getElementById('hero-onboarding').setAttribute("style", 'background-image: url(' + '/images/onboard/' + button_select.dataset.personaje + '.jpg);');
 
         const chrono = chronology.find((cr) => cr.field_ec_character === character);
         const episodes = chrono.field_ec_episodes_items.split(',').map((ep) => ep.trim());
@@ -412,7 +414,8 @@ const CharactersPage = ({ data = {} }) => {
                 />
 
                 <div id="hero-onboarding" className="hero hero-onboarding is-hidden">
-                  <img id="image-onboard" className="image-bg" src="/images/onboard.jpg" />
+                  {/*<img id="image-onboard" className="image-bg" src="/images/onboard.jpg" />*/}
+
 
                   <div className="video-overlay">
                     <div className="copy-cover">
@@ -421,7 +424,7 @@ const CharactersPage = ({ data = {} }) => {
                           Explora esta historia en la que el abuso, la manipulación, la doble vida y
                           los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
                         cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
-                                                                          valores y la moral.
+                                                                                    valores y la moral.
                       </p>
                         <div class="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">

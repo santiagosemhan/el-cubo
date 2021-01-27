@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
 body {
     margin: 0;
-    background: black;
+    /* background: black;*/
 }
 
 :root {
@@ -62,6 +62,11 @@ body {
     align-content: center;
     text-align: left;
     background: rgba(0, 0, 0, 0.6);
+    overflow: hidde;
+}
+
+.hero-onboarding .video-overlay {
+    height: 100vh;
 }
 
 .selector .video-overlay {
@@ -71,8 +76,8 @@ body {
 .image-bg {
     position: absolute;
     z-index: -2;
-    width: 100%;
-    height: 100vh;
+    width: 120%;
+    height: auto;
 }
 
 .copy-cover {
@@ -236,5 +241,13 @@ body {
 
 .pane-video,
 .pane-video .plyr {
-    height: 100%;
+    height: 100vh;
+}
+
+.plyr video {
+    object-fit: fill;
+}
+
+.plyr__video-wrapper {
+    height: auto !important;
 }

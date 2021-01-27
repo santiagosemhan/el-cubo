@@ -7,8 +7,7 @@ const PlayerChronology = ({ character, chronology }) => {
   }
   return (
     <ListChronoCover>
-      <h2>{character}</h2>
-      <h3>Cronología</h3>
+      <h2><span>Cronología</span> de {character} </h2>
       <img className="line-right" src="/images/line-chrono.png" />
       <ul className="list-chrono">
         {chronology.map((chrono) => (

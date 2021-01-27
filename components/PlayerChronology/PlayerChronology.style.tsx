@@ -89,6 +89,9 @@ export const ListChronoCover = styled.div`
     background: white;
   }
 
+  ul.list-chrono li {
+    line-height: 1.6 !important;
+  }
   ul.list-chrono.height-big li {
     line-height: 6;
   }

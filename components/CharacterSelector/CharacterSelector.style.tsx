@@ -62,6 +62,10 @@ export const CharacterSelectorWrapper = styled.div`
     font-weight: 400;
   }
 
+  .pane h2 span {
+    font-weight: 100;
+  }
+
   .pane .pane-content h2 {
     margin-left: 10px;
     color: white;
