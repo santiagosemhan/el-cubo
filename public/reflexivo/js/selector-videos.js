@@ -41,7 +41,11 @@ if (button_open) {
             pane_cover.classList.toggle('visible');
 
             loadPlayer(link.dataset.video, link.dataset.poster);
+
+
             player.play();
+
+            //document.querySelector('video').setAttribute('src', '');
 
             // Hide temp progress
             document.querySelectorAll('.progress-0')[0].classList.add('hide');
@@ -115,6 +119,7 @@ function loadPlayer(sURL, sPoster) {
     video.setAttribute('poster', sPoster);
 
 
+
     // For more options see: https://github.com/sampotts/plyr/#options
     // captions.update is required for captions to work with hls.js
     const player = new Plyr(video, {
@@ -124,6 +129,8 @@ function loadPlayer(sURL, sPoster) {
             language: 'en'
         }
     });
+
+
 
     if (!Hls.isSupported()) {
         video.src = source;
