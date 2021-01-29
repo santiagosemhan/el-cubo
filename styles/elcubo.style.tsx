@@ -317,7 +317,7 @@ h2 {
   animation: bounce 0.6s infinite;
   -webkit-animation-delay: 14s;
   -ms-animation-delay: 14s;
-  animation-delay: 14s;
+  animation-delay: 35s;
   opacity: 0;
 }
 
@@ -617,7 +617,6 @@ footer {
 
 /* video hide animation */
 
-
 #hero-0 video.hide{
   -webkit-animation: 15s ease 0s normal forwards 1 hideVideo;
   animation: 15s ease 0s normal forwards 1 hideVideo;
@@ -646,13 +645,18 @@ footer {
   animation: 8s ease 0s normal forwards 1 hideVideo;
 }
 
+#hero-3 video.hide{
+  -webkit-animation: 7s ease 0s normal forwards 1 hideVideo;
+  animation: 7s ease 0s normal forwards 1 hideVideo;
+}
+
 /* Animation Hero 1 */
-.paragraph-message,
+#hero-1 .paragraph-message,
 #hero-1 .copy-cover  {
   opacity: 0;
 }
 
-.playing .paragraph-message {
+#hero-1.playing .paragraph-message {
   animation: fadeInParagraph 2s ease-in both;
 	animation-delay: 1s;
 }
@@ -682,6 +686,43 @@ footer {
   animation: fadeInParagraph 3s ease-in both;
 	animation-delay: 5s;
 }
+
+
+/* Animation Hero Season */
+
+#hero-3 .cover-first {
+  opacity: 0;
+}
+
+#hero-3 .cover-first {
+  animation: fadeInParagraph 2s ease-in both;
+	animation-delay: 7s;
+}
+
+.cover-second h1 {
+  margin-bottom: 20px;
+}
+
+#hero-3 .cover-second {
+  opacity: 0;
+}
+
+#hero-3 .cover-second {
+  animation: fadeInParagraph 2s ease-in both;
+	animation-delay: 8s;
+}
+
+
+#hero-3 .paragraph-message {
+  opacity: 0;
+}
+
+#hero-3 .paragraph-message {
+  animation: fadeInParagraph 2s ease-in both;
+	animation-delay: 9s;
+}
+
+
 
 
 
@@ -786,7 +827,8 @@ footer {
 }
 
 .hero-3 .copy-cover-2.cover-first {
-  margin-top: 250px;
+  margin-top: 280px;
+  margin-left: 40px;
 }
 
 .temporada-1 #mouse-circle.big span {

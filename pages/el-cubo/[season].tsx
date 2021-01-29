@@ -36,6 +36,29 @@ export default function SeasonPage({ data }) {
 
   const { title, field_ec_contents, field_ec_contents_paragraph } = data;
 
+
+  React.useEffect(() => {
+
+    const video3 = document.querySelector("#hero-3 video");
+    if (video3) {
+      video3.addEventListener('play', hideVideo, false);
+      function hideVideo(e) {
+        console.log('play')
+        video3.classList.add('hide');
+      }
+
+      video3.addEventListener('ended', removeVideo, false);
+      function removeVideo(e) {
+        console.log('end')
+        video3.remove();
+      }
+    }
+
+
+
+  }, []);
+
+
   return (
     <AppLayout>
       <ElcuboGlobalStyles />
@@ -93,7 +116,7 @@ export default function SeasonPage({ data }) {
               onMouseEnter={index === 2 ? handleMouseEnter : undefined}
               ref={index === 2 ? ref : undefined}
             >
-              <video className="video-bg" autoPlay muted loop>
+              <video className="video-bg" autoPlay muted >
                 <source src={desktopVideoURL} type="video/mp4" />
               </video>
               <img className="img-bg-pc" src={paragraph.field_ec_image[0].url} />
