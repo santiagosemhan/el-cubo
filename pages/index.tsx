@@ -43,7 +43,7 @@ export default function Home({ data }) {
             document.getElementById("hero-1").classList.add('playing');
           }
         });
-      }, { threshold: .2 });
+      }, { threshold: .4 });
 
       observer.observe(video1);
     }
@@ -174,6 +174,12 @@ export default function Home({ data }) {
           </div>
         </div>
 
+        <div class="arrow-down">
+          <a href="#hero-1" class="no-link">
+            <img src="/images/arrow-down-cyan.svg" />
+          </a>
+        </div>
+
         <HeaderTop />
 
         {field_ec_contents.map((c, index) => {
@@ -187,11 +193,7 @@ export default function Home({ data }) {
               <div class="copy-cover">
                 ${copyCoverHTML}
               </div>
-              <div class="arrow-down">
-                  <a href="#hero-1" class="no-link">
-                      <img src="/images/arrow-down-cyan.svg" />
-                  </a>
-              </div>
+              
             `;
           } else {
             videoOverlayHTML = paragraph.field_ec_full_text[0].processed;

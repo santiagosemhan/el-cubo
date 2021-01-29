@@ -44,7 +44,7 @@ body.fade {
 .logo--image {
   width: 200px;
   height: auto;
-  position: absolute;
+  position: fixed;
   top: 190px;
   z-index: 11;
 }
@@ -189,34 +189,40 @@ h2 {
   /* height: 200px;*/
 }
 
+.hero-0 {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
 .hero-0 .copy {
   margin: 0;
   position: absolute;
   left: 20vw;
   opacity: 0;
-  -webkit-animation: rotateWord 28s linear 0s;
-  -ms-animation: rotateWord 28s linear 0s;
-  animation: rotateWord 28s linear 0s;
-  animation: rotateWord 28s linear 0s;
-  animation-delay: 11s;
+  -webkit-animation: rotateWord 25s linear 0s;
+  -ms-animation: rotateWord 25s linear 0s;
+  animation: rotateWord 25s linear 0s;
+  animation: rotateWord 25s linear 0s;
+  animation-delay: 6s;
 }
 
 .hero-0 .copy:nth-child(2) {
-  -webkit-animation-delay: 18s;
-  -ms-animation-delay: 18s;
-  animation-delay: 18s;
+  -webkit-animation-delay: 11s;
+  -ms-animation-delay: 11s;
+  animation-delay: 11s;
 }
 
 .hero-0 .copy:nth-child(3) {
-  -webkit-animation-delay: 25s;
-  -ms-animation-delay: 25s;
-  animation-delay: 25s;
+  -webkit-animation-delay: 16s;
+  -ms-animation-delay: 16s;
+  animation-delay: 16s;
 }
 
 .hero-0 .copy:nth-child(4) {
-  -webkit-animation-delay: 32s;
-  -ms-animation-delay: 32s;
-  animation-delay: 32s;
+  -webkit-animation-delay: 22s;
+  -ms-animation-delay: 21s;
+  animation-delay: 21s;
 }
 
 .copy-final {
@@ -224,8 +230,8 @@ h2 {
   position: absolute;
   left: 20vw;
   opacity: 0;
-  animation: rotateWordFinal 39s normal forwards;
-  animation-delay: 32s;
+  animation: rotateWordFinal 26s normal forwards;
+  animation-delay: 21s;
 }
 
 @-webkit-keyframes rotateWord {
@@ -245,12 +251,10 @@ h2 {
     -webkit-transform: translateY(0px);
   }
   22% {
-    opacity: 1;
+    opacity: 0;
     -webkit-transform: translateY(30px);
   }
-  24% {
-    opacity: 0;
-  }
+  
   100% {
     opacity: 0;
   }
@@ -308,7 +312,7 @@ h2 {
 
 .arrow-down {
   text-align: center;
-  position: absolute;
+  position: fixed;
   bottom: 40px;
   width: 100vw;
   z-index: 12;
@@ -324,7 +328,7 @@ h2 {
   animation: bounce 0.6s infinite;
   -webkit-animation-delay: 14s;
   -ms-animation-delay: 14s;
-  animation-delay: 35s;
+  animation-delay: 21s;
   opacity: 0;
 }
 
@@ -359,6 +363,10 @@ h2 {
 
 .hero-1 {
   height: 100vh;
+  margin-top: 100vh;
+  position: relative;
+  z-index: 13;
+  background: black;
 }
 
 .paragraph-message {
@@ -397,6 +405,11 @@ h2 {
 
 /* Hero 2 */
 
+.hero-2 {
+  position: relative;
+  z-index: 12;
+  background: black;
+}
 .hero-2 h1 {
   margin: 0;
 }
@@ -405,6 +418,8 @@ h2 {
 
 footer {
   font-family: 'Dosis';
+  position: relative;
+  z-index: 13;
 }
 
 /* Hide Cookies */
@@ -608,7 +623,7 @@ footer {
 }
 
 .logo--image {
-	animation-delay: 5s;
+	animation-delay: 3s;
 }
 
 @keyframes fadeInLogo {
@@ -691,8 +706,8 @@ footer {
 
 
 #hero-2.playing .copy-cover {
-  animation: fadeInParagraph 3s ease-in both;
-	animation-delay: 4s;
+  animation: fadeInParagraph 2s ease-in both;
+	animation-delay: 2s;
 }
 
 
@@ -884,31 +899,31 @@ footer {
 }
 
 .playing h1.char-animate span:nth-child(1) {
-  animation: fade-in 0.8s 6.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 4.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(2) {
-  animation: fade-in 0.8s 6.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 4.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(3) {
-  animation: fade-in 0.8s 6.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 4.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(4) {
-  animation: fade-in 0.8s 6.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 4.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(5) {
-  animation: fade-in 0.8s 7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 5s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(6) {
-  animation: fade-in 0.8s 7.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 5.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 .playing h1.char-animate span:nth-child(7) {
-  animation: fade-in 0.8s 7.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+  animation: fade-in 0.8s 5.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
 }
 
 @keyframes fade-in {
@@ -961,7 +976,7 @@ footer {
   position: fixed;
   top: 130px;
   right: 30px;
-  z-index: 12;
+  z-index: 14;
 }
 
 #audio-player-container .column-1,
