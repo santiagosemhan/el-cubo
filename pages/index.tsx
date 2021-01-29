@@ -147,7 +147,7 @@ export default function Home({ data }) {
 
         <div>
           <audio id="track">
-            <source src="/audios/loop.mp3" type="audio/mpeg" />
+            <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
 
           <div id="audio-player-container">

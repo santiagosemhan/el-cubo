@@ -700,6 +700,15 @@ footer {
 	animation-delay: 14s;
 }
 
+#hero-3 .img-bg-pc {
+  opacity: 0;
+}
+
+#hero-3 .img-bg-pc {
+  animation: fadeInParagraph 2s ease-in both;
+	animation-delay: 5s;
+}
+
 .cover-second h1 {
   margin-bottom: 20px;
 }
