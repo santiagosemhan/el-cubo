@@ -679,12 +679,13 @@ footer {
 
 /* Animation Hero 2 */
 #hero-2 .copy-cover  {
-  opacity: 0;
+  opacity: 1;
 }
+
 
 #hero-2.playing .copy-cover {
   animation: fadeInParagraph 3s ease-in both;
-	animation-delay: 5s;
+	animation-delay: 4s;
 }
 
 
@@ -839,6 +840,69 @@ footer {
   padding-top: 34px;
   float: left;
 }
+
+/* Animate words */
+.playing h1.char-animate {
+  font-weight: 400;
+  max-width: 40ch;
+  transform: scale(1.5);
+  animation: scale 10s forwards cubic-bezier(0.5, 1, 0.89, 1);
+  float: left;
+  margin-left: 146px;
+}
+
+.playing h1.char-animate @keyframes scale {
+  100% {
+    transform: scale(1);
+  }
+}
+
+.playing h1.char-animate span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(4px);
+  color: white;
+  font-size: 28px;
+  letter-spacing: 1px;
+  float: left;
+  margin-right: 8px;
+}
+
+.playing h1.char-animate span:nth-child(1) {
+  animation: fade-in 0.8s 6.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(2) {
+  animation: fade-in 0.8s 6.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(3) {
+  animation: fade-in 0.8s 6.6s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(4) {
+  animation: fade-in 0.8s 6.8s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(5) {
+  animation: fade-in 0.8s 7s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(6) {
+  animation: fade-in 0.8s 7.2s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+.playing h1.char-animate span:nth-child(7) {
+  animation: fade-in 0.8s 7.4s forwards cubic-bezier(0.11, 0, 0.5, 0);
+}
+
+@keyframes fade-in {
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 
 /* Mobile */
 
