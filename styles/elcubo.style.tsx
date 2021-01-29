@@ -646,8 +646,8 @@ footer {
 }
 
 #hero-3 video.hide{
-  -webkit-animation: 7s ease 0s normal forwards 1 hideVideo;
-  animation: 7s ease 0s normal forwards 1 hideVideo;
+  -webkit-animation: 14s ease 0s normal forwards 1 hideVideo;
+  animation: 14s ease 0s normal forwards 1 hideVideo;
 }
 
 /* Animation Hero 1 */
@@ -697,7 +697,7 @@ footer {
 
 #hero-3 .cover-first {
   animation: fadeInParagraph 2s ease-in both;
-	animation-delay: 7s;
+	animation-delay: 14s;
 }
 
 .cover-second h1 {
@@ -710,9 +710,8 @@ footer {
 
 #hero-3 .cover-second {
   animation: fadeInParagraph 2s ease-in both;
-	animation-delay: 8s;
+  animation-delay: 15s;
 }
-
 
 #hero-3 .paragraph-message {
   opacity: 0;
@@ -720,7 +719,7 @@ footer {
 
 #hero-3 .paragraph-message {
   animation: fadeInParagraph 2s ease-in both;
-	animation-delay: 9s;
+	animation-delay: 15s;
 }
 
 
