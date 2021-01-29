@@ -89,6 +89,13 @@ body.fade {
   z-index: -1;
 }
 
+#hero-3 .video-bg {
+  width: 100%;
+  height: auto;
+  min-height: auto;
+  object-fit: contain;
+}
+
 .video-bg::-webkit-media-controls {
   display: none !important;
 }
