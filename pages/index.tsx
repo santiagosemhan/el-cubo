@@ -66,9 +66,14 @@ export default function Home({ data }) {
       observer2.observe(video2);
     }
 
+    /* Sound */
+    let track = document.getElementById('track');
+
+
     const video0 = document.querySelector("#hero-0 video");
     if (video0) {
       video0.addEventListener('play', hideVideo1, false);
+      //track.play();
       function hideVideo1(e) {
         video0.classList.add('hide');
       }
@@ -95,10 +100,8 @@ export default function Home({ data }) {
 
 
 
-    /* Sound */
-    let track = document.getElementById('track');
 
-    track.play();
+
 
     track.loop = true;
 
@@ -153,13 +156,13 @@ export default function Home({ data }) {
           <div id="audio-player-container">
             <div id="play-pause" className="play no-link">
               <div className="column-1">
-                <span className="mute play-text">
+                <span className="mute hide play-text">
                   silenciar</span>
-                <span className="listen hide play-text">
+                <span className="listen play-text">
                   escuchar</span>
               </div>
               <div class="column-2">
-                <div className="Sound">
+                <div className="Sound off">
                   <span></span>
                   <span></span>
                   <span></span>
