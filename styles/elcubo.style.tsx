@@ -53,6 +53,15 @@ body.fade {
   z-index: 11;
 }
 
+.logo-season .logo--image {
+  width: 60px;
+  height: auto;
+  position: absolute;
+  top: 120px;
+  left: 40px;
+  z-index: 13;
+}
+
 .hero {
   /* Create grid spanning viewport width & height */
   display: grid;

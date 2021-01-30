@@ -85,7 +85,7 @@ export default function SeasonPage({ data }) {
             </div>
           </div>
         </div> */}
-        <div ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
+        <div className="logo-season" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <HeaderTop />
         </div>
 
