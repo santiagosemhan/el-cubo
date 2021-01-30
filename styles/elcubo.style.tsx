@@ -404,7 +404,7 @@ h2 {
 .hero-1 .copy-cover {
   width: 600px;
   margin: auto;
-  margin-top: 30%;
+  margin-top: 10%;
   margin-left: 200px;
 }
 

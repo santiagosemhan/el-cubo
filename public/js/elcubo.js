@@ -160,7 +160,7 @@ window.requestAnimationFrame = (function () {
 var scrollEngine = function () {
   var amount = 0;
   var scrollInProgess = false;
-  var tailOff = 90;
+  var tailOff = 40;
 
   function evaluate(functionName) {
     amount = amount - Math.ceil(amount / tailOff);
