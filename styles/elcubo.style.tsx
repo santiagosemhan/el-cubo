@@ -46,6 +46,10 @@ body.fade {
   height: auto;
   position: fixed;
   top: 190px;
+  z-index: 14;
+}
+
+.header-temporal.scrolled .logo--image {
   z-index: 11;
 }
 
@@ -315,12 +319,13 @@ h2 {
   position: fixed;
   bottom: 40px;
   width: 100vw;
-  z-index: 12;
+  z-index: 14;
 }
 
-.arrow-down a {
-  z-index: 11;
+.arrow-down.scrolled {
+  z-index: 0;
 }
+
 
 .arrow-down img {
   width: 40px;
@@ -365,7 +370,7 @@ h2 {
   height: 100vh;
   margin-top: 100vh;
   position: relative;
-  z-index: 13;
+  z-index: 12;
   background: black;
 }
 
@@ -419,7 +424,7 @@ h2 {
 footer {
   font-family: 'Dosis';
   position: relative;
-  z-index: 13;
+  z-index: 16;
 }
 
 /* Hide Cookies */
@@ -771,7 +776,7 @@ footer {
   box-shadow: 0 0 16px rgba(255, 255, 255, 0);
   transition: width 0.5s, height 0.5s, margin 0.5s;
   overflow: hidden;
-  z-index: 10;
+  z-index: 14;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -976,7 +981,7 @@ footer {
   position: fixed;
   top: 130px;
   right: 30px;
-  z-index: 14;
+  z-index: 15;
 }
 
 #audio-player-container .column-1,
@@ -1149,7 +1154,7 @@ footer {
   }
   .hero-3 .arrow-down {
     display: none;
-    z-index: 11;
+    z-index: 15;
   }
   .hero-3 .video-overlay,
   .hero-3 .copy-cover,

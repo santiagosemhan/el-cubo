@@ -10,7 +10,7 @@ export const StyledMouseCircle = styled.div`
   box-shadow: 0 0 16px rgba(255, 255, 255, 0);
   transition: width 0.5s, height 0.5s, margin 0.5s;
   overflow: hidden;
-  z-index: 10;
+  z-index: 13;
   cursor: none;
   @media only screen and (max-width: 1024px) {
     display: none;

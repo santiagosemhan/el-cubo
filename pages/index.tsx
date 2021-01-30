@@ -100,9 +100,7 @@ export default function Home({ data }) {
 
 
 
-
-
-
+    /* Track play */
     track.loop = true;
 
     let controlBtn = document.getElementById('play-pause');
@@ -129,6 +127,22 @@ export default function Home({ data }) {
       controlBtn.className = "play";
     });
 
+
+
+    window.onscroll = function (ev) {
+      var B = document.body; //IE 'quirks'
+      var D = document.documentElement; //IE with doctype
+      D = (D.clientHeight) ? D : B;
+
+      if (D.scrollTop == 0) {
+        document.getElementsByClassName('arrow-down')[0].classList.remove('scrolled');
+        document.getElementsByClassName('header-temporal')[0].classList.remove('scrolled');
+      }
+      else {
+        document.getElementsByClassName('arrow-down')[0].classList.add('scrolled');
+        document.getElementsByClassName('header-temporal')[0].classList.add('scrolled');
+      }
+    };
 
 
 
@@ -180,7 +194,18 @@ export default function Home({ data }) {
           </a>
         </div>
 
-        <HeaderTop />
+        <div className="header-top header-temporal">
+          <div className="header-top-inner">
+            <div className="logo-elcubo">
+              <a href="https://elcubo.vercel.app/" className="logo--link no-link">
+                <img className="logo--image" src="/images/logo2021.png" />
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        {/*<HeaderTop />*/}
 
         {field_ec_contents.map((c, index) => {
           const paragraph = field_ec_contents_paragraph.find((p) => p.id[0].value === Number(c));

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const HeaderTop = ({ nav }) => {
+
   return (
     <div className="header-top">
       <div className="header-top-inner">

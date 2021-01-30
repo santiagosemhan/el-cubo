@@ -142,29 +142,6 @@ function getCoords(elem) {
   };
 }
 
-/* Scroll to element */
-/*const hanchors = document.querySelectorAll('.arrow-down a[href*="#"]');*/
-// console.log(hanchors);
-/*Loop through each link to add the click event*/
-/*for (let i = 0; i < hanchors.length; i++) {
-  hanchors[i].onclick = function (e) {*/
-/*prevent default behavior [clicking through]*/
-/*e.preventDefault();
-console.log(this);
-let b = this;
-
-let c = b.getAttribute('href').substring(1);
-let el = document.getElementById(c);
-console.log(el);
-
-/*scroll to that position*/
-/*window.scrollTo({
-      top: el.offsetTop - 20,
-      behavior: 'smooth',
-    });
-  };
-}*/
-
 
 
 /* Scroll */
