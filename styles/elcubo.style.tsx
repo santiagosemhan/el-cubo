@@ -448,7 +448,7 @@ h2 {
 }
 
 .arrow-down-2 img {
-  z-index: 100;
+  z-index: 20;
 }
 
 /* Hero 2 */
