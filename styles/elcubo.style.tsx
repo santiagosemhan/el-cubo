@@ -29,7 +29,7 @@ body.fade {
 }
 
 .logo-elcubo {
-  max-width: 1300px;
+  /*max-width: 1300px;*/
   margin: auto;
   z-index: 11;
 }
@@ -42,10 +42,11 @@ body.fade {
 }
 
 .logo--image {
-  width: 200px;
+  width: 150px;
   height: auto;
   position: fixed;
-  top: 190px;
+  top: 120px;
+  left: 40px;
   z-index: 14;
 }
 
@@ -198,7 +199,8 @@ h2 {
 
 .copy-cover {
   position: relative;
-  width: 75vw;
+  width: 940px;
+  margin-left: 130px;
   /* height: 200px;*/
 }
 
@@ -211,13 +213,19 @@ h2 {
 .hero-0 .copy {
   margin: 0;
   position: absolute;
-  left: 20vw;
   opacity: 0;
   -webkit-animation: rotateWord 25s linear 0s;
   -ms-animation: rotateWord 25s linear 0s;
   animation: rotateWord 25s linear 0s;
   animation: rotateWord 25s linear 0s;
   animation-delay: 6s;
+}
+
+.hero-0 .first {
+  font-size: 2.9rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  float: left;
 }
 
 .hero-0 .copy:nth-child(2) {
@@ -241,11 +249,15 @@ h2 {
 .copy-final {
   margin: 0;
   position: absolute;
-  left: 20vw;
   opacity: 0;
   animation: rotateWordFinal 26s normal forwards;
   animation-delay: 21s;
 }
+
+.copy-final .first {
+  font-size: 2.9rem;
+}
+
 
 @-webkit-keyframes rotateWord {
   0% {
@@ -303,7 +315,7 @@ h2 {
 
 .copy .second,
 .copy-final .second {
-  font-size: 3rem;
+  font-size: 4.5rem;
   font-weight: 500;
   margin-top: 0;
   margin-left: 30px;
@@ -411,10 +423,20 @@ h2 {
 }
 
 .hero-1 .copy-cover {
-  width: 600px;
+  width: 810px;
   margin: auto;
   margin-top: 10%;
-  margin-left: 200px;
+}
+
+.hero-1 .copy-cover .first {
+  float: left;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero-1 .copy-cover .second {
+  font-size: 3.5rem;
+  margin-left: 100px;
 }
 
 /* Hero 2 */
@@ -426,6 +448,10 @@ h2 {
 }
 .hero-2 h1 {
   margin: 0;
+}
+
+.hero-2 .copy-cover {
+  width: 810px;
 }
 
 /* Footer */
@@ -692,9 +718,17 @@ footer {
   opacity: 0;
 }
 
+#hero-1 .paragraph-message p {
+  font-size: 1.8rem;
+}
+
 #hero-1.playing .paragraph-message {
   animation: fadeInParagraph 2s ease-in both;
 	animation-delay: 1s;
+}
+
+.hero-1 .paragraph-message {
+  width: 810px;
 }
 
 #hero-1.playing .copy-cover {
@@ -716,6 +750,7 @@ footer {
 /* Animation Hero 2 */
 #hero-2 .copy-cover  {
   opacity: 1;
+  margin-left: 0;
 }
 
 
@@ -888,11 +923,10 @@ footer {
 /* Animate words */
 .playing h1.char-animate {
   font-weight: 400;
-  max-width: 40ch;
   transform: scale(1.5);
   animation: scale 10s forwards cubic-bezier(0.5, 1, 0.89, 1);
   float: left;
-  margin-left: 146px;
+  margin-left: 130px;
 }
 
 .playing h1.char-animate @keyframes scale {

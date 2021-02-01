@@ -163,7 +163,7 @@ export default function Home({ data }) {
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
         <div>
-          <audio id="track">
+          <audio id="track" autoplay>
             <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
 
