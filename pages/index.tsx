@@ -194,6 +194,13 @@ export default function Home({ data }) {
           </a>
         </div>
 
+        <div class="arrow-down arrow-down-2">
+          <a href="#hero-2" class="no-link">
+            <img src="/images/arrow-down-cyan.svg" />
+          </a>
+        </div>
+
+
         <div className="header-top header-temporal">
           <div className="header-top-inner">
             <div className="logo-elcubo">

@@ -226,6 +226,7 @@ h2 {
   font-weight: 400;
   margin-bottom: 10px;
   float: left;
+  width: 100%;
 }
 
 .hero-0 .copy:nth-child(2) {
@@ -324,14 +325,14 @@ h2 {
 
 .third {
   font-size: 1.8rem;
-  font-weight: 300;
+  font-weight: 4    00;
   margin-left: 30px;
   font-style: italic;
 }
 
 .fourth {
   font-size: 3rem;
-  font-weight: 300;
+  font-weight: 400;
   font-style: italic;
 }
 
@@ -437,6 +438,17 @@ h2 {
 .hero-1 .copy-cover .second {
   font-size: 3.5rem;
   margin-left: 100px;
+}
+
+.arrow-down-2 {
+  z-index: 100;
+  position: absolute;
+  bottom: auto;
+  top: 190vh;
+}
+
+.arrow-down-2 img {
+  z-index: 100;
 }
 
 /* Hero 2 */
@@ -764,11 +776,13 @@ footer {
 
 #hero-3 .cover-first {
   opacity: 0;
+  width: 800px;
+  margin-left: 0;
 }
 
 #hero-3 .cover-first {
   animation: fadeInParagraph 2s ease-in both;
-	animation-delay: 14s;
+	animation-delay: 12s;
 }
 
 #hero-3 .img-bg-pc {
@@ -786,6 +800,7 @@ footer {
 
 #hero-3 .cover-second {
   opacity: 0;
+  margin-left: 30px;
 }
 
 #hero-3 .cover-second {
@@ -795,11 +810,13 @@ footer {
 
 #hero-3 .paragraph-message {
   opacity: 0;
+  margin-left: 30px;
 }
 
 #hero-3 .paragraph-message {
   animation: fadeInParagraph 2s ease-in both;
-	animation-delay: 15s;
+  animation-delay: 15s;
+  width: 780px;
 }
 
 
@@ -868,6 +885,14 @@ footer {
   padding-bottom: 200px;
 }
 
+.hero-3 .first {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+
 .hero-3 .arrow-down{
   display: none;
 }
@@ -879,7 +904,7 @@ footer {
 .hero-3 .paragraph-message p {
   font-family: 'Bitter';
   font-weight: 100;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .paragraph-message strong {
@@ -894,21 +919,26 @@ footer {
 .hero-3 ol {
   font-family: 'Bitter';
   font-weight: 100;
-  font-size: 16px;
+  font-size: 18px;
   margin-top: 20px;
+  padding-left: 18px;
+  margin-bottom: 50px;
 }
 
 .hero-3 ol li {
   line-height: 1.6em;
+  font-size: 18px;
 }
 
+.hero-3 .paragraph-message p {
+  line-height: 1.6;
+}
 .hero-3 .paragraph-message strong em {
   color: white;
 }
 
 .hero-3 .copy-cover-2.cover-first {
-  margin-top: 280px;
-  margin-left: 40px;
+  margin-top: 340px;
 }
 
 .temporada-1 #mouse-circle.big span {
