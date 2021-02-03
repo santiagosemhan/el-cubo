@@ -20,12 +20,12 @@ body {
 }
 
 .app-elcubo {
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
     /* Firefox */
-    -webkit-animation: fadein 2s;
+    -webkit-animation: fadein 3s;
     /* Safari and Chrome */
-    -o-animation: fadein 2s;
+    -o-animation: fadein 3s;
     /* Opera */
 }
 
