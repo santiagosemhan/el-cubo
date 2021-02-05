@@ -55,6 +55,7 @@ if (button_close) {
     button_close.forEach(function (link) {
         link.addEventListener('click', () => {
             pane.classList.toggle('open');
+            hideComments();
 
             setTimeout(() => {
                 //player.stop();
@@ -108,6 +109,7 @@ function loadPlayer(sURL, sPoster) {
         player.on('ended', function () {
 
             pane.classList.toggle('open');
+            hideComments();
             player.fullscreen.exit();
             comment_init = false;
             comment_end = false;
