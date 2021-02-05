@@ -164,6 +164,7 @@ if (button_open_comments) {
         link.addEventListener('click', () => {
             pane_comments.classList.add('open');
             pane_cover_comments.classList.toggle('visible');
+            player.pause();
         });
     });
 }
@@ -172,6 +173,7 @@ if (button_close_comments) {
     button_close_comments.addEventListener('click', () => {
         pane_comments.classList.toggle('open');
         pane_cover_comments.classList.toggle('visible');
+        player.play();
     });
 }
 
