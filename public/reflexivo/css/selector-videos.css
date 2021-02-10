@@ -628,3 +628,7 @@ a {
     animation: fadeInUp 2s ease-in-out 0s forwards;
     z-index: 1;
 }
+
+.row-second .cover-link {
+    display: none;
+}

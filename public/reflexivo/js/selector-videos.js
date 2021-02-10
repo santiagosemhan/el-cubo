@@ -297,15 +297,17 @@ fake_cover.addEventListener('mousemove', () => {
 
 
 
-function loadProgress(sPar) {
+function loadProgress(sPar, sVelocity) {
 
     // Timer
     let timer = 0;
-    let limit = 30000; //ms
+    let limit = sVelocity; //ms
 
     timerEnd = limit / 10;
     let blockWidth = 100 / timerEnd;
     const progress = document.querySelectorAll("." + sPar + " .progress");
+
+    console.log(limit);
 
     let countdown = setInterval(function () {
         timer++;
@@ -318,7 +320,7 @@ function loadProgress(sPar) {
             }
 
         }
-        console.log(timer);
+        //console.log(timer);
         // document.getElementById("countdown").textContent = timer/100;
         if (timer >= timerEnd) {
             clearInterval(countdown);
@@ -335,7 +337,13 @@ console.log('kionda');
 const progress_direct = document.getElementsByClassName("progress-direct")[0];
 
 if (progress_direct) {
-    loadProgress('progress-direct');
+    let velocity = document.getElementsByClassName("progress-0")[0].dataset.velocity;
+    if (velocity !== undefined) {
+        console.log('a verrrr' + velocity);
+        loadProgress('progress-0', velocity);
+    } else {
+        loadProgress('progress-0', 30000);
+    }
 }
 //
 
@@ -347,12 +355,19 @@ const button_ok = document.getElementById('button_ok');
 
 if (button_ok) {
     button_ok.addEventListener('click', () => {
-        loadProgress('progress-0');
+        let velocity = document.getElementsByClassName("progress-0")[0].dataset.velocity;
+        if (velocity !== undefined) {
+            console.log('a verrrr' + velocity);
+            loadProgress('progress-0', velocity);
+        } else {
+            loadProgress('progress-0', 30000);
+        }
     });
 }
 
 /* Select option */
 
+/*
 const answer_select = document.querySelectorAll('.li-questions li');
 const next_select = document.getElementById('link-onboard');
 
@@ -372,5 +387,17 @@ if (answer_select) {
                 next_select.href = link.dataset.rel;
             }
         });
+    });
+}
+
+*/
+
+const answer_select = document.querySelectorAll('.li-questions li');
+
+if (answer_select) {
+    answer_select.forEach(function (link) {
+        next_select = link.childNodes[1];
+        console.log(next_select);
+        next_select.href = link.dataset.rel;
     });
 }
