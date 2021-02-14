@@ -194,6 +194,7 @@ body {
     z-index: 10;
 }
 
+/*
 .cover-pulse:nth-child(1) {
     left: 30vw;
     bottom: 15vh;
@@ -202,7 +203,7 @@ body {
 .cover-pulse:nth-child(2) {
     right: 22vw;
     bottom: 15vh;
-}
+}*/
 
 #link-next {
     opacity: 0;

@@ -118,9 +118,25 @@ body {
     width: 682px;
 }
 
+/* 1 video reflexivo */
+
 .columns-1 .row.row-cero,
 .columns-1 .row.row-first {
-    width: 340px;
+    width: 30%;
+}
+
+.columns-1 .parent .child .img-bn,
+.columns-1 .parent .child .img-color {
+    width: 80% !important;
+    top: 50% !important;
+    /* position the top  edge of the element at the middle of the parent */
+    left: 50%;
+    /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+}
+
+.columns-1.is-viewed .characters-wrapper {
+    margin-top: 12vh;
 }
 
 .row.row-first .parent {

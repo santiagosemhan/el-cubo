@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>El Cubo</title>
+
+    <link rel="stylesheet" href="../css/laberinto.css">
+    <link rel="stylesheet" href="../css/nav.css">
+
+
+    <link rel="stylesheet" href="../css/onboard.css">
+
+    <link rel='stylesheet' href='https://unpkg.com/plyr@3/dist/plyr.css'>
+
+
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+</head>
+
+<body id="body">
+
+    <div class="header-top">
+        <div class="header-top-inner">
+            <nav class="nav">
+                <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes" class="back-to-season">
+                    <img src="../img/icon-arrow-back.svg">
+                    <span>Volver al inicio</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div class="app-elcubo laberinto" style="background: url(../img/alba/ALBA-8.jpg); background-size: 100%; background-position: center center; background-repeat: no-repeat;">
+
+
+        <div class="pane open" data-relation="">
+            <a class="close">
+                <img src="../img/pane-close.svg" />
+            </a>
+
+            <div class="pane-video" data-video="429288" data-poster="null.jpg">
+                <video controls crossorigin playsinline></video>
+            </div>
+
+        </div>
+
+        <div class="comments-bullet open-comments">
+            <img src="../img/comment-bullet.svg" />
+            <div class="spinner">
+                <div class="bounce1"></div>
+                <div class="bounce2"></div>
+                <div class="bounce3"></div>
+            </div>
+            <p>Clic aquí
+                <br>para comentar</p>
+        </div>
+
+
+        <div class="pane-cover-comments">
+        </div>
+        <div class="pane-comments" data-relation="">
+            <a class="close-comments">
+                <img src="../img/pane-close-black.svg" />
+            </a>
+
+            <p class="intro">
+                Lorem ipsumulis, ultricies ante a, vulputate libero. Vivamus pharetra iaculiue id varius. Nullam eleifend rutrum nulla, ac
+                tristique
+            </p>
+
+            <div class="pane-iframe">
+                <div class="facebook-comments">
+                    <div id="fb-root"></div>
+                    <script>
+                        (function (d, s, id) {
+                            var js, fjs = d.getElementsByTagName(s)[0];
+                            if (d.getElementById(id)) return;
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src =
+                                "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.3&appId=115441168616341";
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }(document, 'script', 'facebook-jssdk'));
+                    </script>
+                    <div class="fb-comments" data-href="https://www.facebook.com/ElCuboHistorias3D" data-numposts="5" data-colorscheme="dark"
+                        data-order-by="reverse-time" width="320"></div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+        <div class="hero hero-laberinto">
+
+
+
+            <div class="copy-cover">
+
+                <div class="cover-pulse" style="left: 10vw;
+                top: 15vh;">
+                    <span class="pulse" data-rel="../marina/marina-7.html"></span>
+                </div>
+
+                <div class="cover-pulse">
+                    <span class="pulse" data-rel="../sales/sales-4+5.html" style="left: 10vw;
+                    bottom: 35vh;"></span>
+                </div>
+
+                <div class="cover-pulse" style="right: 10vw;
+                bottom: 35vh;">
+                    <span class="pulse" data-rel="../carey/carey-8.html"></span>
+                </div>
+
+                <div class="cover-pulse" style="left: 12vw;
+                bottom: 55vh;">
+                    <span class="pulse" data-rel="../elvira/elvira-6.html"></span>
+                </div>
+
+                <div class="cover-pulse" style="left: 18vw;
+                bottom: 55vh;">
+                    <span class="pulse" data-rel="alba-9.html"></span>
+                </div>
+
+
+
+                <div class="flex-container column">
+                    <div class="flex-item">&nbsp;</div>
+                    <div class="flex-item">
+                        <div class="icon-cover icon-replay toggle">
+                            <img src="../img/replay-reflexivo.svg" />
+                        </div>
+                    </div>
+                    <div class="flex-item">
+                        <div class="copy">
+
+                            <p>
+                                Lorem ipsumulis,
+                                <br>ultricies ante a
+                            </p>
+                            <div class="cover-link">
+                                <a id="link-next" href="#" class="button-cyan">
+                                    <span>Continuar</span>
+                                    <img src="../img/icon-arrow-init.svg">
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
+    <!-- partial -->
+    <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL'></script>
+    <script src='https://unpkg.com/plyr@3'></script>
+
+    <script src="../js/laberinto.js"></script>
+
+
+</body>
+
+</html>

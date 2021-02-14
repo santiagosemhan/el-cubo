@@ -74,8 +74,11 @@ if (button_close) {
 
 function loadPlayer(sURL, sPoster) {
     //document.addEventListener('DOMContentLoaded', () => {
-    let source = 'https://rtvcplay-media-content.s3.amazonaws.com/vod-content/' + sURL + '/' + sURL + '.m3u8';
 
+
+    //let source = 'https://rtvcplay-media-content.s3.amazonaws.com/vod-content/' + sURL + '/' + sURL + '.m3u8';
+
+    let source = 'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:' + sURL + '.smil/playlist.m3u8';
     const video = document.querySelector('video');
 
     video.setAttribute('poster', sPoster);
