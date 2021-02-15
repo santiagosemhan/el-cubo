@@ -123,6 +123,8 @@ body {
 .columns-1 .row.row-cero,
 .columns-1 .row.row-first {
     width: 30%;
+    z-index: 2;
+    position: relative;
 }
 
 .columns-1 .parent .child .img-bn,
@@ -365,6 +367,16 @@ body {
 .fake-cover.visible {
     display: flex;
     z-index: 10000;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.columns-1 .fake-cover {
+    display: flex;
+    z-index: 0;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 1;
+    position: absolute;
+    top: 0;
 }
 
 .characters .selector-mode {
