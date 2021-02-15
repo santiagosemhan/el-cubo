@@ -106,7 +106,7 @@ export const VideoPlayerWrapper = styled.div`
 }
 
 .plyr video {
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .plyr__video-wrapper {

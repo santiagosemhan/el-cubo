@@ -613,6 +613,18 @@ a {
     display: none;
 }
 
+.columns-1 .progress-bar {
+    margin-top: 40px;
+    display: block;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    height: 2px;
+    background: gray;
+    overflow: hidden;
+    float: none;
+}
+
 .progress-bar {
     margin-top: 40px;
     display: block;

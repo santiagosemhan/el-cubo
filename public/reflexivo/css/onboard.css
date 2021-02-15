@@ -254,7 +254,7 @@ body {
 }
 
 .plyr video {
-    object-fit: fill;
+    object-fit: cover !important;
 }
 
 .plyr__video-wrapper {

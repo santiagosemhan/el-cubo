@@ -48,6 +48,7 @@ const VideoPlayer = ({
 
     playerRef.current = new Plyr(video, {
       enabled: true,
+      ratio: '16:9',
       quality: {
         default: 720,
         options: [720, 360, 270],
@@ -189,15 +190,15 @@ const VideoPlayer = ({
       'afterend',
       `
         ${
-          showPrevButton
-            ? '<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>'
-            : ''
-        } 
+      showPrevButton
+        ? '<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>'
+        : ''
+      } 
         ${
-          showNextButton
-            ? ' <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>'
-            : ''
-        } 
+      showNextButton
+        ? ' <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>'
+        : ''
+      } 
       `,
     );
   }, [showPrevButton, showNextButton]);
