@@ -194,6 +194,10 @@ body {
     z-index: 10;
 }
 
+.hero-laberinto .copy p {
+    display: none;
+}
+
 /*
 .cover-pulse:nth-child(1) {
     left: 30vw;

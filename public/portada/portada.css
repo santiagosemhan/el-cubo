@@ -670,11 +670,11 @@ footer {
 
 .logo--image {
     opacity: 0;
-    animation: fadeInLogo 3s ease-in both;
+    animation: fadeInLogo 1s ease-in both;
 }
 
 .logo--image {
-    animation-delay: 3s;
+    animation-delay: 0s;
 }
 
 @keyframes fadeInLogo {
@@ -1286,5 +1286,49 @@ footer {
     .input-search,
     #menu-mobile-button {
         display: none;
+    }
+}
+
+#hero-0 .video-overlay {
+    align-content: flex-start;
+}
+
+h1.cover-reveal {
+    margin: 0;
+    text-align: left;
+    overflow: hidden;
+    color: white;
+    line-height: 1.2;
+}
+
+h1 span.reveal-first {
+    display: block;
+    animation: reveal 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
+    font-size: 3rem;
+    float: left;
+    clear: both;
+    width: 100%;
+    color: #3b99a6;
+    font-weight: 300;
+    margin-bottom: 0;
+    margin-top: 170px;
+}
+
+h1 span.reveal-second {
+    display: block;
+    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
+    font-size: 4.5rem;
+    font-weight: 500;
+    margin-top: 0px;
+    margin-left: 30px;
+    font-family: Bitter;
+}
+
+@keyframes reveal {
+    0% {
+        transform: translate(0, 100%);
+    }
+    100% {
+        transform: translate(0, 0);
     }
 }
