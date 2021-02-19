@@ -1,5 +1,6 @@
    /* Observer videos */
    const video1 = document.querySelector("#hero-1 video");
+   /*
    if (video1) {
        video1.pause();
        const observer = new IntersectionObserver((entries) => {
@@ -17,9 +18,10 @@
        });
 
        observer.observe(video1);
-   }
+   }*/
 
    const video2 = document.querySelector("#hero-2 video");
+   /*
    if (video2) {
        video2.pause();
        const observer2 = new IntersectionObserver((entries) => {
@@ -37,7 +39,7 @@
        });
 
        observer2.observe(video2);
-   }
+   }*/
 
    /* Sound */
    let track = document.getElementById('track');
@@ -131,6 +133,32 @@
            document.getElementsByClassName('cover-reveal-4')[1].classList.add('active');
        }
 
+
+       var someDiv4 = document.getElementsByClassName('hero-1')[0];
+       var distanceToTop = someDiv4.getBoundingClientRect().top;
+
+       if (distanceToTop <= 200) {
+           video1.play();
+           video1.classList.add('hide');
+           document.getElementById("hero-1").classList.add('playing');
+           document.getElementsByClassName('cover-reveal-5')[0].classList.add('active');
+           document.getElementsByClassName('cover-reveal-5')[1].classList.add('active');
+           document.getElementsByClassName('cover-reveal-5')[2].classList.add('active');
+           document.getElementsByClassName('cover-reveal-6')[0].classList.add('active');
+           document.getElementsByClassName('cover-reveal-6')[1].classList.add('active');
+       }
+
+       var someDiv5 = document.getElementsByClassName('hero-2')[0];
+       var distanceToTop5 = someDiv5.getBoundingClientRect().top;
+
+       if (distanceToTop5 <= 200) {
+           video2.play();
+           video2.classList.add('hide');
+           document.getElementById("hero-2").classList.add('playing');
+           document.getElementsByClassName('cover-reveal-7')[0].classList.add('active');
+       }
+
+
    };
 
 
@@ -145,16 +173,13 @@
 
        var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top;
        var elementHeight = element.offsetHeight;
-       var scrollTop = document.documentElement.scrollTop;
+       var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
        var opacity = 1;
-
-       console.log(scrollTop + '/' + distanceScrollTop);
 
        if (scrollTop > distanceScrollTop) {
            opacity = 1 - (scrollTop - distanceScrollTop) / elementHeight;
        }
-
 
        if (scrollTop < distanceScrollTop) {
            opacity = 1 - ((distanceScrollTop - scrollTop) / 300);
@@ -174,37 +199,3 @@
    }
 
    window.addEventListener('scroll', scrollHandler);
-
-
-
-
-
-   /*
-
-      var FancyScroll = (function () {
-
-          var elements = {
-              theThing: document.querySelector('.cover-reveal.active');
-          };
-
-
-          var e = elements;
-          var pageHeight = window.outerHeight;
-
-          if (e.theThing) {
-              window.addEventListener('scroll', function () {
-
-                  var scrollPos = window.scrollY;
-                  var opacity = 1 - (scrollPos / 250);
-
-                  if (scrollPos < pageHeight / 2) {
-                      requestAnimationFrame(function () {
-                          e.theThing.style.opacity = opacity;
-                      });
-                  }
-              });
-          }
-
-
-      }());
-      */

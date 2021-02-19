@@ -11,6 +11,7 @@ body {
     background-color: black;
     margin: 0;
     color: white;
+    overflow-x: hidden;
 }
 
 body {
@@ -108,7 +109,7 @@ body.fade {
     /* Re-size video to cover full screen while maintaining aspect ratio */
     min-width: 100%;
     min-height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     /* Display video below overlay */
     z-index: -1;
 }
@@ -226,178 +227,6 @@ h2 {
     position: fixed;
 }
 
-.hero-0 .copy {
-    margin: 0;
-    opacity: 0;
-    -webkit-animation: rotateWord 25s linear 0s;
-    -ms-animation: rotateWord 25s linear 0s;
-    animation: rotateWord 25s linear 0s;
-    animation: rotateWord 25s linear 0s;
-    animation-delay: 1s;
-}
-
-.hero-0 .first {
-    font-size: 2.9rem;
-    font-weight: 400;
-    margin-bottom: 10px;
-    float: left;
-    width: 100%;
-}
-
-.hero-0 .copy:nth-child(2) {
-    /*-webkit-animation-delay: 11s;
-    -ms-animation-delay: 11s;
-    animation-delay: 11s;*/
-}
-
-.hero-0 .copy:nth-child(3) {
-    /*-webkit-animation-delay: 16s;
-    -ms-animation-delay: 16s;
-    animation-delay: 16s;*/
-}
-
-.hero-0 .copy:nth-child(4) {
-    /*-webkit-animation-delay: 22s;
-    -ms-animation-delay: 21s;
-    animation-delay: 21s;*/
-}
-
-.copy-final {
-    margin: 0;
-    position: absolute;
-    opacity: 0;
-    animation: rotateWord 25s normal forwards;
-    animation-delay: 2s;
-}
-
-.copy-final .first {
-    font-size: 2.9rem;
-}
-
-@-webkit-keyframes rotateWord {
-    0% {
-        opacity: 0;
-    }
-    2% {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-    }
-    5% {
-        opacity: 1;
-        -webkit-transform: translateY(0px);
-    }
-    17% {
-        opacity: 1;
-        -webkit-transform: translateY(0px);
-    }
-    /*22% {
-        opacity: 0;
-        -webkit-transform: translateY(30px);
-    }
-    100% {
-        opacity: 0;
-    }*/
-}
-
-@-webkit-keyframes rotateWordFinal {
-    0% {
-        opacity: 0;
-    }
-    2% {
-        opacity: 0;
-        -webkit-transform: translateY(-30px);
-    }
-    5% {
-        opacity: 1;
-        -webkit-transform: translateY(0px);
-    }
-    17% {
-        opacity: 1;
-        -webkit-transform: translateY(0px);
-    }
-    24% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-.first {
-    font-size: 2rem;
-}
-
-.copy .second,
-.copy-final .second {
-    font-size: 4.5rem;
-    font-weight: 500;
-    margin-top: 0;
-    margin-left: 30px;
-    font-family: 'Bitter';
-}
-
-.third {
-    font-size: 1.8rem;
-    font-weight: 4 00;
-    margin-left: 30px;
-    font-style: italic;
-}
-
-.fourth {
-    font-size: 3rem;
-    font-weight: 400;
-    font-style: italic;
-}
-
-.arrow-down {
-    text-align: center;
-    position: fixed;
-    bottom: 40px;
-    width: 100vw;
-    z-index: 14;
-}
-
-.arrow-down.scrolled {
-    z-index: 0;
-}
-
-.arrow-down img {
-    width: 40px;
-    /*transform: scale(1.2);*/
-    animation: bounce 0.6s infinite;
-    -webkit-animation-delay: 14s;
-    -ms-animation-delay: 14s;
-    animation-delay: 21s;
-    opacity: 0;
-}
-
-@keyframes bounce {
-    0%,
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-    50% {
-        transform: translateY(-10px);
-        opacity: 1;
-    }
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-        opacity: 1;
-    }
-    70% {
-        transform: scale(1.2);
-        opacity: 1;
-    }
-    100% {
-        transform: scale(0.95);
-        opacity: 1;
-    }
-}
-
 /* Hero 1 */
 
 .hero-1 {
@@ -423,7 +252,7 @@ h2 {
     height: 7px;
     background: #45b4c1;
     border: 0;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
 }
 
 .paragraph-message p {
@@ -739,8 +568,8 @@ footer {
 }
 
 #hero-2 video.hide {
-    -webkit-animation: 8s ease 0s normal forwards 1 hideVideo;
-    animation: 8s ease 0s normal forwards 1 hideVideo;
+    -webkit-animation: 4s ease 0s normal forwards 1 hideVideo;
+    animation: 4s ease 0s normal forwards 1 hideVideo;
 }
 
 #hero-3 video.hide {
@@ -750,28 +579,33 @@ footer {
 
 /* Animation Hero 1 */
 
-#hero-1 .paragraph-message,
+/*#hero-1 .paragraph-message,*/
+
+/*
 #hero-1 .copy-cover {
     opacity: 0;
-}
+}*/
 
 #hero-1 .paragraph-message p {
     font-size: 1.8rem;
+    margin: 0;
 }
 
+/*
 #hero-1.playing .paragraph-message {
     animation: fadeInParagraph 2s ease-in both;
-    animation-delay: 1s;
-}
+    animation-delay: 0s;
+}*/
 
 .hero-1 .paragraph-message {
     width: 810px;
 }
 
+/*
 #hero-1.playing .copy-cover {
     animation: fadeInParagraph 3s ease-in both;
     animation-delay: 5s;
-}
+}*/
 
 @keyframes fadeInParagraph {
     from {
@@ -791,10 +625,11 @@ footer {
     margin-left: 0;
 }
 
+/*
 #hero-2.playing .copy-cover {
     animation: fadeInParagraph 2s ease-in both;
     animation-delay: 2s;
-}
+}*/
 
 /* Animation Hero Season */
 
@@ -970,6 +805,7 @@ footer {
 
 /* Animate words */
 
+/*
 .playing h1.char-animate {
     font-weight: 400;
     transform: scale(1.5);
@@ -1354,7 +1190,10 @@ h1 span.reveal-second {
 
 h1.cover-reveal-2,
 h1.cover-reveal-3,
-h1.cover-reveal-4 {
+h1.cover-reveal-4,
+p.cover-reveal-5,
+h1.cover-reveal-6,
+h1.cover-reveal-7 {
     opacity: 0;
 }
 
@@ -1369,9 +1208,75 @@ h1.active span.reveal-second {
     opacity: 1;
 }
 
+h1.cover-reveal-4.active span.reveal-first {
+    display: block;
+    animation: reveal 2s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+h1.cover-reveal-4.active span.reveal-second {
+    display: block;
+    animation: reveal 2.6s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+p.cover-reveal {
+    overflow: hidden;
+}
+
+p.cover-reveal-5 {
+    opacity: 0;
+}
+
+p span.reveal-first {
+    opacity: 0;
+}
+
+p.active span.reveal-first {
+    display: block;
+    animation: reveal 1.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+p.active span.reveal-second {
+    display: block;
+    animation: reveal 1.8s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+p.active span.reveal-third {
+    display: block;
+    animation: reveal 2.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+h1.active.cover-reveal-6 span.reveal-first {
+    display: block;
+    animation: reveal 5.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+    color: white;
+}
+
+h1.active.cover-reveal-6 span.reveal-second {
+    display: block;
+    animation: reveal 6.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+    color: white;
+}
+
+h1.active.cover-reveal-7 span.reveal-first {
+    display: block;
+    animation: reveal 1.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+    color: white;
+}
+
 h1.cover-reveal-2.active,
 h1.cover-reveal-3.active,
-h1.cover-reveal-4.active {
+h1.cover-reveal-4.active,
+p.cover-reveal-5.active,
+h1.cover-reveal-6.active,
+h1.cover-reveal-7.active {
     animation: fadeInPhrase 2s ease-in both;
 }
 
@@ -1399,7 +1304,7 @@ h1.cover-reveal-4.active {
     width: 2px;
     height: 60px;
     position: fixed;
-    bottom: 20px;
+    bottom: 0px;
     left: 0;
     right: 0;
     margin: 0 auto;
