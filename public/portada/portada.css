@@ -67,7 +67,6 @@ body.fade {
     display: grid;
     grid-template-rows: 100vh;
     overflow: hidden;
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
 }
 
 /*
@@ -77,6 +76,15 @@ body.fade {
 
 */
 
+.hero-cover-1 {
+    background: url(img/gradient.png) no-repeat 0 0;
+    background-size: 100% 200px;
+    padding-top: 200px;
+    position: relative;
+    z-index: 15;
+    margin-top: 40vh;
+}
+
 .hero-1:hover {
     cursor: pointer !important;
 }
@@ -84,9 +92,9 @@ body.fade {
 .hero-1 {
     /* Create grid spanning viewport width & height */
     display: grid;
-    grid-template-rows: 80vh;
+    grid-template-rows: 100vh;
     overflow: hidden;
-    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
+    background: black;
 }
 
 .row-description {
@@ -207,9 +215,15 @@ h2 {
 }
 
 .hero-0 {
-    position: fixed;
+    position: static;
     top: 0;
     width: 100%;
+    grid-template-rows: none;
+}
+
+.hero-0 .video-bg,
+.hero-0 .img-bg-pc {
+    position: fixed;
 }
 
 .hero-0 .copy {
@@ -388,9 +402,9 @@ h2 {
 
 .hero-1 {
     height: 100vh;
-    margin-top: 100vh;
     position: relative;
     z-index: 12;
+    padding-top: 80px;
     background: black;
 }
 
@@ -453,7 +467,7 @@ h2 {
 
 .hero-2 {
     position: relative;
-    z-index: 12;
+    z-index: 15;
     background: black;
 }
 
@@ -1301,9 +1315,18 @@ h1.cover-reveal {
     line-height: 1.2;
 }
 
+h1.cover-reveal-1 span.reveal-first {
+    margin-top: 170px;
+}
+
+h1.cover-reveal-2 span.reveal-first,
+h1.cover-reveal-3 span.reveal-first,
+h1.cover-reveal-4 span.reveal-first {
+    margin-top: 55vh;
+}
+
 h1 span.reveal-first {
     display: block;
-    animation: reveal 0.5s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
     font-size: 3rem;
     float: left;
     clear: both;
@@ -1311,24 +1334,97 @@ h1 span.reveal-first {
     color: #3b99a6;
     font-weight: 300;
     margin-bottom: 0;
-    margin-top: 170px;
+    opacity: 0;
+}
+
+h1.active span.reveal-first {
+    opacity: 1;
+    animation: reveal 1s cubic-bezier(.5, 0, 0, 1) 0.2s;
 }
 
 h1 span.reveal-second {
     display: block;
-    animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) 0.2s;
     font-size: 4.5rem;
     font-weight: 500;
     margin-top: 0px;
     margin-left: 30px;
     font-family: Bitter;
+    opacity: 0;
+}
+
+h1.cover-reveal-2,
+h1.cover-reveal-3,
+h1.cover-reveal-4 {
+    opacity: 0;
+}
+
+h1.cover-reveal-4 span {
+    font-size: 2.9rem;
+    color: white;
+}
+
+h1.active span.reveal-second {
+    display: block;
+    animation: reveal 1.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    opacity: 1;
+}
+
+h1.cover-reveal-2.active,
+h1.cover-reveal-3.active,
+h1.cover-reveal-4.active {
+    animation: fadeInPhrase 2s ease-in both;
 }
 
 @keyframes reveal {
     0% {
-        transform: translate(0, 100%);
+        transform: translate(0, 250%);
+        opacity: 0;
     }
     100% {
         transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInPhrase {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.scrolldown {
+    width: 2px;
+    height: 60px;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #3b99a6;
+}
+
+.scrolldown .line {
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: linear-gradient(to bottom, rgb(44, 44, 44) 50%, rgba(0, 0, 0, 0) 50%);
+    background-position: 0 -60px;
+    background-size: 100% 200%;
+    animation: scrolldown 3.2s cubic-bezier(0.76, 0, 0.3, 1) forwards infinite;
+}
+
+@keyframes scrolldown {
+    0% {
+        background-position: 0 -60px;
+    }
+    75% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 60px;
     }
 }

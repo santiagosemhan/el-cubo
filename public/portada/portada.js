@@ -13,7 +13,7 @@
                }
            });
        }, {
-           threshold: .4
+           threshold: .1
        });
 
        observer.observe(video1);
@@ -33,7 +33,7 @@
                }
            });
        }, {
-           threshold: .2
+           threshold: .1
        });
 
        observer2.observe(video2);
@@ -106,94 +106,105 @@
 
 
    window.onscroll = function (ev) {
-       var B = document.body; //IE 'quirks'
-       var D = document.documentElement; //IE with doctype
-       D = (D.clientHeight) ? D : B;
 
-       if (D.scrollTop == 0) {
-           document.getElementsByClassName('arrow-down')[0].classList.remove('scrolled');
-           document.getElementsByClassName('header-temporal')[0].classList.remove('scrolled');
-       } else {
-           document.getElementsByClassName('arrow-down')[0].classList.add('scrolled');
-           document.getElementsByClassName('header-temporal')[0].classList.add('scrolled');
+       var someDiv1 = document.getElementsByClassName('cover-reveal-2')[0];
+       var distanceToTop = someDiv1.getBoundingClientRect().top;
+
+       if (distanceToTop <= 100) {
+           document.getElementsByClassName('cover-reveal-2')[0].classList.add('active');
+           document.getElementsByClassName('cover-reveal-2')[1].classList.add('active');
        }
+
+       var someDiv2 = document.getElementsByClassName('cover-reveal-3')[0];
+       var distanceToTop = someDiv2.getBoundingClientRect().top;
+
+       if (distanceToTop <= 100) {
+           document.getElementsByClassName('cover-reveal-3')[0].classList.add('active');
+           document.getElementsByClassName('cover-reveal-3')[1].classList.add('active');
+       }
+
+       var someDiv3 = document.getElementsByClassName('cover-reveal-4')[0];
+       var distanceToTop = someDiv3.getBoundingClientRect().top;
+
+       if (distanceToTop <= 100) {
+           document.getElementsByClassName('cover-reveal-4')[0].classList.add('active');
+           document.getElementsByClassName('cover-reveal-4')[1].classList.add('active');
+       }
+
    };
 
 
 
+   //var header = document.getElementById('header');
+   //let fadeElement = document.getElementsByClassName('cover-scroll')[0];
 
-   /* Scroll */
-   window.requestAnimationFrame = (function () {
-       return window.requestAnimationFrame ||
-           window.webkitRequestAnimationFrame ||
-           window.mozRequestAnimationFrame ||
-           window.oRequestAnimationFrame ||
-           window.msRequestAnimationFrame ||
-           function (callback) {
-               window.setTimeout(callback, 2000 / 30);
-           };
-   })();
-
-
-   var scrollEngine = function () {
-       var amount = 0;
-       var scrollInProgess = false;
-       var tailOff = 40;
-
-       function evaluate(functionName) {
-           amount = amount - Math.ceil(amount / tailOff);
-           if (amount > 0) {
-               requestAnimationFrame(functionName);
-           } else {
-               scrollInProgess = false;
-           }
+   function fadeOutOnScroll(element) {
+       if (!element) {
+           return;
        }
 
-       function scroll(timestamp) {
-           window.scrollBy(0, Math.ceil(amount / tailOff));
-           evaluate(scroll);
+       var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top;
+       var elementHeight = element.offsetHeight;
+       var scrollTop = document.documentElement.scrollTop;
+
+       var opacity = 1;
+
+       console.log(scrollTop + '/' + distanceScrollTop);
+
+       if (scrollTop > distanceScrollTop) {
+           opacity = 1 - (scrollTop - distanceScrollTop) / elementHeight;
        }
 
-       function scrollUp(timestamp) {
-           window.scrollBy(0, -Math.ceil(amount / tailOff));
-           evaluate(scrollUp);
+
+       if (scrollTop < distanceScrollTop) {
+           opacity = 1 - ((distanceScrollTop - scrollTop) / 300);
        }
 
-       return {
-           setTailoff: function (tailAmount) {
-               tailOff = tailAmount;
-           },
-           scrollToElementById: function (id, offset) {
-               if (!scrollInProgess) {
-                   if (offset === undefined) {
-                       offset = 0;
-                   }
-                   scrollInProgess = true;
-                   var alreadyScrolled = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-                   amount = document.getElementById(id).offsetTop - alreadyScrolled;
-                   amount = amount - offset;
-                   if (amount >= 0) {
-                       requestAnimationFrame(scroll);
-                   } else {
-                       amount = -amount;
-                       requestAnimationFrame(scrollUp);
-                   }
-               }
-           }
-       };
-   }();
-
-
-   function handleClick(e) {
-       e.preventDefault();
-       var idSplit = this.getAttribute('href').split('#');
-       if (idSplit.length > 1) {
-           scrollEngine.scrollToElementById(idSplit[1], 20);
+       if (opacity >= 0) {
+           element.style.opacity = opacity;
        }
    }
 
-   var links = document.querySelectorAll('.arrow-down [href^=\'#\']');
-   var limit = links.length;
-   for (var n = 0; n < limit; n++) {
-       links[n].addEventListener('click', handleClick);
+   function scrollHandler() {
+
+       document.querySelectorAll('.cover-scroll').forEach(function (fadeElement) {
+           fadeOutOnScroll(fadeElement);
+       });
+
    }
+
+   window.addEventListener('scroll', scrollHandler);
+
+
+
+
+
+   /*
+
+      var FancyScroll = (function () {
+
+          var elements = {
+              theThing: document.querySelector('.cover-reveal.active');
+          };
+
+
+          var e = elements;
+          var pageHeight = window.outerHeight;
+
+          if (e.theThing) {
+              window.addEventListener('scroll', function () {
+
+                  var scrollPos = window.scrollY;
+                  var opacity = 1 - (scrollPos / 250);
+
+                  if (scrollPos < pageHeight / 2) {
+                      requestAnimationFrame(function () {
+                          e.theThing.style.opacity = opacity;
+                      });
+                  }
+              });
+          }
+
+
+      }());
+      */
