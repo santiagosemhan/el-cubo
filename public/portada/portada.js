@@ -204,11 +204,11 @@
        var opacity = 1;
 
        if (scrollTop > distanceScrollTop) {
-           opacity = 1 - (scrollTop - distanceScrollTop + 200) / elementHeight;
+           opacity = 1 - (scrollTop - distanceScrollTop + 100) / elementHeight;
        }
 
        if (scrollTop < distanceScrollTop) {
-           opacity = 1 - ((distanceScrollTop - scrollTop) / 500);
+           opacity = 1 - ((distanceScrollTop - scrollTop) / 600);
        }
 
        if (opacity >= 0) {
