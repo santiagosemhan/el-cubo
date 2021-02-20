@@ -190,10 +190,40 @@
        }
    }
 
+
+
+   function fadeOutOnScroll2(element) {
+       if (!element) {
+           return;
+       }
+
+       var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top;
+       var elementHeight = element.offsetHeight;
+       var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+
+       var opacity = 1;
+
+       if (scrollTop > distanceScrollTop) {
+           opacity = 1 - (scrollTop - distanceScrollTop + 200) / elementHeight;
+       }
+
+       if (scrollTop < distanceScrollTop) {
+           opacity = 1 - ((distanceScrollTop - scrollTop) / 500);
+       }
+
+       if (opacity >= 0) {
+           element.style.opacity = opacity;
+       }
+   }
+
    function scrollHandler() {
 
        document.querySelectorAll('.cover-scroll').forEach(function (fadeElement) {
            fadeOutOnScroll(fadeElement);
+       });
+
+       document.querySelectorAll('.cover-scroll-2').forEach(function (fadeElement) {
+           fadeOutOnScroll2(fadeElement);
        });
 
    }

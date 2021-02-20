@@ -98,6 +98,11 @@ body.fade {
     background: black;
 }
 
+.hero-1 .video-overlay {
+    justify-content: top;
+    align-content: top;
+}
+
 .row-description {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -243,7 +248,7 @@ h2 {
 
 .hero-1 .paragraph-message {
     margin: auto;
-    margin-top: 100px;
+    /*margin-top: 100px;*/
 }
 
 .paragraph-message hr {
@@ -267,7 +272,7 @@ h2 {
 .hero-1 .copy-cover {
     width: 810px;
     margin: auto;
-    margin-top: 10%;
+    padding-top: 10%;
 }
 
 .hero-1 .copy-cover .first {
