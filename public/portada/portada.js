@@ -191,7 +191,6 @@
    }
 
 
-
    function fadeOutOnScroll2(element) {
        if (!element) {
            return;
