@@ -8,9 +8,10 @@ body {
 
 #body {
     height: 100vh;
-    background-image: linear-gradient(to bottom, #1C1C1C 0px, #1C1C1C 20%, #1C1C1C 20%, #1C1C1C 30%, #000000 100%);
-    background-position: 0px 0px;
-    background-repeat: no-repeat;
+    /*background-image: linear-gradient(to bottom, #1C1C1C 0px, #1C1C1C 20%, #1C1C1C 20%, #1C1C1C 30%, #000000 100%);*/
+    background: black;
+    /*background-position: 0px 0px;
+    background-repeat: no-repeat;*/
 }
 
 :root {
@@ -189,9 +190,27 @@ body {
 
 /* Pulse */
 
+.cover-selector {
+    position: absolute;
+    width: 130px;
+}
+
 .cover-pulse {
     position: absolute;
+    left: 60px;
     z-index: 10;
+}
+
+.cover-selector:hover .pulse-text {
+    color: white;
+}
+
+.pulse-text {
+    position: absolute;
+    color: #9CF5FF;
+    margin-top: 40px;
+    width: 100%;
+    text-align: center;
 }
 
 .hero-laberinto .copy p {
