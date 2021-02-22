@@ -3,13 +3,16 @@ let opacity = 0;
 let intervalID = 0;
 
 const video = document.querySelector('.pane-video');
+const time_comments = video.dataset.comments;
+const video_duration = video.dataset.duration;
 
 
-function createSquare(pClass, pPos) {
+function createSquare(pClass) {
+    let percent = calculatePercent(time_comments, video_duration);
+
     let square = document.createElement('div');
     square.setAttribute("class", pClass);
-
-    console.log('duracion ' + player.duration);
+    square.setAttribute("style", "left: " + percent + "%;");
     return square;
 }
 
@@ -32,13 +35,15 @@ window.onload = function () {
         // Set Time comments
         comment_init = false;
         comment_end = false;
-        settime(video.dataset.comments);
+        settime(time_comments);
 
         document.getElementsByClassName('steal_title')[0].classList.add('hide');
 
         // Add time marker
-        const controls = document.querySelector('.plyr__progress');
-        controls.appendChild(createSquare('marker', video.dataset.comments));
+        if (video.hasAttribute("data-comments")) {
+            const controls = document.querySelector('.plyr__progress');
+            controls.appendChild(createSquare('marker'));
+        }
 
         // Add title plyr
         const controls_extra = document.querySelector('.plyr--video');
@@ -64,7 +69,7 @@ if (button_open) {
             loadPlayer(video.dataset.video, video.dataset.poster);
             comment_init = false;
             comment_end = false;
-            settime(60);
+            settime(time_comments);
             player.play();
 
         });
@@ -111,7 +116,7 @@ function loadPlayer(sURL, sPoster) {
         captions: {
             active: true,
             update: true,
-            language: 'en'
+            language: 'es'
         }
     });
 
@@ -130,14 +135,16 @@ function loadPlayer(sURL, sPoster) {
             //setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
         });
 
-        player.on('ended', function () {
+        player.on('play', function () {
+            console.log('dura: ' + player.duration);
+        });
 
+        player.on('ended', function () {
             pane.classList.toggle('open');
             hideComments();
             player.fullscreen.exit();
             comment_init = false;
             comment_end = false;
-
         });
 
         player.on('controlsshown', function () {
@@ -220,13 +227,13 @@ if (button_close_comments) {
 let comment_init = false;
 let comment_end = false;
 
-function settime(pSecond) {
+function settime(pTimeComments) {
 
-    time_end = pSecond + 15;
+    time_end = parseInt(pTimeComments) + 15;
 
     let timer = setInterval(function () {
-        console.log(player.currentTime);
-        if (pSecond < player.currentTime) {
+
+        if (pTimeComments < player.currentTime) {
             if (!comment_init) {
                 comment_init = true;
                 showComments();
@@ -238,7 +245,6 @@ function settime(pSecond) {
         if (time_end < player.currentTime) {
             if (comment_init && !comment_end) {
                 comment_end = true;
-                hideComments();
             }
         } else {
             comment_end = false;
@@ -246,7 +252,15 @@ function settime(pSecond) {
 
         // Se cumplen los 2
         if (comment_init && comment_end) {
-            console.log('se cumplen los 2');
+            hideComments();
+        }
+
+        // Force close end
+        if (video.hasAttribute("data-end")) {
+            if (video.dataset.end < player.currentTime) {
+                button_close[0].click();
+                console.log(end);
+            }
         }
 
     }, 1000);
@@ -259,4 +273,8 @@ function showComments() {
 
 function hideComments() {
     document.querySelectorAll('.comments-bullet')[0].classList.remove('visible');
+}
+
+function calculatePercent(num1, total) {
+    return (num1 / total) * 100;
 }
