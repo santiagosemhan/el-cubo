@@ -76,11 +76,8 @@ body {
 .pane {
     position: fixed;
     top: 0;
-    z-index: 10;
-    height: 100vh;
-    width: 100%;
-    background: black;
-    /*left: -150%;
+    z-index: 50;
+    left: -150%;
     height: 100vh;
     width: 100%;
     background: black;
@@ -88,9 +85,7 @@ body {
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     transition: 0.5s all ease;
-    overflow: hidden;*/
-    opacity: 1;
-    transition: 0.5s all ease;
+    overflow: hidden;
 }
 
 .pane-cover {
@@ -105,7 +100,6 @@ body {
 
 .pane-cover.visible {
     display: flex;
-    opacity: 1;
 }
 
 .pane a.close {
@@ -228,6 +222,40 @@ body {
     left: 0;
 }
 
+.steal.black {
+    animation: fadeOut 1s;
+    -moz-animation: fadeOut 1s;
+    /* Firefox */
+    -webkit-animation: fadeOut 1s;
+    /* Safari and Chrome */
+    -o-animation: fadeOut 1s;
+    opacity: 0;
+}
+
+.pane-video {
+    z-index: 50;
+    opacity: 0;
+}
+
+.pane-video.visible {
+    animation: fadeIn2 ease 5s;
+    -moz-animation: fadeIn2 ease 5s;
+    /* Firefox */
+    -webkit-animation: fadeIn2 ease 5s;
+    /* Safari and Chrome */
+    -o-animation: fadeIn2 ease 5s;
+    opacity: 1;
+}
+
+@keyframes fadeIn2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .header-top .nav {
         left: 15px;
@@ -250,10 +278,6 @@ body {
     .pulse-text {
         font-size: 12px;
     }
-}
-
-.steal.black {
-    display: none;
 }
 
 .plyr__control--overlaid {
