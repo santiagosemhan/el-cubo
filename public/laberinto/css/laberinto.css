@@ -162,10 +162,17 @@ body {
     padding-bottom: 56.2%;
     height: 0;
     overflow: hidden;
+    background: black;
 }
 
-.pane-bg.black {
-    background-image: none !important;
+.steal {
+    position: absolute;
+    z-index: 10;
+    left: 0;
+}
+
+.steal.black {
+    display: none;
 }
 
 .plyr__control--overlaid {

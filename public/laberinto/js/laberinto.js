@@ -19,7 +19,7 @@ window.onload = function () {
 
     setTimeout(() => {
         //player.stop();
-        document.querySelectorAll('.pane-bg')[0].classList.add('black');
+        document.querySelectorAll('.steal')[0].classList.add('black');
         loadPlayer(video.dataset.video, video.dataset.poster);
         window.player.play();
     }, 3000);
