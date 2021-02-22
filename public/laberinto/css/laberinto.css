@@ -153,16 +153,23 @@ body {
 
 .pane-video {
     font-family: Inter;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    margin-top: -28.1%;
-    /* video height / video width */
-    padding-bottom: 56.2%;
-    height: 0;
-    overflow: hidden;
     background: black;
+}
+
+@media screen and (min-width: 1200px) {
+    .pane-video {
+        font-family: Inter;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -28.1%;
+        /* video height / video width */
+        padding-bottom: 56.2%;
+        height: 0;
+        overflow: hidden;
+        background: black;
+    }
 }
 
 .steal_title {
@@ -213,6 +220,30 @@ body {
     position: absolute;
     z-index: 10;
     left: 0;
+}
+
+@media screen and (max-width: 1200px) {
+    .header-top .nav {
+        left: 15px;
+    }
+    .icon-replay.icon-cover,
+    .icon-cover img {
+        width: 42px;
+    }
+    .steal {
+        position: absolute;
+        left: -40%;
+        width: auto;
+        height: 100%;
+    }
+    .steal_title,
+    .plyr_title {
+        font-size: 22px;
+        left: 20px;
+    }
+    .pulse-text {
+        font-size: 12px;
+    }
 }
 
 .steal.black {
@@ -420,7 +451,7 @@ body {
 .pane-comments {
     position: fixed;
     top: 0;
-    right: -100vw;
+    right: -110vw;
     padding: 1rem 2rem;
     height: 100vh;
     width: 320px;
@@ -429,7 +460,7 @@ body {
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     transition: 1s all ease;
-    overflow: hidden;
+    overflow-y: scroll;
     z-index: 110;
 }
 
