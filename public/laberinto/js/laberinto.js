@@ -11,28 +11,38 @@ function createSquare(pClass) {
     return square;
 }
 
+function createTitle(pTitle) {
+    let plyr_title = document.createElement('h2');
+    plyr_title.setAttribute("class", 'plyr_title');
+    plyr_title.innerHTML = pTitle;
+    return plyr_title;
+}
+
 
 
 window.onload = function () {
-
-
 
     setTimeout(() => {
         //player.stop();
         document.querySelectorAll('.steal')[0].classList.add('black');
         loadPlayer(video.dataset.video, video.dataset.poster);
         window.player.play();
+
+        comment_init = false;
+        comment_end = false;
+        settime(60);
+
+        document.getElementsByClassName('steal_title')[0].classList.add('hide');
+
+        // Add time marker
+        const controls = document.querySelector('.plyr__progress');
+        controls.appendChild(createSquare('marker'));
+
+        // Add title plyr
+        const controls_extra = document.querySelector('.plyr--video');
+        controls_extra.prepend(createTitle('Alba va al médico'));
+
     }, 3000);
-
-
-    comment_init = false;
-    comment_end = false;
-    settime(60);
-
-    // get the ul#menu
-    const controls = document.querySelector('.plyr__progress');
-    // add menu item
-    controls.appendChild(createSquare('marker'));
 
 };
 
@@ -52,7 +62,7 @@ if (button_open) {
             loadPlayer(video.dataset.video, video.dataset.poster);
             comment_init = false;
             comment_end = false;
-            settime(100);
+            settime(60);
             player.play();
 
         });
@@ -95,6 +105,7 @@ function loadPlayer(sURL, sPoster) {
     // For more options see: https://github.com/sampotts/plyr/#options
     // captions.update is required for captions to work with hls.js
     const player = new Plyr(video, {
+        title: 'Example title',
         captions: {
             active: true,
             update: true,
@@ -126,6 +137,16 @@ function loadPlayer(sURL, sPoster) {
             comment_end = false;
 
         });
+
+        player.on('controlsshown', function () {
+            document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+        });
+
+        player.on('controlshidden', function () {
+            document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+        });
+
+
     }
 
     // Expose player so it can be used from the console
