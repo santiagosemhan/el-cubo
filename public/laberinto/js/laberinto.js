@@ -5,9 +5,11 @@ let intervalID = 0;
 const video = document.querySelector('.pane-video');
 
 
-function createSquare(pClass) {
+function createSquare(pClass, pPos) {
     let square = document.createElement('div');
     square.setAttribute("class", pClass);
+
+    console.log('duracion ' + player.duration);
     return square;
 }
 
@@ -19,7 +21,6 @@ function createTitle(pTitle) {
 }
 
 
-
 window.onload = function () {
 
     setTimeout(() => {
@@ -28,19 +29,20 @@ window.onload = function () {
         loadPlayer(video.dataset.video, video.dataset.poster);
         window.player.play();
 
+        // Set Time comments
         comment_init = false;
         comment_end = false;
-        settime(60);
+        settime(video.dataset.comments);
 
         document.getElementsByClassName('steal_title')[0].classList.add('hide');
 
         // Add time marker
         const controls = document.querySelector('.plyr__progress');
-        controls.appendChild(createSquare('marker'));
+        controls.appendChild(createSquare('marker', video.dataset.comments));
 
         // Add title plyr
         const controls_extra = document.querySelector('.plyr--video');
-        controls_extra.prepend(createTitle('Alba va al médico'));
+        controls_extra.prepend(createTitle(video.dataset.title));
 
     }, 3000);
 
@@ -169,16 +171,19 @@ if (answer_select) {
 
         link.addEventListener('click', () => {
 
-            [].forEach.call(answer_select, function (el) {
-                el.parentElement.classList.remove('selected');
-            });
+            /* [].forEach.call(answer_select, function (el) {
+                 el.parentElement.classList.remove('selected');
+             });
 
-            link.parentElement.classList.add('selected');
+             link.parentElement.classList.add('selected');
 
-            if (next_select) {
-                next_select.classList.add('selected');
-                next_select.href = link.dataset.rel;
-            }
+             if (next_select) {
+                 next_select.classList.add('selected');
+                 next_select.href = link.dataset.rel;
+             }*/
+
+            window.location.href = link.dataset.rel;;
+
         });
     });
 }
