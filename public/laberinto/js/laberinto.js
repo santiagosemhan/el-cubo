@@ -227,6 +227,8 @@ if (button_close_comments) {
 let comment_init = false;
 let comment_end = false;
 
+let video_force_end = false;
+
 function settime(pTimeComments) {
 
     time_end = parseInt(pTimeComments) + 15;
@@ -257,9 +259,12 @@ function settime(pTimeComments) {
 
         // Force close end
         if (video.hasAttribute("data-end")) {
-            if (video.dataset.end < player.currentTime) {
-                button_close[0].click();
-                console.log(end);
+            if (!video_force_end) {
+                if (video.dataset.end < player.currentTime) {
+                    video_force_end = true;
+                    button_close[0].click();
+                    console.log(end);
+                }
             }
         }
 
