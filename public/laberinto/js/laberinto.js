@@ -36,7 +36,7 @@ window.onload = function () {
         loadPlayer(video.dataset.video, video.dataset.poster);
         //window.player.play();
 
-        //player.volume = 0;
+        player.volume = 0;
         //player.play();
 
         document.querySelectorAll('.close')[0].classList.remove('hide');
