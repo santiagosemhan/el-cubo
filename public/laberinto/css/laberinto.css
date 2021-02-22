@@ -164,6 +164,10 @@ body {
     overflow: hidden;
 }
 
+.pane-bg.black {
+    background-image: none !important;
+}
+
 .plyr__control--overlaid {
     background: rgb(69, 180, 193);
 }

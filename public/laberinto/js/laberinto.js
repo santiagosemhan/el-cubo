@@ -15,8 +15,16 @@ function createSquare(pClass) {
 
 window.onload = function () {
 
-    loadPlayer(video.dataset.video, video.dataset.poster);
-    window.player.play();
+
+
+    setTimeout(() => {
+        //player.stop();
+        document.querySelectorAll('.pane-bg')[0].classList.add('black');
+        loadPlayer(video.dataset.video, video.dataset.poster);
+        window.player.play();
+    }, 3000);
+
+
     comment_init = false;
     comment_end = false;
     settime(60);
