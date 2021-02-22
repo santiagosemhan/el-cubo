@@ -153,6 +153,15 @@ body {
 
 .pane-video {
     font-family: Inter;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -28.1%;
+    /* video height / video width */
+    padding-bottom: 56.2%;
+    height: 0;
+    overflow: hidden;
 }
 
 .plyr__control--overlaid {
@@ -172,7 +181,7 @@ body {
 }
 
 .plyr video {
-    object-fit: fill;
+    object-fit: cover;
 }
 
 .plyr__video-wrapper {
