@@ -178,7 +178,7 @@ function loadPlayer(sURL, sPoster) {
 
             pane.classList.add('is-hidden');
 
-            fadeOut(pane, 150);
+            fadeOut(pane, 40);
             //fadeIn(document.querySelector('.hero-laberinto'), 120);
 
             pane.classList.toggle('open');
@@ -227,7 +227,7 @@ function fadeIn(el, pTime) {
 
     (function fade() {
         var val = parseFloat(el.style.opacity);
-        if (!((val += .1) > 1)) {
+        if (!((val += .05) > 1)) {
             el.style.opacity = val;
             setTimeout(fade, pTime);
         }
