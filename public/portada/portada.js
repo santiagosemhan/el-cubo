@@ -128,7 +128,7 @@
        var someDiv3 = document.getElementsByClassName('cover-reveal-4')[0];
        var distanceToTop = someDiv3.getBoundingClientRect().top;
 
-       if (distanceToTop <= 100) {
+       if (distanceToTop <= 150) {
            document.getElementsByClassName('cover-reveal-4')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-4')[1].classList.add('active');
        }
@@ -137,7 +137,7 @@
        var someDiv4 = document.getElementsByClassName('hero-1')[0];
        var distanceToTop = someDiv4.getBoundingClientRect().top;
 
-       if (distanceToTop <= 200) {
+       if (distanceToTop <= 150) {
            video1.play();
            video1.classList.add('hide');
            document.getElementById("hero-1").classList.add('playing');

@@ -1180,7 +1180,7 @@ h1 span.reveal-first {
 
 h1.active span.reveal-first {
     opacity: 1;
-    animation: reveal 1s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 1.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
 }
 
 h1 span.reveal-second {
@@ -1209,19 +1209,19 @@ h1.cover-reveal-4 span {
 
 h1.active span.reveal-second {
     display: block;
-    animation: reveal 1.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 1.6s cubic-bezier(.5, 0, 0, 1) 0.2s;
     opacity: 1;
 }
 
 h1.cover-reveal-4.active span.reveal-first {
     display: block;
-    animation: reveal 2s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 1.6s cubic-bezier(.5, 0, 0, 1) 0.2s;
     opacity: 1;
 }
 
 h1.cover-reveal-4.active span.reveal-second {
     display: block;
-    animation: reveal 2.6s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 2s cubic-bezier(.5, 0, 0, 1) 0.2s;
     opacity: 1;
 }
 
@@ -1257,14 +1257,14 @@ p.active span.reveal-third {
 
 h1.active.cover-reveal-6 span.reveal-first {
     display: block;
-    animation: reveal 5.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 2.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
     opacity: 1;
     color: white;
 }
 
 h1.active.cover-reveal-6 span.reveal-second {
     display: block;
-    animation: reveal 6.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
+    animation: reveal 2.3s cubic-bezier(.5, 0, 0, 1) 0.2s;
     opacity: 1;
     color: white;
 }
@@ -1287,7 +1287,7 @@ h1.cover-reveal-7.active {
 
 @keyframes reveal {
     0% {
-        transform: translate(0, 250%);
+        transform: translate(0, 350%);
         opacity: 0;
     }
     100% {
