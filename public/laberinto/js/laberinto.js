@@ -39,7 +39,7 @@ window.onload = function () {
         //player.volume = 0;
         //player.play();
 
-        document.querySelectorAll('.close')[0].classList.remove('hide');
+        //document.querySelectorAll('.close')[0].classList.remove('hide');
 
         document.querySelectorAll('.pane-video')[0].classList.add('visible');
 
@@ -98,9 +98,10 @@ if (button_open) {
 
         link.addEventListener('click', () => {
 
-
             loadPlayer(video.dataset.video, video.dataset.poster);
             pane.classList.add('open');
+
+            document.querySelectorAll('.close')[0].classList.remove('hide');
 
             if (video.hasAttribute("data-comments")) {
                 comment_init = false;

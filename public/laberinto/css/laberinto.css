@@ -84,7 +84,7 @@ body {
     -webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
-    transition: 0.5s all ease;
+    transition: 1.5s all ease;
     overflow: hidden;
 }
 
@@ -219,7 +219,8 @@ body {
 .steal {
     position: absolute;
     z-index: 10;
-    left: 0;
+    left: -15%;
+    width: 130%;
 }
 
 .steal.black {
@@ -256,6 +257,10 @@ body {
     }
 }
 
+.header-top .nav {
+    z-index: 999;
+}
+
 @media screen and (max-width: 1200px) {
     .header-top .nav {
         left: 15px;
@@ -266,9 +271,8 @@ body {
     }
     .steal {
         position: absolute;
-        left: -40%;
-        width: auto;
-        height: 100%;
+        left: -15%;
+        width: 130%;
     }
     .steal_title,
     .plyr_title {
@@ -306,6 +310,11 @@ body {
 
 .icon-replay {
     cursor: pointer;
+    opacity: 0.3;
+}
+
+.icon-replay:hover {
+    opacity: 1;
 }
 
 .icon-cover {
