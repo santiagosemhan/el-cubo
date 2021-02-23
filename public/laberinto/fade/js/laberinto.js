@@ -178,7 +178,7 @@ function loadPlayer(sURL, sPoster) {
 
             pane.classList.add('is-hidden');
 
-            fadeOut(pane, 40);
+            fadeOut(pane, 80);
             //fadeIn(document.querySelector('.hero-laberinto'), 120);
 
             pane.classList.toggle('open');
@@ -206,13 +206,39 @@ function loadPlayer(sURL, sPoster) {
 
 }
 
+/*
+const e = document.getElementById("a");
+e.addEventListener("animationend", (ev) => {
+  if (ev.type === "animationend") {
+    e.style.display = "none";
+  }
+}, false);
 
+#a {
+    width: 200px;
+    height: 200px;
+    background: red;
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
+    opacity: 0;
+  }
+  
+  @keyframes fadeinout {
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+*/
 
 function fadeOut(el, pTime) {
     el.style.opacity = 1;
 
     (function fade() {
-        if ((el.style.opacity -= .1) < 0) {
+        if ((el.style.opacity -= .07) < 0) {
             el.style.display = "none";
         } else {
             setTimeout(fade, pTime);
@@ -227,7 +253,7 @@ function fadeIn(el, pTime) {
 
     (function fade() {
         var val = parseFloat(el.style.opacity);
-        if (!((val += .05) > 1)) {
+        if (!((val += .07) > 1)) {
             el.style.opacity = val;
             setTimeout(fade, pTime);
         }
