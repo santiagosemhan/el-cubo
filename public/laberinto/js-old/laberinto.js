@@ -25,14 +25,21 @@ function createTitle(pTitle) {
 
 
 
+
+
 window.onload = function () {
 
 
     setTimeout(() => {
-
-        // document.querySelectorAll('.steal')[0].classList.add('black');
-        fadeOut(document.querySelectorAll('.steal')[0], 40);
+        //player.stop();
+        document.querySelectorAll('.steal')[0].classList.add('black');
         loadPlayer(video.dataset.video, video.dataset.poster);
+        //window.player.play();
+
+        //player.volume = 0;
+        //player.play();
+
+        //document.querySelectorAll('.close')[0].classList.remove('hide');
 
         document.querySelectorAll('.pane-video')[0].classList.add('visible');
 
@@ -50,6 +57,13 @@ window.onload = function () {
             });
         }
 
+
+
+
+
+        // Set Time comments
+        //comment_init = false;
+        // comment_end = false;
         settime(time_comments);
 
         document.getElementsByClassName('steal_title')[0].classList.add('hide');
@@ -65,6 +79,10 @@ window.onload = function () {
         controls_extra.prepend(createTitle(video.dataset.title));
 
     }, 3000);
+
+    //volumen_boton.click();
+
+
 };
 
 
@@ -83,12 +101,6 @@ if (button_open) {
             loadPlayer(video.dataset.video, video.dataset.poster);
             pane.classList.add('open');
 
-            //fadeOut(document.querySelector('.hero-laberinto'), 100);
-
-            fadeIn(pane, 150);
-
-            pane.classList.remove('is-hidden');
-
             document.querySelectorAll('.close')[0].classList.remove('hide');
 
             if (video.hasAttribute("data-comments")) {
@@ -106,10 +118,6 @@ if (button_close) {
     button_close.forEach(function (link) {
         link.addEventListener('click', () => {
             pane.classList.toggle('open');
-
-            fadeOut(pane, 40);
-            //fadeIn(document.querySelector('.hero-laberinto'), 100);
-
             hideComments();
 
             setTimeout(() => {
@@ -175,14 +183,7 @@ function loadPlayer(sURL, sPoster) {
         });
 
         player.on('ended', function () {
-
-            pane.classList.add('is-hidden');
-
-            fadeOut(pane, 80);
-            //fadeIn(document.querySelector('.hero-laberinto'), 120);
-
             pane.classList.toggle('open');
-
             hideComments();
             player.fullscreen.exit();
             comment_init = false;
@@ -206,59 +207,21 @@ function loadPlayer(sURL, sPoster) {
 
 }
 
-/*
-const e = document.getElementById("a");
-e.addEventListener("animationend", (ev) => {
-  if (ev.type === "animationend") {
-    e.style.display = "none";
-  }
-}, false);
 
-#a {
-    width: 200px;
-    height: 200px;
-    background: red;
-    -webkit-animation: fadeinout 4s linear forwards;
-    animation: fadeinout 4s linear forwards;
-    opacity: 0;
-  }
-  
-  @keyframes fadeinout {
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
 
-*/
-
-function fadeOut(el, pTime) {
-    el.style.opacity = 1;
-
-    (function fade() {
-        if ((el.style.opacity -= .07) < 0) {
-            el.style.display = "none";
-        } else {
-            setTimeout(fade, pTime);
-        }
-    })();
+function sleep(ms) {
+    return new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
 }
 
-
-function fadeIn(el, pTime) {
-    el.style.opacity = 0;
-    el.style.display = "block";
-
-    (function fade() {
-        var val = parseFloat(el.style.opacity);
-        if (!((val += .07) > 1)) {
-            el.style.opacity = val;
-            setTimeout(fade, pTime);
-        }
-    })();
+async function delayedPLay() {
+    console.log("Hello");
+    await sleep(2000);
+    volumen_boton.click();
 }
+
+//delayedPlay();
 
 
 
