@@ -1216,6 +1216,10 @@ p.cover-reveal-row {
     color: white;
 }
 
+div.cover-reveal-row {
+    overflow: hidden;
+}
+
 h1 span.first {
     display: block;
     font-size: 3rem;

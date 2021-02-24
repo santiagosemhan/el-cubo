@@ -115,6 +115,7 @@
            video1.play();
            video1.classList.add('hide');
            document.getElementById("hero-1").classList.add('playing');
+           document.getElementsByClassName('cover-reveal-row-line')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-5')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-5')[1].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-5')[2].classList.add('active');
