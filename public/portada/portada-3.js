@@ -1,7 +1,7 @@
    /* Sound */
    let track = document.getElementById('track');
 
-   const video0 = document.querySelector("#hero-0 video");
+   const video0 = document.querySelector("#hero-0 .video-0");
    if (video0) {
        video0.addEventListener('play', hideVideo1, false);
 
@@ -21,7 +21,7 @@
    const video2 = document.querySelector("#hero-2 video");
 
    if (video1) {
-       //video1.addEventListener('ended', removeVideo1, false);
+       video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
            video1.remove();
