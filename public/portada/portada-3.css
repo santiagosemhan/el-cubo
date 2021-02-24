@@ -1185,7 +1185,7 @@ h1.active span.reveal-second {
 }
 
 section:nth-child(1) .cover-scroll {
-    margin-top: 170px;
+    margin-top: 40vh;
     float: left;
     margin-left: 40px;
 }

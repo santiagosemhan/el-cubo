@@ -182,7 +182,6 @@
            opacity = 1 - (scrollTop - distanceScrollTop + 20) / elementHeight;
        }
 
-
        if (opacity >= 0) {
            element.style.opacity = opacity;
        }
