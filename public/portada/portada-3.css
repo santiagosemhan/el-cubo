@@ -221,7 +221,6 @@ h2 {
 /* Hero 1 */
 
 .hero-1 {
-    height: 100vh;
     position: relative;
     z-index: 12;
     background: black;

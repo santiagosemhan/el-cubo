@@ -23,7 +23,7 @@
    console.log(video1);
 
    if (video1) {
-       video1.stop;
+       //video1.pause;
        video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
@@ -33,7 +33,7 @@
    }
 
    if (video2) {
-       video2.stop;
+       //video2.pause;
        video2.addEventListener('ended', removeVideo2, false);
 
        function removeVideo2(e) {
