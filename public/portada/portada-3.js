@@ -85,6 +85,10 @@
        return isVisible;
    }
 
+   function getRelationScroll(pObject) {
+       let relation = pObject.getBoundingClientRect().top / (main.clientHeight / 2) * 100;
+       return relation;
+   }
 
 
    // Scroll for Hero-0
@@ -94,29 +98,37 @@
 
        reveal_1 = document.getElementsByClassName('cover-reveal-1')[0]
        if (isScrolledIntoView(reveal_1)) {
-           let relation = reveal_1.getBoundingClientRect().top / (main.clientHeight / 2) * 100;
+           let relation = getRelationScroll(reveal_1);
            if (relation > 79) {
                document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
            }
        }
 
-
        var reveal_2 = document.getElementsByClassName('cover-reveal-row-2')[0];
        if (isScrolledIntoView(reveal_2)) {
-           document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
-           document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
+           let relation = getRelationScroll(reveal_2);
+           if (relation < 140) {
+               document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
+               document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
+           }
        }
 
        var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
        if (isScrolledIntoView(reveal_3)) {
-           document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
-           document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
+           let relation = getRelationScroll(reveal_3);
+           if (relation < 140) {
+               document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
+               document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
+           }
        }
 
        var reveal_4 = document.getElementsByClassName('cover-reveal-row-4')[0];
        if (isScrolledIntoView(reveal_4)) {
-           document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
-           document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
+           let relation = getRelationScroll(reveal_4);
+           if (relation < 140) {
+               document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
+               document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
+           }
 
        } else {
 
