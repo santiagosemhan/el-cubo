@@ -20,10 +20,14 @@
    const video1 = document.querySelector("#hero-1 video");
    const video2 = document.querySelector("#hero-2 video");
 
+   console.log(video1);
+
    if (video1) {
+       video1.stop;
        video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
+           console.log('se elimina');
            video1.remove();
        }
    }
@@ -115,9 +119,8 @@
        console.log(isScrolledIntoView(someDiv4));
 
        if (isScrolledIntoView(someDiv4)) {
-
            video1.play();
-           video1.classList.add('hide');
+           //video1.classList.add('hide');
            document.getElementById("hero-1").classList.add('playing');
            document.getElementsByClassName('cover-reveal-row-line')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-5')[0].classList.add('active');
