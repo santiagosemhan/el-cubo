@@ -21,7 +21,7 @@
    const video2 = document.querySelector("#hero-2 video");
 
    if (video1) {
-       video1.addEventListener('ended', removeVideo1, false);
+       //video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
            video1.remove();
@@ -29,7 +29,7 @@
    }
 
    if (video2) {
-       video2.addEventListener('ended', removeVideo2, false);
+       //video2.addEventListener('ended', removeVideo2, false);
 
        function removeVideo2(e) {
            video2.remove();
@@ -108,10 +108,14 @@
 
        }
 
+
        var someDiv4 = document.getElementsByClassName('cover-reveal-row-5')[0];
        var distanceToTop = someDiv4.getBoundingClientRect().top;
 
+       console.log(isScrolledIntoView(someDiv4));
+
        if (isScrolledIntoView(someDiv4)) {
+
            video1.play();
            video1.classList.add('hide');
            document.getElementById("hero-1").classList.add('playing');
