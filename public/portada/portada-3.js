@@ -27,15 +27,17 @@
        video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
-           console.log('se elimina');
+           console.log('se elimina 1');
            video1.remove();
        }
    }
 
    if (video2) {
+       video2.stop;
        video2.addEventListener('ended', removeVideo2, false);
 
        function removeVideo2(e) {
+           console.log('se elimina 2');
            video2.remove();
        }
    }
@@ -120,7 +122,7 @@
 
        if (isScrolledIntoView(someDiv4)) {
            video1.play();
-           //video1.classList.add('hide');
+           video1.classList.add('hide');
            document.getElementById("hero-1").classList.add('playing');
            document.getElementsByClassName('cover-reveal-row-line')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-5')[0].classList.add('active');
