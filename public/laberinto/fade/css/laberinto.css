@@ -185,6 +185,8 @@ body {
     display: none !important;
 }
 
+.copy-phrase {}
+
 @media screen and (min-width: 1200px) {
     .pane-video {
         font-family: Inter;

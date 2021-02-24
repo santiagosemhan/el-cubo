@@ -376,6 +376,12 @@ body {
     text-align: center;
 }
 
+.hero-laberinto {
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 .hero-laberinto .copy p {
     display: none;
 }
