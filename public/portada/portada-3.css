@@ -1361,7 +1361,7 @@ p span.reveal-first {
     height: 100vh;
     width: 100vw;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
+    /*scroll-snap-type: y mandatory;*/
     padding: 0;
 }
 
