@@ -100,18 +100,24 @@
        if (isScrolledIntoView(reveal_2)) {
            document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
+
+           document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
        }
 
        var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
        if (isScrolledIntoView(reveal_3)) {
            document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
+
+           document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
        }
 
        var reveal_4 = document.getElementsByClassName('cover-reveal-row-4')[0];
        if (isScrolledIntoView(reveal_4)) {
            document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
+
+           document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
        } else {
 
        }
@@ -132,6 +138,9 @@
            document.getElementsByClassName('cover-reveal-row-5')[2].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-6')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-6')[1].classList.add('active');
+
+           document.getElementsByClassName('scroll-container')[0].classList.add('slow');
+
        }
 
 
@@ -144,6 +153,8 @@
            document.getElementById("hero-2").classList.add('playing');
            document.getElementsByClassName('cover-reveal-row-7')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-7')[1].classList.add('active');
+
+           document.getElementsByClassName('scroll-container')[0].classList.add('slow');
        }
 
 
