@@ -101,6 +101,9 @@
            document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
 
+           console.log(isScrolledIntoView(reveal_2));
+           console.log(reveal_2.offsetTop);
+
        }
 
        var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
@@ -136,6 +139,8 @@
            document.getElementsByClassName('cover-reveal-row-5')[2].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-6')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-6')[1].classList.add('active');
+
+
 
            document.getElementsByClassName('scroll-container')[0].classList.add('slow');
 
