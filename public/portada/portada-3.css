@@ -912,7 +912,7 @@ footer {
     position: fixed;
     top: 130px;
     right: 30px;
-    z-index: 15;
+    z-index: 100;
 }
 
 #audio-player-container .column-1,
