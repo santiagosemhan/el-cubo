@@ -96,10 +96,10 @@
 
    const scrollEvent = () => {
 
-       var reveal_1 = document.getElementsByClassName('cover-reveal-1')[0];
+       /*var reveal_1 = document.getElementsByClassName('cover-reveal-1')[0];
        if (isScrolledIntoView(reveal_1)) {
            document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
-       }
+       }*/
 
 
        var reveal_2 = document.getElementsByClassName('cover-reveal-row-2')[0];
