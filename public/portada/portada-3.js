@@ -20,15 +20,12 @@
    const video1 = document.querySelector("#hero-1 video");
    const video2 = document.querySelector("#hero-2 video");
 
-   console.log(video1);
-
    if (video1) {
        //video1.play;
        //video1.pause;
        video1.addEventListener('ended', removeVideo1, false);
 
        function removeVideo1(e) {
-           console.log('se elimina 1');
            video1.remove();
        }
    }
@@ -39,7 +36,6 @@
        video2.addEventListener('ended', removeVideo2, false);
 
        function removeVideo2(e) {
-           console.log('se elimina 2');
            video2.remove();
        }
    }
@@ -96,19 +92,16 @@
 
    const scrollEvent = () => {
 
-       /*var reveal_1 = document.getElementsByClassName('cover-reveal-1')[0];
+       reveal_1 = document.getElementsByClassName('cover-reveal-1')[0]
        if (isScrolledIntoView(reveal_1)) {
            document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
-       }*/
+       }
 
 
        var reveal_2 = document.getElementsByClassName('cover-reveal-row-2')[0];
        if (isScrolledIntoView(reveal_2)) {
            document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
-
-           console.log(isScrolledIntoView(reveal_2));
-           console.log(reveal_2.offsetTop);
 
        }
 
@@ -130,8 +123,6 @@
 
        var someDiv4 = document.getElementsByClassName('cover-reveal-row-5')[0];
        var distanceToTop = someDiv4.getBoundingClientRect().top;
-
-       console.log(isScrolledIntoView(someDiv4));
 
        if (isScrolledIntoView(someDiv4)) {
            video1.play();
