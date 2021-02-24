@@ -94,7 +94,10 @@
 
        reveal_1 = document.getElementsByClassName('cover-reveal-1')[0]
        if (isScrolledIntoView(reveal_1)) {
-           document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
+           let relation = reveal_1.getBoundingClientRect().top / (main.clientHeight / 2) * 100;
+           if (relation > 79) {
+               document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
+           }
        }
 
 
@@ -102,7 +105,6 @@
        if (isScrolledIntoView(reveal_2)) {
            document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
-
        }
 
        var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
