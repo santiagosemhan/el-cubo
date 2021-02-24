@@ -594,6 +594,15 @@ footer {
     margin: 0;
 }
 
+.section-1 {
+    height: 120vh;
+}
+
+.section-1 video {
+    height: 100%;
+    width: auto;
+}
+
 /*
 #hero-1.playing .paragraph-message {
     animation: fadeInParagraph 2s ease-in both;
@@ -1352,7 +1361,7 @@ p span.reveal-first {
     height: 100vh;
     width: 100vw;
     overflow-y: scroll;
-    /*scroll-snap-type: y mandatory;*/
+    scroll-snap-type: y mandatory;
     padding: 0;
 }
 

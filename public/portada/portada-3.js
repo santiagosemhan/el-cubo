@@ -96,6 +96,12 @@
 
    const scrollEvent = () => {
 
+       var reveal_1 = document.getElementsByClassName('cover-reveal-1')[0];
+       if (isScrolledIntoView(reveal_1)) {
+           document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
+       }
+
+
        var reveal_2 = document.getElementsByClassName('cover-reveal-row-2')[0];
        if (isScrolledIntoView(reveal_2)) {
            document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
@@ -110,7 +116,6 @@
        if (isScrolledIntoView(reveal_3)) {
            document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
-
        }
 
        var reveal_4 = document.getElementsByClassName('cover-reveal-row-4')[0];
@@ -118,7 +123,6 @@
            document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
            document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
 
-           document.getElementsByClassName('scroll-container')[0].classList.add('slow');
        } else {
 
        }
@@ -177,14 +181,14 @@
            return;
        }
 
-       var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top;
+       var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top - 250;
        var elementHeight = element.offsetHeight;
        var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
 
        var opacity = 1;
 
        if (scrollTop > distanceScrollTop) {
-           opacity = 1 - (scrollTop - distanceScrollTop + 20) / elementHeight;
+           opacity = 1 - (scrollTop - distanceScrollTop) / elementHeight;
        }
 
        if (opacity >= 0) {
