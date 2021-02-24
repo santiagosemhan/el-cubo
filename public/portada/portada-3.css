@@ -567,8 +567,8 @@ footer {
 }
 
 #hero-1 video.hide {
-    -webkit-animation: 8s ease 0s normal forwards 1 hideVideo;
-    animation: 8s ease 0s normal forwards 1 hideVideo;
+    -webkit-animation: 10s ease 0s normal forwards 1 hideVideo;
+    animation: 10s ease 0s normal forwards 1 hideVideo;
 }
 
 #hero-2 video.hide {
