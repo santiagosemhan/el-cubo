@@ -1246,7 +1246,7 @@ h1 span.first {
 span.first {
     position: relative;
     top: 100px;
-    transition: all 1.3s ease;
+    transition: all .7s ease;
 }
 
 h1 span.reveal-second {
@@ -1271,23 +1271,23 @@ h1 span.second {
 span.second {
     position: relative;
     top: 100px;
-    transition: all 1.3s ease;
+    transition: all .7s ease;
     transition-delay: .2s;
 }
 
 span.third {
     position: relative;
     top: 100px;
-    transition: all 1.3s ease;
+    transition: all .7s ease;
     transition-delay: .4s;
 }
 
 .cover-reveal-row-6 span.first {
-    transition-delay: 1.6s;
+    transition-delay: 1s;
 }
 
 .cover-reveal-row-6 span.second {
-    transition-delay: 2s;
+    transition-delay: 1.6s;
 }
 
 .cover-reveal-row.active .first {
