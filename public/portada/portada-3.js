@@ -29,7 +29,7 @@
    }
 
    if (video2) {
-       //video2.addEventListener('ended', removeVideo2, false);
+       video2.addEventListener('ended', removeVideo2, false);
 
        function removeVideo2(e) {
            video2.remove();
