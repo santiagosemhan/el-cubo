@@ -24,24 +24,27 @@
     <div class="header-top">
         <div class="header-top-inner">
             <nav class="nav">
-                <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes" class="back-to-season">
+                <a href="index.html" class="back-to-season">
                     <img src="../img/icon-arrow-back.svg">
-                    <span>Volver al inicio</span>
+                    <span>Volver al inicio de Marina</span>
                 </a>
             </nav>
         </div>
     </div>
 
-    <div class="app-elcubo laberinto" style="background: url(../img/marina/MARINA-1.jpg); background-size: 100%; background-position: center center; background-repeat: no-repeat;">
+    <div class="app-elcubo laberinto">
 
 
-        <div class="pane open" data-relation="">
-            <a class="close">
+        <div class="pane open pane-bg">
+            <h2 class="steal_title">Marina</h2>
+            <img class="steal" src="../img/marina/screens/MARINA_1_424442.jpg" />
+            <a class="close hide">
                 <img src="../img/pane-close.svg" />
             </a>
 
-            <div class="pane-video" data-video="429342" data-poster="null.jpg">
-                <video controls crossorigin playsinline></video>
+            <!--<a id="volumen" href="#">Click aqui</a>-->
+            <div class="pane-video" data-video="429342" data-poster="" data-title="Marina" data-duration="289" data-comments="223">
+                <video class="hide" controls crossorigin playsinline></video>
             </div>
 
         </div>
@@ -95,22 +98,29 @@
 
 
 
-        <div class="hero hero-laberinto">
+        <div class="hero hero-laberinto" style="background-image: url(../img/marina/MARINA-1.jpg);">
 
 
 
             <div class="copy-cover">
+                <div class="cover-selector" style="left: 24vw;
+                top: 46vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="sales-3.html"></span>
 
-                <div class="cover-pulse" style="left: 30vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="marina-3.html"></span>
+                    </div>
+
                 </div>
 
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../elvira/elvira-11.html"></span>
-                </div>
+                <div class="cover-selector" style="right: 35.5vw;
+                bottom: 45vh;">
+                    <div class="cover-pulse">
+                        <!--<span class="pulse" data-rel="../marina/marina/9"></span>-->
+                        <span class="pulse" data-rel="#"></span>
 
+                    </div>
+
+                </div>
 
 
 
