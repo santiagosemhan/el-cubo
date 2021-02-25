@@ -72,6 +72,10 @@ body {
     margin-top: 3px;
 }
 
+.onboard {
+    background-size: cover;
+}
+
 .onboard .copy {
     margin-top: 30vh;
 }
