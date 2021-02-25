@@ -376,6 +376,10 @@ body {
     text-align: center;
 }
 
+.pulse-text.pulse-text-top {
+    bottom: 10px;
+}
+
 .hero-laberinto {
     background-size: 100%;
     background-position: center center;
