@@ -44,6 +44,7 @@ const CharactersPage = ({ data = {} }) => {
           document.getElementById('video1').src = link.dataset.video;
           document.getElementById('select-personaje').dataset.personaje = link.dataset.personaje;
           document.getElementById('select-personaje').dataset.linkreflexivo = link.dataset.nombre;
+          document.getElementById('select-personaje').dataset.linklaberinto = link.dataset.nombre;
           document.getElementById('name-personaje').innerHTML = link.dataset.nombre;
           document.getElementById('desc-personaje').innerHTML = link.dataset.desc;
           myVideo.play();
@@ -124,6 +125,9 @@ const CharactersPage = ({ data = {} }) => {
         // Set link reflexivo
         setLinkReflexivo(button_select.dataset.linkreflexivo);
 
+        // Set link laberinto
+        setLinkLaberinto(button_select.dataset.linklaberinto);
+
 
 
       });
@@ -132,6 +136,11 @@ const CharactersPage = ({ data = {} }) => {
     function setLinkReflexivo(sCharacter) {
       let name = sCharacter.split(' ').slice(-1).join(' ').trim().toLowerCase();
       document.getElementsByClassName('reflexivo')[0].setAttribute("href", '/reflexivo/' + name + '/' + name + '.html');
+    }
+
+    function setLinkLaberinto(sCharacter) {
+      let name = sCharacter.split(' ').slice(-1).join(' ').trim().toLowerCase();
+      document.getElementsByClassName('laberinto')[0].setAttribute("href", '/laberinto/' + name + '/index.html');
     }
 
     // Video popup
@@ -424,7 +433,7 @@ const CharactersPage = ({ data = {} }) => {
                           Explora esta historia en la que el abuso, la manipulación, la doble vida y
                           los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
                         cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
-                                                                                    valores y la moral.
+                                                                                                                    valores y la moral.
                       </p>
                         <div class="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">
@@ -633,11 +642,15 @@ const CharactersPage = ({ data = {} }) => {
                           Modo Cronológico
                       </a>
                       </li>
-                      <li>Modo Laberinto</li>
+                      <li>
+                        <a href="/laberinto/alba/index.html" className="laberinto">
+                          Modo Laberinto
+                        </a>
+                      </li>
                       <li>
                         <a href="/reflexivo/sales/sales-onboard.html" className="reflexivo">
                           Modo Reflexivo
-                      </a>
+                        </a>
                       </li>
                     </ul>
                   </div>
