@@ -24,24 +24,27 @@
     <div class="header-top">
         <div class="header-top-inner">
             <nav class="nav">
-                <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes" class="back-to-season">
+                <a href="index.html" class="back-to-season">
                     <img src="../img/icon-arrow-back.svg">
-                    <span>Volver al inicio</span>
+                    <span>Carey radio</span>
                 </a>
             </nav>
         </div>
     </div>
 
-    <div class="app-elcubo laberinto" style="background: url(../img/carey/CAREY-2.jpg); background-size: 100%; background-position: center center; background-repeat: no-repeat;">
+    <div class="app-elcubo laberinto">
 
 
-        <div class="pane open" data-relation="">
-            <a class="close">
+        <div class="pane open pane-bg">
+            <h2 class="steal_title">Carey radio</h2>
+            <img class="steal" src="../img/carey/screens/CAREY_2_424299.jpg" />
+            <a class="close hide">
                 <img src="../img/pane-close.svg" />
             </a>
 
-            <div class="pane-video" data-video="429243" data-poster="null.jpg">
-                <video controls crossorigin playsinline></video>
+            <!--<a id="volumen" href="#">Click aqui</a>-->
+            <div class="pane-video" data-video="429243" data-poster="" data-title="Carey radio">
+                <video class="hide" controls crossorigin playsinline></video>
             </div>
 
         </div>
@@ -95,25 +98,34 @@
 
 
 
-        <div class="hero hero-laberinto">
+        <div class="hero hero-laberinto" style="background-image: url(../img/carey/CAREY-2.jpg);">
 
 
 
-            <div class="copy-cover">
+            <div class="copy-cover" style="background: rgba(0,0,0,0);">
+                <div class="cover-selector" style="left: 7vw;
+                bottom: 59vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../elvira/elvira-2.html"></span>
 
-                <div class="cover-pulse" style="left: 30vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../elvira/elvira-2.html"></span>
+                    </div>
+
                 </div>
 
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../carey/carey-2.html"></span>
+                <div class="cover-selector" style="left: 50vw;
+                bottom: 45vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../carey/carey-3.html"></span>
+                    </div>
+
                 </div>
 
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../alba/alba-3.html"></span>
+                <div class="cover-selector" style="right: 10vw;
+                bottom: 48vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../alba/alba-3.html"></span>
+                    </div>
+
                 </div>
 
 

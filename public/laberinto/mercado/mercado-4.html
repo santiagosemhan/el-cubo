@@ -24,24 +24,27 @@
     <div class="header-top">
         <div class="header-top-inner">
             <nav class="nav">
-                <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes" class="back-to-season">
+                <a href="index.html" class="back-to-season">
                     <img src="../img/icon-arrow-back.svg">
-                    <span>Volver al inicio</span>
+                    <span>Volver al inicio de Mercado</span>
                 </a>
             </nav>
         </div>
     </div>
 
-    <div class="app-elcubo laberinto" style="background: url(../img/mercado/MERCADO-4.jpg); background-size: 100%; background-position: center center; background-repeat: no-repeat;">
+    <div class="app-elcubo laberinto">
 
 
-        <div class="pane open" data-relation="">
-            <a class="close">
+        <div class="pane open pane-bg">
+            <h2 class="steal_title">Mercado negocia 2</h2>
+            <img class="steal" src="../img/mercado/screens/MERCADO_4_424426.jpg" />
+            <a class="close hide">
                 <img src="../img/pane-close.svg" />
             </a>
 
-            <div class="pane-video" data-video="429420" data-poster="null.jpg">
-                <video controls crossorigin playsinline></video>
+            <!--<a id="volumen" href="#">Click aqui</a>-->
+            <div class="pane-video" data-video="429420" data-poster="" data-title="Mercado negocia 2">
+                <video class="hide" controls crossorigin playsinline></video>
             </div>
 
         </div>
@@ -95,33 +98,52 @@
 
 
 
-        <div class="hero hero-laberinto">
+        <div class="hero hero-laberinto" style="background-image: url(../img/mercado/MERCADO-4.jpg);">
 
 
 
-            <div class="copy-cover">
+            <div class="copy-cover" style="background: rgba(0, 0, 0, 0);">
 
-                <div class="cover-pulse" style="left: 30vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../carey/carey-13.html"></span>
-                </div>
 
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 15vh;">
-                    <span class="pulse" data-rel="../elvira/elvira-9.html"></span>
-                </div>
+                <div class="cover-selector" style="left: 27vw;
+                    top: 35vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../carey/carey-13.html"></span>
 
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 25vh;">
-                    <span class="pulse" data-rel="mercado-5.html"></span>
-                </div>
-
-                <div class="cover-pulse" style=" right: 22vw;
-                bottom: 45vh;">
-                    <span class="pulse" data-rel="../marina/marina-17.html"></span>
+                    </div>
+                    <span class="pulse-text">Carey</span>
                 </div>
 
 
+
+                <div class="cover-selector" style="left: 21vw;
+                bottom: 28vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../elvira/elvira-9.html"></span>
+
+
+                    </div>
+                    <span class="pulse-text">Elvira</span>
+                </div>
+
+
+                <div class="cover-selector" style="right: 44vw;
+                bottom: 34vh;">
+                    <div class="cover-pulse">
+                        <span class="pulse" data-rel="../mercado/mercado-5.html">
+
+                    </div>
+                    <span class="pulse-text">Mercado</span>
+                </div>
+
+                <div class="cover-selector" style="right: 39.5vw;
+                top: 35vh;">
+                    <div class="cover-pulse">
+
+                        <span class="pulse" data-rel="../marina/marina-17.html"></span>
+                    </div>
+                    <span class="pulse-text">Marina</span>
+                </div>
 
 
 
