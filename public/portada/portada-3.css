@@ -646,22 +646,17 @@ footer {
 /* Animation Hero Season */
 
 #hero-3 .cover-first {
-    opacity: 0;
     width: 800px;
     margin-left: 0;
 }
 
-#hero-3 .cover-first {
-    animation: fadeInParagraph 2s ease-in both;
-    animation-delay: 12s;
+#hero-3 .cover-first {}
+
+#hero-3 .img-bg-pc {
+    opacity: 1;
 }
 
 #hero-3 .img-bg-pc {
-    opacity: 0;
-}
-
-#hero-3 .img-bg-pc {
-    animation: fadeInParagraph 2s ease-in both;
     animation-delay: 5s;
 }
 
@@ -669,15 +664,18 @@ footer {
     margin-bottom: 20px;
 }
 
+.hero-3 .third {
+    font-size: 1.8rem;
+    margin-left: 30px;
+    font-style: italic;
+}
+
 #hero-3 .cover-second {
     opacity: 0;
     margin-left: 30px;
 }
 
-#hero-3 .cover-second {
-    animation: fadeInParagraph 2s ease-in both;
-    animation-delay: 15s;
-}
+#hero-3 .cover-second {}
 
 #hero-3 .paragraph-message {
     opacity: 0;
@@ -685,10 +683,20 @@ footer {
 }
 
 #hero-3 .paragraph-message {
-    animation: fadeInParagraph 2s ease-in both;
-    animation-delay: 15s;
     width: 780px;
 }
+
+#hero-3 .paragraph-message-1.active-fadein {
+    animation: fadeInPhrase 1.5s ease-in both;
+    animation-delay: 1s;
+}
+
+#hero-3 .paragraph-message-2.active-fadein {
+    animation: fadeInPhrase 1.5s ease-in both;
+    animation-delay: 2s;
+}
+
+/* Hero 3 cover reveal 1 */
 
 /* Cursor */
 
@@ -804,6 +812,25 @@ footer {
 
 .hero-3 .copy-cover-2.cover-first {
     margin-top: 340px;
+}
+
+.hero-3 .copy-cover-2 h1 {
+    margin: 0;
+    float: left;
+    width: 100%;
+}
+
+.hero-3 .copy-cover-2 h1 span {
+    margin-bottom: 0;
+}
+
+.hero-3 .copy-cover-2 .cover-reveal-row-1:nth-child(3) {
+    margin-top: -70px;
+    font-weight: 100;
+}
+
+.hero-3 .copy-cover-2 .cover-reveal-row-3 span {
+    margin-bottom: 0;
 }
 
 .temporada-1 #mouse-circle.big span {

@@ -1,47 +1,6 @@
    /* Sound */
    let track = document.getElementById('track');
 
-   const video0 = document.querySelector("#hero-0 .video-0");
-   if (video0) {
-       video0.addEventListener('play', hideVideo1, false);
-
-       function hideVideo1(e) {
-           video0.classList.add('hide');
-       }
-
-       video0.addEventListener('ended', removeVideo0, false);
-
-       function removeVideo0(e) {
-           video0.remove();
-       }
-   }
-
-   /* Observer videos */
-   const video1 = document.querySelector("#hero-1 video");
-   const video2 = document.querySelector("#hero-2 video");
-
-   if (video1) {
-       //video1.play;
-       //video1.pause;
-       video1.addEventListener('ended', removeVideo1, false);
-
-       function removeVideo1(e) {
-           video1.remove();
-       }
-   }
-
-   if (video2) {
-       //video2.play;
-       //video2.pause;
-       video2.addEventListener('ended', removeVideo2, false);
-
-       function removeVideo2(e) {
-           video2.remove();
-       }
-   }
-
-
-
    /* Track play */
    track.loop = true;
 
@@ -95,6 +54,10 @@
    const main = document.querySelector('.scroll-container');
 
    const scrollEvent = () => {
+
+       document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
+
+
 
        reveal_1 = document.getElementsByClassName('cover-reveal-1')[0]
        if (isScrolledIntoView(reveal_1)) {
