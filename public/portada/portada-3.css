@@ -54,7 +54,7 @@ body.fade {
 }
 
 .logo-season .logo--image {
-    width: 60px;
+    /*width: 60px;*/
     height: auto;
     position: absolute;
     top: 120px;
