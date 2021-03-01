@@ -131,6 +131,11 @@ body.fade {
     text-align: left;
 }
 
+a ol li {
+    color: white;
+    text-decoration: none;
+}
+
 h1,
 h2,
 h3,
