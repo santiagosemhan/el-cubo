@@ -8,10 +8,7 @@ body {
 
 #body {
     height: 100vh;
-    /*background-image: linear-gradient(to bottom, #1C1C1C 0px, #1C1C1C 20%, #1C1C1C 20%, #1C1C1C 30%, #000000 100%);*/
     background: black;
-    /*background-position: 0px 0px;
-    background-repeat: no-repeat;*/
 }
 
 :root {
@@ -658,4 +655,18 @@ iframe ._2pi8 {
         -webkit-transform: scale(1.0);
         transform: scale(1.0);
     }
+}
+
+.hide {
+    display: none;
+}
+
+.copy-cover {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Center Content */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    background: rgba(0, 0, 0, 0.6);
 }

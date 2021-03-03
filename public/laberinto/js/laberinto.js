@@ -7,6 +7,7 @@ const time_comments = video.dataset.comments;
 const video_duration = video.dataset.duration;
 
 
+// Create marker
 function createSquare(pClass) {
     let percent = calculatePercent(time_comments, video_duration);
 
@@ -42,9 +43,9 @@ window.onload = function () {
         if (promise !== undefined) {
             promise.then(_ => {
                 // Autoplay started!
-                console.log('lalallaa 1');
+
             }).catch(error => {
-                console.log('lalallaa');
+
                 // Autoplay was prevented.
                 // Show a "Play" button so that user can start playback.
             });
@@ -69,7 +70,7 @@ window.onload = function () {
 
 
 
-// Pane Slide
+// Pane Slide VIDEO
 const button_open = document.querySelectorAll('.toggle');
 const button_close = document.querySelectorAll('.close');
 const pane = document.querySelector('.pane');
@@ -81,8 +82,8 @@ if (button_open) {
         link.addEventListener('click', () => {
 
             loadPlayer(video.dataset.video, video.dataset.poster);
-            pane.classList.add('open');
 
+            //pane.classList.add('open');
             //fadeOut(document.querySelector('.hero-laberinto'), 100);
 
             fadeIn(pane, 150);
@@ -128,10 +129,6 @@ if (button_close) {
 
 
 function loadPlayer(sURL, sPoster) {
-    //document.addEventListener('DOMContentLoaded', () => {
-
-
-    //let source = 'https://rtvcplay-media-content.s3.amazonaws.com/vod-content/' + sURL + '/' + sURL + '.m3u8';
 
     let source = 'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:' + sURL + '.smil/playlist.m3u8';
     const video = document.querySelector('video');
@@ -166,8 +163,7 @@ function loadPlayer(sURL, sPoster) {
         });
 
         player.on('ready', event => {
-            //delayedPlay();
-            //player.volume = 0.5;
+            console.log(player);
         });
 
         player.on('play', function () {
@@ -179,9 +175,9 @@ function loadPlayer(sURL, sPoster) {
             pane.classList.add('is-hidden');
 
             fadeOut(pane, 80);
-            //fadeIn(document.querySelector('.hero-laberinto'), 120);
+            //fadeIn(documents.querySelector('.hero-laberinto'), 120);
 
-            pane.classList.toggle('open');
+            //pane.classList.toggle('open');
 
             hideComments();
             player.fullscreen.exit();
@@ -206,33 +202,6 @@ function loadPlayer(sURL, sPoster) {
 
 }
 
-/*
-const e = document.getElementById("a");
-e.addEventListener("animationend", (ev) => {
-  if (ev.type === "animationend") {
-    e.style.display = "none";
-  }
-}, false);
-
-#a {
-    width: 200px;
-    height: 200px;
-    background: red;
-    -webkit-animation: fadeinout 4s linear forwards;
-    animation: fadeinout 4s linear forwards;
-    opacity: 0;
-  }
-  
-  @keyframes fadeinout {
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-*/
 
 function fadeOut(el, pTime) {
     el.style.opacity = 1;
@@ -261,11 +230,8 @@ function fadeIn(el, pTime) {
 }
 
 
-
-
-
 /* Select option */
-
+/*
 const answer_select = document.querySelectorAll('.pulse');
 const next_select = document.getElementById('link-next');
 
@@ -274,25 +240,11 @@ if (answer_select) {
 
         link.addEventListener('click', () => {
 
-            /* [].forEach.call(answer_select, function (el) {
-                 el.parentElement.classList.remove('selected');
-             });
-
-             link.parentElement.classList.add('selected');
-
-             if (next_select) {
-                 next_select.classList.add('selected');
-                 next_select.href = link.dataset.rel;
-             }*/
-
-            console.log(link.dataset.rel);
-
             window.location.href = link.dataset.rel;
 
         });
     });
-}
-
+}*/
 
 
 // Pane Slide Comments
@@ -356,7 +308,7 @@ function settime(pTimeComments) {
         }
 
         // Force close end
-        if (video.hasAttribute("data-end")) {
+        /*if (video.hasAttribute("data-end")) {
             if (!video_force_end) {
                 if (video.dataset.end < player.currentTime) {
                     video_force_end = true;
@@ -364,7 +316,7 @@ function settime(pTimeComments) {
                     console.log(end);
                 }
             }
-        }
+        }*/
 
     }, 1000);
 
