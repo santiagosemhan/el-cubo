@@ -231,7 +231,7 @@ function fadeIn(el, pTime) {
 
 
 /* Select option */
-/*
+
 const answer_select = document.querySelectorAll('.pulse');
 const next_select = document.getElementById('link-next');
 
@@ -244,7 +244,8 @@ if (answer_select) {
 
         });
     });
-}*/
+}
+
 
 
 // Pane Slide Comments
