@@ -146,7 +146,7 @@ export default function SeasonPage({ data }) {
           <audio id="track" loop="">
             <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
-          <div id="audio-player-container" ref={refPlayer} onMouseEnter={() => setBigMouse(false)}>
+          <div id="audio-player-container"  >
             <div id="play-pause" className="play no-link">
               <div className="column-1">
                 <span className="mute hide play-text">silenciar</span>
