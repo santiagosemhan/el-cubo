@@ -25,6 +25,7 @@ export const StyledMouseCircle = styled.div`
     height: 90px;
     margin: -3rem 0px 0px -3rem;
     cursor: pointer !important;
+    z-index: 100;
 
     span {
       display: block;

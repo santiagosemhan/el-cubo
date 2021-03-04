@@ -29,70 +29,43 @@ export default function Home({ data }) {
   {/* Custom Josi */ }
   React.useEffect(() => {
 
-    /* Observer videos */
-    const video1 = document.querySelector("#hero-1 video");
-    if (video1) {
-      video1.pause();
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            //video.pause();
-          } else {
-            video1.play();
-            video1.classList.add('hide');
-            document.getElementById("hero-1").classList.add('playing');
-          }
-        });
-      }, { threshold: .4 });
-
-      observer.observe(video1);
-    }
-
-    const video2 = document.querySelector("#hero-2 video");
-    if (video2) {
-      video2.pause();
-      const observer2 = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) {
-            //video.pause();
-          } else {
-            video2.play();
-            video2.classList.add('hide');
-            document.getElementById("hero-2").classList.add('playing');
-          }
-        });
-      }, { threshold: .2 });
-
-      observer2.observe(video2);
-    }
-
     /* Sound */
     let track = document.getElementById('track');
 
-
-    const video0 = document.querySelector("#hero-0 video");
+    const video0 = document.querySelector("#hero-0 .video-0");
     if (video0) {
       video0.addEventListener('play', hideVideo1, false);
-      //track.play();
+
       function hideVideo1(e) {
         video0.classList.add('hide');
       }
 
       video0.addEventListener('ended', removeVideo0, false);
+
       function removeVideo0(e) {
         video0.remove();
       }
     }
 
+    /* Observer videos */
+    const video1 = document.querySelector("#hero-1 video");
+    const video2 = document.querySelector("#hero-2 video");
+
     if (video1) {
+      //video1.play;
+      //video1.pause;
       video1.addEventListener('ended', removeVideo1, false);
+
       function removeVideo1(e) {
         video1.remove();
       }
     }
 
     if (video2) {
+      //video2.play;
+      //video2.pause;
       video2.addEventListener('ended', removeVideo2, false);
+
       function removeVideo2(e) {
         video2.remove();
       }
@@ -129,24 +102,161 @@ export default function Home({ data }) {
 
 
 
-    window.onscroll = function (ev) {
-      var B = document.body; //IE 'quirks'
-      var D = document.documentElement; //IE with doctype
-      D = (D.clientHeight) ? D : B;
 
-      if (D.scrollTop == 0) {
-        document.getElementsByClassName('arrow-down')[0].classList.remove('scrolled');
-        document.getElementsByClassName('header-temporal')[0].classList.remove('scrolled');
+    // Check if element is in view
+    function isScrolledIntoView(el) {
+      var rect = el.getBoundingClientRect();
+      var elemTop = rect.top;
+      var elemBottom = rect.bottom;
+
+      // Only completely visible elements return true:
+      var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+      // Partially visible elements return true:
+      //isVisible = elemTop < window.innerHeight && elemBottom >= 0;
+      return isVisible;
+    }
+
+    function getRelationScroll(pObject) {
+      let relation = pObject.getBoundingClientRect().top / (main.clientHeight / 2) * 100;
+      return relation;
+    }
+
+
+    // Scroll for Hero-0
+    //const main = document.querySelector('.scroll-container');
+
+    const main = window;
+    main.focus();
+
+
+    const scrollEvent = () => {
+
+      let reveal_1 = document.getElementsByClassName('cover-reveal-1')[0];
+
+      if (isScrolledIntoView(reveal_1)) {
+        let relation = getRelationScroll(reveal_1);
+        if (relation > 79) {
+          document.getElementsByClassName('scroll-container')[0].classList.remove('slow');
+        }
+
       }
-      else {
-        document.getElementsByClassName('arrow-down')[0].classList.add('scrolled');
-        document.getElementsByClassName('header-temporal')[0].classList.add('scrolled');
+
+      let reveal_2 = document.getElementsByClassName('cover-reveal-row-2')[0];
+
+      if (isScrolledIntoView(reveal_2)) {
+        let relation = getRelationScroll(reveal_2);
+        //if (relation < 140) {
+
+        //scrollear(document.getElementsByClassName('section-2'));
+
+        //document.getElementsByClassName('section-2')[0].scrollTop = 0;
+
+        document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
+        //}
       }
-    };
+
+      var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
+      if (isScrolledIntoView(reveal_3)) {
+        //let relation = getRelationScroll(reveal_3);
+        // if (relation < 140) {
+        document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
+        // }
+      }
+
+      var reveal_4 = document.getElementsByClassName('cover-reveal-row-4')[0];
+      if (isScrolledIntoView(reveal_4)) {
+        //let relation = getRelationScroll(reveal_4);
+        //if (relation < 140) {
+        document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
+        //}
+
+      } else {
+
+      }
+
+
+      var someDiv4 = document.getElementsByClassName('cover-reveal-row-5')[0];
+      var distanceToTop = someDiv4.getBoundingClientRect().top;
+
+      if (isScrolledIntoView(someDiv4)) {
+        if (video1) {
+          video1.play();
+          video1.classList.add('hide');
+        }
+        document.getElementById("hero-1").classList.add('playing');
+        document.getElementsByClassName('cover-reveal-row-line')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-5')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-5')[1].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-5')[2].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-6')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-6')[1].classList.add('active');
+
+
+
+        document.getElementsByClassName('scroll-container')[0].classList.add('slow');
+
+      }
+
+
+      var someDiv5 = document.getElementsByClassName('cover-reveal-row-7')[0];
+      var distanceToTop5 = someDiv5.getBoundingClientRect().top;
+
+      if (isScrolledIntoView(someDiv5)) {
+        if (video2) {
+          video2.play();
+          video2.classList.add('hide');
+        }
+        document.getElementById("hero-2").classList.add('playing');
+        document.getElementsByClassName('cover-reveal-row-7')[0].classList.add('active');
+        document.getElementsByClassName('cover-reveal-row-7')[1].classList.add('active');
+
+        document.getElementsByClassName('scroll-container')[0].classList.add('slow');
+      }
+
+
+    }
+
+    main.addEventListener('scroll', scrollEvent);
 
 
 
 
+
+
+    // Scroll Fade
+    let fadeElement = document.getElementsByClassName('cover-scroll')[0];
+
+    function fadeOutOnScroll(element) {
+      if (!element) {
+        return;
+      }
+
+      var distanceScrollTop = window.pageYOffset + element.getBoundingClientRect().top - 250;
+      var elementHeight = element.offsetHeight;
+      var scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+
+      var opacity = 1;
+
+      if (scrollTop > distanceScrollTop) {
+        opacity = 1 - (scrollTop - distanceScrollTop) / elementHeight;
+      }
+
+      if (opacity >= 0) {
+        element.style.opacity = opacity;
+      }
+    }
+
+
+    function scrollHandler() {
+      document.querySelectorAll('.cover-scroll').forEach(function (fadeElement) {
+        fadeOutOnScroll(fadeElement);
+      });
+    }
+
+    main.addEventListener('scroll', scrollHandler);
 
 
   }, []);
@@ -163,7 +273,7 @@ export default function Home({ data }) {
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
         <div>
-          <audio id="track" autoplay>
+          <audio id="track" autoPlay>
             <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
 
@@ -175,7 +285,7 @@ export default function Home({ data }) {
                 <span className="listen play-text">
                   escuchar</span>
               </div>
-              <div class="column-2">
+              <div className="column-2">
                 <div className="Sound off">
                   <span></span>
                   <span></span>
@@ -186,18 +296,6 @@ export default function Home({ data }) {
               </div>
             </div>
           </div>
-        </div>
-
-        <div class="arrow-down">
-          <a href="#hero-1" class="no-link">
-            <img src="/images/arrow-down-cyan.svg" />
-          </a>
-        </div>
-
-        <div class="arrow-down arrow-down-2">
-          <a href="#hero-2" class="no-link">
-            <img src="/images/arrow-down-cyan.svg" />
-          </a>
         </div>
 
 
@@ -214,47 +312,156 @@ export default function Home({ data }) {
 
         {/*<HeaderTop />*/}
 
-        {field_ec_contents.map((c, index) => {
-          const paragraph = field_ec_contents_paragraph.find((p) => p.id[0].value === Number(c));
-          // console.log({ paragraph });
-          let videoOverlayHTML = '';
-          if (paragraph.type[0].target_id === 'ec_hero_title') {
-            let copyCoverHTML = paragraph.field_ec_text.map((t) => t.value).join('');
-            // console.log({ copyCoverHTML });
-            videoOverlayHTML = `
-              <div class="copy-cover">
-                ${copyCoverHTML}
-              </div>
-              
-            `;
-          } else {
-            videoOverlayHTML = paragraph.field_ec_full_text[0].processed;
-          }
 
-          let desktopVideoURL = paragraph.field_ec_video[0].url;
-          let mobileVideoURL = paragraph.field_ec_video_mb[0].url;
-          // console.log({ videoOverlayHTML });
-          return (
-            <div
-              id={`hero-${index}`}
-              key={c}
-              className={`hero hero-${index} no-link`}
-              onMouseEnter={index === 2 ? handleMouseEnter : undefined}
-              ref={index === 2 ? ref : undefined}
-            >
-              <video className="video-bg" autoPlay muted>
-                <source src={desktopVideoURL} type="video/mp4" />
-              </video>
-              <img className="img-bg-pc" src={paragraph.field_ec_image[0].url} />
-              <img className="img-bg-mobile" src={paragraph.field_ec_image_mb[0].url} />
+        <div id="hero-0" className="hero hero-0 no-link">
+          <video className="video-bg video-0" autoPlay muted>
+            <source src="/portada/video-0B.mp4" type="video/mp4" />
+          </video>
+          <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec_image/desk/SITILLVideo%20IN%200%2B1.jpg"
+          />
+          <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_4.jpg" />
+          <div className="video-overlay">
+            <main className="scroll-container">
 
-              <div
-                className="video-overlay"
-                dangerouslySetInnerHTML={{ __html: videoOverlayHTML }}
-              />
-            </div>
-          );
-        })}
+              <section className="section-0">
+                <div className="copy-cover">
+                  <div className="cover-scroll">
+                    <h1 className="cover-reveal cover-reveal-1 active">
+                      <span className="cyan-strong reveal-first">¿De qué están hechas</span>
+                    </h1>
+
+                    <h1 className="cover-reveal cover-reveal-1 active">
+                      <span className="white reveal-second"> las relaciones humanas?</span>
+                    </h1>
+                  </div>
+                </div>
+              </section>
+
+              <section className="section-2">
+                <div className="copy-cover">
+                  <div className="cover-scroll">
+                    <h1 className="cover-reveal-row cover-reveal-row-2">
+                      <span className="first cyan-strong first">¿Con cuántos hilos</span>
+                    </h1>
+                    <h1 className="cover-reveal-row cover-reveal-row-2">
+                      <span className="second white second"> se teje una historia?</span>
+                    </h1>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <div className="copy-cover">
+                  <div className="cover-scroll">
+                    <h1 className="cover-reveal-row cover-reveal-row-3">
+                      <span className="first cyan-strong">¿Cuántas verdades pueden contenerse</span>
+                    </h1>
+                    <h1 className="cover-reveal-row cover-reveal-row-3">
+                      <span className="second white"> en una misma realidad?</span>
+                    </h1>
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <div className="copy-cover">
+                  <div className="cover-scroll">
+                    <h1 className="cover-reveal-row cover-reveal-row-4">
+                      <span className="first cyan-strong">Descúbrelo en El Cubo, una experiencia</span>
+                    </h1>
+                    <h1 className="cover-reveal-row cover-reveal-row-4">
+                      <span className="second white"> digital en la que serás Arte y Parte.</span>
+                    </h1>
+                  </div>
+                </div>
+              </section>
+
+
+              <section className="section-1">
+                <div className="hero-cover hero-cover-1">
+                  <div id="hero-1" className="hero hero-1 no-link" onMouseEnter={handleMouseEnter} >
+                    <div className="scrolldown">
+                      <div className="line"></div>
+                    </div>
+                    <video className="video-bg" muted>
+                      <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video-1B.mp4" type="video/mp4" />
+                    </video>
+                    <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%202.jpg" />
+                    <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_5.jpg" />
+                    <div className="video-overlay ">
+                      <div className="paragraph-message cover-scroll">
+
+                        <div className="cover-reveal-row cover-reveal-row-line">
+                          <span className="first">
+                            <hr />
+                          </span>
+                        </div>
+                        <p className="cover-reveal-row cover-reveal-row-5">
+                          <span className="first">
+                            Navega cualquiera de nuestras historias a</span>
+                        </p>
+                        <p className="cover-reveal-row cover-reveal-row-5">
+                          <span className="second"> partir de varios modos narrativos y comprueba</span>
+                        </p>
+                        <p className="cover-reveal-row cover-reveal-row-5">
+                          <span className="third"> así que la verdad …</span>
+                        </p>
+
+                      </div>
+
+                      <div className="copy-cover cover-scroll">
+                        <h1 className="cover-reveal-row cover-reveal-row-6">
+                          <span className="first">...La verdad</span>
+                        </h1>
+                        <h1 className="cover-reveal-row cover-reveal-row-6">
+                          <span className="second">NUNCA ES UNA SOLA</span>
+                        </h1>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </section>
+
+              <section>
+
+                <div id="hero-2" className="hero hero-2 no-link" onMouseEnter={handleMouseEnter} >
+                  <video className="video-bg" muted>
+                    <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video%20IN%203_0.mp4" type="video/mp4"
+                    />
+                  </video>
+                  <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%203.jpg" />
+                  <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_6.jpg" />
+                  <div className="video-overlay cover-scroll">
+                    <div className="copy-cover">
+
+                      <h1 className="cover-reveal-row cover-reveal-row-7">
+                        <span className="first">Entra ya</span>
+                      </h1>
+
+                      <h1 className="cover-reveal-row cover-reveal-row-7">
+                        <span className="second">a la dimensión de El CUBO</span>
+                      </h1>
+
+
+                      <p>
+                        <a className="button-mobile" href="/el-cubo/temporada-1">Ver más </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </section>
+
+
+            </main>
+
+          </div>
+
+        </div>
+
+
       </Container>
     </AppLayout>
   );
