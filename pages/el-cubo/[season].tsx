@@ -20,8 +20,11 @@ export default function SeasonPage({ data }) {
   // console.log(JSON.parse(field_ec_contents_page_ref_json));
   const ref = useRef();
   const refHeader = useRef();
+  const refPlayer = useRef();
   const [bigMouse, setBigMouse] = React.useState(false);
   const [showMouse, setShowMouse] = React.useState(true);
+
+
 
   const handleMouseEnter = () => {
     setBigMouse(true);
@@ -31,6 +34,11 @@ export default function SeasonPage({ data }) {
     setShowMouse(false);
   });
   useOnMouseOutside(refHeader, (event) => {
+    setBigMouse(true);
+  });
+
+
+  useOnMouseOutside(refPlayer, (event) => {
     setBigMouse(true);
   });
 
@@ -138,7 +146,7 @@ export default function SeasonPage({ data }) {
           <audio id="track" loop="">
             <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
-          <div id="audio-player-container" onMouseEnter={() => setBigMouse(false)}>
+          <div id="audio-player-container" ref={refPlayer} onMouseEnter={() => setBigMouse(false)}>
             <div id="play-pause" className="play no-link">
               <div className="column-1">
                 <span className="mute hide play-text">silenciar</span>
@@ -246,7 +254,7 @@ export default function SeasonPage({ data }) {
                   <p>Explora esta historia escrita y dirigida por
                             <strong>Fabio Rubiano</strong> en la que el abuso, la manipulación, la doble vida y los secretos de seis
 personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el
-                            <strong>PODER</strong>, la honestidad, los valores y la moral.</p>
+                            <strong> PODER</strong>, la honestidad, los valores y la moral.</p>
                 </a>
               </div>
 
