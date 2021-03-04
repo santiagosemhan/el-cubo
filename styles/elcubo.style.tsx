@@ -822,8 +822,8 @@ h2 {
 }
 
 .hero-3 .copy-cover-2 .cover-reveal-row-1:nth-child(3) {
-    margin-top: -70px;
-    font-weight: 100;
+    margin-top: -20px;
+    font-weight: 300;
 }
 
 .hero-3 .copy-cover-2 .cover-reveal-row-3 span {
@@ -838,6 +838,8 @@ h2 {
     padding-top: 34px;
     float: left;
 }
+
+
 
 /* Animate words */
 
@@ -1123,6 +1125,7 @@ h2 {
     .paragraph-message p {
         font-size: 16px;
     }
+
     /* Pagina temporada */
     .hero-3 {
         grid-template-rows: auto;
@@ -1685,6 +1688,23 @@ footer {
   transition: display 0.5s;
 }
 
+.hero-3 h1.cover-reveal-row-2 {
+  margin-top: 70px;
+  float: left;
+}
+
+.hero-3 .cover-reveal-row-2 span {
+  font-style: italic;
+  font-weight: 400;
+  margin-left: 30px;
+}
+
+.hero-3 .cover-reveal-row-2 sup {
+  font-size: 22px;
+  font-weight: 400;
+  margin-left: 5px;
+}
+
 
 @media only screen and (max-width: 1024px) {
   footer {
@@ -1758,6 +1778,7 @@ footer {
   .paragraph-message p {
     font-size: 16px;
   }
+
   /* Pagina temporada */
   .hero-3 {
     grid-template-rows: auto;
