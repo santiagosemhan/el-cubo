@@ -162,7 +162,7 @@ export default function SeasonPage({ data }) {
         </div>
 
 
-        <div id="hero-3" className="hero hero-3 no-link">
+        <div id="hero-3" className="hero hero-3">
           <video className="video-bg hide" autoPlay muted>
             <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video%20IN%204A.mp4" type="video/mp4" />
           </video>
