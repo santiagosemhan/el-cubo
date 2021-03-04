@@ -301,7 +301,7 @@ export default function Home({ data }) {
 
         <div className="header-top header-temporal">
           <div className="header-top-inner">
-            <div className="logo-elcubo">
+            <div className="logo-elcubo" onMouseEnter={() => setBigMouse(false)}>
               <a href="https://elcubo.vercel.app/" className="logo--link no-link">
                 <img className="logo--image" src="/images/logo2021.png" />
               </a>
