@@ -353,6 +353,7 @@ body {
 .cover-selector {
     position: absolute;
     width: 130px;
+    margin-left: -65px;
 }
 
 .cover-pulse {
