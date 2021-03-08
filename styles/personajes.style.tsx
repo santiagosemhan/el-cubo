@@ -236,8 +236,8 @@ footer {
 }
 
 .characters .pane video {
-    width: 150%;
-    margin-left: -23%;
+    width: 100%;
+    margin-top: -80px;
 }
 
 .characters .pane-content {
