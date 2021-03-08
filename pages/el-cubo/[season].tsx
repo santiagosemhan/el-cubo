@@ -251,10 +251,8 @@ export default function SeasonPage({ data }) {
 
               <div className="paragraph-message paragraph-message-2">
                 <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes">
-                  <p>Explora esta historia escrita y dirigida por
-                            <strong>Fabio Rubiano</strong> en la que el abuso, la manipulación, la doble vida y los secretos de seis
-personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el
-                            <strong> PODER</strong>, la honestidad, los valores y la moral.</p>
+                  <p>Explora esta historia escrita y dirigida por <strong>Fabio Rubiano</strong> en la que el abuso, la manipulación, la doble vida y los secretos de seis
+personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el <strong> PODER</strong>, la honestidad, los valores y la moral.</p>
                 </a>
               </div>
 
