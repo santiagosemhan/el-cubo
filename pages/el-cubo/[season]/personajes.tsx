@@ -433,7 +433,7 @@ const CharactersPage = ({ data = {} }) => {
                           Explora esta historia en la que el abuso, la manipulación, la doble vida y
                           los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
                         cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
-                                                                                                                      valores y la moral.
+                                                                                                                        valores y la moral.
                       </p>
                         <div class="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">
@@ -464,7 +464,7 @@ const CharactersPage = ({ data = {} }) => {
                           <h2>Ayuda</h2>
                           <p>
                             Para conocer esta historia de diferentes maneras deberás seleccionar uno
-                          de seis personajes y elegir uno de tres modos narrativos para navegar.{' '}
+                          de seis personajes y elegir uno de los tres modos narrativos para navegar.{' '}
                           </p>
                         </div>
 
