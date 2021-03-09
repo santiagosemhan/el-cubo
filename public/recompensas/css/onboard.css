@@ -15,11 +15,17 @@ body {
 }
 
 .app-elcubo.recompensa {
-    max-width: 80vw;
+    max-width: 75vw;
     margin: auto;
-    margin-top: 40vh;
+    margin-top: 30vh;
     position: relative;
     z-index: 1;
+}
+
+@media screen and (min-width: 1600px) {
+    .app-elcubo.recompensa {
+        max-width: 60vw;
+    }
 }
 
 .bg-recompensa {
@@ -50,6 +56,7 @@ body {
     float: left;
     list-style-type: none;
     margin-bottom: 40vh;
+    margin-top: 80px;
 }
 
 .recompensa ul li div {
