@@ -1,0 +1,103 @@
+/* Image zoom on hover + Overlay colour */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    margin: 0;
+    /* background: black;*/
+    font-family: Inter;
+    color: white;
+}
+
+:root {
+    /* Full grid area variable */
+    --fullGrid: 1 / 1 / -1 / -1;
+}
+
+.app-elcubo.recompensa {
+    max-width: 80vw;
+    margin: auto;
+    margin-top: 40vh;
+    position: relative;
+    z-index: 1;
+}
+
+.bg-recompensa {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+}
+
+.title-recompensa {
+    color: white;
+    font-family: Inter;
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+    font-weight: 500;
+    opacity: 1;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    /* Firefox */
+    -webkit-animation: fadein 1s;
+    /* Safari and Chrome */
+    -o-animation: fadein 1s;
+}
+
+.recompensa ul {
+    margin: 0;
+    padding: 0;
+    float: left;
+    list-style-type: none;
+    margin-bottom: 40vh;
+}
+
+.recompensa ul li div {
+    width: 12.5%;
+    float: left;
+    text-align: center;
+}
+
+.recompensa ul li div:first-child {
+    width: 24%;
+    text-align: left;
+}
+
+.recompensa ul li p {
+    color: white;
+    margin-left: 15px;
+}
+
+.li-characters img {
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+}
+
+.li-characters p {
+    font-size: 20px;
+    letter-spacing: -1px;
+}
+
+.li-characters h2 {
+    font-size: 20px;
+    letter-spacing: -1px;
+    font-weight: 300;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.li-videos {
+    float: left;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 8px;
+}
+
+.li-videos.odd {
+    background: rgba(60, 82, 92, .3);
+}
+
+.li-videos div:first-child span {
+    margin-left: 15px;
+}

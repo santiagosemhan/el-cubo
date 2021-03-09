@@ -198,7 +198,8 @@ body {
     }
 }
 
-.steal_title.hide {
+.steal_title.hide,
+.plyr_title.hide {
     display: none;
 }
 
@@ -220,10 +221,6 @@ body {
     -webkit-animation: fadein 1s;
     /* Safari and Chrome */
     -o-animation: fadein 1s;
-}
-
-.plyr_title.hide {
-    opacity: 0;
 }
 
 .steal {
