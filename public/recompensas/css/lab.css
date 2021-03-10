@@ -1,0 +1,252 @@
+/* Image zoom on hover + Overlay colour */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    margin: 0;
+    /* background: black;*/
+    font-family: Inter;
+    color: white;
+}
+
+:root {
+    /* Full grid area variable */
+    --fullGrid: 1 / 1 / -1 / -1;
+}
+
+.header-top {
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+}
+
+.app-elcubo.recompensa {
+    max-width: 75vw;
+    margin: auto;
+    margin-top: 30vh;
+    position: relative;
+    z-index: 1;
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
+}
+
+@media screen and (min-width: 1600px) {
+    .app-elcubo.recompensa {
+        max-width: 60vw;
+    }
+}
+
+.bg-recompensa {
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    /* Firefox */
+    -webkit-animation: fadein 2s;
+    /* Safari and Chrome */
+    -o-animation: fadein 2s;
+    /* Opera */
+}
+
+.title-recompensa {
+    color: white;
+    font-family: Inter;
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+    font-weight: 500;
+    opacity: 1;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    /* Firefox */
+    -webkit-animation: fadein 1s;
+    /* Safari and Chrome */
+    -o-animation: fadein 1s;
+}
+
+.left,
+.right {
+    width: 50%;
+    float: left;
+}
+
+.right {
+    text-align: center;
+}
+
+.right img {
+    width: 90%;
+}
+
+/* button */
+
+.cover-link a {
+    border: 1px solid rgb(26, 40, 57);
+    padding: 3px 10px 0px 30px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-family: Inter;
+    text-decoration: none;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cover-link a span {
+    font-size: 20px;
+    line-height: 2em;
+    float: left;
+}
+
+.cover-link a img {
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.copy button img {
+    float: right;
+    margin-left: 10px;
+}
+
+.button-cyan {
+    background-color: rgb(69, 180, 193);
+    color: rgb(26, 40, 57);
+}
+
+/* Pane Slide */
+
+.pane {
+    position: fixed;
+    top: 0;
+    z-index: 50;
+    /* left: -150%; */
+    height: 100vh;
+    width: 100%;
+    background: black;
+    /*-webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    transition: 1.5s all ease;
+    overflow: hidden;*/
+}
+
+.pane.invisible {
+    animation-duration: fadeOutDisplay 2s;
+    animation-iteration-count: fadeOutDisplay 1;
+    /*put the default display and opacity here, the same as "0%"*/
+    display: none;
+    opacity: 0;
+}
+
+.pane a.close {
+    cursor: pointer;
+    padding: 20px;
+    float: right;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+
+.plyr_title {
+    color: white;
+    font-family: Inter;
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+    font-weight: 500;
+    position: absolute;
+    left: 40px;
+    top: 10vh;
+    z-index: 100;
+    opacity: 1;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -webkit-animation: fadein 1s;
+    -o-animation: fadein 1s;
+}
+
+.pane.is-hidden .plyr__control--overlaid,
+.pane.is-hidden .plyr__controls,
+.pane.is-hidden .plyr_title {
+    display: none !important;
+}
+
+.hide {
+    display: none;
+}
+
+@media screen and (max-width: 1300px) {
+    .app-elcubo.recompensa {
+        max-width: 80vw;
+    }
+    .left,
+    .right {
+        width: 100%;
+    }
+    .right img {
+        width: 100%;
+    }
+}
+
+/* Animation */
+
+@keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadein {
+    /* Firefox */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    /* Safari and Chrome */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadein {
+    /* Opera */
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutDisplay {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    1% {
+        display: none;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
+}
