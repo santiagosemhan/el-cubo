@@ -564,12 +564,12 @@ footer {
     width: 60vw;
     margin: auto;
     text-align: center;
-    font-family: 'Bitter';
 }
 
 .hero .copy p {
     color: white;
-    font-size: 24px;
+    font-family: Inter;
+    font-size: 32px;
     font-weight: 300;
     line-height: 1.3;
     margin-top: 35vh;

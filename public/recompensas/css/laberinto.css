@@ -56,6 +56,11 @@ body {
     z-index: 1;
 }
 
+.desc-recompensa {
+    letter-spacing: -0.3;
+    font-size: 18px;
+}
+
 .flex-container.column {
     -webkit-flex-direction: column;
     flex-direction: column;

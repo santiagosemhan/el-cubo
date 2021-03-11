@@ -430,10 +430,7 @@ const CharactersPage = ({ data = {} }) => {
                     <div className="copy-cover">
                       <h1 className="copy">
                         <p>
-                          Explora esta historia en la que el abuso, la manipulación, la doble vida y
-                          los secretos de seis personajes cuyos destinos se entrecruzan te llevarán a
-                        cuestionar tu percepción sobre el <strong>PODER</strong>, la honestidad, los
-                                                                                                                        valores y la moral.
+                          Completa esta cronología y obtén acceso<br />privilegiado al gran mapa de la historia
                       </p>
                         <div class="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">
