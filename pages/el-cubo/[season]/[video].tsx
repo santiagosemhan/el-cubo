@@ -190,11 +190,11 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
               <div className="header-top">
                 <div className="header-top-inner">
                   <nav className="nav">
-                    <a href="#" className="toggle menu-elcubo">
+                    <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
                       <div className="icon-bell">
                         <img src="/images/icon-bell.svg" />
                       </div>
-                      <img src="/images/icon-menu.svg" />
+                      <img className="icon-change" src="/images/icon-change-char2.svg" />
                     </a>
                   </nav>
                 </div>
