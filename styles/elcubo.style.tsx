@@ -1845,6 +1845,7 @@ footer {
     position: absolute;
     left: -15%;
     width: 130%;
+    height: auto;
 }
 
 .steal_title {
