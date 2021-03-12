@@ -199,7 +199,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                 </div>
               </div>
 
-              <img className="steal" src="bg-chapter" src={poster} />
+              <div className="steal"><img className="steal" src={poster} /></div>
               <h2 className="steal_title">{videoTitle}</h2>
 
               <CharacterSelector list={characterList} />

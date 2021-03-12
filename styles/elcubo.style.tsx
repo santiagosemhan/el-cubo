@@ -1836,6 +1836,11 @@ footer {
 .steal {
     position: absolute;
     z-index: 10;
+    width: 100%;
+}
+
+.steal img {
+    position: absolute;
     left: -15%;
     width: 130%;
 }
