@@ -1832,4 +1832,25 @@ footer {
 }
 
 
+
+.steal {
+    position: absolute;
+    z-index: 10;
+    left: -15%;
+    width: 130%;
+}
+
+.steal_title {
+    color: white;
+    font-family: Inter;
+    font-size: 2.3rem;
+    letter-spacing: -1px;
+    font-weight: 500;
+    position: absolute;
+    left: 20px;
+    top: 10vh;
+    z-index: 100;
+  }
+
+
 `;

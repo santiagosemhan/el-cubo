@@ -48,6 +48,28 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
   const [videoTitle, setVideoTitle] = useState();
 
   React.useEffect(() => {
+
+
+    window.onload = function () {
+      setTimeout(() => {
+        // document.querySelectorAll('.steal')[0].classList.add('black');
+        fadeOut(document.querySelectorAll('.steal')[0], 60);
+        fadeOut(document.querySelectorAll('.steal_title')[0], 60);
+
+      }, 3000);
+    };
+
+    function fadeOut(el, pTime) {
+      el.style.opacity = 1;
+      (function fade() {
+        if ((el.style.opacity -= .07) < 0) {
+          el.style.display = "none";
+        } else {
+          setTimeout(fade, pTime);
+        }
+      })();
+    }
+
     let character;
     let chronologyList = [];
     if (chronology) {
@@ -176,8 +198,13 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                   </nav>
                 </div>
               </div>
+
+              <img className="steal" src="bg-chapter" src={poster} />
+              <h2 className="steal_title">{videoTitle}</h2>
+
               <CharacterSelector list={characterList} />
               <FullPlayerWrapper>
+
                 <VideoPlayer
                   showBackButton
                   backLink="/el-cubo/temporada-1/personajes"
