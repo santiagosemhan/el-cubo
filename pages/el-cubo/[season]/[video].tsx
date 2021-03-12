@@ -53,8 +53,8 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
     window.onload = function () {
       setTimeout(() => {
         // document.querySelectorAll('.steal')[0].classList.add('black');
-        fadeOut(document.querySelectorAll('.steal')[0], 60);
-        fadeOut(document.querySelectorAll('.steal_title')[0], 60);
+        fadeOut(document.querySelectorAll('.steal')[0], 50);
+        fadeOut(document.querySelectorAll('.steal_title')[0], 50);
 
       }, 3000);
     };
