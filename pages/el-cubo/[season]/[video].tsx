@@ -50,6 +50,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
   React.useEffect(() => {
 
 
+    /*
     window.onload = function () {
       setTimeout(() => {
         // document.querySelectorAll('.steal')[0].classList.add('black');
@@ -68,7 +69,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
           setTimeout(fade, pTime);
         }
       })();
-    }
+    }*/
 
     let character;
     let chronologyList = [];
@@ -199,8 +200,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                 </div>
               </div>
 
-              <div className="steal"><img className="steal" src={poster} /></div>
-              <h2 className="steal_title">{videoTitle}</h2>
+
 
               <CharacterSelector list={characterList} />
               <FullPlayerWrapper>
