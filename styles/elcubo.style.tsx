@@ -1839,6 +1839,7 @@ footer {
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    display: none;
 }
 
 .steal img {
@@ -1846,6 +1847,7 @@ footer {
     left: -15%;
     width: 130%;
     height: auto;
+    display: none;
 }
 
 .steal_title {
@@ -1858,6 +1860,7 @@ footer {
     left: 20px;
     top: 10vh;
     z-index: 100;
+    display: none;
   }
 
 
