@@ -251,7 +251,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const chapter = await fetch(`/api/v1/elcubo/season/4731/episode/${params.video}`);
 
-  let srcVideoId = chapter[0] ?.field_ec_asset_id; field_asset_id
+  let srcVideoId = chapter[0] ?.field_ec_asset_id;
   const srcVideo = srcVideoId
     //? `https://rtvcplay-media-content.s3.amazonaws.com/vod-content/${srcVideoId}/${srcVideoId}.m3u8`
     ? `https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:${srcVideoId}.smil/playlist.m3u8`
