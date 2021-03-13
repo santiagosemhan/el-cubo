@@ -7,15 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>El Cubo</title>
 
-    <link rel="stylesheet" href="css/selector-videos.css">
-    <link rel="stylesheet" href="css/help.css">
+    <link rel="stylesheet" href="css/reflexivo.css">
+    <link rel="stylesheet" href="css/nav.css">
+
+
     <link rel='stylesheet' href='https://unpkg.com/plyr@3/dist/plyr.css'>
 
 
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 </head>
 
-<body id="body" style="background-image: url(../img/alba/screens/ALBA_1_424264.jpg); background-size: cover; background-position: center center;">
+<body id="body">
 
     <div class="header-top">
         <div class="header-top-inner">
@@ -28,51 +30,20 @@
         </div>
     </div>
 
-    <!--<div class="app-elcubo selector">
+    <div class="app-elcubo reflexivo">
 
-        <div class="help-wrapper">
-
-
-            <div class="modal">
-
-
-                <div class="hero hero-onboarding">
-
-                    <div class="video-overlay">
-                        <div class="copy-cover">
-                            <h1 class="copy">
-                                <p>
-                                    Si unes las 2 caras de la historia,
-                                    <br>tendrás otra pregunta para contestar
-                                </p>
-                                <div class="cover-link close-modal">
-                                    <a id="button_ok" href="#" class="cyan-dark close-modal">
-                                        <span>Ok, Continuar</span>
-                                        <img src="../img/icon-arrow-init.svg">
-                                    </a>
-                                </div>
-
-                            </h1>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="pane" data-relation="">
+        <div class="pane open" data-relation="">
             <a class="close">
                 <img src="../img/pane-close.svg" />
             </a>
 
-            <div class="pane-video">
+            <div class="pane-video visible">
                 <video controls crossorigin playsinline poster="../img/reflexivo-sales0.jpg"></video>
             </div>
 
         </div>
 
         <div class="characters columns-1" class="is-hidden">
-            <div class="pane-cover close"></div>
 
 
             <div class='characters-wrapper'>
@@ -89,7 +60,7 @@
                         <div class="parent">
                             <div class="child bg-one alba toggle" data-video="424264" data-poster="../img/alba/screens/ALBA_1_424264.jpg" data-relation="bg-one">
                                 <img class="icon-selected" src="../img/is-selected.svg" />
-                                <h2 class="name">
+                                <div class="actions">
                                     <img class="icon-selected" src="../img/is-selected.svg" />
 
                                     <div class="icon-cover icon-play">
@@ -98,9 +69,9 @@
                                     <div class="icon-cover icon-replay">
                                         <img src="../img/replay-reflexivo.svg" />
                                     </div>
-                                    Alba debe ir al médico
+                                    <h2>Alba debe ir al médico</h2>
 
-                                </h2>
+                                </div>
                                 <img class="img-bn" src="../img/alba/ALBA_1_424264_02.jpg" />
                                 <img class="img-color" src="../img/alba/ALBA_1_424264_01.jpg" />
 
@@ -153,95 +124,10 @@
         </div>
 
 
-    </div>-->
-
-
-    <div class="pane" data-relation="">
-        <a class="close">
-            <img src="../img/pane-close.svg" />
-        </a>
-
-        <div class="pane-video">
-            <video controls crossorigin playsinline poster="../img/reflexivo-sales0.jpg"></video>
-        </div>
-
-    </div>
-
-    <div class="app-elcubo selector grid-container  columns-1">
-        <div class="row row-1">
-            <div class="answers-copy">
-                Si ves el video completo, tendrás una pregunta para contestar
-            </div>
-        </div>
-        <div class="row row-2">
-            <div class="videos-options">
-                <div class='column'>
-
-                    <h2 class="name">
-                        <img class="icon-selected" src="../img/is-selected.svg" />
-
-                        <div class="icon-cover icon-play">
-                            <img src="../img/play-reflexivo.svg" />
-                        </div>
-                        <div class="icon-cover icon-replay">
-                            <img src="../img/replay-reflexivo.svg" />
-                        </div>
-                        Alba debe ir al médico
-
-                    </h2>
-
-
-
-                    <div class="parent">
-                        <div class="child bg-one alba toggle" data-video="424264" data-poster="../img/alba/screens/ALBA_1_424264.jpg" data-relation="bg-one">
-                            <img class="icon-selected" src="../img/is-selected.svg" />
-
-                            <img class="img-bn" src="../img/alba/ALBA_1_424264_02.jpg" />
-                            <img class="img-color" src="../img/alba/ALBA_1_424264_01.jpg" />
-
-                        </div>
-                    </div>
-                    <div class="center progress-0 progress-direct">
-                        <div class="progress-bar">
-                            <div class="progress"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row row-3">
-            <div class='column'>
-                <div class="video-overlay">
-                    <div class="copy-cover">
-                        <h1 class="copy">
-                            <p style="font-size: 24px;">
-                                Después de lo sucedido, ¿quién cree usted que tiene el poder?
-                            </p>
-
-                            <ul class="li-questions" style="width: 600px;">
-                                <li data-rel="alba-1.html">
-                                    <a href="#">Sales</a>
-                                </li>
-                                <li data-rel="alba-2.html">
-                                    <a href="#">Alba</a>
-                                </li>
-                            </ul>
-
-                            <div class="cover-link">
-                                <a id="link-onboard" href="sales-1-1-1.html" class="cyan-dark">
-                                    <span>Continuar</span>
-                                    <img src="../img/icon-arrow-init.svg">
-                                </a>
-                            </div>
-
-                        </h1>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="js/selector-videos.js"></script>
+
 
     <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
     <!-- partial -->

@@ -5,6 +5,14 @@ window.onload = fadeIn;
 
 window.onload = function () {
     disableScroll();
+
+    let link = document.querySelectorAll('.toggle')[0];
+    // pane_cover.classList.toggle('visible');
+
+    loadPlayer(link.dataset.video, link.dataset.poster);
+
+
+    player.play();
 };
 
 function fadeIn() {
@@ -38,7 +46,9 @@ if (button_open) {
             console.log(link.dataset.relation);
             pane.dataset.relation = link.dataset.relation;
 
-            pane_cover.classList.toggle('visible');
+            // pane_cover.classList.toggle('visible');
+
+            fadeIn(pane, 150);
 
             loadPlayer(link.dataset.video, link.dataset.poster);
 
@@ -60,7 +70,9 @@ if (button_close) {
         link.addEventListener('click', () => {
             console.log('click');
             pane.classList.toggle('open');
-            pane_cover.classList.toggle('visible');
+
+            fadeOut(pane, 40);
+            //pane_cover.classList.toggle('visible');
 
             fake_cover.classList.add('visible');
 
@@ -73,6 +85,34 @@ if (button_close) {
         });
     });
 }
+
+
+function fadeOut(el, pTime) {
+    el.style.opacity = 1;
+
+    (function fade() {
+        if ((el.style.opacity -= .07) < 0) {
+            el.style.display = "none";
+        } else {
+            setTimeout(fade, pTime);
+        }
+    })();
+}
+
+
+function fadeIn(el, pTime) {
+    el.style.opacity = 0;
+    el.style.display = "block";
+
+    (function fade() {
+        var val = parseFloat(el.style.opacity);
+        if (!((val += .07) > 1)) {
+            el.style.opacity = val;
+            setTimeout(fade, pTime);
+        }
+    })();
+}
+
 
 
 const button_select = document.getElementById('select-personaje');
@@ -148,10 +188,13 @@ function loadPlayer(sURL, sPoster) {
         });
 
         player.on('ended', function () {
-            pane_cover.classList.toggle('visible');
+            //pane_cover.classList.toggle('visible');
             pane.classList.toggle('open');
 
-            fake_cover.classList.add('visible');
+            //fake_cover.classList.add('visible');
+
+            fadeOut(pane, 40);
+
 
             // Add selected to child
             document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
@@ -345,9 +388,6 @@ if (progress_direct) {
         loadProgress('progress-0', 30000);
     }
 }
-//
-
-
 
 
 // Click Button OK

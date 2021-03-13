@@ -56,13 +56,20 @@ body {
     z-index: 11;
 }
 
-.characters .parent {
+.characters {
     width: 100%;
-    height: 70vh;
+    height: 100vh;
     overflow: hidden;
     position: relative;
     float: left;
     display: flex;
+}
+
+.characters-wrapper {
+    width: 100%;
+    height: 80vh;
+    margin: auto;
+    transition: all 1s ease;
 }
 
 .characters .child {
@@ -78,12 +85,6 @@ body {
 
 /* Page characters */
 
-.characters-wrapper {
-    height: 70vh;
-    margin-top: 18vh;
-    transition: all 1s ease;
-}
-
 .is-viewed .characters-wrapper {
     margin-top: 2vh;
 }
@@ -94,24 +95,11 @@ body {
     flex-wrap: wrap;
 }
 
-.characters-wrapper .row.row-cero {
-    width: 1024px;
-    margin: auto;
-    color: #636363;
-    letter-spacing: -0.8px;
-    font-size: 18px;
-    margin-bottom: 20px;
-}
-
 .is-viewed .row.row-cero {
     opacity: 0;
 }
 
-.characters-wrapper .row.row-first {
-    height: 443px;
-    width: 1024px;
-    margin: auto;
-}
+/* column 2 */
 
 .columns-2 .row.row-cero,
 .columns-2 .row.row-first {
@@ -122,21 +110,11 @@ body {
 
 .columns-1 .row.row-cero,
 .columns-1 .row.row-first {
-    width: 30%;
+    width: 341px;
+    margin: auto;
     z-index: 2;
     position: relative;
 }
-
-/*
-.columns-1 .parent .child .img-bn,
-.columns-1 .parent .child .img-color {
-    width: 80% !important;
-    top: 50% !important;
-   
-    left: 50%;
-    
-    transform: translate(-50%, -50%);
-}*/
 
 .columns-1.is-viewed .characters-wrapper {
     margin-top: 12vh;
@@ -211,7 +189,7 @@ body {
     display: none;
 }
 
-.characters .name {
+.characters .actions {
     display: none;
     font-size: 22px;
     font-family: 'Inter';
@@ -227,7 +205,7 @@ body {
     z-index: 2;
 }
 
-.characters .is-selected .name {
+.characters .is-selected .actions {
     display: block;
     color: white;
 }
@@ -287,7 +265,7 @@ body {
     display: block;
 }
 
-.characters .parent:hover .name,
+.characters .parent:hover .actions,
 .characters .parent:focus .playButton {
     display: block;
 }
@@ -297,16 +275,39 @@ body {
 .pane {
     position: fixed;
     top: 0;
-    z-index: 10;
-    left: -150%;
+    z-index: 50;
+    /* left: -150%; */
     height: 100vh;
     width: 100%;
     background: black;
-    -webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
+    /*-webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
-    transition: 0.5s all ease;
-    overflow: hidden;
+    transition: 1.5s all ease;
+    overflow: hidden;*/
+}
+
+.pane.invisible {
+    animation-duration: fadeOutDisplay 2s;
+    animation-iteration-count: fadeOutDisplay 1;
+    /*put the default display and opacity here, the same as "0%"*/
+    display: none;
+    opacity: 0;
+}
+
+@keyframes fadeOutDisplay {
+    0% {
+        display: block;
+        opacity: 1;
+    }
+    1% {
+        display: none;
+        opacity: 1;
+    }
+    100% {
+        display: none;
+        opacity: 0;
+    }
 }
 
 .pane-cover {
@@ -552,60 +553,26 @@ body {
     display: none;
 }
 
-/* New */
-
-.grid-container {
-    display: grid;
-    grid-template-rows: 20vh 60vh 20vh;
+.pane-video {
+    z-index: 50;
+    opacity: 0;
 }
 
-.grid-container row {
-    background-color: rgba(255, 255, 255, 0.8);
-    text-align: center;
-    padding: 20px 0;
-    font-size: 30px;
-    overflow: hidden;
+.pane-video.visible {
+    animation: fadeIn2 ease 5s;
+    -moz-animation: fadeIn2 ease 5s;
+    /* Firefox */
+    -webkit-animation: fadeIn2 ease 5s;
+    /* Safari and Chrome */
+    -o-animation: fadeIn2 ease 5s;
+    opacity: 1;
 }
 
-.columns-1 .videos-options {
-    width: 33%;
-    margin: auto;
-}
-
-.videos-options .column {
-    display: flex;
-    flex-direction: column;
-    flex-basis: 100%;
-    flex: 1;
-    justify-content: bottom;
-}
-
-/*
-.videos-options .parent {
-    width: 100%;
-    height: 70vh;
-    overflow: hidden;
-    position: relative;
-    display: flex;
-}*/
-
-.videos-options .name {
-    font-size: 22px;
-    font-family: 'Inter';
-    font-weight: 200;
-    color: white;
-    text-align: center;
-    margin: auto;
-    position: absolute;
-    left: 0;
-    top: 22vh;
-    right: 0;
-    text-decoration: none;
-    z-index: 2;
-}
-
-@media only screen and (max-width: 1024px) {
-    .columns-1 .videos-options {
-        width: 100%;
+@keyframes fadeIn2 {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }

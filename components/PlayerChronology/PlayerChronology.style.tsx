@@ -60,13 +60,6 @@ export const ListChronoCover = styled.div`
     display: none;
   }
 
-  .steal {
-    position: absolute;
-    z-index: 10;
-    left: -15%;
-    width: 130%;
-  }
-
 
 
 /* Menu Cronologia */

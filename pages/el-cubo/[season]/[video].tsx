@@ -251,7 +251,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const chapter = await fetch(`/api/v1/elcubo/season/4731/episode/${params.video}`);
 
-  let srcVideoId = chapter[0] ?.field_ec_asset_id_TEMP;
+  let srcVideoId = chapter[0] ?.field_ec_asset_id; field_asset_id
   const srcVideo = srcVideoId
     //? `https://rtvcplay-media-content.s3.amazonaws.com/vod-content/${srcVideoId}/${srcVideoId}.m3u8`
     ? `https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:${srcVideoId}.smil/playlist.m3u8`
@@ -261,7 +261,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       title: chapter[0].title,
       video: params.video,
       srcVideo: srcVideo || null,
-      poster: chapter[0] ?.field_ec_video_preview_TEMP || null,
+      poster: chapter[0] ?.field_ec_video_preview || null,
     }, // will be passed to the page component as props
     revalidate: 900,
   };
