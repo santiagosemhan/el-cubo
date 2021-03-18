@@ -114,6 +114,10 @@ body {
     letter-spacing: -1px;
 }
 
+.date {
+    font-size: 15px;
+}
+
 .li-characters h2 {
     font-size: 20px;
     letter-spacing: -1px;
