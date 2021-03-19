@@ -137,6 +137,8 @@ function fadeIn(el, pTime) {
         if (!((val += .07) > 1)) {
             el.style.opacity = val;
             setTimeout(fade, pTime);
+        } else {
+            el.style.opacity = 1;
         }
     })();
 }
