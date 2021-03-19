@@ -256,3 +256,23 @@ body {
         opacity: 0;
     }
 }
+
+.pane-video,
+.pane-video .plyr {
+    height: 100vh;
+}
+
+.plyr audio,
+.plyr iframe,
+.plyr video {
+    height: auto !important;
+    width: 100%;
+}
+
+.plyr video {
+    object-fit: cover;
+}
+
+.plyr__video-wrapper {
+    height: auto !important;
+}
