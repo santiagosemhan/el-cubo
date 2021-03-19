@@ -663,8 +663,8 @@ h2 {
 
 .hero-3 .third {
     font-size: 1.8rem;
-    margin-left: 30px;
     font-style: italic;
+    font-weight: normal;
 }
 
 #hero-3 .cover-second {
@@ -672,7 +672,11 @@ h2 {
     margin-left: 30px;
 }
 
-#hero-3 .cover-second {}
+#hero-3 h1 span.second {
+    margin-top: 20px;
+}
+
+
 
 #hero-3 .paragraph-message {
     opacity: 0;

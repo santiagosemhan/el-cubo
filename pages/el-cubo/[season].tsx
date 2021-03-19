@@ -183,15 +183,16 @@ export default function SeasonPage({ data }) {
                 <div className="cover-scroll">
 
                   <h1 className="cover-reveal-row cover-reveal-row-1">
+                    <span className="third cyan-strong">Temporada 1</span>
+                  </h1>
+                  <h1 className="cover-reveal-row cover-reveal-row-1">
                     <span className="first cyan-strong first">Quién tiene</span>
                   </h1>
                   <h1 className="cover-reveal-row cover-reveal-row-1">
                     <span className="second white second">el poder...</span>
                   </h1>
 
-                  <h1 className="cover-reveal-row cover-reveal-row-1">
-                    <span className="third cyan-strong">Temporada 1</span>
-                  </h1>
+
                 </div>
 
               </div>
