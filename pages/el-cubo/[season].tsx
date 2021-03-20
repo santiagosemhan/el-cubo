@@ -36,6 +36,8 @@ export default function SeasonPage({ data }) {
 
   const { title, field_ec_contents, field_ec_contents_paragraph } = data;
 
+  console.log('DATA DE LA SEASON', data);
+
 
   React.useEffect(() => {
 

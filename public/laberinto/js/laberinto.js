@@ -1,6 +1,6 @@
 // Fade In Page
-let opacity = 0;
-let intervalID = 0;
+// let opacity = 0;
+// let intervalID = 0;
 
 const video = document.querySelector('.pane-video');
 const time_comments = video.dataset.comments;
