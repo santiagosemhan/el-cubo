@@ -26,7 +26,8 @@ const FullPlayerWrapper = styled.div`
   position: relative;
 `;
 
-const LabyrinthNode = ({ character, node, data }) => {
+// TODO: Remove all nodes fetch, get it inside every node.
+const LabyrinthNode = ({ character, node, data, allNodes }) => {
 
     console.log('NODE DATA', data);
 
@@ -436,7 +437,7 @@ const LabyrinthNode = ({ character, node, data }) => {
                     </div>
                 </div>
 
-                <NextNodes nextNodes={nextNodes} bgEndImage={bgEndImage} />
+                <NextNodes nextNodes={nextNodes} bgEndImage={bgEndImage} allNodes={allNodes} />
 
             </div>
 
@@ -463,11 +464,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     const nodeId = context.params.node;
     const nodeData = await fetcher(`/api/v1/elcubo/season/4731/labyrinth/${nodeId}`);
 
+    const allNodes = await fetcher('/api/v1/elcubo/season/4731/labyrinth/all');
+
     return {
         props: {
             character: context.params.personaje,
             node: nodeId,
             data: nodeData[0],
+            allNodes: allNodes,
         },
     };
 };
