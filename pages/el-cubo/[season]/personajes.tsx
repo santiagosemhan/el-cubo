@@ -12,7 +12,7 @@ import { PersonajesGlobalStyle } from 'styles/personajes.style';
 import { isNull } from 'util';
 
 const CharactersPage = ({ data = {} }) => {
-  console.log({ data });
+
   const { isFallback } = useRouter();
 
   if (!isFallback && !data) {

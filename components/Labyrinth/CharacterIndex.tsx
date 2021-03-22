@@ -2,6 +2,8 @@ import React from 'react';
 
 const CharacterIndex = ({ character, node, bgImage }) => {
 
+
+    // TODO: Add field_ec_copy_lab;
     const nextPageLink = `/el-cubo/temporada-1/laberinto/${character}/${node}`
 
     return (

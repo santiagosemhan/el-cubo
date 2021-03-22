@@ -13,11 +13,7 @@ import dynamic from 'next/dynamic';
 const MouseCircle = dynamic(() => import('components/MouseCircle/MouseCircle'), { ssr: false });
 
 export default function SeasonPage({ data }) {
-  // if (process.browser) {
-  //   console.log({ data });
-  // }
-  // const { title, field_ec_contents_paragraph_json } = data[0];
-  // console.log(JSON.parse(field_ec_contents_page_ref_json));
+
   const ref = useRef();
   const refHeader = useRef();
   const [bigMouse, setBigMouse] = React.useState(false);
@@ -36,29 +32,20 @@ export default function SeasonPage({ data }) {
 
   const { title, field_ec_contents, field_ec_contents_paragraph } = data;
 
-  console.log('DATA DE LA SEASON', data);
-
-
   React.useEffect(() => {
-
     const video3 = document.querySelector("#hero-3 video");
     if (video3) {
       video3.addEventListener('play', hideVideo, false);
       function hideVideo(e) {
-        console.log('play')
         video3.classList.add('hide');
       }
 
       video3.addEventListener('ended', removeVideo, false);
       function removeVideo(e) {
-        console.log('end')
         video3.remove();
       }
     }
-
-
   }, []);
-
 
   return (
     <AppLayout>

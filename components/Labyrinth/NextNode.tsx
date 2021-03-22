@@ -1,15 +1,17 @@
 import React from 'react';
 
-const NextNode = ({ data, character }) => {
+const NextNode = ({ data }) => {
 
     const {
-        field_ec_destination,
-        field_ec_text_point,
         field_ec_x_point,
-        field_ec_y_point
+        field_ec_y_point,
+        field_ec_text_point,
+        field_ec_destination,
+        field_ec_destination_json,
     } = data;
 
-    console.log('data', data);
+    const parsedDestination = JSON.parse(field_ec_destination_json);
+    const character = parsedDestination[0].field_ec_character_name.split(' ').slice(-1).join(' ').trim().toLowerCase();
     const nextNodeLink = `/el-cubo/temporada-1/laberinto/${character}/${field_ec_destination}`;
 
     return (

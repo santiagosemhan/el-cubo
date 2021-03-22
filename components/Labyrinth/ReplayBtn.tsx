@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ReplayBtn = (props) => {
+const ReplayBtn = () => {
 
     return (
         <div className="flex-container column">

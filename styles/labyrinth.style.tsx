@@ -528,8 +528,8 @@ body {
     top: 0;
     right: -110vw;
     padding: 1rem 2rem;
-    height: 100vh;
-    width: 320px;
+    height: 97vh;
+    width: 560px;
     background: white;
     -webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
