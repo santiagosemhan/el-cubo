@@ -5,7 +5,7 @@ export const StyledMouseCircle = styled.div`
   width: 18px;
   height: 18px;
   margin: -9px 0px 0px -9px;
-  border-radius: 0%;
+  border-radius: 50%;
   background: cyan;
   box-shadow: 0 0 16px rgba(255, 255, 255, 0);
   transition: width 0.5s, height 0.5s, margin 0.5s;
@@ -25,7 +25,6 @@ export const StyledMouseCircle = styled.div`
     height: 90px;
     margin: -3rem 0px 0px -3rem;
     cursor: pointer !important;
-    z-index: 100;
 
     span {
       display: block;

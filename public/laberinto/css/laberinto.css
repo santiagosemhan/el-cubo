@@ -198,17 +198,33 @@ body {
     }
 }
 
+.steal_title {
+    color: white;
+    font-family: Inter;
+    font-size: 2.5rem;
+    font-weight: 300;
+    position: absolute;
+    left: 40px;
+    top: 10vh;
+    z-index: 100;
+    opacity: 1;
+    animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    /* Firefox */
+    -webkit-animation: fadein 1s;
+    /* Safari and Chrome */
+    -o-animation: fadein 1s;
+}
+
 .steal_title.hide {
     display: none;
 }
 
-.steal_title,
 .plyr_title {
     color: white;
     font-family: Inter;
-    font-size: 2.3rem;
-    letter-spacing: -1px;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 300;
     position: absolute;
     left: 40px;
     top: 10vh;
@@ -337,7 +353,6 @@ body {
 .cover-selector {
     position: absolute;
     width: 130px;
-    margin-left: -65px;
 }
 
 .cover-pulse {

@@ -1,0 +1,106 @@
+/* Image zoom on hover + Overlay colour */
+
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+body {
+    margin: 0;
+    background: black;
+}
+
+:root {
+    /* Full grid area variable */
+    --fullGrid: 1 / 1 / -1 / -1;
+}
+
+.header-top {
+    width: 100%;
+}
+
+.logo-elcubo {
+    margin: auto;
+    z-index: 11;
+}
+
+.logo--image {
+    width: 60px;
+    height: auto;
+    position: absolute;
+    top: 160px;
+    left: 40px;
+    z-index: 11;
+}
+
+.hero {
+    /* Create grid spanning viewport width & height */
+    display: grid;
+    grid-template-rows: 100vh;
+    overflow: hidden;
+    box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.5);
+}
+
+.video-bg {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Re-size video to cover full screen while maintaining aspect ratio */
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    /* Display video below overlay */
+    z-index: -1;
+}
+
+.video-bg::-webkit-media-controls {
+    display: none !important;
+}
+
+.video-overlay {
+    /* Span the full grid */
+    grid-area: var(--fullGrid);
+    /* Center Content */
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    text-align: left;
+}
+
+.image-bg {
+    position: absolute;
+    z-index: -2;
+    width: 100%;
+    height: 100vh;
+}
+
+.copy-cover {
+    width: 100vw;
+}
+
+.hero .copy {
+    margin: 0;
+    z-index: 100;
+    width: 60vw;
+    margin: auto;
+    text-align: center;
+    font-family: 'Inter';
+}
+
+.hero .copy p {
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.hero-onboarding button {
+    border: 1px solid #1A2839;
+    color: #1A2839;
+    background-color: #45B4C1;
+    font-size: 20px;
+    border-radius: 25px;
+    line-height: 2em;
+    padding: 5px 30px;
+    font-weight: 600;
+}
+
+.hero-onboarding .copy button img {
+    float: right;
+    margin-left: 10px;
+}

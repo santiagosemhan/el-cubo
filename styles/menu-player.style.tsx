@@ -113,9 +113,4 @@ body {
   right: 0vw;
 }
 
-.menu-elcubo .icon-change {
-  width: 40px;
-  height: auto;
-}
-
 `;

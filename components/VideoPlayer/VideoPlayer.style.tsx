@@ -93,9 +93,8 @@ export const VideoPlayerWrapper = styled.div`
   .plyr__portal__title {
     color: white;
     font-family: Inter;
-    font-size: 2.3rem;
-    letter-spacing: -1px;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 300;
     position: absolute;
     left: 20px;
     top: 10vh;

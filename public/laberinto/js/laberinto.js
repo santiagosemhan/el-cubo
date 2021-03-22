@@ -1,10 +1,11 @@
 // Fade In Page
-let opacity = 0;
-let intervalID = 0;
+// let opacity = 0;
+// let intervalID = 0;
 
 const video = document.querySelector('.pane-video');
 const time_comments = video.dataset.comments;
 const video_duration = video.dataset.duration;
+
 
 // Create marker
 function createSquare(pClass) {
@@ -24,7 +25,9 @@ function createTitle(pTitle) {
 }
 
 
+
 window.onload = function () {
+
 
     setTimeout(() => {
 
@@ -103,11 +106,9 @@ if (button_open) {
 if (button_close) {
     button_close.forEach(function (link) {
         link.addEventListener('click', () => {
-
-
-            fadeOut(pane, 30);
-
             pane.classList.toggle('open');
+
+            fadeOut(pane, 40);
             //fadeIn(document.querySelector('.hero-laberinto'), 100);
 
             hideComments();
@@ -308,7 +309,7 @@ function settime(pTimeComments) {
         }
 
         // Force close end
-        if (video.hasAttribute("data-end")) {
+        /*if (video.hasAttribute("data-end")) {
             if (!video_force_end) {
                 if (video.dataset.end < player.currentTime) {
                     video_force_end = true;
@@ -316,7 +317,7 @@ function settime(pTimeComments) {
                     console.log(end);
                 }
             }
-        }
+        }*/
 
     }, 1000);
 
