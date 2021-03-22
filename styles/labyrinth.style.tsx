@@ -59,6 +59,7 @@ body {
 .flex-container.column {
     -webkit-flex-direction: column;
     flex-direction: column;
+    z-index: 999;
 }
 
 .flex-container.column .flex-item {
