@@ -7,12 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>El Cubo</title>
 
-    <link rel="stylesheet" href="css/reflexivo.css">
+    <link rel="stylesheet" href="css/reflexivo-02.css">
     <link rel="stylesheet" href="css/nav.css">
 
 
     <link rel='stylesheet' href='https://unpkg.com/plyr@3/dist/plyr.css'>
-
 
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 </head>
@@ -30,27 +29,25 @@
         </div>
     </div>
 
-    <div class="app-elcubo reflexivo">
+    <div class="app-elcubo reflexivo" style="background: url(bg.jpg) no-repeat; background-size: contain;">
 
-        <div class="pane open" data-relation="alba">
-            <h2 class="steal_title">Alba debe ir al médico</h2>
-            <img class="steal" src="../img/alba/screens/ALBA_1_424264.jpg" />
+        <div class="pane" data-relation="alba">
 
-            <a class="close hide">
+            <a class="close">
                 <img src="../img/pane-close.svg" />
             </a>
 
-            <div class="pane-video visible" data-video="424264" data-poster="" data-title="Alba debe ir al médico">
+            <div class="pane-video" data-video="424264" data-poster="" data-title="Alba debe ir al médico">
                 <video controls crossorigin playsinline poster=""></video>
             </div>
 
         </div>
 
-        <div class="characters columns-1" class="is-hidden">
+        <div class="characters columns-2" class="is-hidden">
 
 
             <div class='characters-wrapper'>
-                <!--<div class="fake-cover visible"></div>-->
+                <div class="fake-cover visible"></div>
                 <div class='row row-cero'>
                     <div class="column answers-copy">
                         Si ves el video completo, tendrás una pregunta para contestar
@@ -61,7 +58,7 @@
                     <div class='column'>
 
                         <div class="parent">
-                            <div class="child bg-one alba toggle" data-video="424264" data-poster="" data-relation="bg-one">
+                            <div class="child bg-one alba toggle" data-video="424414" data-poster="" data-title="Mercado necesita la influencia de Marina." data-relation="bg-one">
                                 <img class="icon-selected" src="../img/is-selected.svg" />
                                 <div class="actions">
                                     <img class="icon-selected" src="../img/is-selected.svg" />
@@ -72,15 +69,49 @@
                                     <div class="icon-cover icon-replay">
                                         <img src="../img/replay-reflexivo.svg" />
                                     </div>
-                                    <h2>Alba debe ir al médico</h2>
 
+                                    <h2>Mercado necesita la
+                                            <br>influencia de Marina.</h2>
+                                    
                                 </div>
-                                <img class="img-bn" src="../img/alba/ALBA_1_424264_02.jpg" />
-                                <img class="img-color" src="../img/alba/ALBA_1_424264_01.jpg" />
+
+                                <img class="img-bn" src="../img/sales/Mercado_7_424414_02.jpg" />
+                                <img class="img-color" src="../img/sales/Mercado_7_424414_01.jpg" />
 
                             </div>
                         </div>
+
+                        <div class="center progress-0 progress-direct">
+                                <div class="progress-bar">
+                                    <div class="progress"></div>
+                                </div>
+                        </div>
                        
+                    </div>
+
+                    <div class='column'>
+
+                            <div class="parent">
+                                <div class="child bg-two mercado toggle" data-video="424264" data-title="Alba debe ir al médico" data-poster="" data-relation="bg-two">
+                                    <img class="icon-selected" src="../img/is-selected.svg" />
+                                    <div class="actions">
+                                        <img class="icon-selected" src="../img/is-selected.svg" />
+    
+                                        <div class="icon-cover icon-play">
+                                            <img src="../img/play-reflexivo.svg" />
+                                        </div>
+                                        <div class="icon-cover icon-replay">
+                                            <img src="../img/replay-reflexivo.svg" />
+                                        </div>
+                                        <h2>Alba debe ir al médico</h2>
+    
+                                    </div>
+                                    <img class="img-bn" src="../img/alba/ALBA_1_424264_02.jpg" />
+                                    <img class="img-color" src="../img/alba/ALBA_1_424264_01.jpg" />
+    
+                                </div>
+                            </div>
+                           
                     </div>
 
 
@@ -118,7 +149,7 @@
 
     </div>
 
-    <script src="js/selector-0.js"></script>
+    <script src="js/selector-videos.js"></script>
 
 
     <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>

@@ -1,10 +1,52 @@
 
+const video = document.querySelector('.pane-video');
+
+const pane = document.querySelector('.pane');
+const pane_video = document.querySelector('.pane-video');
+
+window.onload = function () {
+
+    setTimeout(() => {
+
+        fadeOut(document.querySelectorAll('.steal')[0], 40);
+        loadPlayer(video.dataset.video, video.dataset.poster);
+
+
+        var promise = player.play();
+
+        if (promise !== undefined) {
+            promise.then(_ => {
+                // Autoplay started!
+
+            }).catch(error => {
+                // Autoplay was prevented.
+                // Show a "Play" button so that user can start playback.
+            });
+        }
+
+        document.getElementsByClassName('steal_title')[0].classList.add('hide');
+        document.querySelectorAll('.close')[0].classList.remove('hide');
+
+        // Add title plyr
+        const controls_extra = document.querySelector('.plyr--video');
+        controls_extra.prepend(createTitle(video.dataset.title));
+
+    }, 3000);
+};
+
+
+function createTitle(pTitle) {
+    let plyr_title = document.createElement('h2');
+    plyr_title.setAttribute("class", 'plyr_title');
+    plyr_title.innerHTML = pTitle;
+    return plyr_title;
+}
+
+
 
 // Pane Slide
 const button_open = document.querySelectorAll('.toggle');
 const button_close = document.querySelectorAll('.close');
-const pane = document.querySelector('.pane');
-const pane_video = document.querySelector('.pane-video');
 
 if (button_open) {
     button_open.forEach(function (link) {
@@ -12,22 +54,27 @@ if (button_open) {
         link.addEventListener('click', () => {
             pane.classList.add('open');
 
+            pane_video.classList.toggle('visible');
+
             console.log(link.dataset.relation);
             pane.dataset.relation = link.dataset.relation;
 
-            pane_video.classList.toggle('visible');
-
-            fadeIn(pane, 40);
+            fadeIn(pane, 150);
 
             loadPlayer(link.dataset.video, link.dataset.poster);
 
 
             player.play();
 
+            //document.querySelectorAll('.close')[0].classList.remove('hide');
+
+
             //document.querySelector('video').setAttribute('src', '');
 
             // Hide temp progress
             document.querySelectorAll('.progress-0')[0].classList.add('hide');
+
+
         });
     });
 }
@@ -41,7 +88,7 @@ if (button_close) {
             fadeOut(pane, 40);
             pane_video.classList.toggle('visible');
 
-            //fake_cover.classList.add('visible');
+            fake_cover.classList.add('visible');
 
             setTimeout(() => {
                 player.stop();
@@ -77,6 +124,9 @@ function fadeIn(el, pTime) {
             el.style.opacity = val;
             setTimeout(fade, pTime);
         }
+        else {
+            el.style.opacity = 1;
+        }
     })();
 }
 
@@ -107,9 +157,6 @@ if (button_select) {
         [].forEach.call(selector, function (el) {
             el.classList.remove('is-hidden');
         });
-
-
-        console.log(character);
     });
 
 }
@@ -117,19 +164,9 @@ if (button_select) {
 
 
 function loadPlayer(sURL, sPoster) {
-    //document.addEventListener('DOMContentLoaded', () => {
-
-
-    let source = 'https://rtvcplay-media-content.s3.amazonaws.com/vod-content/' + sURL + '/' + sURL + '.m3u8';
-
+    let source = 'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:' + sURL + '.smil/playlist.m3u8';
     const video = document.querySelector('video');
 
-    video.setAttribute('poster', sPoster);
-
-
-
-    // For more options see: https://github.com/sampotts/plyr/#options
-    // captions.update is required for captions to work with hls.js
     const player = new Plyr(video, {
         captions: {
             active: true,
@@ -137,8 +174,6 @@ function loadPlayer(sURL, sPoster) {
             language: 'en'
         }
     });
-
-
 
     if (!Hls.isSupported()) {
         video.src = source;
@@ -149,37 +184,34 @@ function loadPlayer(sURL, sPoster) {
         hls.attachMedia(video);
         window.hls = hls;
 
-        // Handle changing captions
-        player.on('languagechange', () => {
-            // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-            setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
-        });
 
         player.on('ended', function () {
             //pane_cover.classList.toggle('visible');
             pane.classList.toggle('open');
+            pane_video.classList.toggle('visible');
 
-           pane_video.classList.toggle('visible');
-
+            //fake_cover.classList.add('visible');
             fadeOut(pane, 40);
-
 
             // Add selected to child
             document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
-
-
 
             if (viewedAll()) {
                 document.getElementsByClassName('row-second')[0].classList.add('visible');
                 document.getElementsByClassName('characters')[0].classList.add('is-viewed');
             }
 
-            
-
             player.fullscreen.exit();
 
-            //button_close[0].click();
+        });
 
+        // Show Hide Title
+        player.on('controlsshown', function () {
+            document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+        });
+
+        player.on('controlshidden', function () {
+            document.getElementsByClassName('plyr_title')[0].classList.add('hide');
         });
     }
 
@@ -205,13 +237,6 @@ function viewedAll() {
 
 
 
-
-
-
-/* Fake cover */
-const fake_cover = document.querySelector('.fake-cover');
-
-
 // Disabled fake cover
 /*fake_cover.addEventListener('mousemove', () => {
     fake_cover.classList.remove('visible');
@@ -220,78 +245,13 @@ const fake_cover = document.querySelector('.fake-cover');
 
 
 
+// Answer select
+const answer_select = document.querySelectorAll('.li-questions li');
 
-function loadProgress(sPar, sVelocity) {
-
-    // Timer
-    let timer = 0;
-    let limit = sVelocity; //ms
-
-    timerEnd = limit / 10;
-    let blockWidth = 100 / timerEnd;
-    const progress = document.querySelectorAll("." + sPar + " .progress");
-
-    console.log(limit);
-
-    let countdown = setInterval(function () {
-        timer++;
-        for (var i = 0; i < progress.length; ++i) {
-            progress[i].style.width = timer * blockWidth + "%";
-
-            // setear a 0
-            if (document.querySelector('.pane').classList.contains('open')) {
-                clearInterval(countdown);
-            }
-
-        }
-        //console.log(timer);
-        // document.getElementById("countdown").textContent = timer/100;
-        if (timer >= timerEnd) {
-            clearInterval(countdown);
-            document.getElementsByClassName('toggle')[0].click();
-        }
-    }, 10);
-
-}
-//miliseconds
-console.log('kionda');
-
-
-// Para cuando no hay modal al inicio
-const progress_direct = document.getElementsByClassName("progress-direct")[0];
-
-if (progress_direct) {
-    let velocity = document.getElementsByClassName("progress-0")[0].dataset.velocity;
-    if (velocity !== undefined) {
-        console.log('a verrrr' + velocity);
-        loadProgress('progress-0', velocity);
-    } else {
-        loadProgress('progress-0', 30000);
-    }
-}
-
-
-/* Hover */
-var select_scene = document.querySelectorAll(".parent");
-       
-if (select_scene) {
-
-    [].forEach.call(select_scene, function (el) {
-
-        el.addEventListener("mouseenter", function() {   
-            // highlight the mouseenter target
-            el.classList.add('focus');
-        }, false);
-
-        el.addEventListener("mouseleave", function() {   
-            // highlight the leave target
-            setTimeout(function() {
-                el.classList.remove('focus');
-              }, 0);
-            
-        }, false);
-
+if (answer_select) {
+    answer_select.forEach(function (link) {
+        next_select = link.childNodes[1];
+        console.log(next_select);
+        next_select.href = link.dataset.rel;
     });
-    
 }
-

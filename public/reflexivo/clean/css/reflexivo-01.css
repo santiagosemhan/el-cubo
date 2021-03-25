@@ -14,6 +14,10 @@ body {
     background-repeat: no-repeat;
 }
 
+.app-elcubo.reflexivo {
+    height: 100vh;
+}
+
 :root {
     /* Full grid area variable */
     --fullGrid: 1 / 1 / -1 / -1;
@@ -38,23 +42,7 @@ body {
     }
 }
 
-.header-top {
-    width: 100%;
-}
 
-.logo-elcubo {
-    margin: auto;
-    z-index: 11;
-}
-
-.logo--image {
-    width: 60px;
-    height: auto;
-    position: absolute;
-    top: 160px;
-    left: 40px;
-    z-index: 11;
-}
 
 .characters {
     width: 100%;
@@ -67,7 +55,7 @@ body {
 
 .characters-wrapper {
     width: 100%;
-    height: 80vh;
+    height: 450px;
     margin: auto;
     transition: all 1s ease;
 }
@@ -83,10 +71,9 @@ body {
     transition: all 1.5s;
 }
 
-/* Page characters */
-
+/* Selectors Scenes */
 .is-viewed .characters-wrapper {
-    margin-top: 2vh;
+    height: 650px;
 }
 
 .characters-wrapper .row {
@@ -95,25 +82,19 @@ body {
     flex-wrap: wrap;
 }
 
+.row.row-cero {
+    color: #636363;
+    width: 100%;
+    text-align: center;
+    letter-spacing: -0.8px;
+}
+
 .is-viewed .row.row-cero {
     opacity: 0;
 }
 
-/* column 2 */
 
-.columns-2 .row.row-cero,
-.columns-2 .row.row-first {
-    width: 682px;
-}
-
-/* 1 video reflexivo */
-
-.columns-1 .row.row-cero {
-    text-align: center;
-    color: white;
-    width: 100%;
-}
-
+/* 1 Column */
 .columns-1 .row.row-first {
     width: 341px;
     margin: auto;
@@ -121,9 +102,19 @@ body {
     position: relative;
 }
 
-.columns-1.is-viewed .characters-wrapper {
-    margin-top: 12vh;
+
+/* 2 Column */
+.columns-2 .row.row-first {
+    width: 682px;
 }
+
+
+/* 3 Column */
+.columns-3 .row.row-first {
+    width: 1024px;
+}
+
+
 
 .row.row-first .parent {
     height: 463px;
@@ -138,8 +129,6 @@ body {
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
-    width: 33.33%;
-    justify-content: bottom;
 }
 
 .characters .parent .child {
@@ -182,7 +171,7 @@ body {
     height: auto;
     position: absolute;
     z-index: 2;
-    top: 45%;
+    top: 47%;
     left: 45%;
 }
 
@@ -281,40 +270,10 @@ body {
     position: fixed;
     top: 0;
     z-index: 50;
-    /* left: -150%; */
     height: 100vh;
     width: 100%;
     background: black;
-    /*-webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
-    -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
-    box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
-    transition: 1.5s all ease;
-    overflow: hidden;*/
 }
-
-.pane.invisible {
-    animation-duration: fadeOutDisplay 2s;
-    animation-iteration-count: fadeOutDisplay 1;
-    /*put the default display and opacity here, the same as "0%"*/
-    display: none;
-    opacity: 0;
-}
-
-@keyframes fadeOutDisplay {
-    0% {
-        display: block;
-        opacity: 1;
-    }
-    1% {
-        display: none;
-        opacity: 1;
-    }
-    100% {
-        display: none;
-        opacity: 0;
-    }
-}
-
 
 .pane-cover {
     width: 100%;
@@ -324,10 +283,6 @@ body {
     /*background: black;*/
     opacity: 0.3;
     z-index: 20;
-}
-
-.pane-cover.visible {
-    display: flex;
 }
 
 .pane a.close {
@@ -350,15 +305,7 @@ body {
     cursor: pointer;
 }
 
-.pane p {
-    font-size: 16px;
-    line-height: 1.4;
-    padding: 20px 30px 40px 30px;
-    margin: 0;
-}
-
 .pane.open {
-    left: 0vw;
     z-index: 100;
 }
 
@@ -396,12 +343,14 @@ body {
 .questions .copy {
     margin: 0;
     z-index: 100;
-    width: 70vw;
+    width: 80vw;
     margin: auto;
     text-align: center;
     font-family: 'Inter';
     color: white;
     font-weight: normal;
+    font-size: 24px;
+    letter-spacing: -1px;
 }
 
 .row-second ul {
@@ -411,7 +360,7 @@ body {
     margin: 0;
     padding: 0;
     font-weight: 600;
-    font-size: 20px;
+    font-size: 18px;
     list-style-type: none;
     transition: 0.5s all ease;
 }
@@ -489,7 +438,7 @@ body {
 
 
 .questions-2 ul {
-    width: 70%;
+    width: 60%;
     margin: auto;
 }
 
@@ -522,6 +471,19 @@ body {
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
     }
 }
 
@@ -601,5 +563,23 @@ body {
     }
     to {
         opacity: 0;
+    }
+}
+
+
+
+@media screen and (max-width: 1024px) {
+
+    .columns-1 .row.row-first {
+        width: 60%;
+        margin-top: 5vh;
+    }
+
+    .columns-1 .row.row-first .parent {
+        height: 250px;
+    }
+
+    .questions-2 ul {
+        width: 100%;
     }
 }
