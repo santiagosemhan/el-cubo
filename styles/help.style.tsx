@@ -20,7 +20,7 @@ body {
   position: absolute;
   left: 65px;
   top: 120px;
-  z-index: 11;
+  z-index: 12;
 }
 
 .help-wrapper .nav a.back-to-season {
@@ -107,11 +107,11 @@ body {
   display: none;
 }
 
-.help-wrapper .is-active.open .icon-help .icon-help-open {
+.help-wrapper .is-active .icon-help .icon-help-open {
   display: none;
 }
 
-.help-wrapper .is-active.open .icon-help .icon-help-close {
+.help-wrapper .is-active .icon-help .icon-help-close {
   display: inline;
 }
 
@@ -147,7 +147,7 @@ body {
 .help-wrapper .modal {
   display: none;
   position: fixed;
-  z-index: 9999;
+  z-index: 11;
   top: 0;
   left: 0;
   width: 100%;

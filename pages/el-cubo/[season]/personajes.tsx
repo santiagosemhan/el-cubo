@@ -31,8 +31,21 @@ const CharactersPage = ({ data = {} }) => {
     const pane_cover = document.querySelector('.pane-cover');
     const fake_cover = document.querySelector('.fake-cover');
 
+    // Help Wizard
+    const openModalTriggerEl = document.querySelector('.open-modal');
+    const closeModalTriggerEl = document.querySelector('.close-modal');
+    const modalEl = document.querySelector('.modal');
+
     window.onload = function () {
       disableScroll();
+
+      // Local Storage Help Wizard
+      let data_help = localStorage.getItem('help');
+      if (data_help === '1') {
+        modalEl.classList.remove('open');
+        openModalTriggerEl.classList.toggle('is-active');
+      }
+
     };
 
     if (button_open) {
@@ -152,20 +165,19 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
+
+
     // Disabled fake cover
     fake_cover.addEventListener('mousemove', () => {
       fake_cover.classList.remove('visible');
     });
 
-    // Modal Help
-    const openModalTriggerEl = document.querySelector('.open-modal');
-    const closeModalTriggerEl = document.querySelector('.close-modal');
-    const modalEl = document.querySelector('.modal');
-
+    // Modal Help Wizard
     function modal() {
+
       if (openModalTriggerEl) {
         openModalTriggerEl.addEventListener('click', () => {
-          modalEl.classList.add('open');
+          modalEl.classList.toggle('open');
           disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
 
@@ -177,6 +189,7 @@ const CharactersPage = ({ data = {} }) => {
 
         });
       }
+
       if (closeModalTriggerEl) {
         closeModalTriggerEl.addEventListener('click', () => {
           goToStep(1);
@@ -194,6 +207,7 @@ const CharactersPage = ({ data = {} }) => {
           }
         });
       }
+
       window.addEventListener('click', () => {
         if (event.target === modalEl) {
           goToStep(1);
@@ -214,20 +228,25 @@ const CharactersPage = ({ data = {} }) => {
 
     modal();
 
-    // Esc
+
+    // Esc (Pane video and Help Wizard)
     document.onkeydown = function (evt) {
       evt = evt || window.event;
       if (evt.keyCode == 27) {
-        modalEl.classList.remove('open');
+
         pane.classList.remove('open');
+        pane_cover.classList.remove('visible');
+        modalEl.classList.remove('open');
+
+
+        if (modalEl.classList.contains('open')) {
+
+          openModalTriggerEl.classList.toggle('is-active');
+        }
       }
     };
 
-    // Test help
-    let data_help = localStorage.getItem('help');
-    if (data_help === '1') {
-      modalEl.classList.remove('open');
-    }
+
 
     /* Wizard Help */
     const previousButton = document.getElementById('previous');
