@@ -157,7 +157,7 @@ function loadPlayer(sURL, sPoster) {
 
         player.on('ended', function () {
             //pane_cover.classList.toggle('visible');
-            pane.classList.toggle('open');
+           pane.classList.toggle('open');
 
            pane_video.classList.toggle('visible');
 

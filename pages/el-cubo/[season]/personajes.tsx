@@ -174,8 +174,7 @@ const CharactersPage = ({ data = {} }) => {
             console.log('here');
             selector[0].classList.add('is-hidden');
           }
-          //document.getElementsByClassName('selector-mode')[0].classList.remove('is-hidden');
-          //document.getElementsByClassName('selector-mode')[0].classList.add('is-hidden');
+
         });
       }
       if (closeModalTriggerEl) {
@@ -410,11 +409,13 @@ const CharactersPage = ({ data = {} }) => {
                       <ul>
                         <li>
                           <a href="#" className="toggle-help open-modal is-active">
-                            <span>Ayuda</span>
+
                             <div className="icon-help">
                               <img className="icon-help-open" src="/images/icon-help-open.svg" />
                               <img className="icon-help-close" src="/images/icon-help-close.svg" />
                             </div>
+
+                            <span>Ayuda</span>
                           </a>
                         </li>
                       </ul>
@@ -443,7 +444,7 @@ const CharactersPage = ({ data = {} }) => {
                   </div>
                 </div>
 
-                <div className="modal open">
+                <div className="modal step-1 open">
                   <div className="modal__content">
                     <div className="help">
                       <div id="help-step" className="help-step">

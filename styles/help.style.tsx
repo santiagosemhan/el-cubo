@@ -18,7 +18,7 @@ body {
 
 .help-wrapper .nav {
   position: absolute;
-  right: 65px;
+  left: 65px;
   top: 120px;
   z-index: 11;
 }
@@ -88,7 +88,7 @@ body {
 
 .help-wrapper .nav ul li a span {
   line-height: 2;
-  margin-right: 5px;
+  margin-left: 5px;
 }
 
 .help-wrapper nav ul span {
@@ -121,7 +121,7 @@ body {
 
 .help-wrapper .peak {    
   position: absolute;
-  right: 40px;
+  left: 40px;
   top: -20px;
 }
 
@@ -161,10 +161,13 @@ body {
   max-width: 455px;
   border-radius: 10px;
   position: absolute;
-  top: 195px;
-  right: 20px;
   z-index: 100;
   animation: 0.3s slideDown;
+}
+
+.help-wrapper .step-1 .modal__content {
+  margin-left: 130px;
+  top: 195px;
 }
 
 /** custom animation **/
@@ -327,10 +330,16 @@ body {
 
 .help-wrapper .help-step #next {
   float: left;
+  position: relative;
 }
+
 .help-wrapper .step-2 .help-step #previous,
 .help-wrapper .step-l #previous {
   display: inline;
+}
+
+.help-wrapper .step-2 .modal__content {
+  left: 0;
 }
 
 .help-wrapper .step-l #next {
@@ -339,15 +348,17 @@ body {
 
 
 .help-wrapper .modal.step-2 .modal__content {
-  top: 55%;
+  top: 20%;
 }
 
 .help-wrapper .modal.step-2 .modal__content .peak {
-  right: 46%;
+  left: 44%;
+  bottom: -20px;
+  top: auto;
 }
 
 .help-wrapper .modal.step-l .modal__content .peak {
-  right: 46%;
+  left: 43%;
   bottom: -20px;
   top: auto;
 }
@@ -361,7 +372,10 @@ body {
   transition: all 0.5s ease;
 }
 
+
+
 .help-wrapper .modal.step-l .modal__content {
+  left: 0;
   top: 35vh;
 }
 
@@ -371,7 +385,7 @@ body {
 .help-wrapper .selector-help {
   width: 100%;
   position: absolute;
-  bottom: 60px;
+  bottom: 40px;
 }
 
 .help-wrapper .selector-help-cover {
@@ -416,7 +430,7 @@ body {
 
 @media only screen and (max-width: 1024px) {
   .help-wrapper .nav {
-    right: 20px;
+    left: 20px;
     top: 80px;
   }
 
@@ -502,6 +516,10 @@ body {
     z-index: 100;
   }
 
+  .help-wrapper .step-1 .modal__content {
+    margin-left: 0;
+  }
+
   .help-wrapper .modal.step-2 .modal__content {
     top: 30%;
   }
@@ -523,5 +541,22 @@ body {
     width: 70px;
   }
 }
+
+
+
+@media screen and ( max-height: 700px ){
+  .help-wrapper .modal.step-l .modal__content {
+    left: 0px;
+    top: 15vh;
+  }
+
+  .characters .name {
+    bottom: 200px;
+  }
+  .characters .projectButton {
+    bottom: 150px;
+  }
+}
+
 
 `;
