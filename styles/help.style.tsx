@@ -167,7 +167,7 @@ body {
 
 .help-wrapper .step-1 .modal__content {
   margin-left: 130px;
-  top: 195px;
+  margin-top: 195px;
 }
 
 /** custom animation **/
@@ -348,13 +348,13 @@ body {
 
 
 .help-wrapper .modal.step-2 .modal__content {
-  top: 20%;
+  top: 60%;
 }
 
 .help-wrapper .modal.step-2 .modal__content .peak {
   left: 44%;
-  bottom: -20px;
-  top: auto;
+  top: -20px;
+  bottom: auto;
 }
 
 .help-wrapper .modal.step-l .modal__content .peak {
@@ -518,6 +518,7 @@ body {
 
   .help-wrapper .step-1 .modal__content {
     margin-left: 0;
+    margin-top: 0;
   }
 
   .help-wrapper .modal.step-2 .modal__content {

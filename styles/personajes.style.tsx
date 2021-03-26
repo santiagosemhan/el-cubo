@@ -309,7 +309,7 @@ footer {
     width: 100%;
     position: absolute;
     bottom: 40px;
-    z-index: 90;
+    z-index: 10;
     transition: 2s all ease;
     opacity: 1;
 }
@@ -956,7 +956,7 @@ a {
     #boxDiv {
         display: none;
     }
-    
+
   }
 
 `;
