@@ -313,7 +313,7 @@ body {
   background-color: #45b4c1;
   color: black;
   width: 260px;
-  float: right;
+  float: left;
   position: relative;
 }
 
@@ -550,12 +550,6 @@ body {
     top: 15vh;
   }
 
-  .characters .name {
-    bottom: 200px;
-  }
-  .characters .projectButton {
-    bottom: 150px;
-  }
 }
 
 

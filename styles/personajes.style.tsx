@@ -114,7 +114,7 @@ footer {
     position: absolute;
     z-index: 2;
     bottom: 400px;
-    left: 42%;
+    left: 45%;
 }
 
 .characters .is-selected .icon-selected {
@@ -758,6 +758,10 @@ a {
         margin-top: 0vh;
         margin-bottom: 40px;
     }
+
+    .characters .selector-cover #boxDiv {
+        display: none;
+    }
 }
 
 /* Input search */
@@ -934,4 +938,25 @@ a {
     margin-right: 1rem;
     text-transform: uppercase;
 }
+
+
+@media screen and ( max-height: 700px ){
+
+    .characters .name {
+      bottom: 250px;
+    }
+    .characters .projectButton {
+      bottom: 200px;
+    }
+
+    .characters .icon-selected {
+        bottom: 300px;
+    }
+
+    #boxDiv {
+        display: none;
+    }
+    
+  }
+
 `;
