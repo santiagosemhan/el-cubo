@@ -166,4 +166,14 @@ ul.list-chrono.height-medium li span.circle {
   margin-top: 26px;
 }
 
+@media screen and ( max-height: 700px ){
+
+  ul.list-chrono li {
+    line-height: 1.5;
+    font-size: 13px;
+    text-align: right;
+  }
+
+}
+
 `;

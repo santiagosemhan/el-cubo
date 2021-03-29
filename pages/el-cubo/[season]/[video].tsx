@@ -105,7 +105,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                 link: `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${personaje}&modo=${modo}`,
                 name: episode.field_ec_title,
                 active: isActive,
-                image: episodeView[0].field_ec_video_preview_TEMP,
+                image: episodeView[0].field_ec_video_preview,
               };
             })
             .filter((i) => i !== undefined);

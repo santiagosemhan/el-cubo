@@ -13,6 +13,7 @@ const PlayerChronology = ({ character, chronology }) => {
         {chronology.map((chrono) => (
           <li key={chrono.id}>
             <a className={`${chrono.active ? 'active' : ''}`} href={chrono.link}>
+              {console.log(chrono.image)}
               <img src={chrono.image} />
               {chrono.name}
               <span className="circle"></span>
