@@ -12,7 +12,6 @@ import { PersonajesGlobalStyle } from 'styles/personajes.style';
 import { isNull } from 'util';
 
 const CharactersPage = ({ data = {} }) => {
-  console.log({ data });
   const { isFallback } = useRouter();
 
   if (!isFallback && !data) {
@@ -36,17 +35,19 @@ const CharactersPage = ({ data = {} }) => {
     const closeModalTriggerEl = document.querySelector('.close-modal');
     const modalEl = document.querySelector('.modal');
 
-    window.onload = function () {
-      disableScroll();
+    if (window) {
+      window.onload = function () {
+        disableScroll();
 
-      // Local Storage Help Wizard
-      let data_help = localStorage.getItem('help');
-      if (data_help === '1') {
-        modalEl.classList.remove('open');
-        openModalTriggerEl.classList.toggle('is-active');
-      }
+        // Local Storage Help Wizard
+        let data_help = localStorage.getItem('help');
+        if (data_help === '1') {
+          modalEl.classList.remove('open');
+          openModalTriggerEl.classList.toggle('is-active');
+        }
 
-    };
+      };
+    }
 
     if (button_open) {
       button_open.forEach(function (link) {
@@ -208,22 +209,26 @@ const CharactersPage = ({ data = {} }) => {
         });
       }
 
-      window.addEventListener('click', () => {
-        if (event.target === modalEl) {
-          goToStep(1);
-          enableScroll();
-          openModalTriggerEl.classList.toggle('is-active');
-          modalEl.classList.remove('open');
+      if (window) {
+        window.addEventListener('click', () => {
+          if (event.target === modalEl) {
+            goToStep(1);
+            enableScroll();
+            openModalTriggerEl.classList.toggle('is-active');
+            modalEl.classList.remove('open');
 
-          // Set local storage 1 help
-          localStorage.setItem('help', '1');
+            // Set local storage 1 help
+            localStorage.setItem('help', '1');
 
-          if (selector[0].classList.contains('active')) {
-            console.log('here');
-            selector[0].classList.remove('is-hidden');
+            if (selector[0].classList.contains('active')) {
+              console.log('here');
+              selector[0].classList.remove('is-hidden');
+            }
           }
-        }
-      });
+        });
+      }
+
+
     }
 
     modal();
@@ -231,18 +236,21 @@ const CharactersPage = ({ data = {} }) => {
 
     // Esc (Pane video and Help Wizard)
     document.onkeydown = function (evt) {
-      evt = evt || window.event;
-      if (evt.keyCode == 27) {
+      if (window) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {
 
-        pane.classList.remove('open');
-        pane_cover.classList.remove('visible');
-        modalEl.classList.remove('open');
+          pane.classList.remove('open');
+          pane_cover.classList.remove('visible');
+          modalEl.classList.remove('open');
 
 
-        if (modalEl.classList.contains('open')) {
+          if (modalEl.classList.contains('open')) {
 
-          openModalTriggerEl.classList.toggle('is-active');
+            openModalTriggerEl.classList.toggle('is-active');
+          }
         }
+
       }
     };
 
@@ -372,35 +380,41 @@ const CharactersPage = ({ data = {} }) => {
 
     // modern Chrome requires { passive: false } when adding event
     let supportsPassive = false;
-    try {
-      window.addEventListener(
-        'test',
-        null,
-        Object.defineProperty({}, 'passive', {
-          get: function () {
-            supportsPassive = true;
-          },
-        }),
-      );
-    } catch (e) { }
+    if (window) {
+      try {
+        window.addEventListener(
+          'test',
+          null,
+          Object.defineProperty({}, 'passive', {
+            get: function () {
+              supportsPassive = true;
+            },
+          }),
+        );
+      } catch (e) { }
+    }
 
     let wheelOpt = supportsPassive ? { passive: false } : false;
     let wheelEvent = 'onwheel' in document.createElement('div') ? 'wheel' : 'mousewheel';
 
     // call this to Disable
     function disableScroll() {
-      window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
-      window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
-      window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
-      window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+      if (window) {
+        window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
+        window.addEventListener(wheelEvent, preventDefault, wheelOpt); // modern desktop
+        window.addEventListener('touchmove', preventDefault, wheelOpt); // mobile
+        window.addEventListener('keydown', preventDefaultForScrollKeys, false);
+      }
     }
 
     // call this to Enable
     function enableScroll() {
-      window.removeEventListener('DOMMouseScroll', preventDefault, false);
-      window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
-      window.removeEventListener('touchmove', preventDefault, wheelOpt);
-      window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+      if (window) {
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+        window.removeEventListener(wheelEvent, preventDefault, wheelOpt);
+        window.removeEventListener('touchmove', preventDefault, wheelOpt);
+        window.removeEventListener('keydown', preventDefaultForScrollKeys, false);
+      }
     }
   }, []);
 
@@ -452,7 +466,7 @@ const CharactersPage = ({ data = {} }) => {
                         <p>
                           Completa esta cronología y obtén acceso<br />privilegiado al gran mapa de la historia
                       </p>
-                        <div class="cover-link">
+                        <div className="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">
                             <span>Continuar</span>
                             <img src="/images/icon-arrow-init.svg" />
@@ -644,7 +658,7 @@ const CharactersPage = ({ data = {} }) => {
                         <div id="front"></div>
                         <div id="back"></div>
                         <div id="left">
-                          <img src="/images/thumbs/0.jpg " />
+                          <img src="" />
                         </div>
                         <div id="right"></div>
                         <div id="top"></div>
