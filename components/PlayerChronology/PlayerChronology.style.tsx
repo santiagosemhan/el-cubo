@@ -178,6 +178,10 @@ ul.list-chrono.height-medium li span.circle {
     text-align: right;
   }
 
+  ul.list-chrono.marina a span.circle {
+    margin-top: 6px;
+  }
+
 }
 
 `;
