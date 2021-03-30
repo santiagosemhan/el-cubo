@@ -9,7 +9,7 @@ const PlayerChronology = ({ character, chronology }) => {
     <ListChronoCover>
       <h2><span>Cronología</span> de {character} </h2>
       <img className="line-right" src="/images/line-chrono.png" />
-      <ul className="list-chrono">
+      <ul className={'list-chrono ' + character.toLowerCase()}>
         {chronology.map((chrono) => (
           <li key={chrono.id}>
             <a className={`${chrono.active ? 'active' : ''}`} href={chrono.link}>

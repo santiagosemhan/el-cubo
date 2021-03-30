@@ -99,7 +99,7 @@ ul.list-chrono li {
 
 ul.list-chrono a img {
   width: 170px;
-  border-radius: 15px;
+  border-radius: 8px;
   position: absolute;
   left: -190px;
   top: -35px;
@@ -168,9 +168,13 @@ ul.list-chrono.height-medium li span.circle {
 
 @media screen and ( max-height: 700px ){
 
-  ul.list-chrono li {
+  ul.list-chrono.marina {
+    margin-top: 5px;
+  }
+
+  ul.list-chrono.marina li {
     line-height: 1.5;
-    font-size: 13px;
+    font-size: 12px;
     text-align: right;
   }
 
