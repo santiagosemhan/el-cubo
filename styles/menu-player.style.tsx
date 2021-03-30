@@ -114,7 +114,7 @@ body {
 }
 
 .menu-elcubo .icon-change {
-  width: 40px;
+  width: 34px;
   height: auto;
 }
 

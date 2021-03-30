@@ -38,7 +38,7 @@ export const ListChronoCover = styled.div`
 
   ul a img {
     width: 170px;
-    border-radius: 15px;
+    border-radius: 8px;
     position: absolute;
     left: -190px;
     top: -35px;
