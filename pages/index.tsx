@@ -273,7 +273,7 @@ export default function Home({ data }) {
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
         <div>
-          <audio id="track" autoPlay>
+          <audio id="track" /*autoPlay*/>
             <source src="/audios/loop-1.mp3" type="audio/mpeg" />
           </audio>
 
@@ -313,7 +313,7 @@ export default function Home({ data }) {
         {/*<HeaderTop />*/}
 
 
-        <div id="hero-0" className="hero hero-0 no-link">
+        <div id="hero-0" className="hero hero-0 no-link hero-pc">
           <video className="video-bg video-0" autoPlay muted>
             <source src="/portada/video-0B.mp4" type="video/mp4" />
           </video>
@@ -462,8 +462,116 @@ export default function Home({ data }) {
         </div>
 
 
+
+        <div className="wrapper-mobile">
+
+
+
+
+          <div id="hero-0-mobile" className="hero hero-mobile">
+
+            <div className="scrolldown">
+              <div className="line"></div>
+            </div>
+
+            <img className="img-bg-deg" src="/images/bg-deg.png" />
+
+            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_01.jpg" />
+
+            <div className="copy copy-1">
+              <h1>
+                <span className="cyan-strong">¿De qué están hechas</span>
+              </h1>
+
+              <h1>
+                <span className="white"> las relaciones<br />humanas?</span>
+              </h1>
+            </div>
+
+            <div className="copy copy-2">
+              <h1>
+                <span className="cyan-strong">¿Con cuántos hilos</span>
+              </h1>
+              <h1>
+                <span className="white"> se teje una <br />historia?</span>
+              </h1>
+            </div>
+
+            <div className="copy copy-3">
+              <h1>
+                <span className="cyan-strong">¿Cuántas verdades pueden contenerse</span>
+              </h1>
+              <h1>
+                <span className="white"> en una misma<br />realidad?</span>
+              </h1>
+            </div>
+
+            <div className="copy-final">
+              <h1>
+                <span className="white">Descúbrelo en El Cubo, una experiencia</span>
+              </h1>
+              <h1>
+                <span className="white"> digital en la que serás Arte y Parte.</span>
+              </h1>
+            </div>
+
+          </div>
+          <div id="hero-1-mobile" className="hero">
+
+            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_02.jpg" />
+            <div className="paragraph-overlay">
+              <div className="paragraph-message">
+                <hr />
+                <p>
+                  Navega cualquiera de nuestras historias a partir de varios modos narrativos y comprueba
+                así que la verdad …
+                </p>
+
+              </div>
+
+              <div className="copy">
+                <h1>
+                  <span className="white">...La verdad</span>
+                </h1>
+                <h1>
+                  <span className="white">NUNCA ES UNA SOLA</span>
+                </h1>
+                <a className="button-mobile" href="/el-cubo/temporada-1">Ver más </a>
+
+              </div>
+            </div>
+          </div>
+
+          <div id="hero-2-mobile" className="hero no-link">
+            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_03.jpg" />
+
+            <div className="copy">
+
+              <h1>
+                <span className="white">Entra ya a la dimensión</span>
+              </h1>
+
+              <h1>
+                <span className="white">de El CUBO</span>
+              </h1>
+
+              <a className="button-mobile" href="/el-cubo/temporada-1">Ver más </a>
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+
+
       </Container>
-    </AppLayout>
+    </AppLayout >
   );
 
 

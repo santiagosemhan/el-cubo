@@ -37,6 +37,8 @@ const CharactersPage = ({ data = {} }) => {
 
     if (window) {
       window.onload = function () {
+
+
         disableScroll();
 
         // Local Storage Help Wizard

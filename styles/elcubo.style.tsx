@@ -714,11 +714,6 @@ h2 {
     z-index: 14;
 }
 
-@media only screen and (max-width: 1024px) {
-    #mouse-circle {
-        display: none;
-    }
-}
 
 #mouse-circle span {
     display: none;
@@ -1061,122 +1056,7 @@ h2 {
     }
 }
 
-@media only screen and (max-width: 1024px) {
-    footer {
-        position: relative;
-        z-index: 10;
-    }
-    .logo--image {
-        width: 60px;
-        top: 80px;
-        left: 20px;
-    }
-    .video-bg {
-        height: 100vh;
-        background: black;
-        display: none;
-    }
-    .button-mobile {
-        display: inline;
-    }
-    /* Home */
-    .img-bg-pc {
-        display: none;
-    }
-    .img-bg-mobile {
-        display: block;
-        position: absolute;
-        width: 100%;
-        z-index: 0;
-    }
-    .video-bg {
-        z-index: 1;
-    }
-    .hero {
-        background: black;
-    }
-    .first {
-        font-size: 19px;
-        float: left;
-        line-height: 1;
-    }
-    .copy .second,
-    .copy-final .second {
-        font-size: 26px;
-        margin-left: 60px;
-        margin-top: 5px;
-        line-height: 1;
-    }
-    .hero-1 .video-overlay,
-    .hero-2 .video-overlay,
-    .hero-1 .copy-cover,
-    .hero-2 .copy-cover,
-    .paragraph-message {
-        width: auto;
-    }
-    .hero-1 .paragraph-message {
-        padding-left: 40px;
-        padding-right: 40px;
-        z-index: 10;
-    }
-    .hero-2 .video-overlay {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-    .hero-2 .first {
-        font-size: 26px;
-    }
-    .paragraph-message p {
-        font-size: 16px;
-    }
 
-    /* Pagina temporada */
-    .hero-3 {
-        grid-template-rows: auto;
-        height: auto;
-    }
-    .hero-3 .arrow-down {
-        display: none;
-        z-index: 15;
-    }
-    .hero-3 .video-overlay,
-    .hero-3 .copy-cover,
-    .hero-3 .paragraph-message {
-        width: auto;
-        z-index: 10;
-    }
-    .hero-3 .video-overlay {
-        padding-left: 40px;
-        padding-right: 40px;
-        padding-top: 60px;
-        padding-bottom: 60px;
-        height: auto;
-    }
-    .copy-cover-2 {
-        text-align: center;
-    }
-    .hero-3 .button-mobile {
-        width: 190px;
-        margin: auto;
-        margin-bottom: 100px;
-    }
-    .hero-3 .copy {
-        margin-left: 16%;
-        margin-top: 160px;
-        margin-bottom: 40px;
-    }
-    .hero-3 .third {
-        font-size: 1.5rem !important;
-    }
-    .video-overlay {
-        height: 100vh;
-        z-index: 10;
-    }
-    .input-search,
-    #menu-mobile-button {
-        display: none;
-    }
-}
 
 #hero-0 .video-overlay {
     align-content: flex-start;
@@ -1653,11 +1533,6 @@ footer {
   z-index: 14;
 }
 
-@media only screen and (max-width: 1024px) {
-  #mouse-circle {
-    display: none;
-  }
-}
 
 #mouse-circle span {
   display: none;
@@ -1710,78 +1585,284 @@ footer {
 }
 
 
+@media only screen and (min-width: 1024px) {
+    .wrapper-mobile {
+        display: none;
+    }
+}
+
+
 @media only screen and (max-width: 1024px) {
-  footer {
-    position: relative;
-    z-index: 10;
+
+  .img-bg-deg {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 3;
   }
-  .logo--image {
-    width: 60px;
-    top: 80px;
-    left: 20px;
+  #mouse-circle {
+      display: none;
   }
-  .video-bg {
-    height: 100vh;
-    background: black;
-    display: none;
+
+  .scrolldown {
+      z-index: 1;
   }
-  .button-mobile {
-    display: inline;
+
+  #audio-player-container {
+      right: 0;
+      top: 75px;    
   }
-  /* Home */
-  .img-bg-pc {
-    display: none;
-  }
+
   .img-bg-mobile {
+    display: block;
     display: block;
     position: absolute;
     width: 100%;
     z-index: 0;
   }
-  .video-bg {
-    z-index: 1;
+
+  .hero-pc {
+      display: none;
   }
-  .hero {
-    background: black;
-  }
-  .hero-0 .copy,
-  .hero-0 .copy-final {
-    left: 5%;
-  }
-  .first {
-    font-size: 19px;
-    float: left;
-    line-height: 1;
-  }
-  .copy .second,
-  .copy-final .second {
-    font-size: 26px;
-    margin-left: 60px;
-    margin-top: 5px;
-    line-height: 1;
-  }
-  .hero-1 .video-overlay,
-  .hero-2 .video-overlay,
-  .hero-1 .copy-cover,
-  .hero-2 .copy-cover,
-  .paragraph-message {
-    width: auto;
-  }
-  .hero-1 .paragraph-message {
-    padding-left: 40px;
-    padding-right: 40px;
+
+  footer {
+    position: relative;
     z-index: 10;
   }
-  .hero-2 .video-overlay {
-    padding-left: 40px;
-    padding-right: 40px;
+
+  .logo--image {
+    width: 60px;
+    top: 80px;
+    left: 20px;
   }
-  .hero-2 .first {
-    font-size: 26px;
+  
+  .button-mobile {
+    display: inline;
   }
+  
+  /* Home */
+  .logo--image {
+      animation-delay: 0s;
+  }
+  
+  #hero-0-mobile .copy,
+  #hero-0-mobile .copy-final {
+      font-weight: 400;
+      text-align: left;
+      line-height: 0.8;
+  }
+
+  .copy h1,
+  .copy-final h1 {
+      margin: 0;
+      line-height: unset;
+  }
+    
+  .cyan-light {
+      color: #45b4c1;
+  }
+  
+  .cyan-strong {
+      color: #3b99a6;
+      font-weight: 300;
+      font-size: 18px;
+  }
+
+  .white {
+    font-weight: 300;
+  }
+
+  #hero-0-mobile .copy .white {
+      margin-top: 5px;
+      font-size: 33px;
+      line-height: 2rem;
+      float: left;
+      margin-left: 50px;
+  }
+  
+  #hero-0-mobile,
+  #hero-1-mobile,
+  #hero-2-mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+  }
+  
+  #hero-0-mobile .copy {
+      margin: 0;
+      position: absolute;
+      opacity: 0;
+      -webkit-animation: rotateWord 15s linear 0s;
+      -ms-animation: rotateWord 15s linear 0s;
+      animation: rotateWord 15s linear 0s;
+      animation: rotateWord 15s linear 0s;
+      animation-delay: 0s;
+  }
+  
+  #hero-0-mobile .copy.copy-1 {
+      -webkit-animation-delay: 2s;
+      -ms-animation-delay: 2s;
+      animation-delay: 2s;
+  }
+  
+  #hero-0-mobile .copy.copy-2 {
+      -webkit-animation-delay: 7s;
+      -ms-animation-delay: 7s;
+      animation-delay: 7s;
+  }
+  
+  #hero-0-mobile .copy.copy-3 {
+      -webkit-animation-delay: 12s;
+      -ms-animation-delay: 12s;
+      animation-delay: 12s;
+  }
+  
+  .copy-final {
+      margin: 0;
+      position: absolute;
+      opacity: 0;
+      animation: rotateWordFinal 20s normal forwards;
+      animation-delay: 17s;
+  }
+  
+  @-webkit-keyframes rotateWord {
+    0% {
+      opacity: 0;
+    }
+    2% {
+      opacity: 0;
+      -webkit-transform: translateY(-30px);
+    }
+    5% {
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+    }
+    17% {
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+    }
+    22% {
+      opacity: 0;
+      -webkit-transform: translateY(30px);
+    }
+    
+    100% {
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes rotateWordFinal {
+    0% {
+      opacity: 0;
+    }
+    2% {
+      opacity: 0;
+      -webkit-transform: translateY(-30px);
+    }
+    5% {
+      opacity: 0;
+      -webkit-transform: translateY(0px);
+    }
+    17% {
+      opacity: 1;
+      -webkit-transform: translateY(0px);
+    }
+    24% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  /* Hero 1 Mobile */
+
+  #hero-1-mobile .copy {
+    padding: 0 34px;
+    margin-top: 120px;
+  }
+
+  #hero-1-mobile .img-bg-mobile {
+      z-index: 1;
+  }
+
+  #hero-1-mobile h1 {
+    position: relative; 
+  }
+
+  #hero-1-mobile h1 span {
+    margin: 0;
+  }
+
+  #hero-1-mobile h1:nth-child(1) span {
+      font-size: 22px;
+  }
+
+  #hero-1-mobile h1:nth-child(2) span {
+      margin-left: 50px;
+      font-size: 22px;
+  }
+
+  #hero-1-mobile h1:nth-child(2) {
+      margin-bottom: 120px;
+  }
+
+  .paragraph-message {
+    width: auto;
+    position: relative;
+    padding: 0 34px;
+    z-index: 2;
+  }
+
   .paragraph-message p {
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 1.3;
+    margin-top: 0;
   }
+
+  /* Hero 2 mobile */
+
+  #hero-2-mobile .copy {
+    padding: 0 34px;
+  }
+
+  #hero-2-mobile h1 {
+      width: 100%;
+      float: left;
+      margin-bottom: 5px;
+      z-index: 2;
+  }
+
+  #hero-2-mobile .img-bg-mobile {
+    z-index: 1;
+  }
+
+  #hero-2-mobile h1:nth-child(1) span {
+    font-size: 24px;
+  }
+
+  #hero-2-mobile h1:nth-child(2) {
+      margin-bottom: 100px;
+  }
+  
+  #hero-2-mobile h1:nth-child(2) span {
+    font-size: 24px;
+  }
+
+
+  .button-mobile {
+      display: inline;
+      position: relative;
+      z-index: 4;
+  }
+
+  #hero-2-mobile h1 {
+      position: relative;
+  }
+
+
 
   /* Pagina temporada */
   .hero-3 {
