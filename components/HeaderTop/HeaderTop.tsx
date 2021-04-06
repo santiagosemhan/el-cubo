@@ -6,7 +6,7 @@ const HeaderTop = ({ nav }) => {
     <div className="header-top">
       <div className="header-top-inner">
         <div className="logo-elcubo">
-          <a href="https://elcubo.vercel.app/" className="logo--link no-link">
+          <a href="/" className="logo--link no-link">
             <img className="logo--image" src="/images/logo2021.png" />
           </a>
         </div>

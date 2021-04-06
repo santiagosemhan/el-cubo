@@ -1589,6 +1589,10 @@ footer {
     .wrapper-mobile {
         display: none;
     }
+
+    .hero-3 .img-bg-deg {
+        display: none;
+    }
 }
 
 
@@ -1600,6 +1604,7 @@ footer {
       width: 100%;
       z-index: 3;
   }
+
   #mouse-circle {
       display: none;
   }
@@ -1790,6 +1795,7 @@ footer {
 
   #hero-1-mobile h1 {
     position: relative; 
+    z-index: 1;
   }
 
   #hero-1-mobile h1 span {
@@ -1865,51 +1871,95 @@ footer {
 
 
   /* Pagina temporada */
-  .hero-3 {
-    grid-template-rows: auto;
-    height: auto;
+
+  .logo-season .logo--image {
+    position: fixed;
+    top: 80px;
+    left: 20px;
   }
-  .hero-3 .arrow-down {
-    display: none;
-    z-index: 15;
+
+  .img-bg-pc {
+      display: none;
   }
-  .hero-3 .video-overlay,
-  .hero-3 .copy-cover,
-  .hero-3 .paragraph-message {
-    width: auto;
-    z-index: 10;
+
+  .hero-3 .video-bg {
+      display: none;
   }
-  .hero-3 .video-overlay {
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    height: auto;
+
+  .hero-3 .img-bg-mobile {
+      top: 100px;
   }
-  .copy-cover-2 {
-    text-align: center;
+
+  #hero-3 .cover-first {
+      width: auto;
   }
-  .hero-3 .button-mobile {
-    width: 190px;
-    margin: auto;
-    margin-bottom: 100px;
+
+  .hero-3 .copy-cover-2.cover-first {
+      margin-top: 280px;
+      padding: 0 34px;
   }
-  .hero-3 .copy {
-    margin-left: 16%;
-    margin-top: 160px;
-    margin-bottom: 40px;
+
+  #hero-3 .paragraph-message {
+      width: auto;
+      margin-left: 0;
+      padding: 0;
+  }
+
+  .hero-3 .p-button {
+      text-align: center;
   }
 
   .hero-3 .third {
-    font-size: 1.5rem !important;
+      font-size: 1.2rem;
   }
 
-  .video-overlay {
-    height: 100vh;
-    z-index: 10;
+  .hero-3 .first {
+      font-size: 2rem;
+  }
+
+  .hero-3 .second {
+      font-size: 3rem;
+  }
+
+  .hero-3 .copy-cover-2 .cover-reveal-row-1:nth-child(1) {
+      height: 35px; 
+  }
+
+  .hero-3 .copy-cover-2 .cover-reveal-row-1:nth-child(2) {
+      height:35px;
+  }
+  .hero-3 .copy-cover-2 .cover-reveal-row-1:nth-child(3) {
+      height: 80px;
+  }
+
+  .hero-3 .cover-reveal-row-2 span {
+      margin-left: 0;
+      font-size: 3.5rem;
+      color: #45B4C1;
+      opacity: 0.5;
+  }
+
+  .hero-3 .paragraph-message p {
+      font-size: 16px;
+      line-height: 1.4;
+  }
+
+  .hero-3 ol {
+      float: left;
+  }
+
+  .hero-3 ol li {
+    line-height: 1.4em;
+    font-size: 16px;
   }
 
 
+  .hero-3 .button-mobile {
+    width: 220px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+ 
   .input-search, #menu-mobile-button {
     display: none;
   }

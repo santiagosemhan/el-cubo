@@ -171,11 +171,14 @@ export default function SeasonPage({ data }) {
 
 
         <div id="hero-3" className="hero hero-3">
+
+          <img className="img-bg-deg" src="/images/bg-deg.png" />
+
           <video className="video-bg hide" autoPlay muted>
             <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video%20IN%204A.mp4" type="video/mp4" />
           </video>
           <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%204_0.jpg" />
-          <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_2.jpg" />
+          <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/SITILLVideo%20IN%204_0.jpeg" />
           <div className="video-overlay">
             <div className="copy-cover-2 cover-first">
               <div className="copy">
@@ -197,7 +200,7 @@ export default function SeasonPage({ data }) {
 
               </div>
 
-              <p >
+              <p className="p-button">
                 <a className="button-mobile" href="/el-cubo/temporada-1/personajes">Empieza tu experiencia </a>
               </p>
 
@@ -246,9 +249,6 @@ export default function SeasonPage({ data }) {
                 </a>
               </div>
 
-              <p >
-                <a className="button-mobile" href="/el-cubo/temporada-1/personajes">Empieza tu experiencia </a>
-              </p>
 
               <div className="paragraph-message paragraph-message-2">
                 <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes">
@@ -256,6 +256,11 @@ export default function SeasonPage({ data }) {
 personajes cuyos destinos se entrecruzan te llevarán a cuestionar tu percepción sobre el <strong> PODER</strong>, la honestidad, los valores y la moral.</p>
                 </a>
               </div>
+
+              <p className="p-button">
+                <a className="button-mobile" href="/el-cubo/temporada-1/personajes">Empieza tu experiencia </a>
+              </p>
+
 
             </div>
           </div>

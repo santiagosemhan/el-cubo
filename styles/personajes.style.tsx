@@ -726,6 +726,19 @@ a {
         width: 20px;
     }
 
+
+    .characters .parent .child.char-4726 .name,
+    .characters .parent .child.char-4725 .name,
+    .characters .parent .child.char-4729 .name {
+        bottom: 100px;
+    }
+
+    .characters .parent .child.char-4726 .icon-selected,
+    .characters .parent .child.char-4725 .icon-selected,
+    .characters .parent .child.char-4729 .icon-selected {
+        bottom: 80px;
+    }
+
     .characters .parent .child.char-4727 img.img-bn,
     .characters .parent .child.char-4728 img.img-bn,
     .characters .parent .child.char-4730 img.img-bn,
@@ -738,12 +751,12 @@ a {
     .characters .parent .child.char-4727 .name,
     .characters .parent .child.char-4728 .name,
     .characters .parent .child.char-4730 .name {
-        bottom: 200px;
+        bottom: 160px;
     }
     .characters .parent .child.char-4727 .icon-selected,
     .characters .parent .child.char-4728 .icon-selected,
     .characters .parent .child.char-4730 .icon-selected {
-        bottom: 180px;
+        bottom: 140px;
     }
     .input-search, #menu-mobile-button {
         display: none;
