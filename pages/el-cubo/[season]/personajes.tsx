@@ -37,8 +37,6 @@ const CharactersPage = ({ data = {} }) => {
 
     if (window) {
       window.onload = function () {
-
-
         disableScroll();
 
         // Local Storage Help Wizard
@@ -156,7 +154,7 @@ const CharactersPage = ({ data = {} }) => {
 
     function setLinkLaberinto(sCharacter) {
       let name = sCharacter.split(' ').slice(-1).join(' ').trim().toLowerCase();
-      document.getElementsByClassName('laberinto')[0].setAttribute("href", '/laberinto/' + name + '/index.html');
+      document.getElementsByClassName('laberinto')[0].setAttribute("href", '/el-cubo/temporada-1/laberinto/' + name);
     }
 
     // Video popup
@@ -676,7 +674,7 @@ const CharactersPage = ({ data = {} }) => {
                       </a>
                       </li>
                       <li>
-                        <a href="/laberinto/alba/index.html" className="laberinto">
+                        <a href="/el-cubo/temporada-1/laberinto/alba" className="laberinto">
                           Modo Laberinto
                         </a>
                       </li>

@@ -270,34 +270,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
-
-        <div>
-          <audio id="track" /*autoPlay*/>
-            <source src="/audios/loop-1.mp3" type="audio/mpeg" />
-          </audio>
-
-          <div id="audio-player-container">
-            <div id="play-pause" className="play no-link">
-              <div className="column-1">
-                <span className="mute hide play-text">
-                  silenciar</span>
-                <span className="listen play-text">
-                  escuchar</span>
-              </div>
-              <div className="column-2">
-                <div className="Sound off">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+        <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />     
 
         <div className="header-top header-temporal">
           <div className="header-top-inner">
@@ -305,8 +278,34 @@ export default function Home({ data }) {
               <a href="https://elcubo.vercel.app/" className="logo--link no-link">
                 <img className="logo--image" src="/images/logo2021.png" />
               </a>
-            </div>
 
+              <div>
+                <audio id="track" /*autoPlay*/>
+                  <source src="/audios/loop-1.mp3" type="audio/mpeg" />
+                </audio>
+
+                <div id="audio-player-container">
+                  <div id="play-pause" className="play no-link">
+                    <div className="column-1">
+                      <span className="mute hide play-text">
+                        silenciar</span>
+                      <span className="listen play-text">
+                        escuchar</span>
+                    </div>
+                    <div className="column-2">
+                      <div className="Sound off">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
           </div>
         </div>
 

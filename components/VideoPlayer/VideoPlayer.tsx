@@ -191,12 +191,22 @@ const VideoPlayer = ({
       `
         ${
       showPrevButton
-        ? '<button class="plyr__controls__item plyr__control back" data-plyr="back">Anterior</button>'
+        ? `<button class="plyr__controls__item plyr__control back" data-plyr="back" title="Anterior">
+              <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.04907e-06 8L9.75 1.0718L9.75 14.9282L1.04907e-06 8Z" fill="white"/>
+                <path d="M10 8L19.75 1.0718L19.75 14.9282L10 8Z" fill="white"/>
+              </svg>        
+          </button>`
         : ''
       } 
         ${
       showNextButton
-        ? ' <button class="plyr__controls__item plyr__control next" data-plyr="next">Siguiente</button>'
+        ? `<button class="plyr__controls__item plyr__control next" data-plyr="next" title="Siguiente">
+            <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23 8L13.25 14.9282L13.25 1.0718L23 8Z" fill="white"/>
+              <path d="M13 8L3.25 14.9282L3.25 1.0718L13 8Z" fill="white"/>
+            </svg>
+          </button>`
         : ''
       } 
       `,
@@ -218,7 +228,6 @@ const VideoPlayer = ({
   }, [chapterButtonName]);
 
   React.useEffect(() => {
-    console.log(videoRef.current);
     if (videoRef.current && onVideoEnded) {
       videoRef.current.onended = onVideoEnded;
     }

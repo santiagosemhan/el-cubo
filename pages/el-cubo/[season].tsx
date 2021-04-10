@@ -24,8 +24,6 @@ export default function SeasonPage({ data }) {
   const [bigMouse, setBigMouse] = React.useState(false);
   const [showMouse, setShowMouse] = React.useState(true);
 
-
-
   const handleMouseEnter = () => {
     setBigMouse(true);
     setShowMouse(true);
@@ -37,16 +35,13 @@ export default function SeasonPage({ data }) {
     setBigMouse(true);
   });
 
-
   useOnMouseOutside(refPlayer, (event) => {
     setBigMouse(true);
   });
 
   const { title, field_ec_contents, field_ec_contents_paragraph } = data;
 
-
   React.useEffect(() => {
-
     window.onload = function (event) {
       console.log('lalla');
 
@@ -65,7 +60,6 @@ export default function SeasonPage({ data }) {
     let controlBtn = document.getElementById('play-pause');
 
     function playPause() {
-
       document.getElementsByClassName('Sound')[0].classList.toggle('off');
       document.getElementsByClassName('play-text')[0].classList.toggle('hide');
       document.getElementsByClassName('play-text')[1].classList.toggle('hide');
@@ -86,28 +80,18 @@ export default function SeasonPage({ data }) {
       controlBtn.className = "play";
     });
 
-
     function getRelationScroll(pObject) {
       let relation = pObject.getBoundingClientRect().top / (main.clientHeight / 2) * 100;
       return relation;
     }
 
-
     // Scroll for Hero-0
     const scrollEvent = () => {
-
       document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
-
       document.getElementsByClassName('paragraph-message-1')[0].classList.add('active-fadein');
-
       document.getElementsByClassName('paragraph-message-2')[0].classList.add('active-fadein');
-
     }
-
     document.addEventListener('scroll', scrollEvent);
-
-
-
   }, []);
 
 
@@ -139,30 +123,30 @@ export default function SeasonPage({ data }) {
         </div> */}
         <div className="logo-season" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <HeaderTop />
-        </div>
 
-
-        <div>
-          <audio id="track" loop="">
-            <source src="/audios/loop-1.mp3" type="audio/mpeg" />
-          </audio>
-          <div id="audio-player-container"  >
-            <div id="play-pause" className="play no-link">
-              <div className="column-1">
-                <span className="mute hide play-text">silenciar</span>
-                <span className="listen play-text">escuchar</span>
-              </div>
-              <div className="column-2">
-                <div className="Sound off">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+          <div>
+            <audio id="track" loop="">
+              <source src="/audios/loop-1.mp3" type="audio/mpeg" />
+            </audio>
+            <div id="audio-player-container"  >
+              <div id="play-pause" className="play no-link">
+                <div className="column-1">
+                  <span className="mute hide play-text">silenciar</span>
+                  <span className="listen play-text">escuchar</span>
+                </div>
+                <div className="column-2">
+                  <div className="Sound off">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          
         </div>
 
         <div className="scrolldown">

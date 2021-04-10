@@ -1,9 +1,6 @@
 // Fade In Page
 let opacity = 0;
 let intervalID = 0;
-
-const video = document.querySelector('.pane-video');
-
 window.onload = fadeIn;
 
 window.onload = function () {

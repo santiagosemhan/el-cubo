@@ -46,30 +46,9 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
   const [showNextButton, setShowNextButton] = useState(false);
   const [characterList, setCharacterList] = useState([]);
   const [videoTitle, setVideoTitle] = useState();
+  const [startVideo, setStartVideo] = useState(false);
 
   React.useEffect(() => {
-
-
-    /*
-    window.onload = function () {
-      setTimeout(() => {
-        // document.querySelectorAll('.steal')[0].classList.add('black');
-        fadeOut(document.querySelectorAll('.steal')[0], 50);
-        fadeOut(document.querySelectorAll('.steal_title')[0], 50);
-
-      }, 3000);
-    };
-
-    function fadeOut(el, pTime) {
-      el.style.opacity = 1;
-      (function fade() {
-        if ((el.style.opacity -= .07) < 0) {
-          el.style.display = "none";
-        } else {
-          setTimeout(fade, pTime);
-        }
-      })();
-    }*/
 
     let character;
     let chronologyList = [];
@@ -140,6 +119,26 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
           setCharacterList(characterList);
         }
       }
+
+      const fadeOut = (el, pTime) => {
+        el.style.opacity = 1;
+        (function fade() {
+          if ((el.style.opacity -= .07) < 0) {
+            el.style.display = "none";
+          } else {
+            setTimeout(fade, pTime);
+          }
+        })();
+      };  
+
+      const onLoadFadeout = () => {
+        window.setTimeout(() => {
+          fadeOut(document.querySelectorAll('.steal')[0], 40);
+          fadeOut(document.querySelectorAll('.steal_title')[0], 40);
+          setStartVideo(true);
+        }, 3000)
+      };
+      onLoadFadeout();
     }
   }, [chronology]);
 
@@ -200,30 +199,34 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                 </div>
               </div>
 
-
+              <h2 className="steal_title">{videoTitle}</h2>
+              <img className="steal" src={poster} />
 
               <CharacterSelector list={characterList} />
-              <FullPlayerWrapper>
-
-                <VideoPlayer
-                  showBackButton
-                  backLink="/el-cubo/temporada-1/personajes"
-                  title={videoTitle}
-                  poster={poster}
-                  source={srcVideo}
-                  onBackClick={handleBackClick}
-                  onNextClick={handleNextClick}
-                  onChaptersClick={handleChapterClick}
-                  chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
-                  showPrevButton={showPrevButton}
-                  showNextButton={showNextButton}
-                  onVideoEnded={handleVideoEnded}
-                >
-                  {showChapters && modo === 'cronologico' && chronology && (
-                    <PlayerChronology character={character} chronology={chronologyList} />
-                  )}
-                </VideoPlayer>
-              </FullPlayerWrapper>
+              {startVideo ? 
+                <FullPlayerWrapper>
+                  <VideoPlayer
+                    showBackButton
+                    backLink="/el-cubo/temporada-1/personajes"
+                    title={videoTitle}
+                    // poster={poster}
+                    source={srcVideo}
+                    onBackClick={handleBackClick}
+                    onNextClick={handleNextClick}
+                    onChaptersClick={handleChapterClick}
+                    chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
+                    showPrevButton={showPrevButton}
+                    showNextButton={showNextButton}
+                    onVideoEnded={handleVideoEnded}
+                  >
+                    {showChapters && modo === 'cronologico' && chronology && (
+                      <PlayerChronology character={character} chronology={chronologyList} />
+                    )}
+                  </VideoPlayer>
+                </FullPlayerWrapper>
+                :
+                null
+              }
             </>
           )}
       </Container>
