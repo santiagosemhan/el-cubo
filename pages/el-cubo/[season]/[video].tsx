@@ -139,6 +139,30 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
         }, 4000)
       };
       onLoadFadeout();
+
+      // Pane Slide 
+      const button_open = document.querySelectorAll('.toggle-chrono-mobile');
+      const button_close = document.querySelector('.close-chrono-mobile');
+      const pane = document.querySelector('.pane-chrono-mobile');
+
+
+      if (button_open) {
+        button_open.forEach(function (link) {
+          link.addEventListener('click', () => {
+            pane.classList.add('open');
+            console.log('open');
+          });
+        });
+      }
+
+      if (button_close) {
+        button_close.addEventListener('click', () => {
+          pane.classList.toggle('open');
+          console.log('open');
+        });
+      }
+
+
     }
   }, [chronology]);
 
@@ -193,7 +217,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                       <img className="icon-change" src="/images/icon-change-char2.svg" />
                     </a>
 
-                    <a href="#" title="Cronología" className="toggle-chrono menu-elcubo">
+                    <a href="#" title="Cronología" className="toggle-chrono-mobile menu-elcubo">
                       <img className="icon-change" src="/images/icon-wall-clock.svg" />
                     </a>
 
@@ -233,8 +257,8 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
           )}
       </Container>
 
-      <div className="pane chrono-mobile">
-        <a className="close">
+      <div className="pane pane-chrono-mobile">
+        <a className="close close-chrono-mobile">
           <img src="/images/pane-close.svg" />
         </a>
         <div className="pane-content">

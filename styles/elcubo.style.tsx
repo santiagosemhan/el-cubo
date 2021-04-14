@@ -1755,6 +1755,7 @@ footer {
     100% {
       opacity: 0;
     }
+    
   }
   
   @-webkit-keyframes rotateWordFinal {
@@ -2102,10 +2103,7 @@ footer {
   /* Cronologia */
 
   @media (max-width: 540px) {
-    .plyr__portal__title, .steal_title {
-      font-size: 18px !important;
-    }
-
+   
     .steal {
         height: 100vh;
         width: auto;
@@ -2115,7 +2113,101 @@ footer {
     .plyr__controls__item.plyr__menu {
         display: none;
     }
+
+    .plyr__portal__title {
+        top: 10vh !important;
+    }
+
+    .pane-chrono-mobile.open {
+        width: 85% !important;
+    }
+
+  }
+
+  @media (max-width: 1024px) {
+
+    .plyr__portal__title, .steal_title {
+        font-size: 18px !important;
+    }
+
+    .pane-chrono-mobile {
+        padding-top: 0 !important;
+    }
+
+    .pane-chrono-mobile.open {
+        width: 45%;
+    }
+
+    .close-chrono-mobile img {
+        margin-top: 20px;
+    }
   
+    .chrono-list {
+        display: none;
+    }
+
+    .pane-chrono-mobile .chrono-list {
+        display: block;
+        padding-right: 30px;
+    }
+
+    .pane-chrono-mobile ul {
+        height: 65vh;
+        overflow-y: scroll;
+    }
+
+    .plyr__portal__title {
+        top: 20vh !important;
+    }
+
+    .pane-chrono-mobile h2, 
+    .pane-chrono-mobile ul {
+        width: 280px !important;
+    }
+
+    .pane-chrono-mobile .line-right {
+        right: 54px;
+    }
+
+  }
+ 
+
+
+  /* FadeIn Chrono */
+
+  .app-elcubo {
+    animation: fadein 3s;
+    -moz-animation: fadein 3s;
+    /* Firefox */
+    -webkit-animation: fadein 3s;
+    /* Safari and Chrome */
+    -o-animation: fadein 3s;
+    /* Opera */
+  }
+  
+  .plyr__extra_controls,  .plyr__control--overlaid {
+    animation: fadein 4s;
+    -moz-animation: fadein 4s;
+    /* Firefox */
+    -webkit-animation: fadein 4s;
+    /* Safari and Chrome */
+    -o-animation: fadein 4s;
+    /* Opera */
+  }
+  
+  @keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .toggle-chrono {
+    display: none;
+    }
   }
 
   

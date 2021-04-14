@@ -56,9 +56,7 @@ export const ListChronoCover = styled.div`
     opacity: 0.4;
   }
 
-  @media only screen and (max-width: 1024px) {
-    display: none;
-  }
+
 
 
 

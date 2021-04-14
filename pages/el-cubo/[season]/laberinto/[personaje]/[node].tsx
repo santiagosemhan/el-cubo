@@ -13,9 +13,6 @@ import fetcher from 'libs/fetcher';
 const LabyrinthNode = ({ data }) => {
 
     React.useEffect(() => {
-        // Fade In Page
-        let opacity = 0;
-        let intervalID = 0;
 
         // Comment trigger
         let comment_init = false;
@@ -58,11 +55,11 @@ const LabyrinthNode = ({ data }) => {
             if (window.hls) {
                 console.log('LEVELS:', window.hls.levels);
                 window.hls.levels.forEach((level, levelIndex) => {
-                console.log(level.height, newQuality);
-                if (level.height === newQuality) {
-                    console.log('Found quality match with ' + newQuality);
-                    window.hls.currentLevel = levelIndex;
-                }
+                    console.log(level.height, newQuality);
+                    if (level.height === newQuality) {
+                        console.log('Found quality match with ' + newQuality);
+                        window.hls.currentLevel = levelIndex;
+                    }
                 });
             }
         };
