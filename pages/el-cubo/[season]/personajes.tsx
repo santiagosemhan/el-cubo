@@ -464,7 +464,7 @@ const CharactersPage = ({ data = {} }) => {
                     <div className="copy-cover">
                       <h1 className="copy">
                         <p>
-                          Completa esta cronología y obtén acceso<br />privilegiado al gran mapa de la historia
+                          Completa esta cronología y obtén acceso privilegiado al gran mapa de la historia
                       </p>
                         <div className="cover-link">
                           <a id="link-onboard" href="#" className="cyan-dark">

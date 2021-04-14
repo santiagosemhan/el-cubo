@@ -39,7 +39,6 @@ body.fade {
 .nav {
     position: absolute;
     right: 50px;
-    top: 130px;
     z-index: 11;
 }
 
@@ -1871,7 +1870,6 @@ footer {
 
 
   /* Pagina temporada */
-
   .logo-season .logo--image {
     position: fixed;
     top: 80px;
@@ -1966,6 +1964,118 @@ footer {
 
 }
 
+
+.pane-login {
+    position: fixed;
+    z-index: 9999;
+}
+
+.pane-login .pane {
+    position: fixed;
+    top: 0;
+    z-index: 10001;
+    right: -50%;
+    height: 100vh;
+    width: 30%;
+    background: #222222;
+    -webkit-box-shadow: -58px 0px 66px 0px rgb(69 180 193 / 10%);
+    -moz-box-shadow: -58px 0px 66px 0px rgba(69,180,193,0.1);
+    box-shadow: -58px 0px 66px 0px rgb(69 180 193 / 10%);
+    -webkit-transition: 0.5s all ease;
+    transition: 0.5s all ease;
+    overflow: hidden;
+}
+
+.pane-login .pane.open {
+    right: 0vw;
+    z-index: 10001;
+}
+
+.pane-login .pane a.icon.close {
+    cursor: pointer;
+    padding: 20px;
+    float: left;
+    display: none;
+}
+
+.pane-login .pane-cover {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: black;
+    opacity: 0.7;
+}
+
+.button-login {
+    border: 1px solid #1A2839;
+    color: #1A2839;
+    background-color: #45B4C1;
+    padding: 12px 12px 12px 12px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-family: 'Inter';
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    float: left;
+    width: 48%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+.pane-login  .pane-content {
+    padding: 40px;
+    float: left;
+    font-family: Bitter;
+    line-height: 1.4;
+    margin-top: 29vh;
+}
+
+.logo-login-rtvc {
+    width: 100px;
+    float: left;
+    clear: both;
+}
+
+.pane-login .col-2 {
+    width: 100%;
+    float: left;
+    margin-top: 20px;
+}
+
+.pane-login .col-2 a {
+    float: left;
+    width: 41%;
+}
+
+.pane-login .col-2 a.button-quit {
+    float: right;
+}
+
+#nav-login {
+    position: fixed;
+    top: 80px;
+    right: 60px;
+    font-weight: 500;
+    z-index: 100;
+    height: 60px;
+    padding-top: 30px;
+}
+
+#nav-login a {
+    margin-left: 10px;
+    color: #45B4C1;
+    text-decoration: none;
+}
+
+#audio-player-container.audio-season {
+    top: 160px;
+}
+
+
+
+
 .steal {
     position: absolute;
     z-index: 10;
@@ -1984,7 +2094,30 @@ footer {
     top: 10vh;
     z-index: 100;
     // display: none;
+    margin: 0;
   }
 
+
+
+  /* Cronologia */
+
+  @media (max-width: 540px) {
+    .plyr__portal__title, .steal_title {
+      font-size: 18px !important;
+    }
+
+    .steal {
+        height: 100vh;
+        width: auto;
+        margin-left: -50%;
+    }
+
+    .plyr__controls__item.plyr__menu {
+        display: none;
+    }
+  
+  }
+
+  
 
 `;

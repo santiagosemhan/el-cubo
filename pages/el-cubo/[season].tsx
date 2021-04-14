@@ -43,7 +43,6 @@ export default function SeasonPage({ data }) {
 
   React.useEffect(() => {
     window.onload = function (event) {
-      console.log('lalla');
 
       setTimeout(() => {
         document.getElementsByClassName('cover-reveal-row-1')[0].classList.add('active');
@@ -92,6 +91,59 @@ export default function SeasonPage({ data }) {
       document.getElementsByClassName('paragraph-message-2')[0].classList.add('active-fadein');
     }
     document.addEventListener('scroll', scrollEvent);
+
+
+    // Pane Login
+    const button_open = document.querySelectorAll('.toggle');
+    const button_close = document.querySelectorAll('.close');
+    const pane = document.querySelector('.pane-login');
+
+
+    if (button_open) {
+        button_open.forEach((link) => {
+            link.addEventListener('click', () => {
+              console.log('lallala');
+                fadeIn(pane, 40);
+            });
+        });
+    }
+
+    if (button_close) {
+      button_close.forEach((link) => {
+          link.addEventListener('click', () => {
+              fadeOut(pane, 40);
+          });
+      });
+    }
+
+
+    const fadeOut = (el, pTime) => {
+        el.style.opacity = 1;
+
+        (function fade() {
+            if ((el.style.opacity -= .07) < 0) {
+                el.style.display = "none";
+            } else {
+                setTimeout(fade, pTime);
+            }
+        })();
+    };
+
+    const fadeIn = (el, pTime) => {
+        el.style.opacity = 0;
+        el.style.display = "block";
+
+        (function fade() {
+            var val = parseFloat(el.style.opacity);
+            if (!((val += .07) > 1)) {
+                el.style.opacity = val;
+                setTimeout(fade, pTime);
+            } else {
+                el.style.opacity = 1;
+            }
+        })();
+    };
+  
   }, []);
 
 
@@ -103,13 +155,36 @@ export default function SeasonPage({ data }) {
         <title>{title} - El cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <div className="pane-login is-hidden">
+        <div className="pane-cover"></div>
+
+        <div className="pane open">
+          <a className="icon close">
+            <img src="/images/pane-close.svg" />
+          </a>
+          <div className="pane-content">
+              Para enriquecer tu experiencia en EL CUBO y obtener recompensas puedes registrarte en
+  
+            <img className="logo-login-rtvc" src="/images/logo-RTVCPlay-Header.png" />
+          
+            <div className="col-2">
+            <a className="button-login cyan-dark button-register close" href="#">Registrarme</a>
+            
+            <a className="button-login cyan-dark button-quit close" href="#">En otro momento</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
         <MouseCircle
-          href="/el-cubo/temporada-1/personajes"
+          href="temporada-1/personajes"
           text="Empezar"
           isBig={bigMouse}
           show={showMouse}
-          className="circle-temp"
+          className="circle-temp toggle"
         />
 
         {/* <div className="header-top" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
@@ -121,14 +196,25 @@ export default function SeasonPage({ data }) {
             </div>
           </div>
         </div> */}
+
+
+
+
+
         <div className="logo-season" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <HeaderTop />
+
+          <div id="nav-login">
+            <span className="user-logged">Bienvenid@, Josi</span>
+            <a href="#" className="link-login">Ingresar</a>
+            <a href="#" className="link-logout">Salir</a>
+          </div>
 
           <div>
             <audio id="track" loop="">
               <source src="/audios/loop-1.mp3" type="audio/mpeg" />
             </audio>
-            <div id="audio-player-container"  >
+            <div id="audio-player-container" className="audio-season">
               <div id="play-pause" className="play no-link">
                 <div className="column-1">
                   <span className="mute hide play-text">silenciar</span>
@@ -146,8 +232,12 @@ export default function SeasonPage({ data }) {
               </div>
             </div>
           </div>
-          
+
+
+
         </div>
+
+       
 
         <div className="scrolldown">
           <div className="line"></div>

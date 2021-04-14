@@ -129,14 +129,14 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
             setTimeout(fade, pTime);
           }
         })();
-      };  
+      };
 
       const onLoadFadeout = () => {
         window.setTimeout(() => {
+          fadeOut(document.querySelectorAll('.steal_title')[0], 10);
           fadeOut(document.querySelectorAll('.steal')[0], 40);
-          fadeOut(document.querySelectorAll('.steal_title')[0], 40);
           setStartVideo(true);
-        }, 3000)
+        }, 4000)
       };
       onLoadFadeout();
     }
@@ -190,11 +190,13 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
                 <div className="header-top-inner">
                   <nav className="nav">
                     <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
-                      <div className="icon-bell">
-                        <img src="/images/icon-bell.svg" />
-                      </div>
                       <img className="icon-change" src="/images/icon-change-char2.svg" />
                     </a>
+
+                    <a href="#" title="Cronología" className="toggle-chrono menu-elcubo">
+                      <img className="icon-change" src="/images/icon-wall-clock.svg" />
+                    </a>
+
                   </nav>
                 </div>
               </div>
@@ -203,7 +205,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
               <img className="steal" src={poster} />
 
               <CharacterSelector list={characterList} />
-              {startVideo ? 
+              {startVideo ?
                 <FullPlayerWrapper>
                   <VideoPlayer
                     showBackButton
@@ -230,6 +232,17 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
             </>
           )}
       </Container>
+
+      <div className="pane chrono-mobile">
+        <a className="close">
+          <img src="/images/pane-close.svg" />
+        </a>
+        <div className="pane-content">
+          {showChapters && modo === 'cronologico' && chronology && (
+            <PlayerChronology character={character} chronology={chronologyList} />
+          )}
+        </div>
+      </div>
     </AppLayout>
   );
 };

@@ -62,6 +62,7 @@ body {
 
 .pane h2 {
   margin-left: 10px;
+  width: 250px;
 }
 
 .pane ul {
@@ -69,6 +70,7 @@ body {
   list-style-type: none;
   padding: 0px 20px;
   line-height: 2em;
+  width: 250px;
 }
 
 .pane a:hover {

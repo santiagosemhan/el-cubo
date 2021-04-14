@@ -100,6 +100,7 @@ export const VideoPlayerWrapper = styled.div`
     left: 20px;
     top: 10vh;
     z-index: 100;
+    margin: 0;
   }
 
   .plyr {
@@ -113,5 +114,6 @@ export const VideoPlayerWrapper = styled.div`
 .plyr__video-wrapper {
     height: auto !important;
 }
+
 
 `;

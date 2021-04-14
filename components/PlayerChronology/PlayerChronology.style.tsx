@@ -62,6 +62,7 @@ export const ListChronoCover = styled.div`
 
 
 
+
 /* Menu Cronologia */
 
 .list-chrono-cover {

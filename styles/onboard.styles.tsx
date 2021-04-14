@@ -73,6 +73,7 @@ body {
 
 .onboard {
     background-size: cover;
+    background-color: black;
 }
 
 .onboard .copy {
@@ -99,6 +100,21 @@ body {
 .button-cyan {
     background-color: rgb(69, 180, 193);
     color: rgb(26, 40, 57);
+}
+
+
+/* Cronologia */
+@media (max-width: 540px) {
+
+  #hero-onboarding {
+      background-position: 54%;
+  }
+
+  .hero-onboarding .copy .cover-link {
+      width: 186px;
+      margin: auto;
+  }
+
 }
 
 `;

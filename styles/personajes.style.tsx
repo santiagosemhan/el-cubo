@@ -972,4 +972,22 @@ a {
 
   }
 
+
+  @media (max-width: 540px) {
+
+    #hero-onboarding {
+        background-position: 54%;
+    }
+  
+    .hero-onboarding .copy .cover-link {
+        width: 186px;
+        margin: auto;
+    }
+
+    #hero-onboarding .copy p {
+        font-size: 18px;
+    }
+  
+  }
+
 `;
