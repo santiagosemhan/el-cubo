@@ -245,7 +245,7 @@ footer {
     font-family: 'Inter';
     color: white;
     position: absolute;
-    bottom: 25vh;
+    top: 320px;
     z-index: 99;
     width: 100%;
 }
@@ -283,7 +283,7 @@ footer {
 .characters .bg-video {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 90vh;
     z-index: 20;
 }
 
@@ -294,7 +294,7 @@ footer {
 .characters .pane p {
     font-size: 16px;
     line-height: 1.4;
-    padding: 20px 30px 40px 30px;
+    padding: 10px 40px 20px 40px;
     margin: 0;
 }
 
@@ -626,7 +626,7 @@ a {
     user-select: none;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
     body {
         width: 100vw;
         overflow: hidden;
@@ -647,10 +647,7 @@ a {
     .characters-wrapper .row.row-first .column .parent {
         height: 45vh;
     }
-    .characters .pane.open {
-        width: 100%;
-        padding-right: 0;
-    }
+
     .characters .bg-video {
         bottom: 0;
         height: 100vh;
@@ -773,6 +770,58 @@ a {
     }
 
     .characters .selector-cover #boxDiv {
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+
+    .characters .pane.open {
+        width: 100%;
+    }
+  
+}
+
+
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+    .characters .pane.open {
+        width: 320px;
+    }
+
+    .characters .pane-content {
+        top: auto;
+        bottom: 40px;
+    }
+
+    .characters .pane p {
+        padding: 10px;
+    }
+
+    .characters .pane video {
+        margin-top: -65px;
+    }
+
+    .characters .name {
+        bottom: 30vh;
+    }
+
+    .characters .parent .child.is-selected .name {
+        font-size: 14px;
+    }
+      
+    .characters .projectButton {
+        bottom: 42vh;
+    }
+  
+      
+    .characters .icon-selected {
+        bottom: 36vh;  
+        width: 20px;
+    }
+
+
+    .selector-help-pc {
         display: none;
     }
 }
@@ -956,14 +1005,14 @@ a {
 @media screen and ( max-height: 700px ){
 
     .characters .name {
-      bottom: 250px;
+      bottom: 30vh;
     }
     .characters .projectButton {
-      bottom: 200px;
+      bottom: 42vh;
     }
 
     .characters .icon-selected {
-        bottom: 300px;
+        bottom: 36vh;
     }
 
     #boxDiv {
