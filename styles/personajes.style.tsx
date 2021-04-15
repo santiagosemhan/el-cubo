@@ -714,10 +714,7 @@ a {
     .characters .parent:focus a {
         display: none;
     }
-    .characters .name {
-        bottom: 150px;
-        font-size: 20px;
-    }
+
     .characters .icon-selected {
         bottom: 130px;
         width: 20px;
@@ -772,19 +769,58 @@ a {
     .characters .selector-cover #boxDiv {
         display: none;
     }
+
+   
 }
 
 
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
 
-    .characters .pane.open {
-        width: 100%;
+@media only screen and (max-width: 1025px) and (orientation: landscape) {
+
+    .characters .parent .child.is-selected .name {
+        font-size: 16px;
+    }
+
+    .characters .parent .child img.img-bn,
+    .characters .parent .child img.img-color {
+        top: 20vh;
+    }
+
+    .characters .pane video {
+        margin: auto;
     }
   
 }
 
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+    #mainDiv {
+        display: none;
+    }
+
+    .characters .pane.open {
+        width: 320px;
+    }
+}
 
 @media only screen and (max-width: 768px) and (orientation: landscape) {
+
+    #mainDiv {
+        display: none;
+    }
+
+    .characters-wrapper {
+        margin-top: 25px;
+    }
+
+    .characters .parent .child img.img-bn,
+    .characters .parent .child img.img-color {
+        top: 10vh;
+    }
+
+    .characters .selector-mode {
+        bottom: 10px;
+    }
+
     .characters .pane.open {
         width: 320px;
     }
@@ -795,36 +831,51 @@ a {
     }
 
     .characters .pane p {
-        padding: 10px;
+        padding: 5px 10px 20px 10px;
+        font-size: 12px;
     }
 
     .characters .pane video {
         margin-top: -65px;
     }
 
+    .characters .pane h2 {
+        font-size: 18px;
+    }
+
     .characters .name {
-        bottom: 30vh;
+        bottom: 34vh;
     }
 
     .characters .parent .child.is-selected .name {
-        font-size: 14px;
+        font-size: 12px;
     }
       
     .characters .projectButton {
-        bottom: 42vh;
+        bottom: 45vh;
     }
   
       
     .characters .icon-selected {
-        bottom: 36vh;  
-        width: 20px;
+        bottom: 38vh;  
+        width: 15px;
     }
-
 
     .selector-help-pc {
         display: none;
     }
 }
+
+@media only screen and (max-width: 380px) and (orientation: portrait) {
+
+    .characters .pane.open {
+        width: 100%;
+    }
+
+}
+
+
+
 
 /* Input search */
 
