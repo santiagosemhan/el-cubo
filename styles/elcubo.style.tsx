@@ -2205,7 +2205,7 @@ footer {
   }
 
   @media only screen and (min-width: 1024px) {
-    .toggle-chrono {
+    .toggle-chrono-mobile {
     display: none;
     }
   }
