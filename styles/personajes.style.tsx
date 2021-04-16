@@ -789,6 +789,10 @@ a {
     .characters .pane video {
         margin: auto;
     }
+
+    .characters .selector-cover #mainDiv {
+        display: none;
+    }
   
 }
 
@@ -802,6 +806,8 @@ a {
     }
 }
 
+
+@media only screen and (max-height: 500px) and (orientation: landscape),
 @media only screen and (max-width: 768px) and (orientation: landscape) {
 
     #mainDiv {
