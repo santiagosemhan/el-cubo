@@ -2393,7 +2393,7 @@ body {
   transition: height 0.5s ease;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .eFdoju .logo {
     height: 50px;
   }
@@ -2763,7 +2763,7 @@ body {
   width: calc(100% - 40px);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .flrEJC {
     width: calc(100% - 60px);
     padding: 0px 30px;
@@ -2811,7 +2811,7 @@ body {
   padding: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .gJJULp {
     height: 80px;
   }
@@ -2822,7 +2822,7 @@ body {
   max-width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .gJJULp .logo {
     -webkit-flex-basis: initial;
     -ms-flex-preferred-size: initial;
@@ -3240,7 +3240,7 @@ body {
   flex-basis: auto;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 960px) {
   .bgPYDJ {
     -webkit-flex-basis: 40%;
     -ms-flex-preferred-size: 40%;
