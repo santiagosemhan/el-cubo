@@ -10,19 +10,18 @@ export const VideoPlayerWrapper = styled.div`
 
   .back-to-season {
     position: absolute;
-    top: 20px;
-    left: 10px;
+    top: 30px;
+    left: 30px;
     z-index: 10;
+    padding: 0;
     opacity: 1;
     transition: all 0.3s ease;
     will-change: opacity;
     outline: none;
-
     background: transparent;
     border: none;
     cursor: pointer;
     border-radius: 3px;
-    padding: 5px 10px;
     display: flex;
     align-items: center;
 
@@ -97,7 +96,7 @@ export const VideoPlayerWrapper = styled.div`
     letter-spacing: -1px;
     font-weight: 500;
     position: absolute;
-    left: 20px;
+    left: 40px;
     top: 10vh;
     z-index: 100;
     margin: 0;

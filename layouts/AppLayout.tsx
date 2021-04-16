@@ -10,13 +10,13 @@ const AppLayout = ({ onlyContent = false, children }) => {
       {onlyContent ? (
         <div className="app-elcubo">{children}</div>
       ) : (
-        <>
-          <Header />
-          <div className="app-elcubo">{children}</div>
-          <Footer />
-          <RTVCGlobalStyles />
-        </>
-      )}
+          <>
+            <Header />
+            <div className="app-elcubo">{children}</div>
+            <Footer />
+            <RTVCGlobalStyles />
+          </>
+        )}
     </>
   );
 };

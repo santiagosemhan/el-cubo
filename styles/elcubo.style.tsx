@@ -39,7 +39,7 @@ body.fade {
 .nav {
     position: absolute;
     right: 50px;
-    z-index: 11;
+    z-index: 10;
 }
 
 .logo--image {
@@ -2102,6 +2102,11 @@ footer {
 
   /* Cronologia */
 
+  .app-elcubo {
+      height: 100vh;
+      overflow: hidden;
+  }
+
   @media (max-width: 540px) {
    
     .steal {
@@ -2123,6 +2128,14 @@ footer {
     }
 
   }
+
+  @media (max-width: 1200px) {
+    .back-to-season {
+        left: 15px !important;
+    }
+  }
+  
+  
 
   @media (max-width: 1024px) {
 

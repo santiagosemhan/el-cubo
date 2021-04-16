@@ -129,6 +129,8 @@ const LabyrinthNode = ({ data }) => {
             return player;
         };
 
+
+
         const fadeOut = (el, pTime) => {
             el.style.opacity = 1;
 
@@ -201,6 +203,9 @@ const LabyrinthNode = ({ data }) => {
             }, 1000);
         };
 
+
+
+
         const createTitle = (pTitle) => {
             let plyr_title = document.createElement('h2');
             plyr_title.setAttribute("class", 'plyr_title');
@@ -209,6 +214,21 @@ const LabyrinthNode = ({ data }) => {
         };
 
         const player = loadPlayer(video.dataset.video);
+
+        const { wrapper, container } = player.elements
+        if (!container._clickListener) {
+            container._clickListener = event => {
+                const targets = [container, wrapper]
+
+                // Ignore if click if not container or in video wrapper
+                if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+                    return
+                }
+
+                if (player.touch) player.togglePlay()
+            }
+            container.addEventListener('click', container._clickListener)
+        }
 
         if (button_open) {
             button_open.forEach((link) => {
