@@ -2102,10 +2102,12 @@ footer {
 
   /* Cronologia */
 
+  /*
   .app-elcubo {
       height: 100vh;
       overflow: hidden;
   }
+  */
 
   @media (max-width: 540px) {
    
