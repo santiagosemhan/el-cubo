@@ -4,12 +4,14 @@ export const OnboardStyles = createGlobalStyle`
 body {
     margin: 0;
     /* background: black;*/
+    background-color: black;
 }
 
 :root {
     /* Full grid area variable */
     --fullGrid: 1 / 1 / -1 / -1;
 }
+
 
 .hero {
     /* Create grid spanning viewport width & height */
@@ -115,6 +117,40 @@ body {
       margin: auto;
   }
 
+}
+
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    /* Onboard */
+
+    .copy {
+        width: 50vw;
+    }
+
+    .onboard .copy p {
+        font-size: 18px;
+    }
+
+    .copy-phrase {
+        font-size: 22px;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+    /* Onboard */
+
+    .app-elcubo.onboard {
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+    
+    .onboard .copy p {
+        font-size: 18px;
+    }
+
+    .copy-phrase {
+        font-size: 22px;
+    }
 }
 
 `;

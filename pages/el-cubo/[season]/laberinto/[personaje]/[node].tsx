@@ -215,6 +215,7 @@ const LabyrinthNode = ({ data }) => {
 
         const player = loadPlayer(video.dataset.video);
 
+        // Fix mobile Tap play/pause
         const { wrapper, container } = player.elements
         if (!container._clickListener) {
             container._clickListener = event => {

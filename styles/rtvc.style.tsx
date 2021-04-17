@@ -2373,7 +2373,7 @@ body {
   margin-left: -8px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .eFdoju {
     margin-left: -17px;
   }
@@ -2811,7 +2811,7 @@ body {
   padding: 0;
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1025px) {
   .gJJULp {
     height: 80px;
   }
@@ -2844,7 +2844,7 @@ body {
   margin: 0;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .kAVABN {
     display: -webkit-box;
     display: -webkit-flex;

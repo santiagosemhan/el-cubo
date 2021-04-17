@@ -307,7 +307,7 @@ body {
 .plyr audio,
 .plyr iframe,
 .plyr video {
-    height: auto !important;
+    height: auto;
     width: 100%;
 }
 
@@ -316,7 +316,7 @@ body {
 }
 
 .plyr__video-wrapper {
-    height: auto !important;
+    height: auto;
 }
 
 .icon-replay {
@@ -657,4 +657,20 @@ iframe ._2pi8 {
     align-content: center;
     /*background: rgba(0, 0, 0, 0.6);*/
 }
+
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+    .plyr .plyr__video-wrapper  video {
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (orientation: portrait) {
+    .steal {
+        height: 100vh;
+        width: auto;
+        margin-left: -50%;  
+    }
+}
+
 `;

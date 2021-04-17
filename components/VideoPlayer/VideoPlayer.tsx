@@ -221,6 +221,17 @@ const VideoPlayer = ({
     }
   }, [title]);
 
+
+  /*
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
+    const controls = container.getElementsByClassName('plyr__portal')[0];
+    controls.insertAdjacentHTML('afterend', `<a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
+      <img className="icon-change" src="/images/icon-change-char2.svg" /></a>`);
+  }, []);
+  */
+
+
   React.useEffect(() => {
     const container: HTMLElement = wrapperRef.current;
     const chaptersButton = container.querySelector('[data-plyr="chapters"]');
@@ -246,6 +257,7 @@ const VideoPlayer = ({
       playerRef.current.on('pause', onVideoPause);
     }
   }, [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying]);
+
 
   return (
     <VideoPlayerWrapper ref={wrapperRef}>
