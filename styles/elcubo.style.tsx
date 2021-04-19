@@ -2109,6 +2109,7 @@ footer {
   }
   */
 
+
   @media (max-width: 540px) {
    
     .steal {
@@ -2163,7 +2164,6 @@ footer {
 
     .pane-chrono-mobile .chrono-list {
         display: block;
-        padding-right: 30px;
     }
 
     .pane-chrono-mobile ul {
@@ -2181,10 +2181,20 @@ footer {
     }
 
     .pane-chrono-mobile .line-right {
-        right: 54px;
+        right: 24px;
     }
 
   }
+
+  @media (max-width: 1024px) and (orientation: landscape){
+
+    .plyr video {
+        height: 100vh;
+    }
+
+  }
+
+  
  
 
 

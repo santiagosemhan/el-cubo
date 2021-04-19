@@ -165,6 +165,7 @@ ul.list-chrono.height-medium li span.circle {
   margin-top: 26px;
 }
 
+
 @media screen and ( max-height: 700px ){
 
   ul.list-chrono.marina {

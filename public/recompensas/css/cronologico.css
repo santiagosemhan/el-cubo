@@ -519,3 +519,101 @@ body {
 .hide {
     display: none;
 }
+
+/* List videos */
+
+.chrono-list {
+    float: left;
+    position: relative;
+}
+
+.line-right {
+    position: absolute;
+    width: 1px;
+    opacity: 0.4;
+    height: 100%;
+    left: 4px;
+}
+
+/* Menu Cronologia */
+
+ul.list-chrono {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 20px;
+}
+
+ul.list-chrono li {
+    line-height: 1.5;
+    font-size: 16px;
+    text-align: left;
+}
+
+ul.list-chrono a img {
+    width: 170px;
+    border-radius: 8px;
+    position: absolute;
+    right: -190px;
+    top: -35px;
+    z-index: 2;
+    opacity: 0;
+    transition: .2s;
+}
+
+ul.list-chrono a {
+    color: #45B4C1;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+}
+
+ul.list-chrono a span {
+    position: relative;
+    z-index: 5;
+    transition: .2s;
+}
+
+ul.list-chrono a:hover img {
+    transition: .2s;
+    opacity: 1;
+}
+
+ul.list-chrono a:hover,
+ul.list-chrono a.active {
+    color: white;
+}
+
+ul.list-chrono a img:hover {
+    opacity: 0;
+}
+
+ul.list-chrono a span.circle {
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin-right: 30px;
+    margin-top: 8px;
+    border-radius: 50%;
+    background: #45B4C1;
+}
+
+ul.list-chrono a:hover span.circle,
+ul.list-chrono a.active span.circle {
+    background: white;
+}
+
+ul.list-chrono.height-big li {
+    line-height: 6;
+}
+
+ul.list-chrono.height-big li span.circle {
+    margin-top: 42px;
+}
+
+ul.list-chrono.height-medium li {
+    line-height: 4;
+}
+
+ul.list-chrono.height-medium li span.circle {
+    margin-top: 26px;
+}
