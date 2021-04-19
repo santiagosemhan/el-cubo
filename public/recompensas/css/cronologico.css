@@ -199,6 +199,7 @@ body {
     }
     .app-elcubo.recompensa {
         max-width: 90vw;
+        overflow: hidden;
     }
     .recompensa ul li div:first-child {
         width: 100%;
@@ -521,6 +522,12 @@ body {
 }
 
 /* List videos */
+
+.content-no-viewed,
+.content-viewed {
+    width: 100%;
+    float: left;
+}
 
 .chrono-list {
     float: left;
