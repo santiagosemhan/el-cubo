@@ -270,7 +270,7 @@ export default function Home({ data }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
-        <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />     
+        <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
         <div className="header-top header-temporal">
           <div className="header-top-inner">
@@ -281,7 +281,7 @@ export default function Home({ data }) {
 
               <div>
                 <audio id="track" /*autoPlay*/>
-                  <source src="/audios/loop-1.mp3" type="audio/mpeg" />
+                  <source src="/audios/intro.mp3" type="audio/mpeg" />
                 </audio>
 
                 <div id="audio-player-container">
@@ -304,7 +304,7 @@ export default function Home({ data }) {
                   </div>
                 </div>
               </div>
-              
+
             </div>
           </div>
         </div>

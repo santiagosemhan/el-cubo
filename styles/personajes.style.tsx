@@ -1059,6 +1059,16 @@ a {
 }
 
 
+@media (max-width: 1024px) and (orientation: landscape){
+
+    #hero-onboarding .copy p {
+        font-size: 18px;
+    }
+
+
+}
+
+
 @media screen and ( max-height: 700px ){
 
     .characters .name {
