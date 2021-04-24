@@ -161,66 +161,77 @@ const VideoPlayer = ({
     );
   }, []);
 
-  React.useEffect(() => {
-    // const plyr = container.getElementsByClassName('plyr')[0];
-    const portal = document.getElementById('plyr__portal');
-    ReactDOM.render(children, portal);
-  }, [children]);
+  React.useEffect(
+    () => {
+      // const plyr = container.getElementsByClassName('plyr')[0];
+      const portal = document.getElementById('plyr__portal');
+      ReactDOM.render(children, portal);
+    },
+    [children],
+  );
 
-  React.useEffect(() => {
-    const container: HTMLElement = wrapperRef.current;
+  React.useEffect(
+    () => {
+      const container: HTMLElement = wrapperRef.current;
 
-    const listener = (event) => {
-      const { plyr } = event.target.dataset;
-      if (plyr) {
-        if (plyr === 'chapters') onChaptersClick && onChaptersClick();
-        if (plyr === 'back') onBackClick && onBackClick();
-        if (plyr === 'next') onNextClick && onNextClick();
-      }
-    };
-    container.addEventListener('click', listener);
+      const listener = (event) => {
+        const { plyr } = event.target.dataset;
+        if (plyr) {
+          if (plyr === 'chapters') onChaptersClick && onChaptersClick();
+          if (plyr === 'back') onBackClick && onBackClick();
+          if (plyr === 'next') onNextClick && onNextClick();
+        }
+      };
+      container.addEventListener('click', listener);
 
-    return () => container.removeEventListener('click', listener);
-  }, [onChaptersClick, onBackClick, onNextClick]);
+      return () => container.removeEventListener('click', listener);
+    },
+    [onChaptersClick, onBackClick, onNextClick],
+  );
 
-  React.useEffect(() => {
-    const container: HTMLElement = wrapperRef.current;
-    const playControl = container.querySelector('[data-plyr="play"]');
-    playControl.insertAdjacentHTML(
-      'afterend',
-      `
+  React.useEffect(
+    () => {
+      const container: HTMLElement = wrapperRef.current;
+      const playControl = container.querySelector('[data-plyr="play"]');
+      playControl.insertAdjacentHTML(
+        'afterend',
+        `
         ${
-      showPrevButton
-        ? `<button class="plyr__controls__item plyr__control back" data-plyr="back" title="Anterior">
+          showPrevButton
+            ? `<button class="plyr__controls__item plyr__control back" data-plyr="back" title="Anterior">
               <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.04907e-06 8L9.75 1.0718L9.75 14.9282L1.04907e-06 8Z" fill="white"/>
                 <path d="M10 8L19.75 1.0718L19.75 14.9282L10 8Z" fill="white"/>
               </svg>        
           </button>`
-        : ''
-      } 
+            : ''
+        } 
         ${
-      showNextButton
-        ? `<button class="plyr__controls__item plyr__control next" data-plyr="next" title="Siguiente">
+          showNextButton
+            ? `<button class="plyr__controls__item plyr__control next" data-plyr="next" title="Siguiente">
             <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M23 8L13.25 14.9282L13.25 1.0718L23 8Z" fill="white"/>
               <path d="M13 8L3.25 14.9282L3.25 1.0718L13 8Z" fill="white"/>
             </svg>
           </button>`
-        : ''
-      } 
+            : ''
+        } 
       `,
-    );
-  }, [showPrevButton, showNextButton]);
+      );
+    },
+    [showPrevButton, showNextButton],
+  );
 
-  React.useEffect(() => {
-    const container: HTMLElement = wrapperRef.current;
-    if (title) {
-      const controls = container.getElementsByClassName('plyr__portal')[0];
-      controls.insertAdjacentHTML('afterend', `<h2 class="plyr__portal__title">${title}</h2>`);
-    }
-  }, [title]);
-
+  React.useEffect(
+    () => {
+      const container: HTMLElement = wrapperRef.current;
+      if (title) {
+        const controls = container.getElementsByClassName('plyr__portal')[0];
+        controls.insertAdjacentHTML('afterend', `<h2 class="plyr__portal__title">${title}</h2>`);
+      }
+    },
+    [title],
+  );
 
   /*
   React.useEffect(() => {
@@ -231,33 +242,40 @@ const VideoPlayer = ({
   }, []);
   */
 
+  React.useEffect(
+    () => {
+      const container: HTMLElement = wrapperRef.current;
+      const chaptersButton = container.querySelector('[data-plyr="chapters"]');
+      chaptersButton.innerHTML = chapterButtonName;
+    },
+    [chapterButtonName],
+  );
 
-  React.useEffect(() => {
-    const container: HTMLElement = wrapperRef.current;
-    const chaptersButton = container.querySelector('[data-plyr="chapters"]');
-    chaptersButton.innerHTML = chapterButtonName;
-  }, [chapterButtonName]);
-
-  React.useEffect(() => {
-    if (videoRef.current && onVideoEnded) {
-      videoRef.current.onended = onVideoEnded;
-    }
-    return () => {
-      if (videoRef.current) {
-        videoRef.current.onended = undefined;
+  React.useEffect(
+    () => {
+      if (videoRef.current && onVideoEnded) {
+        videoRef.current.onended = onVideoEnded;
       }
-    };
-  }, [onVideoEnded]);
+      return () => {
+        if (videoRef.current) {
+          videoRef.current.onended = undefined;
+        }
+      };
+    },
+    [onVideoEnded],
+  );
 
-  React.useEffect(() => {
-    if (playerRef.current) {
-      playerRef.current.on('controlsshown', onControlsShown);
-      playerRef.current.on('controlshidden', onControlsHidden);
-      playerRef.current.on('playing', onVideoPlaying);
-      playerRef.current.on('pause', onVideoPause);
-    }
-  }, [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying]);
-
+  React.useEffect(
+    () => {
+      if (playerRef.current) {
+        playerRef.current.on('controlsshown', onControlsShown);
+        playerRef.current.on('controlshidden', onControlsHidden);
+        playerRef.current.on('playing', onVideoPlaying);
+        playerRef.current.on('pause', onVideoPause);
+      }
+    },
+    [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying],
+  );
 
   return (
     <VideoPlayerWrapper ref={wrapperRef}>

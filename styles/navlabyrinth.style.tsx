@@ -16,7 +16,7 @@ export const NavLabyrinthStyles = createGlobalStyle`
     transition: opacity 0.5s ease 0s;
     will-change: opacity;
     font-family: Inter;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     float: left;
 }

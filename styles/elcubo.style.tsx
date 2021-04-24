@@ -2,7 +2,8 @@ import { createGlobalStyle } from 'styled-components';
 
 export const ElcuboGlobalStyles = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,500;1,300;1,400;1,500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600&display=swap');
+
 :root {
     /* Base font size */
     /* Full grid area variable */
@@ -684,6 +685,10 @@ h2 {
 
 #hero-3 .paragraph-message {
     width: 780px;
+}
+
+.paragraph-message a {
+    text-decoration: none;
 }
 
 #hero-3 .paragraph-message-1.active-fadein {
@@ -2024,6 +2029,11 @@ footer {
     font-weight: bold;
 }
 
+.button-login:hover {
+    background-color: #56EBFD;
+    color: #1A2839;
+}
+
 
 .pane-login  .pane-content {
     padding: 40px;
@@ -2031,6 +2041,15 @@ footer {
     font-family: Bitter;
     line-height: 1.4;
     margin-top: 29vh;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+}
+
+.pane-login  .pane-content strong {
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .logo-login-rtvc {
@@ -2042,16 +2061,25 @@ footer {
 .pane-login .col-2 {
     width: 100%;
     float: left;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .pane-login .col-2 a {
     float: left;
     width: 41%;
+    font-weight: 500;
 }
 
 .pane-login .col-2 a.button-quit {
     float: right;
+    background: none;
+    border: 1px solid #45b4c1;
+    color: #45b4c1;
+}
+
+.pane-login .col-2 .button-login.button-quit:hover {
+    background-color: #56EBFD;
+    color: #1A2839;
 }
 
 #nav-login {
@@ -2138,9 +2166,25 @@ footer {
     }
   }
   
+  @media (min-width: 1024px) {
+    .plyr--video .plyr__controls {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+  }
+
   
 
   @media (max-width: 1024px) {
+
+    #nav-login {
+        right: 30px;
+        top: 50px;
+    }
+
+    #audio-player-container.audio-season {
+        top: 120px;
+    }
 
     .plyr__portal__title, .steal_title {
         font-size: 18px !important;
@@ -2190,6 +2234,37 @@ footer {
 
     .plyr video {
         height: 100vh;
+    }
+
+    .pane-login .pane {
+        width: 420px;
+    }
+    .pane-login .pane-content {
+        margin-top: 5vh;
+    }
+
+  }
+
+  @media (max-width: 860px) and (orientation: portrait){
+    .pane-login .pane {
+        width: 420px;
+    }
+    .pane-login .pane-content {
+        margin-top: 5vh;
+    }
+  }
+
+  @media (max-width: 480px) and (orientation: portrait){
+    .pane-login .pane {
+        width: 80%;
+    }
+    .pane-login .col-2 a {
+        width: 80%;
+    }
+
+    .pane-login .col-2 a.button-quit {
+        float: left;
+        margin-top: 10px;
     }
 
   }

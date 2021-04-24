@@ -367,6 +367,17 @@ const Header = () => {
                   Series
                 </a>
               </div>
+
+              <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
+              <a 
+                href="https://www.rtvcplay.co/radioteatros-podcasts" 
+                title="Radioteatros" 
+                className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
+              >
+                Radioteatros
+              </a>
+              </div>
+
               <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
                 <a
                   href="https://www.rtvcplay.co/radionovelas-podcasts"
@@ -404,13 +415,24 @@ const Header = () => {
               </div>
               <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
                 <a
-                  href="https://www.rtvcplay.co/inventos"
-                  title="Inventos"
+                  href="https://www.rtvcplay.co/innovadores"
+                  title="Inovadores"
                   className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
                 >
-                  Inventos
+                  Innovadores
                 </a>
               </div>
+
+              <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
+                <a
+                  href="https://www.rtvcplay.co/musica"
+                  title="Música"
+                  className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
+                >
+                  Música
+                </a>
+              </div>
+
             </div>
             <div className="MolMenuCOD__ContentBlock-sc-16jdr3r-4 hABRnM"></div>
           </div>
@@ -460,6 +482,16 @@ const Header = () => {
                 className="AtImg__Img-sc-31cwo7-0 gYLCMU"
                 src="/images/logo-senal-colombia.png"
                 alt="Señal Colombia"
+              />
+            </a>
+
+            <a href="https://www.rtvcplay.co/en-vivo/informativo" 
+              target="" 
+              className="MolMenuLS__ImgLink-sc-1mj2srx-1 dwhsWo AtImgLink__ImgLink-sc-1ji04qf-0 fegtQU" opacity="0.8"
+            >
+              <img className="AtImg__Img-sc-31cwo7-0 gYLCMU" 
+                src="/images/rtvc/RTVC-NOTICIAS_LOGO_A-1.png" 
+                alt="Informativo" 
               />
             </a>
           </div>
@@ -613,6 +645,8 @@ const Header = () => {
                         Series
                       </a>
                     </li>
+
+                    
                     <li className="metismenu-item">
                       <a
                         href="https://www.rtvcplay.co/radionovelas-podcasts"

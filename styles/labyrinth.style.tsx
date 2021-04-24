@@ -183,6 +183,8 @@ body {
     display: none !important;
 }
 
+
+/*
 @media screen and (min-width: 1200px) {
     .pane-video {
         font-family: Inter;
@@ -198,6 +200,7 @@ body {
         background: black;
     }
 }
+*/
 
 .steal_title.hide {
     display: none;
@@ -226,6 +229,42 @@ body {
 .plyr_title.hide {
     opacity: 0;
 }
+
+.plyr--video .plyr__controls {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+@media (min-width: 1024px) {
+    .plyr--video .plyr__controls {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+/* Plyr Color */
+.plyr--full-ui input[type='range'] {
+    color: #45b4c1;
+  }
+
+  .plyr__control--overlaid {
+    background: rgba(69, 180, 193, 0.5);
+  }
+
+  .plyr--video .plyr__control.plyr__tab-focus,
+  .plyr--video .plyr__control:hover,
+  .plyr--video .plyr__control[aria-expanded='true'] {
+    background: #45b4c1;
+  }
+
+  .plyr__control.plyr__tab-focus {
+    box-shadow: 0 0 0 5px rgba(#45b4c1, 0.5);
+  }
+
+  .plyr__menu__container .plyr__control[role='menuitemradio'][aria-checked='true']::before {
+    background: #45b4c1;
+  }
+
 
 .steal {
     position: absolute;
@@ -269,7 +308,7 @@ body {
 }
 
 .header-top .nav {
-    z-index: 999;
+    z-index: 20;
 }
 
 @media screen and (max-width: 1200px) {
@@ -307,8 +346,8 @@ body {
 .plyr audio,
 .plyr iframe,
 .plyr video {
-    height: auto;
-    width: 100%;
+    height: 100vh;
+    width: 100vw;
 }
 
 .plyr video {
@@ -321,7 +360,7 @@ body {
 
 .icon-replay {
     cursor: pointer;
-    opacity: 0.3;
+    opacity: 0.6;
     z-index: 2;
 }
 
@@ -557,7 +596,6 @@ iframe ._2pi8 {
     height: 20px;
     position: absolute;
     background: yellow;
-    left: 20.4%;
     top: 0;
 }
 
@@ -566,7 +604,7 @@ iframe ._2pi8 {
 .comments-bullet {
     position: absolute;
     right: 80px;
-    top: 80px;
+    top: 20vh;
     cursor: pointer;
     opacity: 0;
     z-index: -100;
@@ -659,6 +697,11 @@ iframe ._2pi8 {
 }
 
 
+.fb-comments iframe { 
+    width: 100% !important; 
+}
+
+
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     .plyr .plyr__video-wrapper  video {
         height: 100vh;
@@ -672,5 +715,19 @@ iframe ._2pi8 {
         margin-left: -50%;  
     }
 }
+
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+    .close-comments {
+        left: unset;
+        right: 10px;
+    }
+
+    .plyr video {
+        object-fit: contain;
+    }
+}
+
+
+
 
 `;

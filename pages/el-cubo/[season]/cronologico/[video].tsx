@@ -52,7 +52,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
 
     let character;
     let chronologyList = [];
-    if (chronology) {
+    if (chronology && chronology.length && personaje) {
       let characterChronology;
       characterChronology = chronology.find((c) => c.field_ec_character === personaje);
       console.log(characterChronology);
@@ -81,7 +81,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
 
               return {
                 id: episodeView[0].nid,
-                link: `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${personaje}&modo=${modo}`,
+                link: `/el-cubo/temporada-1/cronologico/${episodeView[0].nid}?personaje=${personaje}&modo=${modo}`,
                 name: episode.field_ec_title,
                 active: isActive,
                 image: episodeView[0].field_ec_video_preview,
@@ -113,7 +113,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
             return {
               name,
               active: personaje === character,
-              link: `/el-cubo/temporada-1/${episodeView[0].nid}?personaje=${character}&modo=cronologico`,
+              link: `/el-cubo/temporada-1/cronologico/${episodeView[0].nid}?personaje=${character}&modo=cronologico`,
             };
           });
           setCharacterList(characterList);
@@ -164,7 +164,7 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
 
 
     }
-  }, [chronology]);
+  }, [chronology, personaje]);
 
   const handleBackClick = React.useCallback(() => {
     const index = chronologyList.findIndex((el) => el.id === video);
@@ -209,52 +209,52 @@ const VideoPage = ({ title, video, srcVideo, poster }) => {
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-            <>
-              <div className="header-top">
-                <div className="header-top-inner">
-                  <nav className="nav">
-                    <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
-                      <img className="icon-change" src="/images/icon-change-char2.svg" />
-                    </a>
+          <>
+            <div className="header-top">
+              <div className="header-top-inner">
+                <nav className="nav">
+                  <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
+                    <img className="icon-change" src="/images/icon-change-char2.svg" />
+                  </a>
 
-                    <a href="#" title="Cronología" className="toggle-chrono-mobile menu-elcubo">
-                      <img className="icon-change" src="/images/icon-wall-clock.svg" />
-                    </a>
+                  <a href="#" title="Cronología" className="toggle-chrono-mobile menu-elcubo">
+                    <img className="icon-change" src="/images/icon-wall-clock.svg" />
+                  </a>
 
-                  </nav>
-                </div>
+                </nav>
               </div>
+            </div>
 
-              <h2 className="steal_title">{videoTitle}</h2>
-              <img className="steal" src={poster} />
+            <h2 className="steal_title">{videoTitle}</h2>
+            <img className="steal" src={poster} />
 
-              <CharacterSelector list={characterList} />
-              {startVideo ?
-                <FullPlayerWrapper>
-                  <VideoPlayer
-                    showBackButton
-                    backLink="/el-cubo/temporada-1/personajes"
-                    title={videoTitle}
-                    // poster={poster}
-                    source={srcVideo}
-                    onBackClick={handleBackClick}
-                    onNextClick={handleNextClick}
-                    onChaptersClick={handleChapterClick}
-                    chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
-                    showPrevButton={showPrevButton}
-                    showNextButton={showNextButton}
-                    onVideoEnded={handleVideoEnded}
-                  >
-                    {showChapters && modo === 'cronologico' && chronology && (
-                      <PlayerChronology character={character} chronology={chronologyList} />
-                    )}
-                  </VideoPlayer>
-                </FullPlayerWrapper>
-                :
-                null
-              }
-            </>
-          )}
+            <CharacterSelector list={characterList} />
+            {startVideo ?
+              <FullPlayerWrapper>
+                <VideoPlayer
+                  showBackButton
+                  backLink="/el-cubo/temporada-1/personajes"
+                  title={videoTitle}
+                  // poster={poster}
+                  source={srcVideo}
+                  onBackClick={handleBackClick}
+                  onNextClick={handleNextClick}
+                  onChaptersClick={handleChapterClick}
+                  chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
+                  showPrevButton={showPrevButton}
+                  showNextButton={showNextButton}
+                  onVideoEnded={handleVideoEnded}
+                >
+                  {showChapters && modo === 'cronologico' && chronology && (
+                    <PlayerChronology character={character} chronology={chronologyList} />
+                  )}
+                </VideoPlayer>
+              </FullPlayerWrapper>
+              :
+              null
+            }
+          </>
+        )}
       </Container>
 
       <div className="pane pane-chrono-mobile">
@@ -291,7 +291,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const { params } = context;
   const chapter = await fetch(`/api/v1/elcubo/season/4731/episode/${params.video}`);
 
-  let srcVideoId = chapter[0] ?.field_ec_asset_id;
+  let srcVideoId = chapter[0]?.field_ec_asset_id;
   const srcVideo = srcVideoId
     //? `https://rtvcplay-media-content.s3.amazonaws.com/vod-content/${srcVideoId}/${srcVideoId}.m3u8`
     ? `https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:${srcVideoId}.smil/playlist.m3u8`
@@ -301,7 +301,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       title: chapter[0].title,
       video: params.video,
       srcVideo: srcVideo || null,
-      poster: chapter[0] ?.field_ec_video_preview || null,
+      poster: chapter[0]?.field_ec_video_preview || null,
     }, // will be passed to the page component as props
     revalidate: 900,
   };

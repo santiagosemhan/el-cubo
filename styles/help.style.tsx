@@ -50,7 +50,7 @@ body {
   transition: opacity 0.5s ease;
   will-change: opacity;
   font-family: Inter;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -223,17 +223,24 @@ body {
 }
 
 .help-wrapper .button {
-  width: 100px;
   cursor: pointer;
-  padding: 7px 15px;
+  padding: 8px 8px;
   border-radius: 30px;
-  border: 2px solid #45b4c1;
+  border: 1px solid #45b4c1;
   color: #45b4c1;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
+  -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
   background: transparent;
   outline: none;
+  width: 90px;
+  letter-spacing: 0.22px;
+}
+
+.help-wrapper .button:hover {
+  background: #56EBFD;
+  color: #192538;
 }
 
 .help-wrapper .help-step {
@@ -312,13 +319,13 @@ body {
   margin: auto;
   background-color: #45b4c1;
   color: black;
-  width: 260px;
+  width: 180px;
   float: left;
   position: relative;
 }
 
 .help-wrapper button#validate:hover {
-  background-color: #45b4c1;
+  background-color: #56EBFD;
   color: black;
 }
 
@@ -443,7 +450,7 @@ body {
   }
 
   .help-wrapper .button {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .help-wrapper .step-l #previous {

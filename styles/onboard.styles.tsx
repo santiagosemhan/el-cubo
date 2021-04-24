@@ -26,7 +26,7 @@ body {
     /* Center Content */
     display: grid;
     justify-content: center;
-    align-content: center;
+    align-content: end;
     background: rgba(0, 0, 0, 0.6);
 }
 
@@ -42,19 +42,22 @@ body {
 .copy p {
     color: white;
     font-size: 26px;
-    font-weight: 400;
+    font-weight: light;
     font-family: 'Inter';
     letter-spacing: -1px;
+    float: left;
+    margin-bottom: 35px;
+    width: 100%;
 }
 
 .copy .cover-link {
-    width: 186px;
+    width: 196px;
     margin: auto;
 }
 
 .cover-link a {
     border: 1px solid rgb(26, 40, 57);
-    padding: 3px 10px 0px 30px;
+    padding: 3px 10px 3px 18px;
     border-radius: 30px;
     font-weight: 500;
     font-family: Inter;
@@ -66,6 +69,7 @@ body {
     font-size: 20px;
     line-height: 2.2em;
     float: left;
+    letter-spacing: 0.3px;
 }
 
 .cover-link a img {
@@ -79,14 +83,15 @@ body {
 }
 
 .onboard .copy {
-    margin-top: 30vh;
+    margin-bottom: 140px;
+    letter-spacing: -1px;
 }
 
 .copy-phrase {
-    font-size: 40px;
-    margin-bottom: 10px;
+    font-size: 38px;
     line-height: 1.2;
     float: left;
+    font-weight: 400;
     width: 100%;
 }
 
@@ -103,6 +108,48 @@ body {
     background-color: rgb(69, 180, 193);
     color: rgb(26, 40, 57);
 }
+
+.button-cyan:hover {
+    background-color: rgb(83, 235, 253);
+}
+
+.copy .p-winner {
+    font-size: 22px;
+    margin-top: 0;
+}
+
+.p-winner a {
+    color: #45B4C1;
+    text-decoration: none;
+}
+
+.p-winner a:hover {
+    color: rgb(83, 235, 253);
+}
+
+
+@media only screen and (min-width: 1024px) {
+    .onboarding-chrono .copy {
+        width: 800px;
+    }
+
+    .onboarding-laberynth .copy {
+        width: 800px;
+    }
+
+    .onboarding-laberynth .copy p {
+        font-size: 36px;
+    }
+
+    .onboarding-reflexivo .copy {
+        width: 650px;
+    }
+
+    .onboarding-laberynth .copy .p-winner {
+        font-size: 22px;
+    }
+}
+
 
 
 /* Cronologia */
@@ -133,6 +180,10 @@ body {
 
     .copy-phrase {
         font-size: 22px;
+    }
+
+    .onboard .copy {
+        margin-bottom: 40px;
     }
 }
 

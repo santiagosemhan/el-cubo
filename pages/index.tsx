@@ -272,40 +272,41 @@ export default function Home({ data }) {
       <Container>
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
+        <div>
+          <audio id="track" /*autoPlay*/>
+            <source src="/audios/intro.mp3" type="audio/mpeg" />
+          </audio>
+
+          <div id="audio-player-container">
+            <div id="play-pause" className="play no-link">
+              <div className="column-1">
+                <span className="mute hide play-text">
+                  silenciar</span>
+                <span className="listen play-text">
+                  escuchar</span>
+              </div>
+              <div className="column-2">
+                <div className="Sound off">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div className="header-top header-temporal">
           <div className="header-top-inner">
             <div className="logo-elcubo" onMouseEnter={() => setBigMouse(false)}>
-              <a href="https://elcubo.vercel.app/" className="logo--link no-link">
+              <a href="/" className="logo--link no-link">
                 <img className="logo--image" src="/images/logo2021.png" />
               </a>
-
-              <div>
-                <audio id="track" /*autoPlay*/>
-                  <source src="/audios/intro.mp3" type="audio/mpeg" />
-                </audio>
-
-                <div id="audio-player-container">
-                  <div id="play-pause" className="play no-link">
-                    <div className="column-1">
-                      <span className="mute hide play-text">
-                        silenciar</span>
-                      <span className="listen play-text">
-                        escuchar</span>
-                    </div>
-                    <div className="column-2">
-                      <div className="Sound off">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
+
           </div>
         </div>
 
@@ -576,6 +577,8 @@ export default function Home({ data }) {
 
 }
 
+
+
 export const getStaticProps: GetStaticProps = async (context) => {
   const data = await fetch(`/api/v1/el-cubo/page/5364`);
 
@@ -595,6 +598,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
+
 
 
 

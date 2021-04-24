@@ -103,7 +103,9 @@ const LabyrinthNode = ({ data }) => {
                     if (time_comments) {
                         settime(time_comments);
                         const controls = document.querySelector('.plyr__progress');
-                        controls.appendChild(createSquare('marker'));
+                        if (document.querySelector('.marker') == null) {
+                            controls.appendChild(createSquare('marker'));
+                        }
                     }
                 });
                 player.on('ended', event => {
@@ -217,18 +219,20 @@ const LabyrinthNode = ({ data }) => {
 
         // Fix mobile Tap play/pause
         const { wrapper, container } = player.elements
-        if (!container._clickListener) {
-            container._clickListener = event => {
-                const targets = [container, wrapper]
+        if (container) {
+            if (!container._clickListener) {
+                container._clickListener = event => {
+                    const targets = [container, wrapper]
 
-                // Ignore if click if not container or in video wrapper
-                if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
-                    return
+                    // Ignore if click if not container or in video wrapper
+                    if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+                        return
+                    }
+
+                    if (player.touch) player.togglePlay()
                 }
-
-                if (player.touch) player.togglePlay()
+                container.addEventListener('click', container._clickListener)
             }
-            container.addEventListener('click', container._clickListener)
         }
 
         if (button_open) {
@@ -311,7 +315,7 @@ const LabyrinthNode = ({ data }) => {
                 <title>Laberinto - El cubo</title>
             </Head>
 
-            <BackToCharacters />
+            <BackToCharacters text={'Volver a elegir personajes'} />
             <LabVideoPlayer data={data} />
 
         </AppLayout>

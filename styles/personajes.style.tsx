@@ -261,12 +261,19 @@ footer {
 .characters .pane-content a {
     width: 60px;
     border-radius: 30px;
-    line-height: 1em;
-    padding: 8px 20px;
+    line-height: 1.2;
+    padding: 10px 20px 12px 20px;
     background: #45B4C1;
     color: #1A2839;
+    -webkit-text-decoration: none;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 500;
+    letter-spacing: 0.3;
+    font-size: 18px;
+}
+
+.characters .pane-content a:hover {
+    background: #56EBFD;
 }
 
 .characters .pane a.close {
@@ -804,6 +811,11 @@ a {
     .characters .pane.open {
         width: 320px;
     }
+        
+    .app-elcubo .help-wrapper .modal.step-l .modal__content {
+        top: 160px; 
+    }
+      
 }
 
 
