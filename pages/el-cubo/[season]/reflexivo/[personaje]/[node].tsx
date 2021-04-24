@@ -97,7 +97,22 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           el.style.opacity = val;
           setTimeout(fade, pTime);
         }
+        else {
+          el.style.opacity = 1;
+        }
       })();
+    };
+
+    const createTitle = (pTitle) => {
+      let plyr_title = document.createElement('h2');
+      plyr_title.setAttribute('class', 'plyr_title');
+      plyr_title.innerHTML = pTitle;
+      return plyr_title;
+    };
+
+    const removeTitleVideo = () => {
+      let elms = document.querySelectorAll('.plyr_title');
+      elms.forEach(el => el.remove());
     };
 
     const loadPlayer = (sURL) => {
@@ -111,6 +126,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           language: 'en',
         },
         controls: [
+          'play-large',
           'play',
           'progress',
           'current-time',
@@ -129,11 +145,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         hls.attachMedia(video);
         window.hls = hls;
         window.player = player;
-        // Handle changing captions
-        player.on('languagechange', () => {
-          // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-          setTimeout(() => (hls.subtitleTrack = player.currentTrack), 50);
-        });
+
         player.on('ended', function () {
           //pane_cover.classList.toggle('visible');
           pane.classList.toggle('open');
@@ -146,9 +158,19 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             document.getElementsByClassName('characters')[0].classList.add('is-viewed');
           }
         });
+
+        // Show Hide Title
+        player.on('controlsshown', () => {
+          document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+        });
+        player.on('controlshidden', () => {
+          document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+        });
+
       }
       return player;
     };
+
 
     if (button_open) {
       button_open.forEach((link) => {
@@ -158,6 +180,13 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           pane.dataset.relation = link.dataset.relation;
           pane_video.classList.toggle('visible');
           fadeIn(pane, 40);
+
+
+          removeTitleVideo();
+          // Add title plyr
+          const controls_extra = document.querySelector('.plyr--video');
+          controls_extra.prepend(createTitle(link.dataset.title));
+
           player.play();
           //document.querySelector('video').setAttribute('src', '');
           // Hide temp progress

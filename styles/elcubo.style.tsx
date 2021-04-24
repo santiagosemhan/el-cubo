@@ -2166,6 +2166,12 @@ footer {
     }
   }
   
+
+  .plyr__control--overlaid.hide;
+  .plyr__controls.hide,
+  .plyr__extra_controls.hide {
+      display: none;
+  }
   @media (min-width: 1024px) {
     .plyr--video .plyr__controls {
         padding-left: 30px;
