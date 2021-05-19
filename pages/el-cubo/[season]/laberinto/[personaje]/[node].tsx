@@ -242,8 +242,6 @@ const LabyrinthNode = ({ data }) => {
                     pane.classList.remove('is-hidden');
                     document.querySelectorAll('.close')[0].classList.remove('hide');
                     if (time_comments) {
-                        comment_init = false;
-                        comment_end = false;
                         settime(time_comments);
                     }
                     player.play();

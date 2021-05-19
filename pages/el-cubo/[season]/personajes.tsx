@@ -577,7 +577,7 @@ const CharactersPage = ({ data = {} }) => {
                 </div>
                 <div className="pane-video">
                   <img className="bg-video" src="/images/bg-video.png" />
-                  <video id="video1" width="420">
+                  <video id="video1" width="420" webkit-playsinline="true" playsinline="true">
                     <source src="" type="video/mp4" data-personaje="" /> Your browser does not
                       support HTML video.
                   </video>

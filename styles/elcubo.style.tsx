@@ -795,6 +795,8 @@ h2 {
     margin-top: 20px;
     padding-left: 18px;
     margin-bottom: 50px;
+    float: left;
+    width: 100%;
 }
 
 .hero-3 ol li {

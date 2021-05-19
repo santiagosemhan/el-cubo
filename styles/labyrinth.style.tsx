@@ -555,7 +555,7 @@ body {
     right: -110vw;
     padding: 1rem 2rem;
     height: 100vh;
-    width: 330px;
+    width: 360px;
     background: white;
     -webkit-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
     -moz-box-shadow: -58px 0px 66px 0px rgba(69, 180, 193, 0.1);
@@ -627,6 +627,7 @@ iframe ._2pi8 {
     position: absolute;
     top: 60px;
     left: 20px;
+    padding: 0;
 }
 
 .spinner {
@@ -724,6 +725,10 @@ iframe ._2pi8 {
 
     .plyr video {
         object-fit: contain;
+    }
+
+    .pane-comments {
+        width: 330px;
     }
 }
 
