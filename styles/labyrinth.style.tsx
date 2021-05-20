@@ -230,10 +230,6 @@ body {
     opacity: 0;
 }
 
-.plyr--video .plyr__controls {
-    padding-left: 35px;
-    padding-right: 35px;
-}
 
 @media (min-width: 1024px) {
     .plyr--video .plyr__controls {
@@ -243,25 +239,25 @@ body {
 }
 
 /* Plyr Color */
-.plyr--full-ui input[type='range'] {
+.pane-video .plyr--full-ui input[type='range'] {
     color: #45b4c1;
   }
 
-  .plyr__control--overlaid {
+  .pane-video .plyr__control--overlaid {
     background: rgba(69, 180, 193, 0.5);
   }
 
-  .plyr--video .plyr__control.plyr__tab-focus,
-  .plyr--video .plyr__control:hover,
-  .plyr--video .plyr__control[aria-expanded='true'] {
+  .pane-video .plyr--video .plyr__control.plyr__tab-focus,
+  .pane-video .plyr--video .plyr__control:hover,
+  .pane-video .plyr--video .plyr__control[aria-expanded='true'] {
     background: #45b4c1;
   }
 
-  .plyr__control.plyr__tab-focus {
+  pane-video .plyr__control.plyr__tab-focus {
     box-shadow: 0 0 0 5px rgba(#45b4c1, 0.5);
   }
 
-  .plyr__menu__container .plyr__control[role='menuitemradio'][aria-checked='true']::before {
+  .pane-video .plyr__menu__container .plyr__control[role='menuitemradio'][aria-checked='true']::before {
     background: #45b4c1;
   }
 
@@ -269,8 +265,15 @@ body {
 .steal {
     position: absolute;
     z-index: 10;
-    left: -15%;
-    width: 130%;
+    height: 100vh;
+    width: 100%;
+}
+
+.steal img {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
 }
 
 .steal.black {
@@ -314,16 +317,13 @@ body {
 @media screen and (max-width: 1200px) {
     .header-top .nav {
         left: 15px;
+        top: 15px;
     }
     .icon-replay.icon-cover,
     .icon-cover img {
         width: 42px;
     }
-    .steal {
-        position: absolute;
-        left: -15%;
-        width: 130%;
-    }
+
     .steal_title,
     .plyr_title {
         font-size: 22px;
@@ -332,6 +332,13 @@ body {
     .pulse-text {
         font-size: 12px;
     }
+
+    .plyr--video .plyr__controls {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 62px;
+    }
+
 }
 
 .plyr__control--overlaid {
@@ -552,7 +559,7 @@ body {
 .pane-comments {
     position: fixed;
     top: 0;
-    right: -110vw;
+    right: -125vw;
     padding: 1rem 2rem;
     height: 100vh;
     width: 360px;
@@ -659,6 +666,47 @@ iframe ._2pi8 {
     animation-delay: -0.16s;
 }
 
+/* Button Reward */
+
+.cover-reward {
+    position: absolute;
+    left: 38%;
+    bottom: 25%;
+}
+
+.button-cyan {
+    background-color: rgb(69, 180, 193);
+    color: rgb(26, 40, 57);
+}
+
+.button-cyan:hover {
+    background-color: rgb(83, 235, 253);
+}
+
+.cover-link a {
+    border: 1px solid rgb(26, 40, 57);
+    padding: 3px 10px 3px 18px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-family: Inter;
+    text-decoration: none;
+    float: left;
+}
+
+.cover-link a span {
+    font-size: 20px;
+    line-height: 2.2em;
+    float: left;
+    letter-spacing: 0.3px;
+}
+
+.cover-link a img {
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+
+
 @-webkit-keyframes sk-bouncedelay {
     0%,
     80%,
@@ -702,6 +750,21 @@ iframe ._2pi8 {
     width: 100% !important; 
 }
 
+@media screen and (max-width: 1200px) {
+    .header-top .nav {
+        left: 15px;
+        top: 15px;
+    }
+    .steal_title, .plyr_title {
+        font-size: 22px;
+        left: 20px;
+    }
+
+    .plyr--video .plyr__controls {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     .plyr .plyr__video-wrapper  video {
@@ -709,13 +772,7 @@ iframe ._2pi8 {
     }
 }
 
-@media only screen and (max-width: 1024px) and (orientation: portrait) {
-    .steal {
-        height: 100vh;
-        width: auto;
-        margin-left: -50%;  
-    }
-}
+
 
 @media only screen and (max-width: 480px) and (orientation: portrait) {
     .close-comments {
@@ -727,12 +784,66 @@ iframe ._2pi8 {
         object-fit: contain;
     }
 
-    .pane-comments {
-        width: 330px;
+    .cover-link a span {
+        font-size: 14px;
+    }
+
+    .cover-link a img {
+        width: 25px;
+    }
+
+    .cover-reward {
+        bottom: 35%;
+    }
+
+    .cover-reward .cover-link {
+        padding: 0;
+    }
+
+    .cover-reward .cover-link a {
+        padding-left: 10px;
+        padding-right: 3px;
+    }
+
+    .plyr--video .plyr__controls {
+        padding-bottom: 82px;
     }
 }
 
 
+/* Custom Node End for Characters */
 
+/* Alba */
+.node_6438 .cover-reward {
+    left: 5%;
+}
+
+/* Carey */
+.node_6503 .cover-reward {
+    left: 55%;
+}
+
+/* Marina */
+.node_6471  .cover-reward,
+.node_6472  .cover-reward {
+    left: 49.5%;
+}
+
+/* ELvira */
+.node_6450 .cover-reward {
+    left: 60%;
+}
+
+/* Mercado */
+.node_5622 .cover-reward {
+    left: 20%;
+    bottom: 30%;
+}
+
+/* Sales */
+.node_6481 .cover-reward {
+    right: 18%;
+    left: unset;
+}
 
 `;

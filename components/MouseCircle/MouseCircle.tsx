@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { StyledMouseCircle } from './MouseCircle.style';
 
-const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text }) => {
+const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text, showLoginPanel }) => {
   const ref = React.useRef();
   const [isMobile] = useState(!window.matchMedia('(min-width: 768px)').matches);
+
+  const handleOnClick = (e) => {
+    e.preventDefault();
+    if (href === '#') {
+      showLoginPanel(true);
+    } else {
+      window.location.href = href;
+    }
+  }
 
   React.useEffect(() => {
     // Cursor
@@ -39,15 +48,12 @@ const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text })
     !isMobile && (
       <StyledMouseCircle
         ref={ref}
-        className={`
-          ${isBig ? 'big' : ''}
-          ${!show ? 'is-hidden' : ''}
-        `}
+        className={`${isBig ? 'big' : ''}${!show ? 'is-hidden' : ''}`}
         onMouseMove={(e) => e.stopPropagation()}
       >
         {!noLink ? (
           <span>
-            <a href={href}>{text}</a>
+            <a onClick={handleOnClick} className="mouse_pointer" href={href}>{text}</a>
           </span>
         ) : (
           ''

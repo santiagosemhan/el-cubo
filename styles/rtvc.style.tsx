@@ -3094,7 +3094,6 @@ body {
 @media (min-width: 1024px) {
   .fUzcQc {
     height: 55px;
-    border-right: 1px solid rgba(180, 180, 180, 0.5);
   }
 }
 
@@ -4359,6 +4358,15 @@ body {
     -webkit-transform: translatex(0);
     -ms-transform: translatex(0);
     transform: translatex(0);
+  }
+}
+
+
+/* Header mobile */
+@media (max-width: 1024px) {
+  .input-search,
+  #menu-mobile-button {
+    display: none;
   }
 }
 

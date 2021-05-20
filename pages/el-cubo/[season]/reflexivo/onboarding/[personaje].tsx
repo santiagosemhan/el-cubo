@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppLayout from 'layouts/AppLayout';
 import Head from 'next/head';
-
 import fetcher from 'libs/fetcher';
-
 import { NavLabyrinthStyles } from 'styles/navlabyrinth.style';
 import { OnboardStyles } from 'styles/onboard.styles';
+import CharacterOnboarding from 'components/Reflexive/CharacterOnboarding';
+import BackToCharacters from 'components/Labyrinth/BackToCharacters';
+import Characters from 'constants/Characters';
+import UserService from 'services/User';
+import AuthService from 'services/Auth';
+import { season1_id } from 'constants/Season';
 
-import CharacterOnboarding from '../../../../../components/Reflexive/CharacterOnboarding';
-import BackToCharacters from '../../../../../components/Labyrinth/BackToCharacters';
+const CharacterPage = ({ character, bgImage, bgImage980 }) => {
 
-const CharacterPage = ({ character, node, bgImage }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const isLoggedIn = AuthService.isLoggedIn();
+  const [hasReward, setHasReward] = useState(null);
+
+  const getUserRewards = async () => {
+    try {
+      const { data } = await UserService.getMe();
+      const readNodesString = data.elcubo_reflexivo;
+      const readNodesJSON = JSON.parse(readNodesString);
+      let reward = false;
+      if (readNodesJSON) {
+        reward = readNodesJSON[character].reward;
+      }
+      setHasReward(reward);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      getUserRewards();
+    }
+  }, []);
+
+  useEffect(() => {
+    const setWindowSize = !window.matchMedia('(min-width: 1024px)').matches;
+    setIsSmallScreen(setWindowSize);
+  }, []);
+
   return (
     <AppLayout onlyContent>
       <Head>
@@ -18,25 +50,21 @@ const CharacterPage = ({ character, node, bgImage }) => {
       </Head>
       <NavLabyrinthStyles />
       <OnboardStyles />
-
       <BackToCharacters text={'Volver a elegir personajes'} />
-      <CharacterOnboarding character={character} node={node} bgImage={bgImage} />
+      <CharacterOnboarding character={character} hasReward={hasReward} bgImage={isSmallScreen ? bgImage980 : bgImage} />
     </AppLayout>
   );
 };
 
 export async function getStaticPaths() {
-  // TODO: Cargar desde la api los personajes
-  const personajes = ['alba', 'carey', 'marina', 'mercado', 'elvira', 'sales'];
   return {
-    paths: personajes.map((personaje) => ({ params: { season: 'temporada-1', personaje } })),
+    paths: Characters.map((personaje) => ({ params: { season: 'temporada-1', personaje } })),
     fallback: false,
   };
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const initialNodes = await fetcher('/api/v1/elcubo/season/4731/labyrinth');
-
+  const initialNodes = await fetcher(`/api/v1/elcubo/season/${season1_id}/labyrinth`);
   const characterNode = initialNodes.filter((node) => {
     const nodeData = JSON.parse(node.character_json);
     return (
@@ -48,15 +76,17 @@ export const getStaticProps: GetStaticProps = async (context) => {
         .toLowerCase() === context.params.personaje
     );
   });
-
   const characterJson = JSON.parse(characterNode[0].character_json);
-  const bgImage = characterJson[0].field_ec_image_bg_lab;
+  const bgImage = characterJson[0].field_ec_image_bg_reflex;
+  const bgImage980 = characterJson[0].field_ec_image_bg_reflex_980;
+
+  console.log('INFO DEL USER', characterJson[0]);
 
   return {
     props: {
       character: context.params.personaje,
-      node: characterNode[0].node_labyrinth_id,
       bgImage,
+      bgImage980,
     },
   };
 };

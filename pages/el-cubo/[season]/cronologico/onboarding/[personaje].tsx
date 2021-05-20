@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppLayout from 'layouts/AppLayout';
 import Head from 'next/head';
-
 import fetcher from 'libs/fetcher';
-
 import { NavLabyrinthStyles } from 'styles/navlabyrinth.style';
 import { OnboardStyles } from 'styles/onboard.styles';
-
 import CharacterOnboarding from '../../../../../components/Chronological/CharacterOnboarding';
 import BackToCharacters from '../../../../../components/Labyrinth/BackToCharacters';
+import Characters from 'constants/Characters';
+import { season1_id } from 'constants/Season';
 
-const CharacterPage = ({ character, node, bgImage }) => {
+const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
+
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  React.useEffect(() => {
+    const setWindowSize = !window.matchMedia('(min-width: 1024px)').matches;
+    setIsSmallScreen(setWindowSize);
+  }, []);
 
   return (
     <AppLayout onlyContent>
@@ -21,22 +27,20 @@ const CharacterPage = ({ character, node, bgImage }) => {
       <OnboardStyles />
 
       <BackToCharacters text={'Volver a elegir personajes'} />
-      <CharacterOnboarding node={node} bgImage={bgImage} />
+      <CharacterOnboarding node={node} bgImage={isSmallScreen ? bgImage980 : bgImage} />
     </AppLayout>
   );
 };
 
 export async function getStaticPaths() {
-  // TODO: Cargar desde la api los personajes
-  const personajes = ['alba', 'carey', 'marina', 'mercado', 'elvira', 'sales'];
   return {
-    paths: personajes.map((personaje) => ({ params: { season: 'temporada-1', personaje } })),
+    paths: Characters.map((personaje) => ({ params: { season: 'temporada-1', personaje } })),
     fallback: false,
   };
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const initialNodes = await fetcher('/api/v1/elcubo/season/4731/chrono');
+  const initialNodes = await fetcher(`/api/v1/elcubo/season/${season1_id}/chrono`);
 
   const characterNode = initialNodes.filter((node) => {
     const nodeData = JSON.parse(node.field_ec_character_term_json);
@@ -51,12 +55,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
   });
   const characterJson = JSON.parse(characterNode[0].field_ec_character_term_json);
   const bgImage = characterJson[0].field_ec_image_bg_chrono;
+  const bgImage980 = characterJson[0].field_ec_image_bg_chrono_980;
 
   return {
     props: {
       character: context.params.personaje,
       node: characterNode[0],
       bgImage,
+      bgImage980,
     },
   };
 };

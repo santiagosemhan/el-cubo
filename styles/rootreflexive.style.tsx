@@ -45,8 +45,6 @@ body {
     }
 }
 
-
-
 .characters {
     width: 100%;
     height: 100vh;
@@ -516,6 +514,14 @@ img.img-color {
     .plyr--video .plyr__controls {
         padding-left: 30px;
         padding-right: 30px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .plyr--video .plyr__controls {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 62px;
     }
 }
 

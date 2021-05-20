@@ -10,7 +10,7 @@ import { VideoPlayerWrapper } from './VideoPlayer.style';
 
 const VideoPlayer = ({
   source,
-  poster,
+  poster = null,
   title,
   showBackButton = false,
   backLink = '/',
@@ -34,12 +34,10 @@ const VideoPlayer = ({
 
   React.useEffect(() => {
     const video: HTMLMediaElement = videoRef.current;
-    function updateQuality(newQuality) {
+    const updateQuality = (newQuality) => {
       if (window.hls) {
         window.hls.levels.forEach((level, levelIndex) => {
-          console.log(level.height, newQuality);
           if (level.height === newQuality) {
-            console.log('Found quality match with ' + newQuality);
             window.hls.currentLevel = levelIndex;
           }
         });
@@ -115,24 +113,28 @@ const VideoPlayer = ({
     if (!HLS.isSupported()) {
       video.src = source;
     } else {
-      // For more Hls.js options, see https://github.com/dailymotion/hls.js
       const hls = new HLS();
       hls.loadSource(source);
       hls.attachMedia(video);
       window.hls = hls;
-      // Handle changing captions
-      // player.on('languagechange', () => {
-      //   // Caption support is still flaky. See: https://github.com/sampotts/plyr/issues/994
-      //   setTimeout(() => (hls.subtitleTrack = player.currentTrack), 50);
-      // });
-
-
+      const { wrapper, container } = playerRef.current.elements;
+      if (container) {
+        if (!container._clickListener) {
+          container._clickListener = (event) => {
+            const targets = [container, wrapper];
+            if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+              return;
+            }
+            if (playerRef.current.touch) playerRef.current.togglePlay();
+          };
+          container.addEventListener('click', container._clickListener);
+        }
+      }
       playerRef.current.on('ended', function () {
         document.getElementsByClassName('plyr__control--overlaid')[0].remove();
         document.getElementsByClassName('plyr__controls')[0].classList.add('hide');
         document.getElementsByClassName('plyr__extra_controls')[0].classList.add('hide');
       });
-
     }
     const container: HTMLElement = wrapperRef.current;
 
@@ -151,10 +153,9 @@ const VideoPlayer = ({
       const controls = container.getElementsByClassName('plyr__portal')[0];
       controls.insertAdjacentHTML(
         'afterend',
-        `
-          <button class="back-to-season">
+        ` <button class="back-to-season">
             <img src="/images/icon-arrow-back.svg" />
-            <span>Volver al inicio</span>
+            <span>Volver a elegir personajes</span>
           </button>
         `,
       );
@@ -169,121 +170,88 @@ const VideoPlayer = ({
     );
   }, []);
 
-  React.useEffect(
-    () => {
-      // const plyr = container.getElementsByClassName('plyr')[0];
-      const portal = document.getElementById('plyr__portal');
-      ReactDOM.render(children, portal);
-    },
-    [children],
-  );
+  React.useEffect(() => {
+    const portal = document.getElementById('plyr__portal');
+    ReactDOM.render(children, portal);
+  }, [children]);
 
-  React.useEffect(
-    () => {
-      const container: HTMLElement = wrapperRef.current;
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
 
-      const listener = (event) => {
-        const { plyr } = event.target.dataset;
-        if (plyr) {
-          if (plyr === 'chapters') onChaptersClick && onChaptersClick();
-          if (plyr === 'back') onBackClick && onBackClick();
-          if (plyr === 'next') onNextClick && onNextClick();
-        }
-      };
-      container.addEventListener('click', listener);
+    const listener = (event) => {
+      const { plyr } = event.target.dataset;
+      if (plyr) {
+        if (plyr === 'chapters') onChaptersClick && onChaptersClick();
+        if (plyr === 'back') onBackClick && onBackClick();
+        if (plyr === 'next') onNextClick && onNextClick();
+      }
+    };
+    container.addEventListener('click', listener);
 
-      return () => container.removeEventListener('click', listener);
-    },
-    [onChaptersClick, onBackClick, onNextClick],
-  );
+    return () => container.removeEventListener('click', listener);
+  }, [onChaptersClick, onBackClick, onNextClick]);
 
-  React.useEffect(
-    () => {
-      const container: HTMLElement = wrapperRef.current;
-      const playControl = container.querySelector('[data-plyr="play"]');
-      playControl.insertAdjacentHTML(
-        'afterend',
-        `
-        ${
-        showPrevButton
-          ? `<button class="plyr__controls__item plyr__control back" data-plyr="back" title="Anterior">
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
+    const playControl = container.querySelector('[data-plyr="play"]');
+    playControl.insertAdjacentHTML(
+      'afterend',
+      `
+        ${showPrevButton
+        ? `<button class="plyr__controls__item plyr__control back" data-plyr="back" title="Anterior">
               <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1.04907e-06 8L9.75 1.0718L9.75 14.9282L1.04907e-06 8Z" fill="white"/>
                 <path d="M10 8L19.75 1.0718L19.75 14.9282L10 8Z" fill="white"/>
               </svg>        
           </button>`
-          : ''
-        } 
-        ${
-        showNextButton
-          ? `<button class="plyr__controls__item plyr__control next" data-plyr="next" title="Siguiente">
+        : ''
+      } 
+        ${showNextButton
+        ? `<button class="plyr__controls__item plyr__control next" data-plyr="next" title="Siguiente">
             <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M23 8L13.25 14.9282L13.25 1.0718L23 8Z" fill="white"/>
               <path d="M13 8L3.25 14.9282L3.25 1.0718L13 8Z" fill="white"/>
             </svg>
           </button>`
-          : ''
-        } 
+        : ''
+      } 
       `,
-      );
-    },
-    [showPrevButton, showNextButton],
-  );
+    );
+  }, [showPrevButton, showNextButton]);
 
-  React.useEffect(
-    () => {
-      const container: HTMLElement = wrapperRef.current;
-      if (title) {
-        const controls = container.getElementsByClassName('plyr__portal')[0];
-        controls.insertAdjacentHTML('afterend', `<h2 class="plyr__portal__title">${title}</h2>`);
-      }
-    },
-    [title],
-  );
-
-  /*
   React.useEffect(() => {
     const container: HTMLElement = wrapperRef.current;
-    const controls = container.getElementsByClassName('plyr__portal')[0];
-    controls.insertAdjacentHTML('afterend', `<a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
-      <img className="icon-change" src="/images/icon-change-char2.svg" /></a>`);
-  }, []);
-  */
+    if (title) {
+      const controls = container.getElementsByClassName('plyr__portal')[0];
+      controls.insertAdjacentHTML('afterend', `<h2 class="plyr__portal__title">${title}</h2>`);
+    }
+  }, [title]);
 
-  React.useEffect(
-    () => {
-      const container: HTMLElement = wrapperRef.current;
-      const chaptersButton = container.querySelector('[data-plyr="chapters"]');
-      chaptersButton.innerHTML = chapterButtonName;
-    },
-    [chapterButtonName],
-  );
+  React.useEffect(() => {
+    const container: HTMLElement = wrapperRef.current;
+    const chaptersButton = container.querySelector('[data-plyr="chapters"]');
+    chaptersButton.innerHTML = chapterButtonName;
+  }, [chapterButtonName]);
 
-  React.useEffect(
-    () => {
-      if (videoRef.current && onVideoEnded) {
-        videoRef.current.onended = onVideoEnded;
+  React.useEffect(() => {
+    if (videoRef.current && onVideoEnded) {
+      videoRef.current.onended = onVideoEnded;
+    }
+    return () => {
+      if (videoRef.current) {
+        videoRef.current.onended = undefined;
       }
-      return () => {
-        if (videoRef.current) {
-          videoRef.current.onended = undefined;
-        }
-      };
-    },
-    [onVideoEnded],
-  );
+    };
+  }, [onVideoEnded]);
 
-  React.useEffect(
-    () => {
-      if (playerRef.current) {
-        playerRef.current.on('controlsshown', onControlsShown);
-        playerRef.current.on('controlshidden', onControlsHidden);
-        playerRef.current.on('playing', onVideoPlaying);
-        playerRef.current.on('pause', onVideoPause);
-      }
-    },
-    [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying],
-  );
+  React.useEffect(() => {
+    if (playerRef.current) {
+      playerRef.current.on('controlsshown', onControlsShown);
+      playerRef.current.on('controlshidden', onControlsHidden);
+      playerRef.current.on('playing', onVideoPlaying);
+      playerRef.current.on('pause', onVideoPause);
+    }
+  }, [onControlsShown, onControlsHidden, onVideoPause, onVideoPlaying]);
 
   return (
     <VideoPlayerWrapper ref={wrapperRef}>

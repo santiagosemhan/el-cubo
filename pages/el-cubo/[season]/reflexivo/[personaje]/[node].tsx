@@ -10,10 +10,12 @@ import BackToCharacters from 'components/Reflexive/BackToCharacters';
 import fetcher from 'libs/fetcher';
 import AuthService from 'services/Auth';
 import UserService from 'services/User';
-import NodesUtils from 'utils/Nodes';
+import ModesUtils from 'utils/Modes';
+import Links from 'constants/Links';
+import { season1_id } from 'constants/Season';
+import UrlUtils from 'utils/Url';
 
 const ReflexiveNode = ({ character, data, nodeId }) => {
-
   const isLoggedIn = AuthService.isLoggedIn();
   const [user, setUser] = useState(null);
   const {
@@ -23,27 +25,32 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
   } = data;
   const answers = JSON.parse(children_answer_json);
   const reflexItemsEpisode = JSON.parse(field_ec_order_reflex_items_json_episode_json);
+  const rewardLink = isLoggedIn ? `/el-cubo/temporada-1/reflexivo/${character.toLowerCase()}/recompensa` : Links.guest;
 
   const updateUser = async (id, data) => {
     await UserService.update(id, data);
   };
 
   React.useEffect(() => {
-    if (user) {
+
+    if (isLoggedIn && user) {
       try {
-        const readNodesString = user.elcubo_reflexivo;
-        const readNodesJSON = JSON.parse(readNodesString);
-        const nodes = NodesUtils.cleanReflexive(readNodesJSON, nodeId);
+        const userReflexiveDataString = user.elcubo_reflexivo;
+        const userReflexiveDataJSON = JSON.parse(userReflexiveDataString);
+        const userReflexiveData = ModesUtils.setCharacterNodesReflexive(userReflexiveDataJSON, character, nodeId, answers);
+
         updateUser(user.id, {
           field_ec_reflexive_data_json: {
-            value: JSON.stringify(nodes)
-          }
+            value: JSON.stringify(userReflexiveData),
+          },
         });
       } catch (error) {
         console.log(error);
       }
     }
-  }, [user]);
+  },
+    [user],
+  );
 
   const getMe = async () => {
     try {
@@ -55,25 +62,30 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
   };
 
   const formatText = (str) => {
-    if ((str === null) || (str === '')) return false;
+    if (str === null || str === '') return false;
     str = str.toString();
-    str = str.replace(/(<([^>]+)>)/ig, '');
+    str = str.replace(/(<([^>]+)>)/gi, '');
     str = str.replace(/  +/g, ' ');
     return str;
   };
 
   React.useEffect(() => {
-    getMe();
+    if (isLoggedIn) {
+      getMe();
+    }
   }, []);
 
   React.useEffect(() => {
-
     // Pane Slide
     const button_open = document.querySelectorAll('.toggle');
     const button_close = document.querySelectorAll('.close');
     const pane = document.querySelector('.pane');
     const pane_video = document.querySelector('.pane-video');
     let player;
+
+    const headerTop = document.querySelectorAll('.header-top')[0];
+    const paneClose = document.querySelectorAll('.close')[0];
+
 
     const fadeOut = (el, pTime) => {
       el.style.opacity = 1;
@@ -96,8 +108,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         if (!((val += 0.07) > 1)) {
           el.style.opacity = val;
           setTimeout(fade, pTime);
-        }
-        else {
+        } else {
           el.style.opacity = 1;
         }
       })();
@@ -112,12 +123,11 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
     const removeTitleVideo = () => {
       let elms = document.querySelectorAll('.plyr_title');
-      elms.forEach(el => el.remove());
+      elms.forEach((el) => el.remove());
     };
 
     const loadPlayer = (sURL) => {
-      let source =
-        'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:' + sURL + '.smil/playlist.m3u8';
+      let source = UrlUtils.getVideoUrl(sURL);
       const video = document.querySelector('video');
       const player = new Plyr(video, {
         captions: {
@@ -125,52 +135,73 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           update: true,
           language: 'en',
         },
-        controls: [
-          'play-large',
-          'play',
-          'progress',
-          'current-time',
-          'mute',
-          'volume',
-          'settings',
-          'fullscreen',
-        ],
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
       });
       if (!Hls.isSupported()) {
         video.src = source;
       } else {
         // For more Hls.js options, see https://github.com/dailymotion/hls.js
         const hls = new Hls();
+        console.log('source:', source);
         hls.loadSource(source);
         hls.attachMedia(video);
         window.hls = hls;
         window.player = player;
 
-        player.on('ended', function () {
-          //pane_cover.classList.toggle('visible');
-          pane.classList.toggle('open');
-          pane_video.classList.toggle('visible');
-          fadeOut(pane, 40);
-          // Add selected to child
+        // Fix mobile Tap play/pause
+        const { wrapper, container } = player.elements;
+        if (container) {
+          if (!container._clickListener) {
+            container._clickListener = (event) => {
+              const targets = [container, wrapper];
+
+              // Ignore if click if not container or in video wrapper
+              if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+                return;
+              }
+
+              if (player.touch) player.togglePlay();
+            };
+            container.addEventListener('click', container._clickListener);
+          }
+        }
+
+        player.on('play', () => {
+          const controls_extra = document.querySelector('.plyr--video');
+          controls_extra.prepend(headerTop);
+          controls_extra.prepend(paneClose);
+        });
+
+        player.on('ended', () => {
+          //pane.classList.toggle('open');
+          //pane_video.classList.toggle('visible');
+          button_close[0].click();
+          //fadeOut(pane, 40);
+
           document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+
+          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
+          paneClose.classList.add('hide');
+
           if (viewedAll()) {
             document.getElementsByClassName('row-second')[0].classList.add('visible');
             document.getElementsByClassName('characters')[0].classList.add('is-viewed');
           }
         });
-
-        // Show Hide Title
         player.on('controlsshown', () => {
           document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+          headerTop.classList.remove('hide');
+          paneClose.classList.remove('hide');
         });
         player.on('controlshidden', () => {
           document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+          headerTop.classList.add('hide');
+          paneClose.classList.add('hide');
         });
-
       }
       return player;
     };
-
 
     if (button_open) {
       button_open.forEach((link) => {
@@ -180,16 +211,10 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           pane.dataset.relation = link.dataset.relation;
           pane_video.classList.toggle('visible');
           fadeIn(pane, 40);
-
-
           removeTitleVideo();
-          // Add title plyr
           const controls_extra = document.querySelector('.plyr--video');
           controls_extra.prepend(createTitle(link.dataset.title));
-
           player.play();
-          //document.querySelector('video').setAttribute('src', '');
-          // Hide temp progress
           document.querySelectorAll('.progress-0')[0].classList.add('hide');
         });
       });
@@ -198,37 +223,22 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
+
+          //player.stop();
+
           pane.classList.toggle('open');
           fadeOut(pane, 40);
           pane_video.classList.toggle('visible');
           //fake_cover.classList.add('visible');
+          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
+          player = loadPlayer(pane.dataset.relation);
           player.stop();
-          player = loadPlayer(null);
+
         });
       });
     }
 
-    const button_select = document.getElementById('select-personaje');
-    let character = 'unselect';
-
-    if (button_select) {
-      button_select.addEventListener('click', () => {
-        character = button_select.dataset.personaje;
-        pane.classList.toggle('open');
-        pane_video.classList.toggle('visible');
-        var personaje_child = document.querySelectorAll('.child');
-        [].forEach.call(personaje_child, function (el) {
-          el.classList.remove('is-selected');
-        });
-        document
-          .getElementsByClassName(button_select.dataset.personaje)[0]
-          .classList.add('is-selected');
-        var selector = document.querySelectorAll('.selector-mode');
-        [].forEach.call(selector, function (el) {
-          el.classList.remove('is-hidden');
-        });
-      });
-    }
 
     // Check si ya fueron visto los 3
     const viewedAll = () => {
@@ -280,7 +290,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         console.log('a verrrr' + velocity);
         loadProgress('progress-0', velocity);
       } else {
-        loadProgress('progress-0', 3000);
+        loadProgress('progress-0', 12000);
       }
     }
 
@@ -309,6 +319,53 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         );
       });
     }
+
+    /* IOS support */
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      const videoFake = document.querySelector('video');
+
+      videoFake.onplay = (event) => {
+        console.log('Hola como anda');
+        const controls_extra = document.querySelector('.plyr--video');
+        controls_extra.prepend(headerTop);
+        controls_extra.prepend(paneClose);
+
+        document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+        headerTop.classList.add('hide');
+        paneClose.classList.add('hide');
+      };
+
+
+      videoFake.onended = (event) => {
+        //pane.classList.toggle('open');
+        //pane_video.classList.toggle('visible');
+        button_close[0].click();
+        //fadeOut(pane, 40);
+
+        document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+
+        document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
+        paneClose.classList.add('hide');
+
+        if (viewedAll()) {
+          document.getElementsByClassName('row-second')[0].classList.add('visible');
+          document.getElementsByClassName('characters')[0].classList.add('is-viewed');
+        }
+      };
+
+
+      videoFake.onpause = (event) => {
+        document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+        headerTop.classList.remove('hide');
+        paneClose.classList.remove('hide');
+      };
+
+    } else {
+      console.log('This is Not a IOS device');
+    }
+
   }, []);
 
   return (
@@ -320,7 +377,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       <ReflexiveStyles />
       <NavReflexiveStyles />
 
-      <BackToCharacters text={'Volver al inicio'} />
+      <BackToCharacters text={'Volver a elegir personajes'} />
 
       <div
         className="app-elcubo reflexivo"
@@ -350,38 +407,48 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
                 })
                 : null}
             </div>
-            <div className={`row row-second questions ${answers && answers.length ? '' : 'last-node'}`}>
+            <div
+              className={`row row-second questions ${answers && answers.length ? '' : 'last-node'}`}
+            >
               <div className="column">
                 <div className="video-overlay">
                   <div className="copy-cover">
                     <h1 className="copy">
                       <p>{formatText(field_ec_final_question)}</p>
-                      <ul className={`li-questions ${answers && answers.length ? `li-${answers.length}` : ''}`}>
-                        {answers && answers.length ?
+                      <ul
+                        className={`li-questions ${answers && answers.length ? `li-${answers.length}` : ''
+                          }`}
+                      >
+                        {answers && answers.length ? (
                           answers.map((answer) => {
-                            const nextPageLink = `/el-cubo/temporada-1/reflexivo/${character}/${answer.nid}`;
+                            const nextPageLink = `/el-cubo/temporada-1/reflexivo/${character}/${answer.nid
+                              }`;
                             return (
                               <li key={`key_${answer.nid}`}>
                                 <a href={nextPageLink}>{answer.field_ec_answer_title}</a>
                               </li>
                             );
                           })
-                          :
-                          <div>
-                            <h1>
-                              ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
+                        ) : (
+                            <div>
+                              <h1>
+                                ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
                             </h1>
-                            <p>
-                              Puedes ver tu perfil según las respuetas que diste en el recorrido. ¡Esa es tu recompensa!
+                              <p>
+                                Puedes ver tu perfil según las respuetas que diste en el recorrido.
+                                ¡Esa es tu recompensa!
                             </p>
-                            <div className="cover-link">
-                              <a href={`/el-cubo/temporada-1/reflexivo/recompensa`} className="button-cyan">
-                                <span>Ver recompensa</span>
-                                <img src="/images/icon-arrow-init.svg" />
-                              </a>
+                              <div className="cover-link">
+                                <a
+                                  href={rewardLink}
+                                  className="button-cyan"
+                                >
+                                  <span>Ver recompensa</span>
+                                  <img src="/images/icon-arrow-init.svg" />
+                                </a>
+                              </div>
                             </div>
-                          </div>
-                        }
+                          )}
                       </ul>
                     </h1>
                   </div>
@@ -396,7 +463,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 };
 
 export async function getStaticPaths() {
-  const nodes = await fetcher('/api/v1/elcubo/season/4731/reflexive/paths');
+  const nodes = await fetcher(`/api/v1/elcubo/season/${season1_id}/reflexive/paths`);
   const pathsData = nodes.map((node) => ({
     nodeId: node.nid,
     characterName: node.field_ec_character
@@ -417,7 +484,7 @@ export async function getStaticPaths() {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const nodeId = context.params.node;
-  const nodeData = await fetcher(`/api/v1/elcubo/season/4731/reflexive/${nodeId}`);
+  const nodeData = await fetcher(`/api/v1/elcubo/season/${season1_id}/reflexive/${nodeId}`);
 
   return {
     props: {

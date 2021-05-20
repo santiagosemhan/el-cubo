@@ -34,4 +34,12 @@ body {
 .nav a.back-to-season:hover span {
     opacity: 1;
 }
+
+@media screen and (max-width: 1025px) {
+    .nav {
+        left: 15px;
+        top: 15px;
+    }
+}
+
 `;

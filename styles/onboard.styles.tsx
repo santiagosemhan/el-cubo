@@ -113,19 +113,55 @@ body {
     background-color: rgb(83, 235, 253);
 }
 
-.copy .p-winner {
-    font-size: 22px;
-    margin-top: 0;
+
+/* Winner */
+
+.winner {
+    width: 650px;
+    margin: auto;
+    /*display: none;*/
 }
 
-.p-winner a {
-    color: #45B4C1;
+.winner .col-2 {
+    width: 600px;
+    margin: auto;
+    clear: both;
+}
+
+.winner .col-2 .col-left,
+.winner .col-2 .col-right {
+    width: 50%;
+    float: left;
+}
+
+.winner .col-left a {
+    float: right;
+    background: none;
+    border: 1px solid #45b4c1;
+    color: #45b4c1;
+    padding: 12px 12px 12px 12px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-family: 'Inter';
+    -webkit-text-decoration: none;
+    -webkit-text-decoration: none;
     text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    width: 260px;
 }
 
-.p-winner a:hover {
-    color: rgb(83, 235, 253);
+.winner .col-left a:hover {
+    background-color: rgb(83, 235, 253);
+    color: rgb(26, 40, 57);
 }
+
+.copy .winner .cover-link {
+    float: left;
+    margin-left: 20px;
+}
+
 
 
 @media only screen and (min-width: 1024px) {
@@ -148,11 +184,22 @@ body {
     .onboarding-laberynth .copy .p-winner {
         font-size: 22px;
     }
+
+    .winner {
+        width: 650px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .header-top .nav {
+        left: 15px;
+        top: 15px;
+    }
+   
 }
 
 
-
-/* Cronologia */
 @media (max-width: 540px) {
 
   #hero-onboarding {
@@ -164,22 +211,49 @@ body {
       margin: auto;
   }
 
+  .winner .col-2 .col-left, .winner .col-2 .col-right {
+    width: 100%;
+  }
+
+  .winner .col-2 .col-left a {
+      float: left;
+      margin-bottom: 20px;
+  }
+
 }
 
+@media (max-width: 768px) {
+
+    .copy {
+        width: unset;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .winner, .winner .col-2 {
+        width: 100%;
+    }
+
+}
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
     /* Onboard */
 
     .copy {
-        width: 50vw;
+        width: unset;
     }
 
     .onboard .copy p {
         font-size: 18px;
+        width: 60%;
+        float: unset;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .copy-phrase {
         font-size: 22px;
+        margin-bottom: 20px;
     }
 
     .onboard .copy {
@@ -202,6 +276,7 @@ body {
     .copy-phrase {
         font-size: 22px;
     }
+
 }
 
 `;

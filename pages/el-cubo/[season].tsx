@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import { Container } from 'styles/Home';
 import AppLayout from 'layouts/AppLayout';
+import PaneLogin from 'components/Season/PaneLogin';
 import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
@@ -10,6 +11,7 @@ import { ElcuboGlobalStyles } from 'styles/elcubo.style';
 import dynamic from 'next/dynamic';
 import AuthService from 'services/Auth';
 import UserService from 'services/User';
+import Links from 'constants/Links';
 
 const MouseCircle = dynamic(() => import('components/MouseCircle/MouseCircle'), { ssr: false });
 
@@ -21,12 +23,12 @@ export default function SeasonPage({ data }) {
   const refPlayer = useRef();
   const [bigMouse, setBigMouse] = React.useState(false);
   const [showMouse, setShowMouse] = React.useState(true);
+  const [showLoginPanel, setShowLoginPanel] = useState(false);
 
   const getMe = async () => {
     try {
       const me = await UserService.getMe();
       setUser(me.data);
-      console.log('USERRRRRRR', me.data);
     } catch (error) {
       console.log(error);
     }
@@ -47,10 +49,25 @@ export default function SeasonPage({ data }) {
     setBigMouse(true);
   });
 
-  const { title, field_ec_contents, field_ec_contents_paragraph } = data;
+  React.useEffect(() => {
+    if (showLoginPanel) {
+      document.getElementsByClassName('pane-login')[0].classList.remove('is-hidden');
+    } else {
+      document.getElementsByClassName('pane-login')[0].classList.add('is-hidden');
+    }
+  }, [showLoginPanel])
 
   React.useEffect(() => {
     getMe();
+
+    if (isLoggedIn) {
+      document.getElementsByClassName('pane-login')[0].classList.add('is-hidden');
+    }
+
+    // Pane Login
+    const button_open = document.querySelectorAll('.toggle');
+    const button_close = document.querySelectorAll('.close');
+    const pane = document.querySelector('.pane-login .pane');
 
     setTimeout(() => {
       document.getElementsByClassName('cover-reveal-row-1')[0].classList.add('active');
@@ -65,7 +82,7 @@ export default function SeasonPage({ data }) {
 
     let controlBtn = document.getElementById('play-pause');
 
-    function playPause() {
+    const playPause = () => {
       document.getElementsByClassName('Sound')[0].classList.toggle('off');
       document.getElementsByClassName('play-text')[0].classList.toggle('hide');
       document.getElementsByClassName('play-text')[1].classList.toggle('hide');
@@ -82,11 +99,11 @@ export default function SeasonPage({ data }) {
     }
 
     controlBtn.addEventListener('click', playPause);
-    track.addEventListener('ended', function() {
+    track.addEventListener('ended', function () {
       controlBtn.className = 'play';
     });
 
-    function getRelationScroll(pObject) {
+    const getRelationScroll = (pObject) => {
       let relation = (pObject.getBoundingClientRect().top / (main.clientHeight / 2)) * 100;
       return relation;
     }
@@ -96,48 +113,26 @@ export default function SeasonPage({ data }) {
       document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
       document.getElementsByClassName('paragraph-message-1')[0].classList.add('active-fadein');
       document.getElementsByClassName('paragraph-message-2')[0].classList.add('active-fadein');
+      document.getElementsByClassName('credits')[0].classList.add('active-fadein');
     };
     document.addEventListener('scroll', scrollEvent);
 
-    // Pane Login
-    const button_open = document.querySelectorAll('.toggle');
-    const button_close = document.querySelectorAll('.close');
-    const pane = document.querySelector('.pane-login');
-
-    if (button_open) {
-      button_open.forEach((link) => {
-        link.addEventListener('click', () => {
-          console.log('lallala');
-          fadeIn(pane, 40);
-        });
-      });
-    }
-
-    if (button_close) {
-      button_close.forEach((link) => {
-        link.addEventListener('click', () => {
-          fadeOut(pane, 40);
-        });
-      });
-    }
-
     const fadeOut = (el, pTime) => {
       el.style.opacity = 1;
-
-      (function fade() {
+      const fade = () => {
         if ((el.style.opacity -= 0.07) < 0) {
           el.style.display = 'none';
         } else {
           setTimeout(fade, pTime);
         }
-      })();
+      };
+      fade();
     };
 
     const fadeIn = (el, pTime) => {
       el.style.opacity = 0;
       el.style.display = 'block';
-
-      (function fade() {
+      const fade = () => {
         var val = parseFloat(el.style.opacity);
         if (!((val += 0.07) > 1)) {
           el.style.opacity = val;
@@ -145,45 +140,70 @@ export default function SeasonPage({ data }) {
         } else {
           el.style.opacity = 1;
         }
-      })();
+      };
+      fade();
     };
+
+    if (button_open) {
+      button_open.forEach((link) => {
+        link.addEventListener('click', () => {
+          pane.classList.toggle('open');
+        });
+      });
+    }
+
+    if (button_close) {
+      button_close.forEach((link) => {
+        link.addEventListener('click', () => {
+          //fadeOut(pane, 40);
+        });
+      });
+    }
   }, []);
+
+  let auth = (
+    <div id="nav-login">
+      <a key={'register'} href={Links.register} className="link-login">
+        Ingresar
+      </a>
+    </div>
+  );
+
+  if (isLoggedIn) {
+    auth = (
+      <div id="nav-login">
+        <span className="user-logged">
+          Bienvenid@, {user ? user.full_name.split(' ')[0] : null}
+        </span>
+        <a key={'logout'} href={Links.logout} className="link-logout">
+          Salir
+        </a>
+      </div>
+    );
+  }
+
+  const handleMobileOnClick = (e) => {
+    e.preventDefault();
+    if (isLoggedIn) {
+      window.location.href = '/el-cubo/temporada-1/personajes';
+    } else {
+      setShowLoginPanel(true);
+    }
+  }
 
   return (
     <AppLayout>
       <ElcuboGlobalStyles />
-
       <Head>
-        <title>{title} - El cubo</title>
+        <title>Temporada 1 - El cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div className="pane-login is-hidden">
-        <div className="pane-cover" />
-
-        <div className="pane open">
-          <a className="icon close">
-            <img src="/images/pane-close.svg" />
-          </a>
-          <div className="pane-content">
-            Para enriquecer tu experiencia en EL CUBO y obtener recompensas puedes registrarte en
-            <img className="logo-login-rtvc" src="/images/rtvc/logo-RTVCPlay-Header.png" />
-            <div className="col-2">
-              <a className="button-login cyan-dark button-register close" href="#">
-                Registrarme
-              </a>
-
-              <a className="button-login cyan-dark button-quit close" href="#">
-                En otro momento
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <PaneLogin />
       <Container onMouseEnter={handleMouseEnter} ref={ref}>
         <MouseCircle
-          href="temporada-1/personajes"
+          showLoginPanel={setShowLoginPanel}
+          href={isLoggedIn ? '/el-cubo/temporada-1/personajes' : '#'}
+          // href='/el-cubo/temporada-1/personajes'
           text="Empezar"
           isBig={bigMouse}
           show={showMouse}
@@ -192,26 +212,11 @@ export default function SeasonPage({ data }) {
 
         <div className="logo-season" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
           <HeaderTop />
-          {isLoggedIn ? (
-            <div id="nav-login">
-              <span className="user-logged">
-                Bienvenid@, {user ? user.full_name.split(' ')[0] : null}
-              </span>
-              <a href="#" className="link-logout">
-                Salir
-              </a>
-            </div>
-          ) : (
-            <div id="nav-login">
-              <a href="#" className="link-login">
-                Ingresar
-              </a>
-            </div>
-          )}
+          {auth}
 
           <div>
             <audio id="track" loop="">
-              <source src="/audios/loop-1.mp3" type="audio/mpeg" />
+              <source src="/audios/loop.mp3" type="audio/mpeg" />
             </audio>
             <div id="audio-player-container" className="audio-season">
               <div id="play-pause" className="play no-link">
@@ -242,17 +247,17 @@ export default function SeasonPage({ data }) {
 
           <video className="video-bg hide" autoPlay muted>
             <source
-              src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video%20IN%204A.mp4"
+              src="/images/home/Video%20IN%204A.mp4"
               type="video/mp4"
             />
           </video>
           <img
             className="img-bg-pc"
-            src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%204_0.jpg"
+            src="/images/home/SITILLVideo%20IN%204_0.jpeg"
           />
           <img
             className="img-bg-mobile"
-            src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/SITILLVideo%20IN%204_0.jpeg"
+            src="/images/home/SITILLVideo%20IN%204_0.jpeg"
           />
           <div className="video-overlay">
             <div className="copy-cover-2 cover-first">
@@ -271,7 +276,9 @@ export default function SeasonPage({ data }) {
               </div>
 
               <p className="p-button">
-                <a className="button-mobile" href="/el-cubo/temporada-1/personajes">
+                <a className="button-mobile"
+                  onClick={handleMobileOnClick}
+                  href={'#'}>
                   Empieza tu experiencia{' '}
                 </a>
               </p>
@@ -286,13 +293,13 @@ export default function SeasonPage({ data }) {
               </div>
 
               <div className="paragraph-message paragraph-message-1">
-                <a href="https://elcubo.vercel.app/el-cubo/temporada-1/personajes">
+                <a href="/el-cubo/temporada-1/personajes">
                   <p>
                     Del lat. vulg.
                     <em>*potēre</em>, creado sobre ciertas formas del verbo lat. posse 'poder1',
                     como potes 'puedes',
-                    <em>potĕram</em> 'podía',
-                    <em>potuisti</em> 'pudiste', etc.
+                    <em> potĕram</em> 'podía',
+                    <em> potuisti</em> 'pudiste', etc.
                     <br /> Conjug. modelo. ◆ U. solo en 3.ª pers. en acep. 6.
                   </p>
 
@@ -302,14 +309,14 @@ export default function SeasonPage({ data }) {
                     <li>
                       tr. coloq. Tener más fuerza que alguien, vencerlo luchando cuerpo a cuerpo.
                       <strong>
-                        <em>Puedo a Roberto</em>
+                        <em> Puedo a Roberto</em>
                       </strong>
                       .
                     </li>
                     <li>
                       Ser más fuerte que alguien, ser capaz de vencerlo.
                       <strong>
-                        <em>No pudo CON su rival</em>
+                        <em> No pudo CON su rival</em>
                       </strong>
                       .
                     </li>
@@ -317,14 +324,14 @@ export default function SeasonPage({ data }) {
                       Aguantar o soportar algo o a alguien que producen rechazo. U. con el verbo en
                       forma negativa.
                       <strong>
-                        <em>No puedo CON sus impertinencias</em>
+                        <em> No puedo CON sus impertinencias</em>
                       </strong>
                       .
                     </li>
                     <li>
                       intr. Ser contingente o posible que suceda algo.
                       <strong>
-                        <em>Puede que llueva mañana</em>
+                        <em> Puede que llueva mañana</em>
                       </strong>
                       .
                     </li>
@@ -344,10 +351,184 @@ export default function SeasonPage({ data }) {
               </div>
 
               <p className="p-button">
-                <a className="button-mobile" href="/el-cubo/temporada-1/personajes">
+                <a className="button-mobile"
+                  onClick={handleMobileOnClick}
+                  href={'#'}>
                   Empieza tu experiencia{' '}
                 </a>
               </p>
+
+              <div className="credits">
+                <p className="intro">
+                  <strong>Un concepto original de</strong><br />
+                  Juan Baquero Romero – Director De RTVCplay
+                </p>
+                <div className="credits-row credits-row-1">
+                  <div className="column-left">
+                    <strong>Diseño y Desarrollo El Cubo</strong><br />
+                    Juan Baquero Romero - Director Creativo de Proyecto<br />
+                    Fabio Rubiano - Guion Literario y Dirección Escénica y Audiovisual<br />
+                    Arnau Gifreu - Diseño, Guion y Dirección de Interactividad<br />
+                    Carolina Aponte Rodríguez - Productora de Proyecto<br />
+                    María Margarita Herrera - Productora Ejecutiva <br />
+                    Margarita Posada - Textos Modo Reflexivo
+                </div>
+                  <div className="column-right">
+                    <strong>Una producción de Eva Producciones Artísticas en alianza con El Teatro Petra</strong>
+                    <img src="/images/teatro.png" />
+                  </div>
+                </div>
+                <div className="credits-row credits-row-2">
+
+                  <div className="column-left">
+                    <p>
+                      <strong>Actores Principales</strong><br />
+                      Marcela Valencia - Marina<br />
+                      Liliana Escobar - Elvira<br />
+                      Juanita Cetina - Alba<br />
+                      Mauro Santos - Mercado<br />
+                      Javier Riveros - Sales<br />
+                      Bernardo García - Carey
+
+                      <strong>Secundarios</strong><br />
+                      Fredy Torres - El Capo<br />
+                      Judith Segura - Leryn<br />
+                      Santiago Gómez - Hijo De Mercado<br />
+                      Ana María Cuéllar - Hija De Elvira<br />
+                      Mario Escobar - Papá De Elvira<br />
+                      Ana Sofia Téllez - Mamá De Elvira<br />
+                      Oscar Garzón - Amante De Elvira<br />
+                      Jenny Lara - Esposa De Sales<br />
+                      Daniel Diaza - Hijo Falso De Sales<br />
+                      Ariel Merchán - Joven O <br />
+                      Jaques Toukhmanian - Fiscal <br />
+                      Angélica García - Compañera Infancia Albav
+                  Carlos Valencia - Papá Carey<br />
+                      Cristina Umaña - Mamá Carey
+
+                  <strong>Figurantes</strong><br />
+                      Carolina Pose - Enfermera<br />
+                      Esteban Torres - Médico
+
+                  <strong>Producción Administrativa	</strong><br />
+                      Jhon Sanabria – Contaduría -  Js Pinzon<br />
+                      Julián Gutiérrez – Asistencia Contable<br />
+                      Diego Mora – Asesoría Legal<br />
+                      Sergio Romero - Asistencia De Producción Y Campo
+
+                  <strong>Medios Digitales</strong><br />
+                      Manuela Uribe - Foto Fija<br />
+                      Sandra Suarez - Comunity Manager
+
+                  <strong>Realización Audiovisual</strong><br />
+                      Manuel Ponce - Realizador<br />
+                      José Lucio - Director De Fotografía <br />
+                      Adelio Leiva - Jefe Técnico E Iluminador Escénico<br />
+                      Federico Vergara - Gaffer Y Asistente Fotografía <br />
+                      Diego Tiriart - Asistencia De Iluminación<br />
+                      Alberto Madera - Asistencia De Iluminación<br />
+                      Daniel Santoyo - Steadycam  <br />
+                      Alvaro Caviedes - Foco Y Asistencia De Cámara<br />
+                      Alejandro Mora - Asistencia Steadycam<br />
+                      Laura Reyes - Dit Manager <br />
+                      Alejandro Mora - Dit Manager <br />
+                      Ana Sofía Téllez - Maquillaje Y Asistencia De Actores<br /><br />
+
+                      Camilo Galvis Guerra - Detrás De Cámaras Y Piezas Promocionales
+
+                  <strong>Sonido - Hilo Studio</strong><br />
+                      Yesid Vásquez – Sonido Directo Y Supervisión De Postproducción De Sonido<br />
+                      Cristian Vargas – Microfonista<br />
+                      Daniel Gómez	- Edición Y Mezcla De Sonido<br />
+                      Stephany Betancourt- Laura Portilla – Fernanda Cortés – Edición De Sonido<br />
+                      Carlos Humberto Motta - Interpretación Músical - Trompeta
+
+                  <strong>Diseño y Producción de Arte - I´ts A Wrap</strong><br />
+                      Hernán García - Concepto Y Productor De Arte<br />
+                      Juan Carlos Acevedo - Productor De Arte<br />
+                      Diego García	- Director De Arte<br />
+                      Melissa Villegas - Decoradora<br />
+                      Andres Gurisatti - Prop Master
+                  </p>
+                  </div>
+
+                  <div className="column-right">
+                    <p>
+                      <strong>Pin.It Estudios - Diseño De Vestuario</strong><br />
+                      Camila Olarte - Diseñadora De Vestuario<br />
+                      Melissa Cancino - Vestuarista
+
+                  <strong>Los Niños Films - Postproducción Video</strong> <br />
+                      Antonio Ponce - Músico<br />
+                      Cesar Jaimes	- Editor<br />
+                      Felipe Caceres - Editor<br />
+                      Luis Fernando Rojas - Colorización<br />
+                      Sebastián Cáceres	Traducción Trailer<br />
+                      Diego Ricardo - Asistencia De Edición Promos
+
+                  <strong>Interfaz.co - Estudio Multimedia</strong><br />
+                      Juan Marín - Director Creativo<br />
+                      Andrés Cano - Diseño Gráfico - Video y Animación<br />
+                      José María Guaimas - It Director  <br />
+                      Marcos Henning - Drupal Api<br />
+                      Guillermo Colotti  - React Developer<br />
+                      Santiago Semhan - Javascript Developer
+
+                  <strong>Acrobacia - Golpe De Gracia</strong><br />
+                      Juan Carlos García	- Stunt Coordinador<br />
+                      David Herrera - Técnico Fx<br />
+                      Nayiver Castaño Técnico Fx<br />
+                      Camilo Rodríguez - Técnico Fx<br />
+                      Fabián Bustamante - Tcnico Fx<br />
+                      Ivan Orjuela	- Técnico Fx
+
+                  <strong>Alimentación	 - El Vientre De La Ballena</strong><br />
+                      Mariela Rubiano - Jefa De Alimentación <br />
+                      Amparo Lasso - Chef 1<br />
+                      Santiago Villegas - Chef 2<br />
+                      Esteban Torres - Chef 2<br />
+                      Carolina Pose - Asistente De Servicio Alimentación<br />
+                      Sergio Hernández - Chef Y Servicio
+
+                  <strong>Logística Teatro Petra</strong>	<br />
+                      Sandra Suárez - a De Sala<br />
+                      Martha Isabel Espinosa - Servicios Generales<br />
+                      July Niño - Auxiliar De Enfermería
+
+                  <strong>Transporte</strong><br />
+                      Fabio Enrique Guayara - Transporte Van<br />
+                      Martin Fonseca - Transportes Fonseca
+
+                  <strong>Rtvc - Rtvcplay</strong><br />
+                      Álvaro García Jiménez - Gerente Rtvc<br />
+                      Juan Carlos Baquero - Director De Rtvcplay<br />
+                      María Del Pilar Cubillos - Productora Ejecutiva <br />
+                      Carolina Aponte Rodríguez - Productora Delegada De Contenidos Originales <br />
+                      Juliana García Mutis - Productora Ejecutiva De Contenidos Originales <br />
+                      Lina Acosta Góngora - Productora De Proyectos <br />
+                      Luisa Fernanda Mayorga - Productora General <br />
+                      Camilo Galvis Guerra - Realizador Audiovisual <br />
+                      César Peralta Pérez - Estratega Digital <br />
+                      Luis Guayana Garzón - Editor Web <br />
+                      Fabián Melo Hernández - Diseñador Web <br />
+                      Fernando Cruz Quintero - Asistente De Producción<br />
+                      Mariana Mosquera Gutiérrez - Periodista Web
+
+                  <strong>Dirección De Tecnologías Convergentes RTVC</strong><br />
+                      Orlando Bernal Díaz - Director de Tecnologías<br />
+                      Gerardo Andrés Penagos - Dueño de Producto<br />
+                      Juan Jorge Hernández - Desarrollador de Sitios Web y Aplicaciones Móviles<br />
+                      Iván Darío Roldán - Administrador Infraestructura Nube
+
+                  <img className="credits-rtvc" src="/images/logo-RTVCPlay-Header.png" />
+                      <strong className="credits-year">Año de producción: 2020 - 2021
+                  MCMXXI, reservados todos los derechos</strong>
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -356,6 +537,7 @@ export default function SeasonPage({ data }) {
   );
 }
 
+/*
 export async function getStaticPaths() {
   return {
     paths: [{ params: { season: 'temporada-1' } }],
@@ -382,3 +564,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
+*/

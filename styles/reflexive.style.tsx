@@ -350,7 +350,7 @@ img.img-color {
 .questions .copy {
     margin: 0;
     z-index: 100;
-    width: 60vw;
+    width: 65vw;
     margin: auto;
     text-align: center;
     font-family: 'Inter';
@@ -433,10 +433,8 @@ img.img-color {
     z-index: 1;
 }
 
-
-
 .li-questions.li-2 {
-    width: 560px;
+    width: 600px;
     margin: auto;
 }
 
@@ -564,8 +562,15 @@ img.img-color {
 .steal {
     position: absolute;
     z-index: 160;
-    left: -15%;
-    width: 130%;
+    height: 100vh;
+    width: 100%;
+}
+
+.steal img {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
 }
 
 .steal_title {
@@ -739,7 +744,38 @@ img.img-color {
 
 /* mobile */
 
+@media screen and (max-width: 1200px) {
+    .header-top .nav, .nav {
+        left: 15px;
+        top: 15px;
+        position: fixed;
+    }
+    .steal_title, .plyr_title {
+        font-size: 22px;
+        left: 20px;
+        padding-right: 20px;
+        line-height: 1.4;
+    }
+
+    .plyr--video .plyr__controls {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 62px;
+    }
+
+}
+
 @media screen and (max-width: 1025px) and (orientation: landscape) {
+
+    .app-elcubo.reflexivo {
+        height: 140vh;
+        background-size: cover !important;
+    }
+
+    .characters {
+        height: auto;
+    }
+
     .columns-3 .characters-wrapper .row.row-first {
         width: 600px;
         margin-top: 5vh;
@@ -756,7 +792,7 @@ img.img-color {
 }
 
 
-@media screen and (max-height: 650px)  {
+@media screen and (max-height: 650px) and (min-width: 860px) {
     .columns-3 .characters-wrapper .row.row-first {
         width: 700px;
     }
@@ -852,6 +888,11 @@ img.img-color {
 }
 
 @media screen and (max-width: 1025px) and (orientation: portrait) {
+
+    .plyr video {
+        object-fit: contain;
+    }
+
     .characters-wrapper {
         padding: 0 20px;
     }
@@ -866,15 +907,14 @@ img.img-color {
         height: 440px;
     }
 
-    .characters-wrapper .row.row-first .parent
+    .last-node h1 {
+        font-size: 20px;
+    }
 
     .last-node h1.copy {
         padding: 0;
     }
 
-    .last-node h1 {
-        font-size: 20px;
-    }
 }
 
 @media screen and (max-width: 480px) and (orientation: portrait) {
@@ -903,6 +943,14 @@ img.img-color {
         height: 175px;
     }
 
+    .columns-2 .characters-wrapper .row.row-first {
+        width: 280px;
+    }
+
+    .columns-2 .characters-wrapper .row.row-first .parent {
+        height: 200px;
+    }
+
     .row-second ul {
         width: 100%;
     }
@@ -923,24 +971,28 @@ img.img-color {
 
     .characters-wrapper .actions h2 {
         margin-top: 0;
-        font-size: 10px;
+        font-size: 9px;
     }
 
     .characters-wrapper .li-questions.li-2 {
-        width: 100%;
+        width: 94%;
     }
 
     .characters-wrapper .row-second ul {
         font-size: 14px;
     }
 
+    .plyr--video .plyr__controls {
+        padding-bottom: 82px;
+    }
+
 }
 
 
 @media screen and (max-width: 1025px) {
-    .plyr video {
+    /*.plyr video {
         object-fit: contain;
-    }
+    }*/
 
     .questions .copy {
         font-size: 18px;

@@ -9,27 +9,38 @@ const CharacterOnboarding = ({ node, bgImage }) => {
   const nextPageLink = `/el-cubo/temporada-1/cronologico/${episodeView[0].nid}?personaje=${node.field_ec_character}&modo=cronologico`;
 
   return (
-    <div
-      className="app-elcubo onboard"
-      style={{ backgroundImage: `url("${bgImage}")`, backgroundSize: 'cover' }}
-    >
+    <div className="app-elcubo onboard" style={{ backgroundImage: `url("${bgImage}")`, backgroundSize: 'cover' }} >
       <div className="hero hero-onboarding onboarding-chrono">
         <div className="copy-cover">
           <div className="copy">
             <p>
               <span className="copy-phrase">Completa esta cronología y obtén acceso privilegiado al gran mapa de la historia</span>
             </p>
-
-            <p class="p-winner">
-              Ya lograste la recompensa asociada a este personaje.<br />
-              <a href="">Ver recompensa de nuevo</a>
-            </p>
-
             <div className="cover-link">
               <a href={nextPageLink} className="button-cyan">
                 <span>Continuar</span>
                 <img src="/images/icon-arrow-init.svg" />
               </a>
+            </div>
+            <div className="winner hide">
+              <p className="p-winner">
+                <span className="copy-phrase">Ya lograste la recompensa asociada a este personaje.</span>
+              </p>
+              <div className="col-2">
+                <div className="col-left">
+                  <a className="button-login cyan-dark button-quit" href="#">
+                    Ver recompensa de nuevo
+                </a>
+                </div>
+                <div className="col-right">
+                  <div className="cover-link">
+                    <a href={nextPageLink} className="button-cyan">
+                      <span>Continuar</span>
+                      <img src="/images/icon-arrow-init.svg" />
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

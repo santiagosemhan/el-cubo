@@ -1,6 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Header = () => {
+
+  useEffect(() => {
+    const searchButton = document.getElementById('search_button');
+    const searchInput = document.getElementById('inputsearch');
+    const handleClickSearch = (e) => {
+      e.preventDefault();
+      const text = searchInput.value;
+      window.location.href = `https://www.rtvcplay.co/buscar/${text}`;
+    };
+    searchButton.addEventListener('click', handleClickSearch);
+    return () => {
+      searchButton.removeEventListener('click', handleClickSearch);
+    }
+  }, []);
+
   return (
     <>
       <header className="OrHeader__Header-sc-1x6b4le-0 flrEJC">
@@ -115,146 +130,143 @@ const Header = () => {
           </nav>
           <div className="OrHeader__ButtonIconGroup-sc-1x6b4le-5 gUbmjw">
             <div className="input-search MolInputSearch__Container-sc-1ph5lrp-0 gKTUqY">
-              <form>
-                <button
-                  color="rgba(0,0,0,0)"
-                  className="iconsearch AtIconButton__Button-kz6x7x-0 IVHCz"
-                  type="submit"
+              <button
+                color="rgba(0,0,0,0)"
+                className="iconsearch AtIconButton__Button-kz6x7x-0 IVHCz"
+              >
+                <svg
+                  viewBox="0 0 512 512"
+                  height="22"
+                  width="22"
+                  aria-hidden="true"
+                  focusable="false"
+                  fill="currentColor"
+                  id="Iconsearch"
+                  color="#ffffff"
+                  className="AtIcon__StyledIcon-boprg-0 gLoOCx"
                 >
-                  <svg
-                    viewBox="0 0 512 512"
-                    height="22"
-                    width="22"
-                    aria-hidden="true"
-                    focusable="false"
+                  <path
                     fill="currentColor"
-                    id="Iconsearch"
-                    color="#ffffff"
-                    className="AtIcon__StyledIcon-boprg-0 gLoOCx"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                  ></path>
+                </svg>
+              </button>
+              <div className="AtSearchFocus__ContentSearch-sc-1yudiy5-1 cgABmB">
+                <div>
+                  <div
+                    id="cover-search"
+                    className="hidden"
+                    style={{
+                      position: 'fixed',
+                      top: 0,
+                      left: 0,
+                      width: '100%',
+                      height: '100%',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      zIndex: 10000,
+                    }}
                   >
-                    <path
-                      fill="currentColor"
-                      d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                    ></path>
-                  </svg>
-                </button>
-                <div className="AtSearchFocus__ContentSearch-sc-1yudiy5-1 cgABmB">
-                  <div>
                     <div
-                      id="cover-search"
-                      className="hidden"
+                      style={{
+                        borderRadius: '5px',
+                        boxSizing: 'border-box',
+                        boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 4px',
+                        transform: 'translate3d(0px, 0px, 0px)',
+                        transition:
+                          'transform 500ms cubic-bezier(0, 0, 0.25, 1) 0s, opacity 500ms cubic-bezier(0, 0, 0.25, 1) 0s',
+                        zIndex: 10002,
+                      }}
+                    >
+                      <div className="AtSearchFocus__ContentCloseModal AtSearchFocus__ContentCloseModal-sc-1yudiy5-5 iiukhQ">
+                        Cerrar
+                          <button
+                          color="rgba(0,0,0,0)"
+                          className="AtSearchFocus__AtIconButtonCloseModal AtSearchFocus__AtIconButtonCloseModal-sc-1yudiy5-4 kLQqdk AtIconButton__Button-kz6x7x-0 IVHCz"
+                          type="button"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 512 512"
+                            width="52"
+                            height="52"
+                            aria-hidden="true"
+                            color="#ffffff"
+                            className="AtIcon__StyledIcon-boprg-0 gDvSIs Icons__SvgIcon-sc-10bknwo-0 gIkEiP"
+                          >
+                            <path d="m256 512c-141.160156 0-256-114.839844-256-256s114.839844-256 256-256 256 114.839844 256 256-114.839844 256-256 256zm0-475.429688c-120.992188 0-219.429688 98.4375-219.429688 219.429688s98.4375 219.429688 219.429688 219.429688 219.429688-98.4375 219.429688-219.429688-98.4375-219.429688-219.429688-219.429688zm0 0"></path>
+                            <path d="m347.429688 365.714844c-4.679688 0-9.359376-1.785156-12.929688-5.359375l-182.855469-182.855469c-7.144531-7.144531-7.144531-18.714844 0-25.855469 7.140625-7.140625 18.714844-7.144531 25.855469 0l182.855469 182.855469c7.144531 7.144531 7.144531 18.714844 0 25.855469-3.570313 3.574219-8.246094 5.359375-12.925781 5.359375zm0 0"></path>
+                            <path d="m164.570312 365.714844c-4.679687 0-9.355468-1.785156-12.925781-5.359375-7.144531-7.140625-7.144531-18.714844 0-25.855469l182.855469-182.855469c7.144531-7.144531 18.714844-7.144531 25.855469 0 7.140625 7.140625 7.144531 18.714844 0 25.855469l-182.855469 182.855469c-3.570312 3.574219-8.25 5.359375-12.929688 5.359375zm0 0"></path>
+                          </svg>
+                        </button>
+                      </div>
+
+                      <button
+                        color="rgba(0,0,0,0)"
+                        className="AtSearchFocus__AtIconButtonSearchclose AtSearchFocus__AtIconButtonSearchclose-sc-1yudiy5-3 bBWseP AtIconButton__Button-kz6x7x-0 IVHCz"
+                        type="button"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 35 35"
+                          width="32"
+                          height="32"
+                          aria-hidden="true"
+                          color="#121212"
+                          className="AtIcon__StyledIcon-boprg-0 gDvSIs Icons__SvgIcon-sc-10bknwo-0 jaEYJn"
+                        >
+                          <path
+                            transform="translate(-1122 -458)"
+                            className="cls-1"
+                            d="M1139.5,493a17.444,17.444,0,0,1-6.4-1.2,1.166,1.166,0,1,1,.85-2.171,15.176,15.176,0,0,0,16.48-24.649,1.166,1.166,0,1,1,1.68-1.617A17.506,17.506,0,0,1,1139.5,493Zm-8.84-2.592a1.136,1.136,0,0,1-.63-0.186c-0.21-.134-0.41-0.272-0.61-0.414a1.164,1.164,0,0,1,1.34-1.9c0.18,0.124.36,0.243,0.53,0.359A1.164,1.164,0,0,1,1130.66,490.409Zm-3.11-2.6a1.161,1.161,0,0,1-.85-0.371,17.506,17.506,0,0,1,12.8-29.452,1.166,1.166,0,0,1,0,2.332,15.176,15.176,0,0,0-11.1,25.529A1.163,1.163,0,0,1,1127.55,487.811Zm20.33-25.176a1.177,1.177,0,0,1-.6-0.165,15.183,15.183,0,0,0-2.81-1.318,16.419,16.419,0,0,0-1.7-.478,1.164,1.164,0,0,1-.89-1.388,1.179,1.179,0,0,1,1.39-.889,17.332,17.332,0,0,1,5.21,2.073,1.159,1.159,0,0,1,.4,1.6A1.147,1.147,0,0,1,1147.88,462.635Zm-6.47,13.436-1.34,1.335,6.24,6.237a0.945,0.945,0,1,0,1.34-1.333Zm6.24-8.725a0.951,0.951,0,0,0-1.34,0l-6.81,6.816-6.82-6.816a0.942,0.942,0,1,0-1.33,1.335l6.81,6.814-6.81,6.815a0.939,0.939,0,0,0,0,1.333,0.934,0.934,0,0,0,1.33,0l14.97-14.962A0.96,0.96,0,0,0,1147.65,467.346Z"
+                          ></path>
+                        </svg>
+                      </button>
+                      <input
+                        id="inputsearch"
+                        type="text"
+                        name="buscar"
+                        placeholder=" Escribe tu búsqueda"
+                        className="AtSearchFocus__Input-sc-1yudiy5-0 dkdikb"
+                        defaultValue=""
+                      />
+                      <button
+                        id="search_button"
+                        color="rgba(0,0,0,0)"
+                        className="AtSearchFocus__AtIconButtonSearch AtSearchFocus__AtIconButtonSearch-sc-1yudiy5-2 gUfhCd AtIconButton__Button-kz6x7x-0 IVHCz"
+                      >
+                        <svg
+                          viewBox="0 0 512 512"
+                          height="32"
+                          width="32"
+                          aria-hidden="true"
+                          focusable="false"
+                          fill="currentColor"
+                          id="Iconsearch"
+                          color="#ffffff"
+                          className="AtIcon__StyledIcon-boprg-0 gLoOCx"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                          ></path>
+                        </svg>
+                      </button>
+                    </div>
+                    <div
                       style={{
                         position: 'fixed',
                         top: 0,
                         left: 0,
                         width: '100%',
                         height: '100%',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        zIndex: 10000,
+                        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                        zIndex: 10001,
                       }}
-                    >
-                      <div
-                        style={{
-                          borderRadius: '5px',
-                          boxSizing: 'border-box',
-                          boxShadow: 'rgba(0, 0, 0, 0.3) 0px 2px 4px',
-                          transform: 'translate3d(0px, 0px, 0px)',
-                          transition:
-                            'transform 500ms cubic-bezier(0, 0, 0.25, 1) 0s, opacity 500ms cubic-bezier(0, 0, 0.25, 1) 0s',
-                          zIndex: 10002,
-                        }}
-                      >
-                        <div className="AtSearchFocus__ContentCloseModal AtSearchFocus__ContentCloseModal-sc-1yudiy5-5 iiukhQ">
-                          Cerrar
-                          <button
-                            color="rgba(0,0,0,0)"
-                            className="AtSearchFocus__AtIconButtonCloseModal AtSearchFocus__AtIconButtonCloseModal-sc-1yudiy5-4 kLQqdk AtIconButton__Button-kz6x7x-0 IVHCz"
-                            type="button"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 512 512"
-                              width="52"
-                              height="52"
-                              aria-hidden="true"
-                              color="#ffffff"
-                              className="AtIcon__StyledIcon-boprg-0 gDvSIs Icons__SvgIcon-sc-10bknwo-0 gIkEiP"
-                            >
-                              <path d="m256 512c-141.160156 0-256-114.839844-256-256s114.839844-256 256-256 256 114.839844 256 256-114.839844 256-256 256zm0-475.429688c-120.992188 0-219.429688 98.4375-219.429688 219.429688s98.4375 219.429688 219.429688 219.429688 219.429688-98.4375 219.429688-219.429688-98.4375-219.429688-219.429688-219.429688zm0 0"></path>
-                              <path d="m347.429688 365.714844c-4.679688 0-9.359376-1.785156-12.929688-5.359375l-182.855469-182.855469c-7.144531-7.144531-7.144531-18.714844 0-25.855469 7.140625-7.140625 18.714844-7.144531 25.855469 0l182.855469 182.855469c7.144531 7.144531 7.144531 18.714844 0 25.855469-3.570313 3.574219-8.246094 5.359375-12.925781 5.359375zm0 0"></path>
-                              <path d="m164.570312 365.714844c-4.679687 0-9.355468-1.785156-12.925781-5.359375-7.144531-7.140625-7.144531-18.714844 0-25.855469l182.855469-182.855469c7.144531-7.144531 18.714844-7.144531 25.855469 0 7.140625 7.140625 7.144531 18.714844 0 25.855469l-182.855469 182.855469c-3.570312 3.574219-8.25 5.359375-12.929688 5.359375zm0 0"></path>
-                            </svg>
-                          </button>
-                        </div>
-
-                        <button
-                          color="rgba(0,0,0,0)"
-                          className="AtSearchFocus__AtIconButtonSearchclose AtSearchFocus__AtIconButtonSearchclose-sc-1yudiy5-3 bBWseP AtIconButton__Button-kz6x7x-0 IVHCz"
-                          type="button"
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 35 35"
-                            width="32"
-                            height="32"
-                            aria-hidden="true"
-                            color="#121212"
-                            className="AtIcon__StyledIcon-boprg-0 gDvSIs Icons__SvgIcon-sc-10bknwo-0 jaEYJn"
-                          >
-                            <path
-                              transform="translate(-1122 -458)"
-                              className="cls-1"
-                              d="M1139.5,493a17.444,17.444,0,0,1-6.4-1.2,1.166,1.166,0,1,1,.85-2.171,15.176,15.176,0,0,0,16.48-24.649,1.166,1.166,0,1,1,1.68-1.617A17.506,17.506,0,0,1,1139.5,493Zm-8.84-2.592a1.136,1.136,0,0,1-.63-0.186c-0.21-.134-0.41-0.272-0.61-0.414a1.164,1.164,0,0,1,1.34-1.9c0.18,0.124.36,0.243,0.53,0.359A1.164,1.164,0,0,1,1130.66,490.409Zm-3.11-2.6a1.161,1.161,0,0,1-.85-0.371,17.506,17.506,0,0,1,12.8-29.452,1.166,1.166,0,0,1,0,2.332,15.176,15.176,0,0,0-11.1,25.529A1.163,1.163,0,0,1,1127.55,487.811Zm20.33-25.176a1.177,1.177,0,0,1-.6-0.165,15.183,15.183,0,0,0-2.81-1.318,16.419,16.419,0,0,0-1.7-.478,1.164,1.164,0,0,1-.89-1.388,1.179,1.179,0,0,1,1.39-.889,17.332,17.332,0,0,1,5.21,2.073,1.159,1.159,0,0,1,.4,1.6A1.147,1.147,0,0,1,1147.88,462.635Zm-6.47,13.436-1.34,1.335,6.24,6.237a0.945,0.945,0,1,0,1.34-1.333Zm6.24-8.725a0.951,0.951,0,0,0-1.34,0l-6.81,6.816-6.82-6.816a0.942,0.942,0,1,0-1.33,1.335l6.81,6.814-6.81,6.815a0.939,0.939,0,0,0,0,1.333,0.934,0.934,0,0,0,1.33,0l14.97-14.962A0.96,0.96,0,0,0,1147.65,467.346Z"
-                            ></path>
-                          </svg>
-                        </button>
-                        <input
-                          id="inputsearch"
-                          type="text"
-                          name="buscar"
-                          placeholder=" Escribe tu búsqueda"
-                          className="AtSearchFocus__Input-sc-1yudiy5-0 dkdikb"
-                          defaultValue=""
-                        />
-                        <button
-                          color="rgba(0,0,0,0)"
-                          className="AtSearchFocus__AtIconButtonSearch AtSearchFocus__AtIconButtonSearch-sc-1yudiy5-2 gUfhCd AtIconButton__Button-kz6x7x-0 IVHCz"
-                          type="submit"
-                        >
-                          <svg
-                            viewBox="0 0 512 512"
-                            height="32"
-                            width="32"
-                            aria-hidden="true"
-                            focusable="false"
-                            fill="currentColor"
-                            id="Iconsearch"
-                            color="#ffffff"
-                            className="AtIcon__StyledIcon-boprg-0 gLoOCx"
-                          >
-                            <path
-                              fill="currentColor"
-                              d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
-                            ></path>
-                          </svg>
-                        </button>
-                      </div>
-                      <div
-                        style={{
-                          position: 'fixed',
-                          top: 0,
-                          left: 0,
-                          width: '100%',
-                          height: '100%',
-                          backgroundColor: 'rgba(0, 0, 0, 0.7)',
-                          zIndex: 10001,
-                        }}
-                      ></div>
-                    </div>
+                    ></div>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
             <button
               id="menu-mobile-button"
@@ -369,12 +381,12 @@ const Header = () => {
               </div>
 
               <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
-              <a 
-                href="https://www.rtvcplay.co/radioteatros-podcasts" 
-                title="Radioteatros" 
-                className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
-              >
-                Radioteatros
+                <a
+                  href="https://www.rtvcplay.co/radioteatros-podcasts"
+                  title="Radioteatros"
+                  className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
+                >
+                  Radioteatros
               </a>
               </div>
 
@@ -485,13 +497,13 @@ const Header = () => {
               />
             </a>
 
-            <a href="https://www.rtvcplay.co/en-vivo/informativo" 
-              target="" 
+            <a href="https://www.rtvcplay.co/en-vivo/informativo"
+              target=""
               className="MolMenuLS__ImgLink-sc-1mj2srx-1 dwhsWo AtImgLink__ImgLink-sc-1ji04qf-0 fegtQU" opacity="0.8"
             >
-              <img className="AtImg__Img-sc-31cwo7-0 gYLCMU" 
-                src="/images/rtvc/RTVC-NOTICIAS_LOGO_A-1.png" 
-                alt="Informativo" 
+              <img className="AtImg__Img-sc-31cwo7-0 gYLCMU"
+                src="/images/rtvc/RTVC-NOTICIAS_LOGO_A-1.png"
+                alt="Informativo"
               />
             </a>
           </div>
@@ -646,7 +658,7 @@ const Header = () => {
                       </a>
                     </li>
 
-                    
+
                     <li className="metismenu-item">
                       <a
                         href="https://www.rtvcplay.co/radionovelas-podcasts"

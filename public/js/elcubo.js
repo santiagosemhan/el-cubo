@@ -60,8 +60,10 @@ if (input_search) {
 }
 
 document.addEventListener('keydown', function (event) {
-  if (event.key === 'Escape' && !search_this_close.classList.contains('hidden')) {
-    search_this_close.classList.toggle('hidden');
+  if (search_this_close) {
+    if (event.key === 'Escape' && !search_this_close.classList.contains('hidden')) {
+      search_this_close.classList.toggle('hidden');
+    }
   }
 });
 

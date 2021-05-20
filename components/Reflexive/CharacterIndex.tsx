@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Hls from 'hls.js';
 import Plyr from 'plyr';
+import UrlUtils from 'utils/Url';
 
 const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) => {
   const {
@@ -10,7 +11,13 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     field_ec_image_bw,
     field_ec_image_color,
   } = node;
-  const { field_ec_asset_id } = episodeData;
+
+  const {
+    field_ec_asset_id,
+    field_ec_video_preview,
+    field_ec_video_preview_980,
+  } = episodeData;
+
   const nextNodes = JSON.parse(children_answer_json);
 
   const formatText = (str) => {
@@ -21,14 +28,20 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     return str;
   };
 
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
   React.useEffect(() => {
     const video = document.querySelector('.pane-video');
     const pane = document.querySelector('.pane');
     const pane_video = document.querySelector('.pane-video');
+    const headerTop = document.querySelectorAll('.header-top')[0];
+    const paneClose = document.querySelectorAll('.close')[0];
+
+    const setWindowSize = !window.matchMedia('(min-width: 1024px)').matches;
+    setIsSmallScreen(setWindowSize);
 
     const loadPlayer = (sURL) => {
-      let source =
-        'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:' + sURL + '.smil/playlist.m3u8';
+      let source = UrlUtils.getVideoUrl(sURL);
       const video = document.querySelector('video');
       const player = new Plyr(video, {
         captions: {
@@ -36,39 +49,71 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
           update: true,
           language: 'en',
         },
-        controls: ['play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
       });
       if (!Hls.isSupported()) {
         video.src = source;
       } else {
-        // For more Hls.js options, see https://github.com/dailymotion/hls.js
         const hls = new Hls();
         hls.loadSource(source);
         hls.attachMedia(video);
         window.player = player;
         window.hls = hls;
+
+        // Fix mobile Tap play/pause
+        const { wrapper, container } = player.elements;
+        if (container) {
+          if (!container._clickListener) {
+            container._clickListener = (event) => {
+              const targets = [container, wrapper];
+
+              // Ignore if click if not container or in video wrapper
+              if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+                return;
+              }
+
+              if (player.touch) {
+                player.togglePlay();
+              }
+            };
+            container.addEventListener('click', container._clickListener);
+          }
+        }
+
+
+        player.on('play', () => {
+          const controls_extra = document.querySelector('.plyr--video');
+          controls_extra.prepend(headerTop);
+          controls_extra.prepend(paneClose);
+        })
+
         player.on('ended', () => {
-          //pane_cover.classList.toggle('visible');
-          // player.fullscreen.exit();
-          pane.classList.toggle('open');
-          pane_video.classList.toggle('visible');
-          //fake_cover.classList.add('visible');
-          fadeOut(pane, 40);
-          // Add selected to child
+          //pane.classList.toggle('open');
+          //pane_video.classList.toggle('visible');
+          button_close[0].click();
+          //fadeOut(pane, 40);
+
+          //player.stop();
           document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
           if (viewedAll()) {
-            console.log('ENTRE A ONVIEWED ALL');
             onViewedAll();
             document.getElementsByClassName('row-second')[0].classList.add('visible');
             document.getElementsByClassName('characters')[0].classList.add('is-viewed');
           }
         });
-        // Show Hide Title
+
         player.on('controlsshown', () => {
           document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+          headerTop.classList.remove('hide');
+          paneClose.classList.remove('hide');
         });
+
         player.on('controlshidden', () => {
           document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+          headerTop.classList.add('hide');
+          paneClose.classList.add('hide');
         });
       }
       return player;
@@ -109,32 +154,33 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
       })();
     };
 
-    // Pane Slide
     const button_open = document.querySelectorAll('.toggle');
     const button_close = document.querySelectorAll('.close');
 
     if (button_open) {
-      button_open.forEach(function(link) {
+      button_open.forEach(function (link) {
         link.addEventListener('click', () => {
-          console.log('HICE CLICK ACA');
           player.currentTime = 0;
-          console.log('EL TIEMPO ACTUAL ES', player.currentTime);
           pane.classList.add('open');
           pane_video.classList.toggle('visible');
           pane.dataset.relation = link.dataset.relation;
-          fadeIn(pane, 40);
+          fadeIn(pane, 80);
           player.play();
         });
       });
     }
 
     if (button_close) {
-      button_close.forEach(function(link) {
+      button_close.forEach(function (link) {
         link.addEventListener('click', () => {
           pane.classList.toggle('open');
+          player.pause();
           fadeOut(pane, 40);
           pane_video.classList.toggle('visible');
+          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
           player.stop();
+
         });
       });
     }
@@ -147,20 +193,19 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
         pane.classList.toggle('open');
         pane_video.classList.toggle('visible');
         var personaje_child = document.querySelectorAll('.child');
-        [].forEach.call(personaje_child, function(el) {
+        [].forEach.call(personaje_child, function (el) {
           el.classList.remove('is-selected');
         });
         document
           .getElementsByClassName(button_select.dataset.personaje)[0]
           .classList.add('is-selected');
         var selector = document.querySelectorAll('.selector-mode');
-        [].forEach.call(selector, function(el) {
+        [].forEach.call(selector, function (el) {
           el.classList.remove('is-hidden');
         });
       });
     }
 
-    // Check si ya fueron visto los 3
     const viewedAll = () => {
       let all_videos = document.querySelectorAll('.toggle').length;
       let viewed_videos = document.querySelectorAll('.toggle.selected').length;
@@ -173,33 +218,67 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
 
     setTimeout(() => {
       fadeOut(document.querySelectorAll('.steal')[0], 60);
-      let promise = player.play();
-      if (promise !== undefined) {
-        promise
-          .then((_) => {
-            // Autoplay started!
-          })
-          .catch((error) => {
-            // Autoplay was prevented.
-            // Show a "Play" button so that user can start playback.
-          });
-      }
+      player.play();
       document.getElementsByClassName('steal_title')[0].classList.add('hide');
       document.querySelectorAll('.close')[0].classList.remove('hide');
       // Add title plyr
       const controls_extra = document.querySelector('.plyr--video');
       controls_extra.prepend(createTitle(video.dataset.title));
     }, 3000);
+
+
+    /* IOS support */
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      const videoFake = document.querySelector('video');
+
+      videoFake.onplay = (event) => {
+        console.log('Hola como anda');
+        const controls_extra = document.querySelector('.plyr--video');
+        controls_extra.prepend(headerTop);
+        controls_extra.prepend(paneClose);
+
+        document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+        headerTop.classList.add('hide');
+        paneClose.classList.add('hide');
+      };
+
+      videoFake.onended = (event) => {
+        console.log('se termino');
+        button_close[0].click();
+        //fadeOut(pane, 40);
+
+        //player.stop();
+        document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+        document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
+        if (viewedAll()) {
+          onViewedAll();
+          document.getElementsByClassName('row-second')[0].classList.add('visible');
+          document.getElementsByClassName('characters')[0].classList.add('is-viewed');
+        }
+      };
+
+      videoFake.onpause = (event) => {
+        document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+        headerTop.classList.remove('hide');
+        paneClose.classList.remove('hide');
+      }
+
+    } else {
+      console.log('This is Not a IOS device');
+    }
+
+
+
   }, []);
 
   return (
-    <div
-      className="app-elcubo reflexivo"
-      style={{ background: 'url("/images/reflexivo_bg.jpg") no-repeat' }}
-    >
+    <div className="app-elcubo reflexivo" style={{ background: 'url("/images/reflexivo_bg.jpg") no-repeat' }} >
       <h2 className="steal_title">{field_ec_video_title}</h2>
-      <img className="steal" src={bgImage} />
-
+      <div className="steal">
+        <img src={isSmallScreen ? field_ec_video_preview_980 : field_ec_video_preview} />
+      </div>
       <div className="pane open" data-relation="alba">
         <a className="close hide">
           <img src="/images/pane-close.svg" />
@@ -213,7 +292,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
           <video controls crossOrigin={'true'} playsInline poster="" />
         </div>
       </div>
-
       <div className="characters columns-1 is-hidden">
         <div className="characters-wrapper">
           <div className="row row-cero">
@@ -256,15 +334,14 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
                     <ul className={`li-questions li-${nextNodes.length}`}>
                       {nextNodes && nextNodes.length
                         ? nextNodes.map((nextNode) => {
-                            const nextPageLink = `/el-cubo/temporada-1/reflexivo/${character}/${
-                              nextNode.nid
+                          const nextPageLink = `/el-cubo/temporada-1/reflexivo/${character}/${nextNode.nid
                             }`;
-                            return (
-                              <li key={nextNode.nid}>
-                                <a href={nextPageLink}> {nextNode.field_ec_answer_title}</a>
-                              </li>
-                            );
-                          })
+                          return (
+                            <li key={nextNode.nid}>
+                              <a href={nextPageLink}> {nextNode.field_ec_answer_title}</a>
+                            </li>
+                          );
+                        })
                         : null}
                     </ul>
                   </h1>

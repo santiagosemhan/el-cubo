@@ -15,9 +15,8 @@ const PlayerChronology = ({ character, chronology }) => {
         <ul className={'list-chrono ' + character.toLowerCase()}>
           {chronology.map((chrono) => (
             <li key={chrono.id}>
-              <a className={`${chrono.active ? 'active' : ''}`} href={chrono.link}>
-                {console.log(chrono.image)}
-                <img src={chrono.image} />
+              <a className={`${chrono.active ? 'active' : ''} ${chrono.viewed ? 'viewed' : ''}`} href={chrono.link}>
+                <img src={chrono.image_320} />
                 {chrono.name}
                 <span className="circle" />
               </a>

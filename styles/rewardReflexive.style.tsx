@@ -81,9 +81,13 @@ body {
 
 /* button */
 
+.cover-link {
+    width: 365px;
+    margin: auto;
+}
 .cover-link a {
     border: 1px solid rgb(26, 40, 57);
-    padding: 3px 10px 0px 30px;
+    padding: 3px 30px 3px 0px;
     border-radius: 30px;
     font-weight: 500;
     font-family: Inter;
@@ -93,15 +97,21 @@ body {
     margin-bottom: 30px;
 }
 
+.cover-link a:hover {
+    background: #56EBFD;
+}
+
 .cover-link a span {
     font-size: 20px;
-    line-height: 2em;
+    line-height: 2.2em;
     float: left;
 }
 
 .cover-link a img {
     margin-left: 10px;
     margin-top: 3px;
+    margin-right: 5px;
+    float: left;
 }
 
 .copy button img {
@@ -113,4 +123,19 @@ body {
     background-color: rgb(69, 180, 193);
     color: rgb(26, 40, 57);
 }
+
+@media (max-width: 860px) {
+
+    .cover-link {
+        width: 295px;
+    }
+    .cover-link a span {
+        font-size: 16px;
+    }
+
+    .cover-link a img {
+        width: 25px;
+    }
+}
+
 `;

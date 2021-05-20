@@ -24,7 +24,7 @@ export default function Home({ data }) {
 
   useOnMouseOutside(ref, () => setBigMouse(false));
 
-  const { field_ec_contents, field_ec_contents_paragraph } = data;
+  //const { field_ec_contents, field_ec_contents_paragraph } = data;
 
   {/* Custom Josi */ }
   React.useEffect(() => {
@@ -274,7 +274,7 @@ export default function Home({ data }) {
 
         <div>
           <audio id="track" /*autoPlay*/>
-            <source src="/audios/intro.mp3" type="audio/mpeg" />
+            <source src="/audios/loop.mp3" type="audio/mpeg" />
           </audio>
 
           <div id="audio-player-container">
@@ -315,11 +315,11 @@ export default function Home({ data }) {
 
         <div id="hero-0" className="hero hero-0 no-link hero-pc">
           <video className="video-bg video-0" autoPlay muted>
-            <source src="/portada/video-0B.mp4" type="video/mp4" />
+            <source src="/images/home/video-0B.mp4" type="video/mp4" />
           </video>
-          <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec_image/desk/SITILLVideo%20IN%200%2B1.jpg"
+          <img className="img-bg-pc" src="/images/home/SITILLVideo IN 0.jpeg"
           />
-          <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_4.jpg" />
+          <img className="img-bg-mobile" src="/images/home/mobile_4.jpeg" />
           <div className="video-overlay">
             <main className="scroll-container">
 
@@ -384,10 +384,10 @@ export default function Home({ data }) {
                       <div className="line"></div>
                     </div>
                     <video className="video-bg" muted>
-                      <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video-1B.mp4" type="video/mp4" />
+                      <source src="/images/home/video-1B.mp4" type="video/mp4" />
                     </video>
-                    <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%202.jpg" />
-                    <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_5.jpg" />
+                    <img className="img-bg-pc" src="/images/home/SITILLVideo%20IN%202.jpeg" />
+                    <img className="img-bg-mobile" src="/images/home/SITILLVideo%20IN%202.jpeg" />
                     <div className="video-overlay ">
                       <div className="paragraph-message cover-scroll">
 
@@ -428,11 +428,11 @@ export default function Home({ data }) {
 
                 <div id="hero-2" className="hero hero-2 no-link" onMouseEnter={handleMouseEnter} >
                   <video className="video-bg" muted>
-                    <source src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-video/desk/Video%20IN%203_0.mp4" type="video/mp4"
+                    <source src="/images/home/Video%20IN%203_0.mp4" type="video/mp4"
                     />
                   </video>
-                  <img className="img-bg-pc" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/SITILLVideo%20IN%203.jpg" />
-                  <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/mobile_6.jpg" />
+                  <img className="img-bg-pc" src="/images/home/SITILLVideo%20IN%203.jpeg" />
+                  <img className="img-bg-mobile" src="/images/home/mobile_6.jpeg" />
                   <div className="video-overlay cover-scroll">
                     <div className="copy-cover">
 
@@ -476,7 +476,7 @@ export default function Home({ data }) {
 
             <img className="img-bg-deg" src="/images/bg-deg.png" />
 
-            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_01.jpg" />
+            <img className="img-bg-mobile" src="/images/home/el_cubo_mobile_01.jpeg" />
 
             <div className="copy copy-1">
               <h1>
@@ -518,7 +518,7 @@ export default function Home({ data }) {
           </div>
           <div id="hero-1-mobile" className="hero">
 
-            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_02.jpg" />
+            <img className="img-bg-mobile" src="/images/home/el_cubo_mobile_02.jpeg" />
             <div className="paragraph-overlay">
               <div className="paragraph-message">
                 <hr />
@@ -543,7 +543,7 @@ export default function Home({ data }) {
           </div>
 
           <div id="hero-2-mobile" className="hero no-link">
-            <img className="img-bg-mobile" src="https://rtvcplay-v2.s3.amazonaws.com/s3fs-public/field/ec-image/mobil/el_cubo_mobile_03.jpg" />
+            <img className="img-bg-mobile" src="/images/home/el_cubo_mobile_03.jpeg" />
 
             <div className="copy">
 
@@ -579,6 +579,7 @@ export default function Home({ data }) {
 
 
 
+/*
 export const getStaticProps: GetStaticProps = async (context) => {
   const data = await fetch(`/api/v1/el-cubo/page/5364`);
 
@@ -598,6 +599,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   };
 };
+*/
 
 
 

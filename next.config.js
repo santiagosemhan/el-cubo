@@ -7,8 +7,9 @@
 // next.js configuration
 const nextConfig = {
   env: {
-    API_URL: 'https://play-cms.rtvc.dev',
+    API_URL: 'https://cms.rtvcplay.co',
     MEDIA_CONTENT_URL: 'https://rtvcplay-v2.s3.amazonaws.com',
+    VIDEO_CONTENT_URL: 'https://streaming.rtvc.gov.co/RTVCPlay-vod/smil:[field_asset_id].smil/playlist.m3u8',
   },
   typescript: {
     ignoreBuildErrors: true,

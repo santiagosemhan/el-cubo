@@ -125,6 +125,10 @@ export const ListChronoCover = styled.div`
     color: white;
   }
 
+  ul.list-chrono a.viewed {
+    color: white;
+  }
+
   ul.list-chrono a img:hover {
     opacity: 0;
   }

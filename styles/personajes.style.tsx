@@ -21,7 +21,7 @@ footer {
 
 .logo-elcubo {
     margin: auto;
-    z-index: 11;
+    z-index: 13;
 }
 
 .logo--image {
@@ -30,7 +30,7 @@ footer {
     position: absolute;
     top: 120px;
     left: 40px;
-    z-index: 11;
+    z-index: 13;
 }
 
 .characters .parent {
@@ -61,6 +61,8 @@ footer {
 
 .characters-wrapper {
     height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
 .characters-wrapper .row {
@@ -245,7 +247,7 @@ footer {
     font-family: 'Inter';
     color: white;
     position: absolute;
-    top: 320px;
+    top: 50vh;
     z-index: 99;
     width: 100%;
 }
@@ -315,7 +317,7 @@ footer {
 .characters .selector-mode {
     width: 100%;
     position: absolute;
-    bottom: 40px;
+    bottom: 0px;
     z-index: 10;
     transition: 2s all ease;
     opacity: 1;
@@ -324,6 +326,7 @@ footer {
 .characters .selector-mode.is-hidden {
     display: block;
     opacity: 0;
+    z-index: 0;
 }
 
 .characters .selector-cover {
@@ -346,6 +349,7 @@ footer {
     transition: 0.5s all ease;
     padding: 0;
     margin: 0;
+    margin-bottom: 40px;
     width: 100%;
 }
 
@@ -652,7 +656,8 @@ a {
         z-index: 11;
     }
     .characters-wrapper .row.row-first .column .parent {
-        height: 45vh;
+        height: 40vh;
+        overflow: hidden;
     }
 
     .characters .bg-video {
@@ -689,8 +694,9 @@ a {
         opacity: 0;
     }
 
-    .characters .selector-mode {
-        bottom: 10px;
+
+    .characters .selector-cover ul {
+        margin-bottom: 10px;
     }
 
     #mainDiv {
@@ -728,35 +734,35 @@ a {
     }
 
 
-    .characters .parent .child.char-4726 .name,
-    .characters .parent .child.char-4725 .name,
-    .characters .parent .child.char-4729 .name {
+    .characters .parent .child.char-alba .name,
+    .characters .parent .child.char-carey .name,
+    .characters .parent .child.char-marina .name {
         bottom: 100px;
     }
 
-    .characters .parent .child.char-4726 .icon-selected,
-    .characters .parent .child.char-4725 .icon-selected,
-    .characters .parent .child.char-4729 .icon-selected {
+    .characters .parent .child.char-alba .icon-selected,
+    .characters .parent .child.char-carey .icon-selected,
+    .characters .parent .child.char-marina .icon-selected {
         bottom: 80px;
     }
 
-    .characters .parent .child.char-4727 img.img-bn,
-    .characters .parent .child.char-4728 img.img-bn,
-    .characters .parent .child.char-4730 img.img-bn,
-    .characters .parent .child.char-4727 img.img-color,
-    .characters .parent .child.char-4728 img.img-color,
-    .characters .parent .child.char-4730 img.img-color {
+    .characters .parent .child.char-mercado img.img-bn,
+    .characters .parent .child.char-elvira img.img-bn,
+    .characters .parent .child.char-sales img.img-bn,
+    .characters .parent .child.char-mercado img.img-color,
+    .characters .parent .child.char-elvira img.img-color,
+    .characters .parent .child.char-sales img.img-color {
         top: -54px;
     }
   
-    .characters .parent .child.char-4727 .name,
-    .characters .parent .child.char-4728 .name,
-    .characters .parent .child.char-4730 .name {
+    .characters .parent .child.char-mercado .name,
+    .characters .parent .child.char-elvira .name,
+    .characters .parent .child.char-sales .name {
         bottom: 160px;
     }
-    .characters .parent .child.char-4727 .icon-selected,
-    .characters .parent .child.char-4728 .icon-selected,
-    .characters .parent .child.char-4730 .icon-selected {
+    .characters .parent .child.mercado .icon-selected,
+    .characters .parent .child.char-elvira .icon-selected,
+    .characters .parent .child.char-sales .icon-selected {
         bottom: 140px;
     }
     .input-search, #menu-mobile-button {
@@ -803,6 +809,13 @@ a {
   
 }
 
+@media only screen and (max-width: 1025px) {
+    .app-elcubo #nav-login {
+        right: 30px;
+        top: 56px;
+    }
+}
+
 @media only screen and (max-width: 768px) and (orientation: portrait) {
     #mainDiv {
         display: none;
@@ -817,6 +830,21 @@ a {
     }
       
 }
+
+
+@media only screen and (max-height: 380px) and (orientation: landscape) {
+    .characters .name {
+        top: 150px;  
+        bottom: auto !important;
+    }
+
+    .characters .icon-selected {
+        bottom: auto;
+        top: 170px;  
+        width: 15px;
+    }
+}
+
 
 
 @media only screen and (max-height: 500px) and (orientation: landscape),
@@ -836,7 +864,11 @@ a {
     }
 
     .characters .selector-mode {
-        bottom: 10px;
+        bottom: 0px;
+    }
+
+    .characters .selector-cover ul {
+        margin-bottom: 10px;
     }
 
     .characters .pane.open {
@@ -1080,6 +1112,14 @@ a {
 
 }
 
+@media (max-width: 1024px) {
+
+    #nav-login {
+        right: 30px;
+        top: 50px;
+    }
+}
+
 
 @media screen and ( max-height: 700px ){
 
@@ -1116,6 +1156,24 @@ a {
         font-size: 18px;
     }
   
+  }
+
+  #nav-login {
+    position: absolute;
+    top: 80px;
+    right: 60px;
+    font-weight: 500;
+    z-index: 100;
+    height: 60px;
+    padding-top: 30px;
+    color: white;
+    font-family: Inter;
+  }
+
+  #nav-login a {
+    margin-left: 10px;
+    color: #45B4C1;
+    text-decoration: none;
   }
 
 `;

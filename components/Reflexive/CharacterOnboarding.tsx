@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CharacterOnboarding = ({ character, node, bgImage }) => {
-  // TODO: Add field_ec_copy_lab;
+const CharacterOnboarding = ({ character, hasReward, bgImage }) => {
   const nextPageLink = `/el-cubo/temporada-1/reflexivo/${character}`;
+  const rewardLink = `/el-cubo/temporada-1/reflexivo/${character}/recompensa`;
 
   return (
     <div
@@ -12,21 +12,41 @@ const CharacterOnboarding = ({ character, node, bgImage }) => {
       <div className="hero hero-onboarding onboarding-reflexive">
         <div className="copy-cover">
           <div className="copy">
-            <p>
-              <span className="copy-phrase">¿Cuánto Poder tiene para ti la verdad?</span>
-              <br /> Navega este personaje y contesta las preguntas para recibir tu concepto
-            </p>
-
-            <p class="p-winner">
-              Ya lograste la recompensa asociada a este personaje.<br />
-              <a href="">Ver recompensa de nuevo</a>
-            </p>
-            <div className="cover-link">
-              <a href={nextPageLink} className="button-cyan">
-                <span>Continuar</span>
-                <img src="/images/icon-arrow-init.svg" />
-              </a>
-            </div>
+            {hasReward ? (
+              <div className="winner">
+                <p className="p-winner">
+                  <span className="copy-phrase">Ya lograste la recompensa asociada a este personaje.</span>
+                </p>
+                <div className="col-2">
+                  <div className="col-left">
+                    <a className="button-login cyan-dark button-quit" href={rewardLink}>
+                      Ver recompensa de nuevo
+                  </a>
+                  </div>
+                  <div className="col-right">
+                    <div className="cover-link">
+                      <a href={nextPageLink} className="button-cyan">
+                        <span>Continuar</span>
+                        <img src="/images/icon-arrow-init.svg" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) :             
+              <div>
+                <p>
+                  <span className="copy-phrase">¿Cuánto Poder tiene para ti la verdad?</span>
+                  <br /> Navega este personaje y contesta las preguntas para recibir tu concepto
+                </p>
+                <div className="cover-link">
+                  <a href={nextPageLink} className="button-cyan">
+                    <span>Continuar</span>
+                    <img src="/images/icon-arrow-init.svg" />
+                  </a>
+                </div>
+              </div>
+            }
           </div>
         </div>
       </div>

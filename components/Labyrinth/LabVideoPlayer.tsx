@@ -1,24 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NextNodes from 'components/Labyrinth/NextNodes';
-import { FacebookProvider, Comments } from 'react-facebook';
+import Links from 'constants/Links';
 
-const LabVideoPlayer = ({ data }) => {
+const LabVideoPlayer = ({ data, currentCharacter, isLoggedIn }) => {
+
   const nodeTitle = data.field_ec_video_title;
-  const bgVideoImage = data.field_ec_background_video_image;
+  const bgVideoImage = data.field_ec_episode_json[0].field_ec_video_preview;
+  const bgVideoImage980 = data.field_ec_episode_json[0].field_ec_video_preview_980;
   const bgEndImage = data.field_ec_end_image;
   const triggerCommentsTime = data.field_ec_trigger_comments_time;
   const videoId = data.field_ec_episode_json[0].field_ec_asset_id;
   const nextNodes = data.field_ec_labyrinth_items_json;
-  const introText = data.field_ec_intro_comments;
-  const commentsUrl = data.field_ec_url_comments;
   const videoForceEnd = data.field_ec_trigger_end_video;
   const opacity = data.field_ec_end_image_opaccity;
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  React.useEffect(() => {
+    const setWindowSize = !window.matchMedia('(min-width: 1024px)').matches;
+    setIsSmallScreen(setWindowSize);
+  }, []);
 
   return (
-    <div className="app-elcubo laberinto">
+    <div className={`app-elcubo laberinto node_${data.nid}`}>
       <div className="pane open pane-bg">
         <h2 className="steal_title">{nodeTitle}</h2>
-        <img className="steal" src={bgVideoImage} />
+        <div className="steal">
+          <img src={isSmallScreen ? bgVideoImage980 : bgVideoImage} />
+        </div>
         <a className="close hide">
           <img src="/images/laberinto/pane-close.svg" />
         </a>
@@ -33,35 +41,18 @@ const LabVideoPlayer = ({ data }) => {
         </div>
       </div>
 
-      <div className="comments-bullet open-comments">
-        <img src="/images/laberinto/comment-bullet.svg" />
-        <div className="spinner">
-          <div className="bounce1" />
-          <div className="bounce2" />
-          <div className="bounce3" />
-        </div>
-        <p>
-          Clic aquí
-          <br />
-          para comentar
-        </p>
-      </div>
-
-      <div className="pane-cover-comments" />
-
-      <div className="pane-comments" data-relation="">
-        <a className="close-comments">
-          <img src="/images/laberinto/pane-close-black.svg" />
-        </a>
-        <p className="intro">{introText}</p>
-        <div className="pane-iframe">
-          <FacebookProvider appId="115441168616341">
-            <Comments href={commentsUrl} width="100%" />
-          </FacebookProvider>
-        </div>
-      </div>
-
       <NextNodes nextNodes={nextNodes} bgEndImage={bgEndImage} opacity={opacity} />
+
+      {nextNodes && nextNodes.length === 1 ?
+        <div className="cover-reward">
+          <div className="cover-link">
+            <a href={isLoggedIn && currentCharacter && currentCharacter.name ? `/el-cubo/temporada-1/laberinto/recompensa/${currentCharacter.name}` : Links.guest} className="button-cyan">
+              <span>Ver recompensa</span>
+              <img src="/images/icon-arrow-init.svg" />
+            </a>
+          </div>
+        </div>
+        : null}
     </div>
   );
 };
