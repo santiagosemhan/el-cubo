@@ -638,7 +638,6 @@ a {
 }
 
 @media only screen and (max-width: 1024px) and (orientation: portrait) {
-
     body {
         width: 100vw;
         overflow: hidden;
@@ -656,7 +655,6 @@ a {
         height: 45vh;
         z-index: 11;
     }
-
     .characters-wrapper .row.row-first .column .parent {
         height: 40vh;
         overflow: hidden;
@@ -666,14 +664,12 @@ a {
         bottom: 0;
         height: 100vh;
     }
-
     .characters .pane a.close {
         position: absolute;
         left: 0;
         top: 0;
         z-index: 100;
     }
-
     .characters .pane-video {
         margin-top: 60px;
     }
@@ -682,6 +678,11 @@ a {
         top: 0px;
         position: static;
     }
+
+    .is-selected.child img.img-bn {
+        display: none;
+    }
+
     .characters .parent .child img.img-color {
         top: 0px;
         position: static;
@@ -729,6 +730,7 @@ a {
     .characters .projectButton {
         display: none;
     }
+
     .characters .parent:hover a,
     .characters .parent:focus a {
         display: none;
@@ -743,13 +745,13 @@ a {
     .characters .parent .child.char-alba .name,
     .characters .parent .child.char-carey .name,
     .characters .parent .child.char-marina .name {
-        bottom: 100px;
+        bottom: 80px;
     }
 
     .characters .parent .child.char-alba .icon-selected,
     .characters .parent .child.char-carey .icon-selected,
     .characters .parent .child.char-marina .icon-selected {
-        bottom: 80px;
+        bottom: 60px;
     }
 
     .characters .parent .child.char-mercado img.img-bn,
@@ -758,19 +760,28 @@ a {
     .characters .parent .child.char-mercado img.img-color,
     .characters .parent .child.char-elvira img.img-color,
     .characters .parent .child.char-sales img.img-color {
-        top: -54px;
+        margin-top: -50px;
     }
   
-    .characters .parent .child.char-mercado .name,
     .characters .parent .child.char-elvira .name,
     .characters .parent .child.char-sales .name {
-        bottom: 160px;
-    }
-    .characters .parent .child.mercado .icon-selected,
-    .characters .parent .child.char-elvira .icon-selected,
-    .characters .parent .child.char-sales .icon-selected {
         bottom: 140px;
     }
+
+    .characters .parent .child.char-mercado .name {
+        font-size: 19px;
+        bottom: 110px;
+    }
+
+    .characters .parent .child.char-elvira .icon-selected,
+    .characters .parent .child.char-sales .icon-selected {
+        bottom: 120px;
+    }
+
+    .characters .parent .child.char-mercado .icon-selected {
+        bottom: 90px;
+    }
+
     .input-search, #menu-mobile-button {
         display: none;
     }
