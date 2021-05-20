@@ -902,7 +902,7 @@ a {
         display: none;
     }
 
-    .characters-wrapper {
+    .characters-wrapper .row.row-first {
         margin-top: 25px;
     }
 
