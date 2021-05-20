@@ -652,7 +652,7 @@ a {
         width: 33.33%;
         flex: none;
         float: left;
-        height: 45vh;
+        height: 42vh;
         z-index: 11;
     }
     .characters-wrapper .row.row-first .column .parent {
@@ -672,6 +672,10 @@ a {
     }
     .characters .pane-video {
         margin-top: 60px;
+    }
+
+    .characters .pane video {
+        margin-top: -60px;
     }
 
     .characters .parent .child img.img-bn {
