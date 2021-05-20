@@ -161,26 +161,30 @@ export default function SeasonPage({ data }) {
     }
   }, []);
 
-  let auth = (
-    <div id="nav-login">
-      <a key={'register'} href={Links.register} className="link-login">
-        Ingresar
-      </a>
-    </div>
-  );
+  let auth;
 
   if (isLoggedIn) {
     auth = (
       <div id="nav-login">
         <span className="user-logged">
-          Bienvenid@, {user ? user.full_name.split(' ')[0] : null}
+          ¡Hola! {user ? user.full_name.split(' ')[0] : null}
         </span>
-        <a key={'logout'} href={Links.logout} className="link-logout">
+        <a key={'logout'} href={Links.logoutCharacters} className="link-logout">
           Salir
         </a>
       </div>
     );
+  } else {
+    auth = (
+      <div id="nav-login">
+        <a key={'register'} href={Links.registerCharacters} className="link-login">
+          Ingresar
+      </a>
+      </div>
+    )
   }
+
+
 
   const handleMobileOnClick = (e) => {
     e.preventDefault();

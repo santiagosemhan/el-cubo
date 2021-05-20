@@ -860,6 +860,25 @@ a {
       
 }
 
+@media only screen and (max-width: 480px) and (orientation: portrait) {
+    .toggle-help span {
+        display: none;
+    }
+
+    .help-wrapper .nav ul {
+        width: auto;
+    }
+
+    .help-wrapper .nav {
+        left: 80px;
+    }
+
+    .characters .parent .child .name,
+    .characters .parent .child.is-selected .name {
+        font-size: 19px;
+    }
+}
+
 
 @media only screen and (max-height: 380px) and (orientation: landscape) {
     .characters .name {
@@ -924,6 +943,7 @@ a {
 
     .characters .name {
         bottom: 34vh;
+        font-size: 12px;
     }
 
     .characters .parent .child.is-selected .name {
@@ -940,7 +960,8 @@ a {
         width: 15px;
     }
 
-    .selector-help-pc {
+    .selector-help-pc,
+    .projectButton {
         display: none;
     }
 }

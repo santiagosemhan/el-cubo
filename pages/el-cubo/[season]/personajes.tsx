@@ -448,28 +448,29 @@ const CharactersPage = ({ data = {} }) => {
 
 
 
-
   }, []);
 
-  let auth = (
-    <div id="nav-login">
-      <a key={'register'} href={Links.registerCharacters} className="link-login">
-        Ingresar
-      </a>
-    </div>
-  );
+  let auth;
 
   if (isLoggedIn) {
     auth = (
       <div id="nav-login">
         <span className="user-logged">
-          Bienvenid@, {user ? user.full_name.split(' ')[0] : null}
+          ¡Hola! {user ? user.full_name.split(' ')[0] : null}
         </span>
         <a key={'logout'} href={Links.logoutCharacters} className="link-logout">
           Salir
         </a>
       </div>
     );
+  } else {
+    auth = (
+      <div id="nav-login">
+        <a key={'register'} href={Links.registerCharacters} className="link-login">
+          Ingresar
+      </a>
+      </div>
+    )
   }
 
   return (
@@ -528,7 +529,7 @@ const CharactersPage = ({ data = {} }) => {
                     <img className="bg-video" src="/images/bg-video.png" />
                     <video id="video1" width="420" playsInline>
                       <source src="" type="video/mp4" data-personaje="" /> Your browser does not
-                              support HTML video.
+                                support HTML video.
                   </video>
                   </div>
                 </div>
