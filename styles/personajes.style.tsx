@@ -1176,4 +1176,14 @@ a {
     text-decoration: none;
   }
 
+  img.img-bn,
+  img.img-color {
+	opacity: 0;
+	transition: .8s opacity;
+  }
+
+  img.visible {
+    opacity: 1;
+  }
+
 `;

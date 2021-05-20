@@ -446,6 +446,20 @@ const CharactersPage = ({ data = {} }) => {
       })
     })
 
+    /* Load images Mobile */
+
+    let imagesLoadGray = document.querySelectorAll(".img-bn"), i1 = 1;
+    Array.prototype.forEach.call(imagesLoadGray, function (img) {
+      setTimeout(function () { img.classList.add("visible") }, 700 * i1)
+      i1++;
+    })
+
+    let imagesLoadColor = document.querySelectorAll(".img-color"), i2 = 1;
+    Array.prototype.forEach.call(imagesLoadColor, function (img) {
+      setTimeout(function () { img.classList.add("visible") }, 700 * i2)
+      i2++;
+    })
+
 
 
   }, []);
