@@ -804,6 +804,14 @@ a {
         display: none;
     }
 
+    .characters .selector-cover ul li {
+        line-height: 1.1; 
+    }
+
+    .characters .selector-cover ul li a {
+        font-size: 18px; 
+    }
+
    
 }
 
