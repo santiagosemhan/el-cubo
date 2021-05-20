@@ -448,16 +448,14 @@ const CharactersPage = ({ data = {} }) => {
 
     /* Load images Mobile */
 
-    let imagesLoadGray = document.querySelectorAll(".img-bn"), i1 = 1;
-    Array.prototype.forEach.call(imagesLoadGray, function (img) {
-      setTimeout(function () { img.classList.add("visible") }, 700 * i1)
-      i1++;
-    })
+    const imagesBN = document.querySelectorAll(".img-bn");
 
-    let imagesLoadColor = document.querySelectorAll(".img-color"), i2 = 1;
-    Array.prototype.forEach.call(imagesLoadColor, function (img) {
-      setTimeout(function () { img.classList.add("visible") }, 700 * i2)
-      i2++;
+    imagesBN.forEach(img => {
+      console.log(img.src);
+      img.src += `?v=${new Date().getTime()}`;
+
+      console.log(img.src);
+
     })
 
 
