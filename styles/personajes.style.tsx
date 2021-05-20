@@ -638,6 +638,7 @@ a {
 }
 
 @media only screen and (max-width: 1024px) and (orientation: portrait) {
+
     body {
         width: 100vw;
         overflow: hidden;
@@ -655,6 +656,7 @@ a {
         height: 45vh;
         z-index: 11;
     }
+
     .characters-wrapper .row.row-first .column .parent {
         height: 40vh;
         overflow: hidden;
@@ -664,21 +666,25 @@ a {
         bottom: 0;
         height: 100vh;
     }
+
     .characters .pane a.close {
         position: absolute;
         left: 0;
         top: 0;
         z-index: 100;
     }
+
     .characters .pane-video {
         margin-top: 60px;
     }
 
     .characters .parent .child img.img-bn {
         top: 0px;
+        position: static;
     }
     .characters .parent .child img.img-color {
         top: 0px;
+        position: static;
     }
     .characters-wrapper .row {
         display: block;
