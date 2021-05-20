@@ -446,17 +446,6 @@ const CharactersPage = ({ data = {} }) => {
       })
     })
 
-    /* Load images Mobile */
-
-    const imagesBN = document.querySelectorAll(".img-bn");
-
-    imagesBN.forEach(img => {
-      console.log(img.src);
-      img.src += `?v=${new Date().getTime()}`;
-
-      console.log(img.src);
-
-    })
 
 
 
