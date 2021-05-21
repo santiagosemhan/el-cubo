@@ -2062,7 +2062,7 @@ footer {
 
 
 .pane-login .pane {
-    right: -50%;
+    right: -150%;
     overflow: hidden;
     position: fixed;
     top: 0;
