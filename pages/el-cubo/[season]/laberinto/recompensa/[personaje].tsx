@@ -57,7 +57,11 @@ const CharacterReward = ({ character }) => {
           controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
         });
         const controls_extra = document.querySelector('.plyr--video');
-        controls_extra.prepend(createTitle(paneVideo.dataset.title));
+
+        if (document.querySelector('.plyr_title') === null) {
+          controls_extra.prepend(createTitle(paneVideo.dataset.title));
+        }
+
         if (!Hls.isSupported()) {
           video.src = source;
         } else {

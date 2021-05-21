@@ -294,6 +294,13 @@ body {
     }
 }
 
+@media screen and (max-width: 1200px) {
+    .steal_title, .plyr_title {
+        font-size: 22px;
+        left: 20px;
+    }
+}
+
 
 /* Plyr Color */
 

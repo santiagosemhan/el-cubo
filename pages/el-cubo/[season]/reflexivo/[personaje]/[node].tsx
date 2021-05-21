@@ -235,6 +235,13 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           player = loadPlayer(pane.dataset.relation);
           player.stop();
 
+          // Exit fullscreen for mobile
+          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            document.exitFullscreen();
+          }
+
+
+
         });
       });
     }
