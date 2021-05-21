@@ -3,9 +3,9 @@ import Links from 'constants/Links';
 
 const PaneLogin = () => {
     return (
-        <div className="pane-login is-hidden">
+        <div className="pane-login">
             <div className="pane-cover" />
-            <div className="pane open">
+            <div className="pane">
                 <a className="icon close">
                     <img src="/images/pane-close.svg" />
                 </a>

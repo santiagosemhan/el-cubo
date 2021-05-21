@@ -51,9 +51,9 @@ export default function SeasonPage({ data }) {
 
   React.useEffect(() => {
     if (showLoginPanel) {
-      document.getElementsByClassName('pane-login')[0].classList.remove('is-hidden');
+      document.getElementsByClassName('pane-login')[0].classList.add('open');
     } else {
-      document.getElementsByClassName('pane-login')[0].classList.add('is-hidden');
+      document.getElementsByClassName('pane-login')[0].classList.remove('open');
     }
   }, [showLoginPanel])
 
@@ -61,7 +61,7 @@ export default function SeasonPage({ data }) {
     getMe();
 
     if (isLoggedIn) {
-      document.getElementsByClassName('pane-login')[0].classList.add('is-hidden');
+      document.getElementsByClassName('pane-login')[0].classList.add('open');
     }
 
     // Pane Login

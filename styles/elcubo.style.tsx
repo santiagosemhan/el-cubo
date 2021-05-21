@@ -2060,30 +2060,27 @@ footer {
 }
 
 
-.pane-login {
-    position: fixed;
-    z-index: 10001;
-}
 
 .pane-login .pane {
+    right: -50%;
+    overflow: hidden;
     position: fixed;
     top: 0;
     z-index: 10002;
-    right: -50%;
     height: 100vh;
-    width: 30%;
+    width: 430px;
     background: #222222;
     -webkit-box-shadow: -58px 0px 66px 0px rgb(69 180 193 / 10%);
     -moz-box-shadow: -58px 0px 66px 0px rgba(69,180,193,0.1);
-    box-shadow: -58px 0px 66px 0px rgb(69 180 193 / 10%);
+    box-shadow: -58px 0px 66px 0px rgb(69 180 193 / 10%); 
     -webkit-transition: 0.5s all ease;
     transition: 0.5s all ease;
-    overflow: hidden;
 }
 
-.pane-login .pane.open {
+.pane-login.open .pane {
     right: 0vw;
 }
+
 
 .pane-login .pane a.icon.close {
     cursor: pointer;
@@ -2249,6 +2246,12 @@ footer {
   @media (max-width: 1200px) {
     .back-to-season {
         left: 15px !important;
+    }
+
+    .pane.pane-chrono-mobile {
+        -webkit-box-shadow: none;
+          -moz-box-shadow: none;
+          box-shadow: none;
     }
   }
   
