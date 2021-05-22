@@ -707,7 +707,14 @@ a {
 
 
     .characters .selector-cover ul {
+        width: 92%;
+        margin: auto;
+        float: none;
         margin-bottom: 10px;
+    }
+
+    .characters .selector-cover ul li {
+        margin-bottom: 20px;
     }
 
     #mainDiv {
@@ -876,6 +883,7 @@ a {
     .characters .parent .child .name,
     .characters .parent .child.is-selected .name {
         font-size: 19px;
+        width: 100px;
     }
 }
 
@@ -902,7 +910,7 @@ a {
         display: none;
     }
 
-    .characters-wrapper .row.row-first {
+    .characters-wrapper .row.row-first .column {
         margin-top: 25px;
     }
 

@@ -196,7 +196,7 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
 
       if (button_close) {
         button_close.addEventListener('click', () => {
-          pane.classList.toggle('open');
+          pane.classList.remove('open');
         });
       }
     }
