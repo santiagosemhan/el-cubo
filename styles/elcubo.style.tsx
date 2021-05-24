@@ -2059,8 +2059,6 @@ footer {
 
 }
 
-
-
 .pane-login .pane {
     right: -150%;
     overflow: hidden;
@@ -2086,7 +2084,6 @@ footer {
     cursor: pointer;
     padding: 20px;
     float: left;
-    display: none;
 }
 
 .pane-login .pane-cover {

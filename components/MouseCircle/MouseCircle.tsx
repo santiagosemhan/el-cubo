@@ -9,6 +9,7 @@ const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text, s
     e.preventDefault();
     if (href === '#') {
       showLoginPanel(true);
+      document.getElementsByClassName('pane-login')[0].classList.add('open');
     } else {
       window.location.href = href;
     }
@@ -56,8 +57,8 @@ const MouseCircle = ({ show = true, isBig = false, noLink = false, href, text, s
             <a onClick={handleOnClick} className="mouse_pointer" href={href}>{text}</a>
           </span>
         ) : (
-          ''
-        )}
+            ''
+          )}
       </StyledMouseCircle>
     )
   );

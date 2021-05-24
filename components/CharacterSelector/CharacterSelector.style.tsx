@@ -123,8 +123,17 @@ export const CharacterSelectorWrapper = styled.div`
   }
 
   @media only screen and (max-width: 1024px) {
-  .pane.open {
-    width: 65%;
+    .pane.open {
+      width: 65%;
+    }
+
+    .pane {
+    -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+    }
   }
-  }
+
+
+
 `;

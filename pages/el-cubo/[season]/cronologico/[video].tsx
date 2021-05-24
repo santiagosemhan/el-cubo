@@ -81,7 +81,7 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
   };
 
   const updateUser = async () => {
-    if (user) {
+    if (user && character) {
       const userChronoNodes = ModesUtils.setCharacterNodesChrono(userChronoData, character, video);
       await UserService.update(user.id, {
         field_ec_chrono_data_json: {
@@ -90,6 +90,12 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
       });
     }
   };
+
+  React.useEffect(() => {
+    if (character) {
+      updateUser();
+    }
+  }, [user, userChronoData, character]);
 
   React.useEffect(() => {
     if (isLoggedIn) {
@@ -223,7 +229,6 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
   }, [chronologyList]);
 
   const handleVideoEnded = React.useCallback(() => {
-    updateUser();
     const index = chronologyList.findIndex((el) => el.id === video);
     if (index <= chronologyList.length) {
       const nextChapter = chronologyList[index + 1];
@@ -235,7 +240,7 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
         window.location.href = Links.guest;
       }
     }
-  }, [chronologyList, user, userChronoData]);
+  }, [chronologyList]);
 
   const handleChapterClick = () => setShowChapters(!showChapters);
 
@@ -250,50 +255,50 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-            <>
-              <div className="header-top">
-                <div className="header-top-inner">
-                  <nav className="nav">
-                    <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
-                      <img className="icon-change" src="/images/icon-change-char2.svg" />
-                    </a>
-                    <a href="#" title="Cronología" className="toggle-chrono-mobile menu-elcubo">
-                      <img className="icon-change" src="/images/icon-wall-clock.svg" />
-                    </a>
-                  </nav>
-                </div>
+          <>
+            <div className="header-top">
+              <div className="header-top-inner">
+                <nav className="nav">
+                  <a href="#" title="Cambiar de personaje" className="toggle menu-elcubo">
+                    <img className="icon-change" src="/images/icon-change-char2.svg" />
+                  </a>
+                  <a href="#" title="Cronología" className="toggle-chrono-mobile menu-elcubo">
+                    <img className="icon-change" src="/images/icon-wall-clock.svg" />
+                  </a>
+                </nav>
               </div>
-              <h2 className="steal_title">{videoTitle}</h2>
-              <div className="steal">
-                <img src={isSmallScreen ? poster980 : poster} />
-              </div>
+            </div>
+            <h2 className="steal_title">{videoTitle}</h2>
+            <div className="steal">
+              <img src={isSmallScreen ? poster980 : poster} />
+            </div>
 
-              <CharacterSelector list={characterList} />
-              {startVideo ?
-                <FullPlayerWrapper>
-                  <VideoPlayer
-                    showBackButton
-                    backLink="/el-cubo/temporada-1/personajes"
-                    title={videoTitle}
-                    source={srcVideo}
-                    onBackClick={handleBackClick}
-                    onNextClick={handleNextClick}
-                    onChaptersClick={handleChapterClick}
-                    chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
-                    showPrevButton={showPrevButton}
-                    showNextButton={showNextButton}
-                    onVideoEnded={handleVideoEnded}
-                  >
-                    {showChapters && modo === 'cronologico' && chronology && (
-                      <PlayerChronology character={character} chronology={chronologyList} />
-                    )}
-                  </VideoPlayer>
-                </FullPlayerWrapper>
-                :
-                null
-              }
-            </>
-          )}
+            <CharacterSelector list={characterList} />
+            {startVideo ?
+              <FullPlayerWrapper>
+                <VideoPlayer
+                  showBackButton
+                  backLink="/el-cubo/temporada-1/personajes"
+                  title={videoTitle}
+                  source={srcVideo}
+                  onBackClick={handleBackClick}
+                  onNextClick={handleNextClick}
+                  onChaptersClick={handleChapterClick}
+                  chapterButtonName={showChapters ? 'Ocultar Cronología' : 'Mostrar Cronología'}
+                  showPrevButton={showPrevButton}
+                  showNextButton={showNextButton}
+                  onVideoEnded={handleVideoEnded}
+                >
+                  {showChapters && modo === 'cronologico' && chronology && (
+                    <PlayerChronology character={character} chronology={chronologyList} />
+                  )}
+                </VideoPlayer>
+              </FullPlayerWrapper>
+              :
+              null
+            }
+          </>
+        )}
       </Container>
 
       <div className="pane pane-chrono-mobile">
@@ -330,7 +335,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const chapter = await fetch(`/api/v1/elcubo/season/${season1_id}/episode/${params.video}`);
   const chronology = await fetch(`/api/v1/elcubo/season/${season1_id}/chrono`);
 
-  let srcVideoId = chapter[0] ?.field_ec_asset_id;
+  let srcVideoId = chapter[0]?.field_ec_asset_id;
   const srcVideo = srcVideoId
     ? UrlUtils.getVideoUrl(srcVideoId)
     : undefined;
@@ -340,8 +345,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
       title: chapter[0].title,
       video: params.video,
       srcVideo: srcVideo || null,
-      poster: chapter[0] ?.field_ec_video_preview || null,
-      poster980: chapter[0] ?.field_ec_video_preview_980 || null,
+      poster: chapter[0]?.field_ec_video_preview || null,
+      poster980: chapter[0]?.field_ec_video_preview_980 || null,
       chronology,
     },
     revalidate: 900,

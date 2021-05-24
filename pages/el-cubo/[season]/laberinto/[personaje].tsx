@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import AppLayout from 'layouts/AppLayout';
 import Head from 'next/head';
 import fetcher from 'libs/fetcher';
@@ -16,7 +16,7 @@ const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
 
   const isLoggedIn = AuthService.isLoggedIn();
   const nodeId = node.node_labyrinth_id;
-  const nextPageLink = `/el-cubo/temporada-1/laberinto/${character.name}/${nodeId}`;
+  const nextPageLink = `/el-cubo/temporada-1/laberinto/${character.name}/${nodeId}?initial=${character.name}`;
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -51,7 +51,6 @@ const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
         console.log(error);
       }
     }
-    window.location.href = nextPageLink;
   };
 
   React.useEffect(() => {
@@ -60,6 +59,10 @@ const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
     }
   }, []);
 
+  const handleUserClickedUpdate = () => {
+    window.location.href = nextPageLink;
+  };
+
   return (
     <AppLayout onlyContent>
       <Head>
@@ -67,8 +70,21 @@ const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
       </Head>
       <NavLabyrinthStyles />
       <OnboardStyles />
-      <BackToCharacters text={'Volver a elegir personajes'} />
-      <CharacterIndex onContinueClick={updateUser} character={character} userData={userData} bgImage={isSmallScreen ? bgImage980 : bgImage} />
+      {user ?
+        <Fragment>
+          <BackToCharacters text={'Volver a elegir personajes'} />
+          <CharacterIndex
+            onContinueClick={handleUserClickedUpdate}
+            character={character}
+            userData={userData}
+            bgImage={isSmallScreen ? bgImage980 : bgImage}
+          />
+        </Fragment>
+        :
+        <div>
+          <span>CARGANDO USUARIO...</span>
+        </div>
+      }
     </AppLayout>
   );
 };

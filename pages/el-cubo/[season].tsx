@@ -51,9 +51,9 @@ export default function SeasonPage({ data }) {
 
   React.useEffect(() => {
     if (showLoginPanel) {
-      document.getElementsByClassName('pane-login')[0].classList.add('open');
+      //document.getElementsByClassName('pane-login')[0].classList.add('open');
     } else {
-      document.getElementsByClassName('pane-login')[0].classList.remove('open');
+      //document.getElementsByClassName('pane-login')[0].classList.remove('open');
     }
   }, [showLoginPanel])
 
@@ -61,13 +61,13 @@ export default function SeasonPage({ data }) {
     getMe();
 
     if (isLoggedIn) {
-      document.getElementsByClassName('pane-login')[0].classList.add('open');
+      //document.getElementsByClassName('pane-login')[0].classList.add('open');
     }
 
     // Pane Login
     const button_open = document.querySelectorAll('.toggle');
     const button_close = document.querySelectorAll('.close');
-    const pane = document.querySelector('.pane-login .pane');
+    const pane = document.querySelector('.pane-login');
 
     setTimeout(() => {
       document.getElementsByClassName('cover-reveal-row-1')[0].classList.add('active');
@@ -147,7 +147,7 @@ export default function SeasonPage({ data }) {
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
-          pane.classList.toggle('open');
+          pane.classList.add('open');
         });
       });
     }
@@ -156,6 +156,7 @@ export default function SeasonPage({ data }) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
           //fadeOut(pane, 40);
+          pane.classList.remove('open');
         });
       });
     }
@@ -211,7 +212,7 @@ export default function SeasonPage({ data }) {
           text="Empezar"
           isBig={bigMouse}
           show={showMouse}
-          className="circle-temp toggle"
+          className="circle-temp"
         />
 
         <div className="logo-season" ref={refHeader} onMouseEnter={() => setBigMouse(false)}>
@@ -280,7 +281,7 @@ export default function SeasonPage({ data }) {
               </div>
 
               <p className="p-button">
-                <a className="button-mobile"
+                <a className="button-mobile toggle"
                   onClick={handleMobileOnClick}
                   href={'#'}>
                   Empieza tu experiencia{' '}
@@ -355,7 +356,7 @@ export default function SeasonPage({ data }) {
               </div>
 
               <p className="p-button">
-                <a className="button-mobile"
+                <a className="button-mobile toogle"
                   onClick={handleMobileOnClick}
                   href={'#'}>
                   Empieza tu experiencia{' '}
@@ -448,7 +449,7 @@ export default function SeasonPage({ data }) {
                       Carlos Humberto Motta - Interpretación Músical - Trompeta
 
                   <strong>Diseño y Producción de Arte - I´ts A Wrap</strong><br />
-                      Hernán García - Concepto Y Productor De Arte<br />
+                      Hernán García - Diseñador de Producción<br />
                       Juan Carlos Acevedo - Productor De Arte<br />
                       Diego García	- Director De Arte<br />
                       Melissa Villegas - Decoradora<br />

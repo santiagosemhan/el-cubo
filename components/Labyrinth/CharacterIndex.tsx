@@ -2,6 +2,8 @@ import React from 'react';
 
 const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
 
+  const buttonText = 'Continuar';
+
   return (
     <div
       className="app-elcubo onboard"
@@ -24,7 +26,7 @@ const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
                   <div className="col-right">
                     <div className="cover-link">
                       <a href="#" onClick={onContinueClick} className="button-cyan">
-                        <span>Comenzar</span>
+                        <span>{buttonText}</span>
                         <img src="/images/icon-arrow-init.svg" />
                       </a>
                     </div>
@@ -47,7 +49,7 @@ const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
                     <div className="col-right">
                       <div className="cover-link">
                         <a href="#" onClick={onContinueClick} className="button-cyan">
-                          <span>Comenzar</span>
+                          <span>{buttonText}</span>
                           <img src="/images/icon-arrow-init.svg" />
                         </a>
                       </div>
@@ -62,7 +64,7 @@ const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
                   </p>
                   <div className="cover-link">
                     <a href="#" onClick={onContinueClick} className="button-cyan">
-                      <span>Comenzar</span>
+                      <span>{buttonText}</span>
                       <img src="/images/icon-arrow-init.svg" />
                     </a>
                   </div>

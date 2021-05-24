@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AppLayout from 'layouts/AppLayout';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Hls from 'hls.js';
 import Plyr from 'plyr';
@@ -18,6 +19,11 @@ import UrlUtils from 'utils/Url';
 
 const LabyrinthNode = ({ data, character }) => {
 
+  const { query } = useRouter();
+  const { initial } = query;
+
+  console.log('INITIAL', initial);
+
   const isLoggedIn = AuthService.isLoggedIn();
   const nextNodes = data.field_ec_labyrinth_items_json;
   const nodeId = data.nid;
@@ -29,8 +35,9 @@ const LabyrinthNode = ({ data, character }) => {
       const { data } = await UserService.getMe();
       const userLabyrinthDataString = data.elcubo_laberinto;
       const userLabyrinthDataJSON = JSON.parse(userLabyrinthDataString);
+
       setCurrentCharacter(userLabyrinthDataJSON.currentCharacter);
-      const userLabyrinthData = ModesUtils.setCharacterNodesLabyrinth(userLabyrinthDataJSON, character, nodeId, nextNodes);
+      const userLabyrinthData = ModesUtils.setCharacterNodesLabyrinth(userLabyrinthDataJSON, character, nodeId, nextNodes, initial);
       await UserService.update(data.id, {
         field_ec_labyrinth_data_json: {
           value: JSON.stringify(userLabyrinthData),
@@ -42,10 +49,10 @@ const LabyrinthNode = ({ data, character }) => {
   };
 
   React.useEffect(() => {
-    if (isLoggedIn) {
+    if (isLoggedIn && initial) {
       updateUser();
     }
-  }, []);
+  }, [initial]);
 
   React.useEffect(() => {
     // Comment trigger
@@ -411,8 +418,6 @@ const LabyrinthNode = ({ data, character }) => {
         paneClose.classList.remove('hide');
       };
 
-    } else {
-      console.log('This is Not a IOS device');
     }
 
   }, []);

@@ -6,17 +6,76 @@
 </head>
 
 <body>
+  <div class="rotate">
+    <div class="box">
+      <img src="https://thumbs.gfycat.com/ClosedDizzyAmericanavocet-size_restricted.gif" />
+      <p>Para disfrutar mejor de la experiencia
+        <br /> te invitamos a girar tu celular.
+        </>
+    </div>
 
-  <h1>Your page content</h1>
+    <div class="contenido">
+      EL CONTENIDO
+    </div>
+
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;500;600&display=swap');
 
 
+      html,
+      body {
+        height: 100%;
+        padding: 0;
+        margin: 0;
+      }
 
-  <script>
-    var portrait = window.innerWidth < window.innerHeight;
-    var PleaseRotateOptions = {
-      onlyMobile: false,
-      forceLandscape: !portrait
-    }
-  </script>
-  <script src="pleaserotate.min.js"></script>
+      * {
+        box-sizing: border-box;
+      }
+
+      .box {
+        width: 300px;
+        height: 300px;
+        text-align: center;
+        font-family: Inter;
+      }
+
+      .box img {
+        width: 120px;
+      }
+
+      .rotate {
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .rotate p {
+        color: white;
+        font-size: 12px;
+      }
+
+
+      @media only screen and (max-width: 1024px) and (orientation:landscape) {
+        .contenido {
+          display: block;
+        }
+        .rotate {
+          display: none;
+        }
+      }
+
+
+      @media only screen and (max-width: 1024px) and (orientation:portrait) {
+        .contenido {
+          display: none;
+        }
+        .rotate {
+          display: block;
+        }
+      }
+    </style>
 </body>
