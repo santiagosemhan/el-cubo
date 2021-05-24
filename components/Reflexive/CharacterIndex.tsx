@@ -67,6 +67,9 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
             container._clickListener = (event) => {
               const targets = [container, wrapper];
 
+              event.stopPropagation();
+              event.preventDefault();
+
               // Ignore if click if not container or in video wrapper
               if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
                 return;
@@ -181,11 +184,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
 
           player.stop();
 
-          // Exit fullscreen for mobile
-          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.exitFullscreen();
-          }
-
         });
       });
     }
@@ -235,10 +233,14 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     /* IOS support */
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
+
       const videoFake = document.querySelector('video');
 
+      videoFake.addEventListener('click', () => {
+        player.togglePlay();
+      });
+
       videoFake.onplay = (event) => {
-        console.log('Hola como anda');
         const controls_extra = document.querySelector('.plyr--video');
         controls_extra.prepend(headerTop);
         controls_extra.prepend(paneClose);
@@ -249,7 +251,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
       };
 
       videoFake.onended = (event) => {
-        console.log('se termino');
         button_close[0].click();
         //fadeOut(pane, 40);
 
@@ -270,8 +271,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
         paneClose.classList.remove('hide');
       }
 
-    } else {
-      console.log('This is Not a IOS device');
     }
 
 
@@ -294,7 +293,7 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
           data-poster=""
           data-title={field_ec_video_title}
         >
-          <video controls crossOrigin={'true'} playsInline poster="" />
+          <video crossOrigin={'true'} playsInline poster="" />
         </div>
       </div>
       <div className="characters columns-1 is-hidden">

@@ -37,7 +37,7 @@ const LabVideoPlayer = ({ data, currentCharacter, isLoggedIn }) => {
           data-title={nodeTitle}
           data-comments={triggerCommentsTime}
         >
-          <video className="hide" controls crossOrigin="true" playsInline />
+          <video className="hide" crossOrigin="true" playsInline />
         </div>
       </div>
 

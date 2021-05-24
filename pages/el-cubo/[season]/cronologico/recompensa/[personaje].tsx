@@ -13,6 +13,7 @@ import NamesUtils from 'utils/Names';
 import Characters from 'constants/Characters';
 import { season1_id } from 'constants/Season';
 import UrlUtils from 'utils/Url';
+import 'plyr/dist/plyr.css';
 
 const ChronologicalReward = ({ character, chronology }) => {
 
@@ -173,7 +174,6 @@ const ChronologicalReward = ({ character, chronology }) => {
     <AppLayout onlyContent>
       <Head>
         <title>El cubo</title>
-        <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css" />
       </Head>
       <RewardCronoStyles />
       <NavRewardStyles />

@@ -245,7 +245,7 @@ body {
 
     .onboard .copy p {
         font-size: 18px;
-        width: 60%;
+        width: auto;
         float: unset;
         margin-left: auto;
         margin-right: auto;
@@ -253,7 +253,7 @@ body {
 
     .copy-phrase {
         font-size: 22px;
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 
     .onboard .copy {
@@ -277,6 +277,48 @@ body {
         font-size: 22px;
     }
 
+}
+
+.box{
+  width:290px;
+  height:200px;
+  text-align: center;
+  font-family: Inter;
+}
+
+.box img {
+  width: 120px;
+}
+
+.rotate{
+  width:100%;
+  height: 100vh;
+  background-color:black;
+  display:flex;
+  justify-content:center;
+  align-items:center; 
+}
+
+.rotate p {
+  color: white;
+  font-size: 16px;
+}
+
+@media only screen and (min-width: 1023px){
+    .rotate {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 1024px) and (orientation:landscape){
+  .onboarding-laberynth { display:grid; }
+  .rotate{ display:none; }
+}
+
+
+@media only screen and (max-width: 1024px) and (orientation:portrait){
+  .onboarding-laberynth{ display:none; }
+  .rotate{ display:flex; }
 }
 
 `;

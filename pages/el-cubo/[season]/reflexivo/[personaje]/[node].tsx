@@ -216,6 +216,15 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           controls_extra.prepend(createTitle(link.dataset.title));
           player.play();
           document.querySelectorAll('.progress-0')[0].classList.add('hide');
+
+          // IOs TAP
+          if (isIOS) {
+            const videoFake = document.querySelector('video');
+            videoFake.addEventListener('click', () => {
+              player.togglePlay();
+            });
+          }
+
         });
       });
     }
@@ -234,13 +243,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
           player = loadPlayer(pane.dataset.relation);
           player.stop();
-
-          // Exit fullscreen for mobile
-          if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            document.exitFullscreen();
-          }
-
-
 
         });
       });
@@ -333,7 +335,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       const videoFake = document.querySelector('video');
 
       videoFake.onplay = (event) => {
-        console.log('Hola como anda');
         const controls_extra = document.querySelector('.plyr--video');
         controls_extra.prepend(headerTop);
         controls_extra.prepend(paneClose);
@@ -369,8 +370,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         paneClose.classList.remove('hide');
       };
 
-    } else {
-      console.log('This is Not a IOS device');
     }
 
   }, []);
@@ -395,7 +394,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             <img src="/images/pane-close.svg" />
           </a>
           <div className="pane-video" data-video="" data-poster="" data-title="">
-            <video controls crossOrigin="true" playsInline poster="" />
+            <video crossOrigin="true" playsInline poster="" />
           </div>
         </div>
         <div className={`characters columns-${reflexItemsEpisode.length} is-hidden`}>

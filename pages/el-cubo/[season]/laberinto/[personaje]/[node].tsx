@@ -22,8 +22,6 @@ const LabyrinthNode = ({ data, character }) => {
   const { query } = useRouter();
   const { initial } = query;
 
-  console.log('INITIAL', initial);
-
   const isLoggedIn = AuthService.isLoggedIn();
   const nextNodes = data.field_ec_labyrinth_items_json;
   const nodeId = data.nid;
@@ -35,7 +33,6 @@ const LabyrinthNode = ({ data, character }) => {
       const { data } = await UserService.getMe();
       const userLabyrinthDataString = data.elcubo_laberinto;
       const userLabyrinthDataJSON = JSON.parse(userLabyrinthDataString);
-
       setCurrentCharacter(userLabyrinthDataJSON.currentCharacter);
       const userLabyrinthData = ModesUtils.setCharacterNodesLabyrinth(userLabyrinthDataJSON, character, nodeId, nextNodes, initial);
       await UserService.update(data.id, {
@@ -49,7 +46,7 @@ const LabyrinthNode = ({ data, character }) => {
   };
 
   React.useEffect(() => {
-    if (isLoggedIn && initial) {
+    if (isLoggedIn) {
       updateUser();
     }
   }, [initial]);
@@ -280,6 +277,14 @@ const LabyrinthNode = ({ data, character }) => {
       }
     }
 
+    if (isIOS) {
+      const videoFake = document.querySelector('video');
+      videoFake.addEventListener('click', () => {
+        player.togglePlay();
+      });
+    }
+
+
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
@@ -340,12 +345,6 @@ const LabyrinthNode = ({ data, character }) => {
         player.play();
         document.getElementsByClassName('steal_title')[0].classList.add('hide');
 
-        /* IOS support */
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (isIOS) {
-          const videoFake = document.querySelector('video');
-          videoFake.play();
-        }
         // Add title plyr
         const controls_extra = document.querySelector('.plyr--video');
         controls_extra.prepend(createTitle(video.dataset.title));
@@ -377,7 +376,7 @@ const LabyrinthNode = ({ data, character }) => {
               document.getElementsByClassName('app-elcubo')[0].append(headerTop);
               document.getElementsByClassName('app-elcubo')[0].append(paneClose);
               videoAlreadyViewed = true;
-
+ 
               fadeOut(pane, 60);
               hideComments();
               player.stop();
@@ -418,6 +417,8 @@ const LabyrinthNode = ({ data, character }) => {
         paneClose.classList.remove('hide');
       };
 
+    } else {
+      console.log('This is Not a IOS device');
     }
 
   }, []);

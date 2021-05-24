@@ -51,18 +51,14 @@ export default function SeasonPage({ data }) {
 
   React.useEffect(() => {
     if (showLoginPanel) {
-      //document.getElementsByClassName('pane-login')[0].classList.add('open');
+      document.getElementsByClassName('pane-login')[0].classList.add('open');
     } else {
-      //document.getElementsByClassName('pane-login')[0].classList.remove('open');
+      document.getElementsByClassName('pane-login')[0].classList.remove('open');
     }
-  }, [showLoginPanel])
+  }, [showLoginPanel]);
 
   React.useEffect(() => {
     getMe();
-
-    if (isLoggedIn) {
-      //document.getElementsByClassName('pane-login')[0].classList.add('open');
-    }
 
     // Pane Login
     const button_open = document.querySelectorAll('.toggle');
@@ -147,7 +143,7 @@ export default function SeasonPage({ data }) {
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
-          pane.classList.add('open');
+          setShowLoginPanel(true);
         });
       });
     }
@@ -155,8 +151,7 @@ export default function SeasonPage({ data }) {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          //fadeOut(pane, 40);
-          pane.classList.remove('open');
+          setShowLoginPanel(false);
         });
       });
     }

@@ -118,6 +118,8 @@ const VideoPlayer = ({
       hls.attachMedia(video);
       window.hls = hls;
       const { wrapper, container } = playerRef.current.elements;
+
+      // Tap Support
       if (container) {
         if (!container._clickListener) {
           container._clickListener = (event) => {
@@ -130,11 +132,14 @@ const VideoPlayer = ({
           container.addEventListener('click', container._clickListener);
         }
       }
+
       playerRef.current.on('ended', function () {
         document.getElementsByClassName('plyr__control--overlaid')[0].remove();
         document.getElementsByClassName('plyr__controls')[0].classList.add('hide');
         document.getElementsByClassName('plyr__extra_controls')[0].classList.add('hide');
       });
+
+
     }
     const container: HTMLElement = wrapperRef.current;
 
@@ -147,6 +152,15 @@ const VideoPlayer = ({
       </div>
     `,
     );
+
+    // Fix IOS
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      const videoFake = document.querySelector('video');
+      videoFake.addEventListener('click', () => {
+        playerRef.current.togglePlay();
+      });
+    }
 
     if (showBackButton) {
       router.prefetch(backLink);

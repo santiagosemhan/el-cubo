@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
 
@@ -9,6 +9,15 @@ const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
       className="app-elcubo onboard"
       style={{ backgroundImage: `url("${bgImage}")`, backgroundSize: 'cover' }}
     >
+      <div className="rotate">
+        <div className="box">
+          <img src="https://thumbs.gfycat.com/ClosedDizzyAmericanavocet-size_restricted.gif" />
+          <p>
+            Para disfrutar mejor de la experiencia te invitamos a girar tu celular.
+          </p>
+        </div>
+      </div>
+
       <div className="hero hero-onboarding onboarding-laberynth">
         <div className="copy-cover">
           <div className="copy">
