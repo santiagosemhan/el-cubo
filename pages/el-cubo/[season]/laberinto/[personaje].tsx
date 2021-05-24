@@ -70,21 +70,17 @@ const CharacterPage = ({ character, node, bgImage, bgImage980 }) => {
       </Head>
       <NavLabyrinthStyles />
       <OnboardStyles />
-      {user ?
-        <Fragment>
-          <BackToCharacters text={'Volver a elegir personajes'} />
-          <CharacterIndex
-            onContinueClick={handleUserClickedUpdate}
-            character={character}
-            userData={userData}
-            bgImage={isSmallScreen ? bgImage980 : bgImage}
-          />
-        </Fragment>
-        :
-        <div>
-          <span>CARGANDO USUARIO...</span>
-        </div>
-      }
+
+      <Fragment>
+        <BackToCharacters text={'Volver a elegir personajes'} />
+        <CharacterIndex
+          onContinueClick={handleUserClickedUpdate}
+          character={character}
+          userData={userData}
+          bgImage={isSmallScreen ? bgImage980 : bgImage}
+        />
+      </Fragment>
+
     </AppLayout>
   );
 };
