@@ -86,7 +86,6 @@ body {
     margin: auto;
 }
 .cover-link a {
-    border: 1px solid rgb(26, 40, 57);
     padding: 3px 30px 3px 0px;
     border-radius: 30px;
     font-weight: 500;

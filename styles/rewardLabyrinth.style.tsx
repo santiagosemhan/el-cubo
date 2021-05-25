@@ -98,7 +98,6 @@ body {
 /* button */
 
 .cover-link a {
-    border: 1px solid rgb(26, 40, 57);
     padding: 3px 10px 0px 30px;
     border-radius: 30px;
     font-weight: 500;
@@ -188,6 +187,10 @@ body {
 .pane.is-hidden .plyr__control--overlaid,
 .pane.is-hidden .plyr__controls,
 .pane.is-hidden .plyr_title {
+    display: none !important;
+}
+
+.plyr__menu {
     display: none !important;
 }
 

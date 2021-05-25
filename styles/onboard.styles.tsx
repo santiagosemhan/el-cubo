@@ -56,7 +56,6 @@ body {
 }
 
 .cover-link a {
-    border: 1px solid rgb(26, 40, 57);
     padding: 3px 10px 3px 18px;
     border-radius: 30px;
     font-weight: 500;

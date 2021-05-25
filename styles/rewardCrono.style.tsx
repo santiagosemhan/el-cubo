@@ -418,6 +418,10 @@ display: block !important;
     -o-animation: fadein 1s;
 }
 
+.plyr__menu {
+    display: none !important;
+}
+
 .steal {
     position: absolute;
     z-index: 10;
@@ -659,6 +663,10 @@ ul.list-chrono.height-medium li span.circle {
         margin-top: 20vh;
     }
 
+    .recompensa ul {
+        margin-top: 0;
+    }
+
 }
 
 
@@ -666,6 +674,8 @@ ul.list-chrono.height-medium li span.circle {
     .plyr .plyr__video-wrapper  video {
         height: 100vh;
     }
+
+    
 }
 
 @media screen and (max-width: 1200px) {

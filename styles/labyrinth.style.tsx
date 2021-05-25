@@ -183,6 +183,10 @@ body {
     display: none !important;
 }
 
+.plyr__menu {
+    display: none !important;
+}
+
 
 /*
 @media screen and (min-width: 1200px) {

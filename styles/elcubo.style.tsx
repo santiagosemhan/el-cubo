@@ -2215,7 +2215,11 @@ footer {
     z-index: 100;
     // display: none;
     margin: 0;
-  }
+}
+
+.plyr__menu {
+    display: none !important;
+}
 
 
 
