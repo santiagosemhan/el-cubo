@@ -275,7 +275,7 @@ export default function SeasonPage({ data }) {
                 </div>
               </div>
 
-              <p className="p-button">
+              <p className="p-button is-hidden">
                 <a className="button-mobile toggle"
                   onClick={handleMobileOnClick}
                   href={'#'}>

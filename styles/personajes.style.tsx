@@ -819,7 +819,9 @@ a {
         font-size: 18px; 
     }
 
-   
+    .selector-help-pc {
+        display: none;
+    }
 }
 
 

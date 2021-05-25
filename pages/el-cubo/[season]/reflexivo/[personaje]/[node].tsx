@@ -232,22 +232,17 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-
           //player.stop();
-
           pane.classList.toggle('open');
           fadeOut(pane, 40);
           pane_video.classList.toggle('visible');
           //fake_cover.classList.add('visible');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-
           player = loadPlayer(pane.dataset.relation);
           player.stop();
-
         });
       });
     }
-
 
     // Check si ya fueron visto los 3
     const viewedAll = () => {
@@ -305,7 +300,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
     /* Hover */
     let select_scene = document.querySelectorAll('.parent');
-
     if (select_scene) {
       [].forEach.call(select_scene, (el) => {
         el.addEventListener(
@@ -363,7 +357,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         }
       };
 
-
       videoFake.onpause = (event) => {
         document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
         headerTop.classList.remove('hide');
@@ -394,7 +387,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             <img src="/images/pane-close.svg" />
           </a>
           <div className="pane-video" data-video="" data-poster="" data-title="">
-            <video crossOrigin="true" playsInline poster="" />
+            <video crossOrigin="true" poster="" />
           </div>
         </div>
         <div className={`characters columns-${reflexItemsEpisode.length} is-hidden`}>

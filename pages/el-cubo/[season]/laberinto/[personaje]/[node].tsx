@@ -282,6 +282,19 @@ const LabyrinthNode = ({ data, character }) => {
       videoFake.addEventListener('click', () => {
         player.togglePlay();
       });
+
+      window.addEventListener("orientationchange", function (event) {
+        var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
+
+        if (["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1) {
+          becomeFullscreen();
+        }
+
+        else if (orientation === undefined) {
+          console.log("The orientation API isn't supported in this browser :(");
+        }
+      });
+
     }
 
 
@@ -360,6 +373,7 @@ const LabyrinthNode = ({ data, character }) => {
 
       videoFake.onplay = (event) => {
         video_duration = player.duration;
+
         setInterval(() => {
           if (time_comments) {
             setTime(time_comments);

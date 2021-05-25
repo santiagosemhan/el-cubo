@@ -293,7 +293,7 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
           data-poster=""
           data-title={field_ec_video_title}
         >
-          <video crossOrigin={'true'} playsInline poster="" />
+          <video crossOrigin={'true'} poster="" />
         </div>
       </div>
       <div className="characters columns-1 is-hidden">

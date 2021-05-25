@@ -273,7 +273,6 @@ const VideoPlayer = ({
         ref={videoRef}
         controls
         crossOrigin="true"
-        playsInline
         poster={poster}
         autoPlay={true}
       />

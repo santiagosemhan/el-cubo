@@ -135,5 +135,12 @@ export const CharacterSelectorWrapper = styled.div`
   }
 
 
+  @media only screen and (max-width: 1024px) and (orientation: landscape) {
+    ul.list-personajes li {
+      line-height: 1.4;
+    }
+  }
+
+
 
 `;

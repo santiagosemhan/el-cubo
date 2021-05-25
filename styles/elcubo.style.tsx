@@ -110,7 +110,7 @@ body.fade {
     min-height: 100%;
     object-fit: contain;
     /* Display video below overlay */
-    z-index: -1;
+    z-index: 1;
 }
 
 .video-bg-mobile {
@@ -1018,7 +1018,7 @@ h2 {
 .img-bg-pc {
     position: absolute;
     width: 100%;
-    z-index: -2;
+    z-index: 0;
 }
 
 .img-bg-mobile {
@@ -1694,6 +1694,7 @@ footer {
       position: fixed;
       top: 0;
       width: 100%;
+      height: 180px;
       z-index: 3;
   }
 
@@ -1980,7 +1981,7 @@ footer {
   }
 
   .hero-3 .img-bg-mobile {
-      top: 100px;
+      top: 120px;
   }
 
   #hero-3 .cover-first {
@@ -2027,7 +2028,7 @@ footer {
 
   .hero-3 .cover-reveal-row-2 span {
       margin-left: 0;
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       color: #45B4C1;
       opacity: 0.5;
   }
@@ -2051,6 +2052,10 @@ footer {
     width: 220px;
     margin: auto;
     margin-bottom: 100px;
+  }
+
+  .hero-3 h1.cover-reveal-row-2 {
+      margin-top: 20px;
   }
  
   .input-search, #menu-mobile-button {
