@@ -852,7 +852,10 @@ a {
         right: 30px;
         top: 56px;
     }
+    
 }
+
+
 
 @media only screen and (max-width: 768px) and (orientation: portrait) {
     #mainDiv {
@@ -866,10 +869,10 @@ a {
     .app-elcubo .help-wrapper .modal.step-l .modal__content {
         top: 160px; 
     }
-      
+
 }
 
-@media only screen and (max-width: 480px) and (orientation: portrait) {
+@media only screen and (max-width: 1024px) {
     .toggle-help span {
         display: none;
     }

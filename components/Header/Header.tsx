@@ -445,6 +445,16 @@ const Header = () => {
                 </a>
               </div>
 
+              <div className="MolMenuCOD__Menu-sc-16jdr3r-2 gIdhsh">
+                <a
+                  href="https://www.rtvcplay.co/franja-memoria"
+                  title="Franja Memoria"
+                  className="MolMenuCOD__MenuItem-sc-16jdr3r-3 dSsyKF AtTextLink__Link-sc-1mrxibb-0 jalbS"
+                >
+                  Franja Memoria
+                </a>
+              </div>
+
             </div>
             <div className="MolMenuCOD__ContentBlock-sc-16jdr3r-4 hABRnM"></div>
           </div>

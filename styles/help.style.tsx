@@ -516,7 +516,7 @@ body {
   }
   .help-wrapper .modal__content {
     top: 140px;
-    right: 0;
+    left: 15px;
     padding-left: 20px;
     padding-right: 20px;
     background: transparent;

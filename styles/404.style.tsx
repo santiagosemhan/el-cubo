@@ -121,4 +121,20 @@ body {
     background-color: rgb(69, 180, 193);
     color: rgb(26, 40, 57);
 }
+
+
+@media only screen and (max-width: 1024px)  { 
+    .number-error {
+        font-size: 100px;
+    }
+}
+
+@media (max-width: 480px) and (orientation: portrait){
+    .cover-link a span {
+        font-size: 16px;
+        line-height: 2.6em;
+    }
+}
+
+
 `;
