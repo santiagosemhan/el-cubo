@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Hls from 'hls.js';
 import Plyr from 'plyr';
+import 'plyr/dist/plyr.css';
 import UrlUtils from 'utils/Url';
 
 const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) => {
