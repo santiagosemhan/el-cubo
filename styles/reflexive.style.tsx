@@ -558,6 +558,10 @@ img.img-color {
     background: #45b4c1;
   }
 
+  .plyr__menu {
+      display: none !important;
+  }
+
 
 .steal {
     position: absolute;
