@@ -3,6 +3,7 @@ import AppLayout from 'layouts/AppLayout';
 import Head from 'next/head';
 import Hls from 'hls.js';
 import Plyr from 'plyr';
+import 'plyr/dist/plyr.css';
 import { ReflexiveStyles } from 'styles/reflexive.style';
 import { NavReflexiveStyles } from 'styles/navreflexive.style';
 import VideoItem from 'components/Reflexive/VideoItem';
@@ -142,7 +143,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       } else {
         // For more Hls.js options, see https://github.com/dailymotion/hls.js
         const hls = new Hls();
-        console.log('source:', source);
         hls.loadSource(source);
         hls.attachMedia(video);
         window.hls = hls;
@@ -277,7 +277,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             clearInterval(countdown);
           }
         }
-        //console.log(timer);
         // document.getElementById("countdown").textContent = timer/100;
         if (timer >= timerEnd) {
           clearInterval(countdown);
@@ -291,7 +290,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     if (progress_direct) {
       let velocity = document.getElementsByClassName('progress-0')[0].dataset.velocity;
       if (velocity !== undefined) {
-        console.log('a verrrr' + velocity);
         loadProgress('progress-0', velocity);
       } else {
         loadProgress('progress-0', 12000);
@@ -371,7 +369,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     <AppLayout onlyContent>
       <Head>
         <title>Reflexivo - El cubo</title>
-        <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css" />
       </Head>
       <ReflexiveStyles />
       <NavReflexiveStyles />
@@ -429,25 +426,25 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
                             );
                           })
                         ) : (
-                            <div>
-                              <h1>
-                                ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
+                          <div>
+                            <h1>
+                              ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
                             </h1>
-                              <p>
-                                Puedes ver tu perfil según las respuetas que diste en el recorrido.
-                                ¡Esa es tu recompensa!
+                            <p>
+                              Puedes ver tu perfil según las respuetas que diste en el recorrido.
+                              ¡Esa es tu recompensa!
                             </p>
-                              <div className="cover-link">
-                                <a
-                                  href={rewardLink}
-                                  className="button-cyan"
-                                >
-                                  <span>Ver recompensa</span>
-                                  <img src="/images/icon-arrow-init.svg" />
-                                </a>
-                              </div>
+                            <div className="cover-link">
+                              <a
+                                href={rewardLink}
+                                className="button-cyan"
+                              >
+                                <span>Ver recompensa</span>
+                                <img src="/images/icon-arrow-init.svg" />
+                              </a>
                             </div>
-                          )}
+                          </div>
+                        )}
                       </ul>
                     </h1>
                   </div>

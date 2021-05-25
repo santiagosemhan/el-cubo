@@ -25,6 +25,7 @@ const LabyrinthNode = ({ data, character }) => {
   const isLoggedIn = AuthService.isLoggedIn();
   const nextNodes = data.field_ec_labyrinth_items_json;
   const nodeId = data.nid;
+  const characterId = data.field_ec_character;
   const videoForceEnd = data.field_ec_trigger_end_video;
   const [currentCharacter, setCurrentCharacter] = useState(null);
 
@@ -33,8 +34,10 @@ const LabyrinthNode = ({ data, character }) => {
       const { data } = await UserService.getMe();
       const userLabyrinthDataString = data.elcubo_laberinto;
       const userLabyrinthDataJSON = JSON.parse(userLabyrinthDataString);
-      setCurrentCharacter(userLabyrinthDataJSON.currentCharacter);
-      const userLabyrinthData = ModesUtils.setCharacterNodesLabyrinth(userLabyrinthDataJSON, character, nodeId, nextNodes, initial);
+      if (userLabyrinthDataJSON && userLabyrinthDataJSON.currentCharacter) {
+        setCurrentCharacter(userLabyrinthDataJSON.currentCharacter);
+      }
+      const userLabyrinthData = ModesUtils.setCharacterNodesLabyrinth(userLabyrinthDataJSON, character, nodeId, nextNodes, initial, characterId);
       await UserService.update(data.id, {
         field_ec_labyrinth_data_json: {
           value: JSON.stringify(userLabyrinthData),
@@ -95,9 +98,7 @@ const LabyrinthNode = ({ data, character }) => {
     const updateQuality = (newQuality) => {
       if (window.hls) {
         window.hls.levels.forEach((level, levelIndex) => {
-          console.log(level.height, newQuality);
           if (level.height === newQuality) {
-            console.log('Found quality match with ' + newQuality);
             window.hls.currentLevel = levelIndex;
           }
         });
@@ -289,10 +290,6 @@ const LabyrinthNode = ({ data, character }) => {
         if (["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1) {
           becomeFullscreen();
         }
-
-        else if (orientation === undefined) {
-          console.log("The orientation API isn't supported in this browser :(");
-        }
       });
 
     }
@@ -430,9 +427,6 @@ const LabyrinthNode = ({ data, character }) => {
         headerTop.classList.remove('hide');
         paneClose.classList.remove('hide');
       };
-
-    } else {
-      console.log('This is Not a IOS device');
     }
 
   }, []);

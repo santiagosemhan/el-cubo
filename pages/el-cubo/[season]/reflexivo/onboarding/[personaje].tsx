@@ -80,8 +80,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const bgImage = characterJson[0].field_ec_image_bg_reflex;
   const bgImage980 = characterJson[0].field_ec_image_bg_reflex_980;
 
-  console.log('INFO DEL USER', characterJson[0]);
-
   return {
     props: {
       character: context.params.personaje,

@@ -71,7 +71,6 @@ const CharacterPage = ({ character, node, bgImage, bgImage980, episodeData }) =>
     <AppLayout onlyContent>
       <Head>
         <title>Reflexivo - El cubo</title>
-        <link rel="stylesheet" href="https://unpkg.com/plyr@3/dist/plyr.css" />
       </Head>
       <ReflexiveStyles />
       <NavReflexiveStyles />

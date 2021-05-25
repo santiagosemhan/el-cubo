@@ -136,9 +136,7 @@ const CharactersPage = ({ data = {} }) => {
         openModalTriggerEl.addEventListener('click', () => {
           const click = new Audio('/audios/actions/click_1.mp3');
           click.play();
-          // console.log('ENTRE A AYUDA')
           // // handlePlaySound('rollover');
-          // console.log('YA PASE EL SONIDO')
           modalEl.classList.toggle('open');
           disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
@@ -484,143 +482,143 @@ const CharactersPage = ({ data = {} }) => {
         {isFallback ? (
           <div>Loading...</div>
         ) : (
-            <>
-              <div className="help-wrapper">
-                <HeaderTop
-                  nav={
-                    <nav className="nav">
-                      <a href="/el-cubo/temporada-1/personajes" className="back-to-season">
-                        <img src="/images/icon-arrow-back.svg" />
-                        <span>Volver al inicio</span>
-                      </a>
-                      <ul>
-                        <li>
-                          <a href="#" className="toggle-help open-modal">
-                            <div className="icon-help">
-                              <img className="icon-help-open" src="/images/icon-help-open.svg" />
-                              <img className="icon-help-close" src="/images/icon-help-close.svg" />
-                            </div>
-                            <span>Ayuda</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </nav>
-                  }
-                />
-                {auth}
-                <Help />
-
-              </div>
-              <div className="characters is-hidden">
-                <div className="pane-cover close" />
-
-                <div className="pane">
-                  <a className="close">
-                    <img src="/images/pane-close.svg" />
-                  </a>
-                  <div className="pane-content">
-                    <h2 id="name-personaje" />
-                    <p id="desc-personaje" />
-                    <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
-                      Elegir
-                  </a>
-                  </div>
-                  <div className="pane-video">
-                    <img className="bg-video" src="/images/bg-video.png" />
-                    <video id="video1" width="420" playsInline>
-                      <source src="" type="video/mp4" data-personaje="" /> Your browser does not
-                                support HTML video.
-                  </video>
-                  </div>
-                </div>
-
-                <div className="characters-wrapper">
-                  <div className="fake-cover"></div>
-                  <div className="row row-first">
-                    {field_ec_characters.map((c) => {
-                      const character = field_ec_characters_terms_json.find(
-                        (ch) => Number(ch.tid) === Number(c),
-                      );
-                      return (
-                        <div
-                          //onMouseEnter={() => handlePlaySound('rollover')}
-                          //onMouseOut={() => handleStopSound('rollover')}
-                          className="column" key={character.tid}>
-                          <div className="parent">
-                            <div
-                              className={`child bg-six toggle char-${Names.getCharacterName(character.character_name)} ${character.tid}`}
-                              data-video={character.field_ec_avatar_video}
-                              data-personaje={character.tid}
-                              data-thumb={character.tid}
-                              data-nombre={character.character_name}
-                              data-desc={character.description_value}
-                            >
-                              <img className="icon-selected" src="/images/is-selected.svg" />
-                              <h2 className="name">{character.character_name}</h2>
-                              <img
-                                className="img-bn"
-                                width="100%"
-                                src={character.field_ec_avatar_gray}
-                              />
-                              <img
-                                className="img-color"
-                                width="100%"
-                                src={character.field_ec_avatar_color}
-                              />
-                              <a className="projectButton">Conóceme más</a>
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                <div className="selector-mode is-hidden selector-desktop">
-                  <div className="selector-cover">
-                    <div id="mainDiv">
-                      <div id="boxDiv">
-                        <div id="front" />
-                        <div id="back" />
-                        <div id="left">
-                          <img src="" />
-                        </div>
-                        <div id="right" />
-                        <div id="top" />
-                        <div id="bottom" />
-
-                        <div className="shadow" />
-                      </div>
-                    </div>
+          <>
+            <div className="help-wrapper">
+              <HeaderTop
+                nav={
+                  <nav className="nav">
+                    <a href="/el-cubo/temporada-1/personajes" className="back-to-season">
+                      <img src="/images/icon-arrow-back.svg" />
+                      <span>Volver al inicio</span>
+                    </a>
                     <ul>
                       <li>
-                        <a href={videoLink}
-
-                          className="cronologico mode">
-                          Modo Cronológico
-                      </a>
-                      </li>
-                      <li>
-                        <a href="/el-cubo/temporada-1/laberinto/alba"
-
-                          className="laberinto mode">
-                          Modo Laberinto
-                      </a>
-                      </li>
-                      <li>
-                        <a href="/reflexivo/sales/sales-onboard.html"
-                          //onMouseEnter={() => handlePlaySound('click1')}
-                          //onMouseOut={() => handleStopSound('click1')}
-                          className="reflexivo mode">
-                          Modo Reflexivo
-                      </a>
+                        <a href="#" className="toggle-help open-modal">
+                          <div className="icon-help">
+                            <img className="icon-help-open" src="/images/icon-help-open.svg" />
+                            <img className="icon-help-close" src="/images/icon-help-close.svg" />
+                          </div>
+                          <span>Ayuda</span>
+                        </a>
                       </li>
                     </ul>
-                  </div>
+                  </nav>
+                }
+              />
+              {auth}
+              <Help />
+
+            </div>
+            <div className="characters is-hidden">
+              <div className="pane-cover close" />
+
+              <div className="pane">
+                <a className="close">
+                  <img src="/images/pane-close.svg" />
+                </a>
+                <div className="pane-content">
+                  <h2 id="name-personaje" />
+                  <p id="desc-personaje" />
+                  <a id="select-personaje" href="#" data-personaje="" className="cyan-dark">
+                    Elegir
+                  </a>
+                </div>
+                <div className="pane-video">
+                  <img className="bg-video" src="/images/bg-video.png" />
+                  <video id="video1" width="420" playsInline>
+                    <source src="" type="video/mp4" data-personaje="" /> Your browser does not
+                                support HTML video.
+                  </video>
                 </div>
               </div>
-            </>
-          )}
+
+              <div className="characters-wrapper">
+                <div className="fake-cover"></div>
+                <div className="row row-first">
+                  {field_ec_characters.map((c) => {
+                    const character = field_ec_characters_terms_json.find(
+                      (ch) => Number(ch.tid) === Number(c),
+                    );
+                    return (
+                      <div
+                        //onMouseEnter={() => handlePlaySound('rollover')}
+                        //onMouseOut={() => handleStopSound('rollover')}
+                        className="column" key={character.tid}>
+                        <div className="parent">
+                          <div
+                            className={`child bg-six toggle char-${Names.getCharacterName(character.character_name)} ${character.tid}`}
+                            data-video={character.field_ec_avatar_video}
+                            data-personaje={character.tid}
+                            data-thumb={character.tid}
+                            data-nombre={character.character_name}
+                            data-desc={character.description_value}
+                          >
+                            <img className="icon-selected" src="/images/is-selected.svg" />
+                            <h2 className="name">{character.character_name}</h2>
+                            <img
+                              className="img-bn"
+                              width="100%"
+                              src={character.field_ec_avatar_gray}
+                            />
+                            <img
+                              className="img-color"
+                              width="100%"
+                              src={character.field_ec_avatar_color}
+                            />
+                            <a className="projectButton">Conóceme más</a>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="selector-mode is-hidden selector-desktop">
+                <div className="selector-cover">
+                  <div id="mainDiv">
+                    <div id="boxDiv">
+                      <div id="front" />
+                      <div id="back" />
+                      <div id="left">
+                        <img src="" />
+                      </div>
+                      <div id="right" />
+                      <div id="top" />
+                      <div id="bottom" />
+
+                      <div className="shadow" />
+                    </div>
+                  </div>
+                  <ul>
+                    <li>
+                      <a href={videoLink}
+
+                        className="cronologico mode">
+                        Modo Cronológico
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/el-cubo/temporada-1/laberinto/alba"
+
+                        className="laberinto mode">
+                        Modo Laberinto
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/reflexivo/sales/sales-onboard.html"
+                        //onMouseEnter={() => handlePlaySound('click1')}
+                        //onMouseOut={() => handleStopSound('click1')}
+                        className="reflexivo mode">
+                        Modo Reflexivo
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </Container>
     </AppLayout >
   );
@@ -645,7 +643,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     fetcher(`/api/v1/elcubo/season/${season1_id}/chrono`),
   ]);
 
-  // console.log({data});
   if (!data || !data.length) {
     return { props: { data: {} } };
   }

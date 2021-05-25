@@ -6,6 +6,7 @@ import { NavRewardStyles } from 'styles/navReward.style';
 import BackToCharacters from 'components/Labyrinth/BackToCharacters';
 import Plyr from 'plyr';
 import Hls from 'hls.js';
+import 'plyr/dist/plyr.css';
 import fetcher from 'libs/fetcher';
 import AuthService from 'services/Auth';
 import UserService from 'services/User';
@@ -13,7 +14,6 @@ import NamesUtils from 'utils/Names';
 import Characters from 'constants/Characters';
 import { season1_id } from 'constants/Season';
 import UrlUtils from 'utils/Url';
-import 'plyr/dist/plyr.css';
 
 const ChronologicalReward = ({ character, chronology }) => {
 
@@ -149,7 +149,6 @@ const ChronologicalReward = ({ character, chronology }) => {
         link.addEventListener('click', (event) => {
           event.preventDefault();
           player = loadPlayer(link.dataset.video);
-          console.log('PLAAAAAYER', player);
           fadeIn(pane, 80);
           pane.classList.remove('is-hidden');
           player.play();
