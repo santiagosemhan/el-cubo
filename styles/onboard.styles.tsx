@@ -208,6 +208,7 @@ body {
   .hero-onboarding .copy .cover-link {
       width: 186px;
       margin: auto;
+      float: none;
   }
 
   .winner .col-2 .col-left, .winner .col-2 .col-right {
@@ -257,6 +258,10 @@ body {
 
     .onboard .copy {
         margin-bottom: 40px;
+    }
+
+    .p-winner .copy-phrase {
+        margin-bottom: 20px;
     }
 }
 

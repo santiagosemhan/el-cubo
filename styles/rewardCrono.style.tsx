@@ -557,7 +557,7 @@ display: block !important;
 ul.list-chrono {
     list-style-type: none;
     margin: 0;
-    margin-top: 20px 0 80px 0;
+    margin: 20px 0 80px 0;
 }
 
 ul.list-chrono li {
@@ -694,10 +694,17 @@ ul.list-chrono.height-medium li span.circle {
     }
 }
 
+.reward-loading {
+    opacity: .5;
+}
 @media only screen and (max-width: 480px) and (orientation: portrait) {
     .close-comments {
         left: unset;
         right: 10px;
+    }
+
+    ul.list-chrono a span.circle {
+        margin-right: 10px;
     }
 
     .plyr video {
@@ -706,6 +713,10 @@ ul.list-chrono.height-medium li span.circle {
 
     .plyr--video .plyr__controls {
         padding-bottom: 82px;
+    }
+
+    .reward-loading {
+        width: 100%;
     }
 }
 

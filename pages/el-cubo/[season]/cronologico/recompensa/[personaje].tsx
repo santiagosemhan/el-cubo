@@ -193,7 +193,7 @@ const ChronologicalReward = ({ character, chronology }) => {
 
         {viewedAll === null ?
           <div style={{ width: '100%', textAlign: 'center' }}>
-            <img style={{}} src="/images/recompensa/cube-loading.gif" />
+            <img className="reward-loading" style={{}} src="/images/recompensa/cube-loading.gif" />
           </div>
           :
           null
