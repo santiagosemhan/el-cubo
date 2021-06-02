@@ -78,6 +78,8 @@ const LabyrinthNode = ({ data, character }) => {
     const headerTop = document.querySelectorAll('.header-top')[0];
     const paneClose = document.querySelectorAll('.close')[0];
 
+    let videoForced = false;
+
     const calculatePercent = (num1, total) => {
       return (num1 / total) * 100;
     };
@@ -142,17 +144,26 @@ const LabyrinthNode = ({ data, character }) => {
             }
             // Force close end
             if (videoForceEnd && videoForceEnd > 0) {
-              if (player.duration - player.currentTime <= Number(videoForceEnd)) {
-                /*pane.classList.add('is-hidden');
-                pane.classList.remove('open');
-                document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-                document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-                videoAlreadyViewed = true;
+              if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-                fadeOut(pane, 60);
-                hideComments();
-                player.stop();
-                */
+                console.log(videoForced);
+                if (!videoForced) {
+                  console.log('hereeee');
+                  pane.classList.add('is-hidden');
+                  document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+                  document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                  videoAlreadyViewed = true;
+                  fadeOut(pane, 80);
+
+                  paneClose.classList.add('hide');
+                  hideComments();
+
+
+                  player.pause();
+
+                  videoForced = true;
+                }
+
 
               }
             }
@@ -298,7 +309,9 @@ const LabyrinthNode = ({ data, character }) => {
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
+          videoForced = false;
           fadeIn(pane, 60);
+          player.stop();
           pane.classList.add('open');
           pane.classList.remove('is-hidden');
           player.play();
@@ -382,16 +395,17 @@ const LabyrinthNode = ({ data, character }) => {
           // Force close end
           if (videoForceEnd && videoForceEnd > 0) {
             if (player.duration - player.currentTime <= Number(videoForceEnd)) {
-              /*pane.classList.add('is-hidden');
+
+              console.log('hereeee');
+              fadeOut(pane, 80);
               pane.classList.remove('open');
               document.getElementsByClassName('app-elcubo')[0].append(headerTop);
               document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-              videoAlreadyViewed = true;
- 
-              fadeOut(pane, 60);
+
+              paneClose.classList.add('hide');
+
               hideComments();
-              player.stop();
-              */
+              player.pause();
 
             }
           }

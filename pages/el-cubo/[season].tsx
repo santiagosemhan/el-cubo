@@ -7,7 +7,7 @@ import PaneLogin from 'components/Season/PaneLogin';
 import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
-import { ElcuboGlobalStyles } from 'styles/elcubo.style';
+import { ElcuboGlobalStyles } from 'styles/elcuboSeason.style';
 import dynamic from 'next/dynamic';
 import AuthService from 'services/Auth';
 import UserService from 'services/User';
@@ -24,6 +24,7 @@ export default function SeasonPage({ data }) {
   const [bigMouse, setBigMouse] = React.useState(false);
   const [showMouse, setShowMouse] = React.useState(true);
   const [showLoginPanel, setShowLoginPanel] = useState(false);
+  const [auth, setAuth] = useState(null);
 
   const getMe = async () => {
     try {
@@ -48,6 +49,31 @@ export default function SeasonPage({ data }) {
   useOnMouseOutside(refPlayer, (event) => {
     setBigMouse(true);
   });
+
+  React.useEffect(() => {
+    const authenticated = () => {
+      return (
+        <div id="nav-login">
+          <span className="user-logged">
+            ¡Hola! {user ? user.full_name.split(' ')[0] : null}
+          </span>
+          <a key={'logout'} href={Links.logoutCharacters} className="link-logout">
+            Salir
+        </a>
+        </div>
+      );
+    };
+    const guest = () => {
+      return (
+        <div id="nav-login">
+          <a key={'register'} href={Links.registerCharacters} className="link-login">
+            Ingresar
+          </a>
+        </div>
+      );
+    };
+    setAuth(isLoggedIn ? authenticated : guest);
+  }, [isLoggedIn, user]);
 
   React.useEffect(() => {
     if (showLoginPanel) {
@@ -156,31 +182,6 @@ export default function SeasonPage({ data }) {
       });
     }
   }, []);
-
-  let auth;
-
-  if (isLoggedIn) {
-    auth = (
-      <div id="nav-login">
-        <span className="user-logged">
-          ¡Hola! {user ? user.full_name.split(' ')[0] : null}
-        </span>
-        <a key={'logout'} href={Links.logoutCharacters} className="link-logout">
-          Salir
-        </a>
-      </div>
-    );
-  } else {
-    auth = (
-      <div id="nav-login">
-        <a key={'register'} href={Links.registerCharacters} className="link-login">
-          Ingresar
-      </a>
-      </div>
-    )
-  }
-
-
 
   const handleMobileOnClick = (e) => {
     e.preventDefault();

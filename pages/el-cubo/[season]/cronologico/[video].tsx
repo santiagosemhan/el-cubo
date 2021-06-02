@@ -14,7 +14,7 @@ import CharacterSelector from 'components/CharacterSelector/CharacterSelector';
 import { setTimeout } from 'timers';
 import { VideoPlayerWrapper } from 'components/VideoPlayer/VideoPlayer.style';
 import { ListChronoCover } from 'components/PlayerChronology/PlayerChronology.style';
-import { ElcuboGlobalStyles } from 'styles/elcubo.style';
+import { ElcuboGlobalStyles } from 'styles/cronologico.style';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { MenuPlayerStyle } from 'styles/menu-player.style';
 import Head from 'next/head';
