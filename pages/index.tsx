@@ -3,11 +3,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { Container } from '../styles/Home';
 import AppLayout from '../layouts/AppLayout';
-import fetch from 'libs/fetcher';
-
+//import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
-import { RTVCGlobalStyles } from 'styles/rtvc.style';
 import { ElcuboGlobalStyles } from 'styles/elcubo.style';
 
 import dynamic from 'next/dynamic';
@@ -26,7 +24,6 @@ export default function Home({ data }) {
 
   //const { field_ec_contents, field_ec_contents_paragraph } = data;
 
-  {/* Custom Josi */ }
   React.useEffect(() => {
 
     /* Sound */
@@ -52,8 +49,6 @@ export default function Home({ data }) {
     const video2 = document.querySelector("#hero-2 video");
 
     if (video1) {
-      //video1.play;
-      //video1.pause;
       video1.addEventListener('ended', removeVideo1, false);
 
       function removeVideo1(e) {
@@ -62,8 +57,6 @@ export default function Home({ data }) {
     }
 
     if (video2) {
-      //video2.play;
-      //video2.pause;
       video2.addEventListener('ended', removeVideo2, false);
 
       function removeVideo2(e) {

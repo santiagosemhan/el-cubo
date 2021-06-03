@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import { Container } from 'styles/Home';
 import AppLayout from 'layouts/AppLayout';
 import PaneLogin from 'components/Season/PaneLogin';
-import fetch from 'libs/fetcher';
+//import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { ElcuboGlobalStyles } from 'styles/elcuboSeason.style';
