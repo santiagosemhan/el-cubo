@@ -141,6 +141,9 @@ const LabyrinthNode = ({ data, character }) => {
               if (document.querySelector('.marker') == null) {
                 controls.appendChild(createSquare('marker'));
               }
+              else {
+                updateMarker(document.querySelector('.marker'));
+              }
             }
 
             // Force close end
@@ -388,13 +391,15 @@ const LabyrinthNode = ({ data, character }) => {
             if (document.querySelector('.marker') == null) {
               controls.appendChild(createSquare('marker'));
             }
+            else {
+              updateMarker(document.querySelector('.marker'));
+            }
           }
 
           // Force close end
           if (videoForceEnd && videoForceEnd > 0) {
             if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-              console.log(videoForced);
               if (!videoForced) {
                 pane.classList.add('is-hidden');
                 document.getElementsByClassName('app-elcubo')[0].append(headerTop);
@@ -404,6 +409,7 @@ const LabyrinthNode = ({ data, character }) => {
 
                 paneClose.classList.add('hide');
                 hideComments();
+
 
                 player.pause();
 
