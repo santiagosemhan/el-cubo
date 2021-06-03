@@ -294,50 +294,49 @@ export default function SeasonPage({ data }) {
               </div>
 
               <div className="paragraph-message paragraph-message-1">
-                <a href="/el-cubo/temporada-1/personajes">
-                  <p>
-                    Del lat. vulg.
+                <p>
+                  Del lat. vulg.
                     <em>*potēre</em>, creado sobre ciertas formas del verbo lat. posse 'poder1',
-                    como potes 'puedes',
+                como potes 'puedes',
                     <em> potĕram</em> 'podía',
                     <em> potuisti</em> 'pudiste', etc.
                     <br /> Conjug. modelo. ◆ U. solo en 3.ª pers. en acep. 6.
                   </p>
 
-                  <ol>
-                    <li>Tener expedita la facultad o potencia de hacer algo.</li>
-                    <li>Tener facilidad, tiempo o lugar de hacer algo. U. m. con neg.</li>
-                    <li>
-                      tr. coloq. Tener más fuerza que alguien, vencerlo luchando cuerpo a cuerpo.
+                <ol>
+                  <li>Tener expedita la facultad o potencia de hacer algo.</li>
+                  <li>Tener facilidad, tiempo o lugar de hacer algo. U. m. con neg.</li>
+                  <li>
+                    tr. coloq. Tener más fuerza que alguien, vencerlo luchando cuerpo a cuerpo.
                       <strong>
-                        <em> Puedo a Roberto</em>
-                      </strong>
-                      .
+                      <em> Puedo a Roberto</em>
+                    </strong>
+                    .
                     </li>
-                    <li>
-                      Ser más fuerte que alguien, ser capaz de vencerlo.
+                  <li>
+                    Ser más fuerte que alguien, ser capaz de vencerlo.
                       <strong>
-                        <em> No pudo CON su rival</em>
-                      </strong>
-                      .
+                      <em> No pudo CON su rival</em>
+                    </strong>
+                    .
                     </li>
-                    <li>
-                      Aguantar o soportar algo o a alguien que producen rechazo. U. con el verbo en
-                      forma negativa.
+                  <li>
+                    Aguantar o soportar algo o a alguien que producen rechazo. U. con el verbo en
+                    forma negativa.
                       <strong>
-                        <em> No puedo CON sus impertinencias</em>
-                      </strong>
-                      .
+                      <em> No puedo CON sus impertinencias</em>
+                    </strong>
+                    .
                     </li>
-                    <li>
-                      intr. Ser contingente o posible que suceda algo.
+                  <li>
+                    intr. Ser contingente o posible que suceda algo.
                       <strong>
-                        <em> Puede que llueva mañana</em>
-                      </strong>
-                      .
+                      <em> Puede que llueva mañana</em>
+                    </strong>
+                    .
                     </li>
-                  </ol>
-                </a>
+                </ol>
+
               </div>
 
               <div className="paragraph-message paragraph-message-2">

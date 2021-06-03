@@ -312,7 +312,7 @@ export default function Home({ data }) {
           </video>
           <img className="img-bg-pc" src="/images/home/SITILLVideo IN 0.jpeg"
           />
-          <img className="img-bg-mobile" src="/images/home/mobile_4.jpeg" />
+
           <div className="video-overlay">
             <main className="scroll-container">
 
@@ -425,7 +425,7 @@ export default function Home({ data }) {
                     />
                   </video>
                   <img className="img-bg-pc" src="/images/home/SITILLVideo%20IN%203.jpeg" />
-                  <img className="img-bg-mobile" src="/images/home/mobile_6.jpeg" />
+
                   <div className="video-overlay cover-scroll">
                     <div className="copy-cover">
 
