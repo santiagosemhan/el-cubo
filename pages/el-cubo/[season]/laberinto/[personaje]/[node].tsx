@@ -161,7 +161,7 @@ const LabyrinthNode = ({ data, character }) => {
                   paneClose.classList.add('hide');
                   hideComments();
 
-                  player.pause();
+                  //player.pause();
 
                   videoForced = true;
                 }
@@ -411,7 +411,7 @@ const LabyrinthNode = ({ data, character }) => {
                 hideComments();
 
 
-                player.pause();
+                //player.stop();
 
                 videoForced = true;
               }
