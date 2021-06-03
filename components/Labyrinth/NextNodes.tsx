@@ -10,13 +10,13 @@ const NextNodes = ({ nextNodes, bgEndImage, opacity }) => {
       className="hero hero-laberinto"
       style={{ backgroundImage: `url("${bgEndImage}")`, backgroundSize: '100%' }}
     >
-      <div
+      <div className="cover-opacity"
         style={{
-          position: 'absolute',
+          position: 'fixed',
           left: 0,
           top: 0,
           width: '100%',
-          height: '100%',
+          height: '110vh',
           backgroundColor: `rgba(0,0,0,${bgImageOpacity})`,
         }}
       />
@@ -24,8 +24,8 @@ const NextNodes = ({ nextNodes, bgEndImage, opacity }) => {
       <div className="copy-cover">
         {nextNodes
           ? nextNodes.map((nextNode) => {
-              return <NextNode key={nextNode.field_ec_destination} data={nextNode} />;
-            })
+            return <NextNode key={nextNode.field_ec_destination} data={nextNode} />;
+          })
           : null}
         <ReplayBtn />
       </div>
