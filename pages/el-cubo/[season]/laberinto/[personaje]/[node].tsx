@@ -142,13 +142,13 @@ const LabyrinthNode = ({ data, character }) => {
                 controls.appendChild(createSquare('marker'));
               }
             }
+
             // Force close end
             if (videoForceEnd && videoForceEnd > 0) {
               if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
                 console.log(videoForced);
                 if (!videoForced) {
-                  console.log('hereeee');
                   pane.classList.add('is-hidden');
                   document.getElementsByClassName('app-elcubo')[0].append(headerTop);
                   document.getElementsByClassName('app-elcubo')[0].append(paneClose);
@@ -158,15 +158,13 @@ const LabyrinthNode = ({ data, character }) => {
                   paneClose.classList.add('hide');
                   hideComments();
 
-
                   player.pause();
 
                   videoForced = true;
                 }
-
-
               }
             }
+
           }, 1000);
           // Add time marker
           const controls_extra = document.querySelector('.plyr--video');
@@ -176,8 +174,8 @@ const LabyrinthNode = ({ data, character }) => {
           controls_extra.prepend(headerTop);
           controls_extra.prepend(paneClose);
         });
+
         player.on('ended', (event) => {
-          //if (!(videoForceEnd && videoForceEnd > 0)) {
           pane.classList.add('is-hidden');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
           document.getElementsByClassName('app-elcubo')[0].append(paneClose);
@@ -186,7 +184,6 @@ const LabyrinthNode = ({ data, character }) => {
 
           paneClose.classList.add('hide');
           hideComments();
-          //}
         });
 
         player.on('controlsshown', (event) => {
@@ -392,23 +389,30 @@ const LabyrinthNode = ({ data, character }) => {
               controls.appendChild(createSquare('marker'));
             }
           }
+
           // Force close end
           if (videoForceEnd && videoForceEnd > 0) {
-            if (player.duration - player.currentTime <= Number(videoForceEnd)) {
+            if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-              console.log('hereeee');
-              fadeOut(pane, 80);
-              pane.classList.remove('open');
-              document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-              document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+              console.log(videoForced);
+              if (!videoForced) {
+                pane.classList.add('is-hidden');
+                document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+                document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                videoAlreadyViewed = true;
+                fadeOut(pane, 80);
 
-              paneClose.classList.add('hide');
+                paneClose.classList.add('hide');
+                hideComments();
 
-              hideComments();
-              player.pause();
+                player.pause();
 
+                videoForced = true;
+              }
             }
           }
+
+
         }, 1000);
         // Add time marker
         const controls_extra = document.querySelector('.plyr--video');
