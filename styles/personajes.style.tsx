@@ -844,6 +844,14 @@ a {
     .characters .selector-cover #mainDiv {
         display: none;
     }
+
+    .characters .projectButton {
+        display: none !important;
+    }
+
+    footer {
+        display: none !important;
+    }
   
 }
 
