@@ -214,7 +214,7 @@ display: block !important;
         width: 16.66%;
     }
     .li-videos.odd {
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
 
     .title-recompensa {
