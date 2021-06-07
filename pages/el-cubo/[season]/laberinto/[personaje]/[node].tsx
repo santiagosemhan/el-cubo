@@ -80,6 +80,15 @@ const LabyrinthNode = ({ data, character }) => {
 
     let videoForced = false;
 
+    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
+      /* iOS hides Safari address bar */
+      //window.addEventListener("load", function () {
+      setTimeout(function () {
+        window.scrollTo(0, 1);
+      }, 1000);
+      //});
+    }
+
     const calculatePercent = (num1, total) => {
       return (num1 / total) * 100;
     };
@@ -294,15 +303,6 @@ const LabyrinthNode = ({ data, character }) => {
       videoFake.addEventListener('click', () => {
         player.togglePlay();
       });
-
-      window.addEventListener("orientationchange", function (event) {
-        var orientation = (screen.orientation || {}).type || screen.mozOrientation || screen.msOrientation;
-
-        if (["landscape-primary", "landscape-secondary"].indexOf(orientation) != -1) {
-          becomeFullscreen();
-        }
-      });
-
     }
 
 
@@ -379,6 +379,7 @@ const LabyrinthNode = ({ data, character }) => {
 
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
+
       const videoFake = document.querySelector('video');
 
       videoFake.onplay = (event) => {
@@ -409,8 +410,6 @@ const LabyrinthNode = ({ data, character }) => {
 
                 paneClose.classList.add('hide');
                 hideComments();
-
-
                 //player.stop();
 
                 videoForced = true;

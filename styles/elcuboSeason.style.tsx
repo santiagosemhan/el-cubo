@@ -1392,6 +1392,12 @@ footer {
     text-decoration: none;
 }
 
+#nav-login a.user-profile {
+    color: white;
+    text-decoration: underline;
+    margin-left: 0;
+}
+
 #audio-player-container.audio-season {
     top: 160px;
 }

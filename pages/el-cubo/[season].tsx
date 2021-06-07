@@ -4,7 +4,6 @@ import { GetStaticProps } from 'next';
 import { Container } from 'styles/Home';
 import AppLayout from 'layouts/AppLayout';
 import PaneLogin from 'components/Season/PaneLogin';
-//import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { ElcuboGlobalStyles } from 'styles/elcuboSeason.style';
@@ -55,9 +54,9 @@ export default function SeasonPage({ data }) {
       return (
         <div id="nav-login">
           <span className="user-logged">
-            ¡Hola! {user ? user.full_name.split(' ')[0] : null}
+            ¡Hola!  <a className="user-profile" key={'profil'} href={Links.profil}>{user ? user.full_name.split(' ')[0] : null}</a>
           </span>
-          <a key={'logout'} href={Links.logoutCharacters} className="link-logout">
+          <a key={'logout'} href={Links.logout} className="link-logout">
             Salir
         </a>
         </div>
@@ -111,11 +110,9 @@ export default function SeasonPage({ data }) {
 
       if (track.paused) {
         track.play();
-        //controlBtn.textContent = "Pause";
         controlBtn.className = 'pause';
       } else {
         track.pause();
-        //controlBtn.textContent = "Play";
         controlBtn.className = 'play';
       }
     }
@@ -168,9 +165,11 @@ export default function SeasonPage({ data }) {
 
     if (button_open) {
       button_open.forEach((link) => {
-        link.addEventListener('click', () => {
-          setShowLoginPanel(true);
-        });
+        if (!isLoggedIn) {
+          link.addEventListener('click', () => {
+            setShowLoginPanel(true);
+          });
+        }
       });
     }
 
@@ -187,6 +186,7 @@ export default function SeasonPage({ data }) {
     e.preventDefault();
     if (isLoggedIn) {
       window.location.href = '/el-cubo/temporada-1/personajes';
+
     } else {
       setShowLoginPanel(true);
     }
@@ -276,7 +276,7 @@ export default function SeasonPage({ data }) {
                 </div>
               </div>
 
-              <p className="p-button is-hidden">
+              <p className="p-button">
                 <a className="button-mobile toggle"
                   onClick={handleMobileOnClick}
                   href={'#'}>
@@ -297,7 +297,7 @@ export default function SeasonPage({ data }) {
                 <p>
                   Del lat. vulg.
                     <em>*potēre</em>, creado sobre ciertas formas del verbo lat. posse 'poder1',
-                como potes 'puedes',
+              como potes 'puedes',
                     <em> potĕram</em> 'podía',
                     <em> potuisti</em> 'pudiste', etc.
                     <br /> Conjug. modelo. ◆ U. solo en 3.ª pers. en acep. 6.
@@ -349,14 +349,6 @@ export default function SeasonPage({ data }) {
                   </p>
                 </a>
               </div>
-
-              <p className="p-button">
-                <a className="button-mobile toogle"
-                  onClick={handleMobileOnClick}
-                  href={'#'}>
-                  Empieza tu experiencia{' '}
-                </a>
-              </p>
 
               <div className="credits">
                 <p className="intro">
@@ -536,32 +528,3 @@ export default function SeasonPage({ data }) {
     </AppLayout>
   );
 }
-
-/*
-export async function getStaticPaths() {
-  return {
-    paths: [{ params: { season: 'temporada-1' } }],
-    fallback: false,
-  };
-}
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await fetch(`/api/v1/el-cubo/page/5365`);
-
-  if (!data.length) {
-    return { props: { data: {} } };
-  }
-
-  const { field_ec_contents, field_ec_contents_paragraph_json, title } = data[0];
-
-  return {
-    props: {
-      data: {
-        title,
-        field_ec_contents: field_ec_contents.split(',').map((c) => c.trim()),
-        field_ec_contents_paragraph: JSON.parse(field_ec_contents_paragraph_json),
-      },
-    },
-  };
-};
-*/

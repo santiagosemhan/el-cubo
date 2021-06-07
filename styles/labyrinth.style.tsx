@@ -11,7 +11,6 @@ body {
     height: 100vh;
 }
 
-
 :root {
     /* Full grid area variable */
     --fullGrid: 1 / 1 / -1 / -1;
@@ -333,8 +332,10 @@ body {
         font-size: 22px;
         left: 20px;
     }
-    .pulse-text {
+    
+    .cover-selector .pulse-text {
         font-size: 12px;
+        margin-top: 30px;
     }
 
     .plyr--video .plyr__controls {

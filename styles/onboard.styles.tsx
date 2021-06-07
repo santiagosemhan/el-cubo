@@ -234,6 +234,7 @@ body {
         width: 100%;
     }
 
+
 }
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {

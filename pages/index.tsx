@@ -3,7 +3,6 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { Container } from '../styles/Home';
 import AppLayout from '../layouts/AppLayout';
-//import fetch from 'libs/fetcher';
 import useOnMouseOutside from 'libs/hooks/useOnMouseOutside';
 import HeaderTop from 'components/HeaderTop/HeaderTop';
 import { ElcuboGlobalStyles } from 'styles/elcubo.style';
@@ -21,8 +20,6 @@ export default function Home({ data }) {
   };
 
   useOnMouseOutside(ref, () => setBigMouse(false));
-
-  //const { field_ec_contents, field_ec_contents_paragraph } = data;
 
   React.useEffect(() => {
 
@@ -79,11 +76,9 @@ export default function Home({ data }) {
 
       if (track.paused) {
         track.play();
-        //controlBtn.textContent = "Pause";
         controlBtn.className = "pause";
       } else {
         track.pause();
-        //controlBtn.textContent = "Play";
         controlBtn.className = "play";
       }
     }
@@ -138,37 +133,21 @@ export default function Home({ data }) {
 
       if (isScrolledIntoView(reveal_2)) {
         let relation = getRelationScroll(reveal_2);
-        //if (relation < 140) {
-
-        //scrollear(document.getElementsByClassName('section-2'));
-
-        //document.getElementsByClassName('section-2')[0].scrollTop = 0;
-
         document.getElementsByClassName('cover-reveal-row-2')[0].classList.add('active');
         document.getElementsByClassName('cover-reveal-row-2')[1].classList.add('active');
-        //}
       }
 
       var reveal_3 = document.getElementsByClassName('cover-reveal-row-3')[0];
       if (isScrolledIntoView(reveal_3)) {
-        //let relation = getRelationScroll(reveal_3);
-        // if (relation < 140) {
         document.getElementsByClassName('cover-reveal-row-3')[0].classList.add('active');
         document.getElementsByClassName('cover-reveal-row-3')[1].classList.add('active');
-        // }
       }
 
       var reveal_4 = document.getElementsByClassName('cover-reveal-row-4')[0];
       if (isScrolledIntoView(reveal_4)) {
-        //let relation = getRelationScroll(reveal_4);
-        //if (relation < 140) {
         document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
         document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
-        //}
-
-      } else {
-
-      }
+      } 
 
 
       var someDiv4 = document.getElementsByClassName('cover-reveal-row-5')[0];
@@ -302,9 +281,6 @@ export default function Home({ data }) {
 
           </div>
         </div>
-
-        {/*<HeaderTop />*/}
-
 
         <div id="hero-0" className="hero hero-0 no-link hero-pc">
           <video className="video-bg video-0" autoPlay muted>
@@ -558,11 +534,6 @@ export default function Home({ data }) {
           </div>
         </div>
 
-
-
-
-
-
       </Container>
     </AppLayout >
   );
@@ -570,29 +541,6 @@ export default function Home({ data }) {
 
 }
 
-
-
-/*
-export const getStaticProps: GetStaticProps = async (context) => {
-  const data = await fetch(`/api/v1/el-cubo/page/5364`);
-
-  if (!data.length) {
-    return { props: { data: {} } };
-  }
-
-  const { field_ec_contents, field_ec_contents_paragraph_json, title } = data[0];
-
-  return {
-    props: {
-      data: {
-        title,
-        field_ec_contents: field_ec_contents.split(',').map((c) => c.trim()),
-        field_ec_contents_paragraph: JSON.parse(field_ec_contents_paragraph_json),
-      },
-    },
-  };
-};
-*/
 
 
 

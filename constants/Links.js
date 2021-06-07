@@ -6,6 +6,7 @@ const register = `${base_url}/login?ref=${elcubo_base_url}/el-cubo/temporada-1/`
 const registerCharacters = `${base_url}/login?ref=${elcubo_base_url}/el-cubo/temporada-1/personajes`;
 const logout = `${base_url}/logout?ref=${elcubo_base_url}/el-cubo/temporada-1`;
 const logoutCharacters = `${base_url}/logout?ref=${elcubo_base_url}/el-cubo/temporada-1/personajes`;
+const profil = `${base_url}/mi-perfil`;
 const guest = '/el-cubo/temporada-1/guest';
 const characters = '/el-cubo/temporada-1/personajes';
 const notFound = `/el-cubo/404`;
@@ -26,4 +27,5 @@ export default {
     cronoReward,
     logout,
     logoutCharacters,
+    profil
 };
