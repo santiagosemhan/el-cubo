@@ -21,10 +21,13 @@ const CharacterOnboarding = ({ node, character, viewedAll, bgImage }) => {
                   <span className="copy-phrase">Ya lograste la recompensa asociada a este personaje.</span>
                 </p>
                 <div className="col-2">
+
                   <div className="col-left">
-                    <a className="button-login cyan-dark button-quit" href={rewardLink}>
-                      Ver recompensa
+                    <div className="cover-link">
+                      <a className="button-login cyan-dark button-quit" href={rewardLink}>
+                        Ver recompensa
                     </a>
+                    </div>
                   </div>
                   <div className="col-right">
                     <div className="cover-link">

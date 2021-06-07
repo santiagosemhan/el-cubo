@@ -19,9 +19,11 @@ const CharacterOnboarding = ({ character, hasReward, bgImage }) => {
                 </p>
                 <div className="col-2">
                   <div className="col-left">
-                    <a className="button-login cyan-dark button-quit" href={rewardLink}>
-                      Ver recompensa
-                  </a>
+                    <div className="cover-link">
+                      <a className="button-login cyan-dark button-quit" href={rewardLink}>
+                        Ver recompensa
+                      </a>
+                    </div>
                   </div>
                   <div className="col-right">
                     <div className="cover-link">

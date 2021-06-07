@@ -163,6 +163,7 @@ body {
 
 
 
+
 @media only screen and (min-width: 1024px) {
     .onboarding-chrono .copy {
         width: 800px;
@@ -263,6 +264,10 @@ body {
 
     .p-winner .copy-phrase {
         margin-bottom: 20px;
+    }
+
+    .copy .winner .col-left .cover-link {
+        float: right;
     }
 }
 

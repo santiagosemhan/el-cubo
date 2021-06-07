@@ -28,9 +28,11 @@ const CharacterIndex = ({ bgImage, character, userData, onContinueClick }) => {
                 </p>
                 <div className="col-2">
                   <div className="col-left">
-                    <a className="button-login cyan-dark button-quit" href={`/el-cubo/temporada-1/laberinto/recompensa/${userData.currentCharacter.name}`}>
-                      Ver recompensa
-                  </a>
+                    <div className="cover-link">
+                      <a className="button-login cyan-dark button-quit" href={`/el-cubo/temporada-1/laberinto/recompensa/${userData.currentCharacter.name}`}>
+                        Ver recompensa
+                      </a>
+                    </div>
                   </div>
                   <div className="col-right">
                     <div className="cover-link">
