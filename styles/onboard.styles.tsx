@@ -62,6 +62,7 @@ body {
     font-family: Inter;
     text-decoration: none;
     float: left;
+    width: 160px;
 }
 
 .cover-link a span {
@@ -183,6 +184,10 @@ body {
 
     .onboarding-laberynth .copy .p-winner {
         font-size: 22px;
+    }
+
+    .copy .winner .col-2 .col-left .cover-link {
+        float: right;
     }
 
     .winner {
