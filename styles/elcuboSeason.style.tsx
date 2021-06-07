@@ -337,6 +337,11 @@ h2 {
     text-decoration: none;
 }
 
+.button-mobile {
+    animation: fadeInPhrase 1.5s ease-in both;
+    animation-delay: 2s;
+}
+
 #hero-3 .paragraph-message-1.active-fadein {
     animation: fadeInPhrase 1.5s ease-in both;
     animation-delay: 1s;

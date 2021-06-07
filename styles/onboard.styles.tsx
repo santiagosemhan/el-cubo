@@ -148,7 +148,7 @@ body {
     text-align: center;
     font-size: 20px;
     font-weight: 500;
-    width: 260px;
+    width: 160px;
 }
 
 .winner .col-left a:hover {

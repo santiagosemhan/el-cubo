@@ -380,6 +380,18 @@ const LabyrinthNode = ({ data, character }) => {
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
 
+
+      document.addEventListener("orientationchange", function (event) {
+        switch (window.orientation) {
+          case -90: case 90:
+            /* Device is in landscape mode */
+            break;
+          default:
+          /* Device is in portrait mode */
+        }
+      });
+
+
       const videoFake = document.querySelector('video');
 
       videoFake.onplay = (event) => {

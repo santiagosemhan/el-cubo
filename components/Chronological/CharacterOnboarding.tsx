@@ -23,7 +23,7 @@ const CharacterOnboarding = ({ node, character, viewedAll, bgImage }) => {
                 <div className="col-2">
                   <div className="col-left">
                     <a className="button-login cyan-dark button-quit" href={rewardLink}>
-                      Ver recompensa de nuevo
+                      Ver recompensa
                     </a>
                   </div>
                   <div className="col-right">
