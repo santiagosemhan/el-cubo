@@ -332,7 +332,7 @@ body {
         font-size: 22px;
         left: 20px;
     }
-    
+
     .cover-selector .pulse-text {
         font-size: 12px;
         margin-top: 30px;
@@ -831,7 +831,8 @@ iframe ._2pi8 {
 /* Marina */
 .node_6471  .cover-reward,
 .node_6472  .cover-reward {
-    left: 49.5%;
+    left: 50.5%;
+    bottom: 20%;
 }
 
 /* ELvira */
@@ -849,6 +850,53 @@ iframe ._2pi8 {
 .node_6481 .cover-reward {
     right: 18%;
     left: unset;
+}
+
+
+/* Custom Node Dots Mobile */ 
+
+@media only screen and (max-width: 1024px) and (orientation: landscape) {
+
+    /* Alba 13 text back to characters /
+    .node_6437 .back-to-season span {
+        display: none;
+    }
+    
+    /* Marina 3 dot Mercado * /
+    .node_6452 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Marina 11 dot Marina * /
+    .node_6459 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Marina 17 dot Mercado * /
+    .node_6459 .cover-selector:nth-child(3) {
+        bottom: 25vh !important;
+    }
+
+    /* Marina 18 text back to characters /
+    .node_6468 .back-to-season span {
+        display: none;
+    }
+
+    /* Carey 1 dot Marina * /
+    .node_6488 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    } 
+
+    /* Carey 13 dot Mercado * /
+    .node_6501 .cover-selector:nth-child(3) {
+        bottom: 25vh !important;
+    }
+
+    /* Carey 14 text back to characters /
+    .node_6502 .back-to-season span {
+        display: none;
+    }
+
 }
 
 `;
