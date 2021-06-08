@@ -19,7 +19,7 @@ import UrlUtils from 'utils/Url';
 
 const LabyrinthNode = ({ data, character }) => {
 
-  const { query } = useRouter();
+  const { query, isReady } = useRouter();
   const { initial } = query;
 
   const isLoggedIn = AuthService.isLoggedIn();
@@ -28,6 +28,7 @@ const LabyrinthNode = ({ data, character }) => {
   const characterId = data.field_ec_character;
   const videoForceEnd = data.field_ec_trigger_end_video;
   const [currentCharacter, setCurrentCharacter] = useState(null);
+  let timeout = 0;
 
   const updateUser = async () => {
     try {
@@ -47,11 +48,14 @@ const LabyrinthNode = ({ data, character }) => {
       console.log(error);
     }
   };
-
-  React.useEffect(() => {
-    if (isLoggedIn) {
+    
+  React.useEffect(() => {    
+    const abortCtrl = new AbortController();
+    const opts = { signal: abortCtrl.signal };
+    if (isLoggedIn && isReady) {
       updateUser();
     }
+    return () => abortCtrl.abort();
   }, [initial]);
 
   React.useEffect(() => {
@@ -379,18 +383,6 @@ const LabyrinthNode = ({ data, character }) => {
 
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
-
-
-      document.addEventListener("orientationchange", function (event) {
-        switch (window.orientation) {
-          case -90: case 90:
-            /* Device is in landscape mode */
-            break;
-          default:
-          /* Device is in portrait mode */
-        }
-      });
-
 
       const videoFake = document.querySelector('video');
 

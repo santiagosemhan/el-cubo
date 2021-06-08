@@ -30,8 +30,9 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="es">
         <Head>
+          <meta name="google" content="notranslate" />
           <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -69,7 +70,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700&display=swap"
           />
           <link rel="preconnect" href={process.env.MEDIA_CONTENT_URL} />
-          <script defer src="/js/elcubo.js"></script>
+
         </Head>
         <body>
           <Main />

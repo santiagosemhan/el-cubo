@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }) {
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta property="og:site_name" content="El Cubo." />
+
       </Head>
       <ThemeProvider theme={theme}>
         <SWRConfig
