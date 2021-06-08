@@ -70,6 +70,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Dosis:300,400,500,600,700&display=swap"
           />
           <link rel="preconnect" href={process.env.MEDIA_CONTENT_URL} />
+          <script defer src="/js/elcubo.js"></script>
 
         </Head>
         <body>
