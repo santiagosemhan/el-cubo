@@ -18,6 +18,7 @@ const setCharacterNodesChrono = (userData, character, current) => {
         userNodes[characterName] = {
             viewedNodes: characterNodes,
         }
+
         return userNodes;
     }
     return userData;
@@ -45,8 +46,13 @@ const setCharacterNodesReflexive = (userData, character, current, answers) => {
     return resultNodes;
 };
 
-const setCharacterNodesLabyrinth = (userData, character, currentNode, nextNodes) => {
+const setCharacterNodesLabyrinth = (userData, character, currentNode, nextNodes, initialName = null, initialId = null) => {
     const reward = nextNodes && nextNodes.length === 1 ? true : false;
+    const initialCharacter = {
+        id: initialId,
+        name: initialName,
+    };
+    const currentCharacter = initialName ? initialCharacter : userData.currentCharacter;
     let userNodes = {
         ...rewards.labyrinth,
         ...userData,
@@ -55,6 +61,7 @@ const setCharacterNodesLabyrinth = (userData, character, currentNode, nextNodes)
             character,
         },
         reward,
+        currentCharacter,
     };
     return userNodes;
 };
