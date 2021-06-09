@@ -839,7 +839,7 @@ iframe ._2pi8 {
 }
 
 /* Mercado */
-.node_5622 .cover-reward {
+.node_6518 .cover-reward {
     left: 20%;
     bottom: 30%;
 }
@@ -850,7 +850,7 @@ iframe ._2pi8 {
     left: unset;
 }
 
-/* Custom Node Dots Mobile */ 
+/* Labyrinth Custom Node Dots Mobile */ 
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
 
@@ -859,17 +859,17 @@ iframe ._2pi8 {
         display: none;
     }
     
-    /* Marina 3 dot Mercado * /
+    /* Marina 3 dot Mercado */
     .node_6452 .cover-selector:nth-child(2) {
         bottom: 25vh !important;
     }
 
-    /* Marina 11 dot Marina * /
+    /* Marina 11 dot Marina */
     .node_6459 .cover-selector:nth-child(2) {
         bottom: 25vh !important;
     }
 
-    /* Marina 17 dot Mercado * /
+    /* Marina 17 dot Mercado */
     .node_6459 .cover-selector:nth-child(3) {
         bottom: 25vh !important;
     }
@@ -879,12 +879,12 @@ iframe ._2pi8 {
         display: none;
     }
 
-    /* Carey 1 dot Marina * /
+    /* Carey 1 dot Marina */
     .node_6488 .cover-selector:nth-child(2) {
         bottom: 25vh !important;
     } 
 
-    /* Carey 13 dot Mercado * /
+    /* Carey 13 dot Mercado */
     .node_6501 .cover-selector:nth-child(3) {
         bottom: 25vh !important;
     }
@@ -894,5 +894,62 @@ iframe ._2pi8 {
         display: none;
     }
 
+    /* Elvira 5 dot Elvira */
+    .node_6443 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Elvira 9 dot Mercado */
+    .node_6447 .cover-selector:nth-child(3) {
+        bottom: 25vh !important;
+    }
+
+    /* Elvira 10 text back to characters  */
+    .node_6448 .back-to-season span {
+        display: none;
+    }
+
+    /* Mercado 1+2 dot Marina */
+    .node_6504 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    } 
+
+    /* Mercado 3 dot Mercado */
+    .node_6505 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    } 
+
+    /* Mercado 3+4, 4 text back to characters  */
+    .node_6506 .back-to-season span,
+    .node_6507 .back-to-season span {
+        display: none;
+    }
+
+    /* Mercado 7 dot Mercado */
+    .node_6510 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Mercado 10 dot Marina */
+    .node_6510 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Mercado 13 text back to characters  */
+    .node_6517 .back-to-season span {
+        display: none;
+    }
+
+    /* Mercado Reward */
+    .node_6518 .cover-reward {
+        bottom: 10%;
+    }
+
+    /* Sales Reward */
+    .node_6481 .cover-reward {
+        bottom: 10%;
+    }
+
 }
+
 `;
