@@ -73,7 +73,7 @@ body {
 .pane {
     position: fixed;
     top: 0;
-    z-index: 50;
+    z-index: -1;
     /* left: -150%; */
     height: 100vh;
     width: 100%;
@@ -910,14 +910,23 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     } 
 
+    /* Mercado 3 dot Mercado */
+    .node_6505 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    } 
 
-    /* Mercado 7 dot Mercado */
-    .node_6510 .cover-selector:nth-child(2) {
+    /* Mercado 4 dot Mercado */
+    .node_6507 .cover-selector:nth-child(3) {
         bottom: 25vh !important;
     }
 
     /* Mercado 10 dot Marina */
     .node_6510 .cover-selector:nth-child(2) {
+        bottom: 25vh !important;
+    }
+
+    /* Mercado 13 dot Marina */
+    .node_6513 .cover-selector:nth-child(2) {
         bottom: 25vh !important;
     }
 
