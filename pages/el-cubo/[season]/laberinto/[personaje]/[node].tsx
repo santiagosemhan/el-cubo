@@ -48,8 +48,8 @@ const LabyrinthNode = ({ data, character }) => {
       console.log(error);
     }
   };
-    
-  React.useEffect(() => {    
+
+  React.useEffect(() => {
     const abortCtrl = new AbortController();
     const opts = { signal: abortCtrl.signal };
     if (isLoggedIn && isReady) {
@@ -163,11 +163,11 @@ const LabyrinthNode = ({ data, character }) => {
             if (videoForceEnd && videoForceEnd > 0) {
               if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-                console.log(videoForced);
                 if (!videoForced) {
                   pane.classList.add('is-hidden');
                   document.getElementsByClassName('app-elcubo')[0].append(headerTop);
                   document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                  headerTop.classList.remove('hide');
                   videoAlreadyViewed = true;
                   fadeOut(pane, 80);
 
@@ -326,7 +326,7 @@ const LabyrinthNode = ({ data, character }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          fadeOut(pane, 20);
+          fadeOut(pane, 40);
           pane.classList.remove('open');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
           document.getElementsByClassName('app-elcubo')[0].append(paneClose);

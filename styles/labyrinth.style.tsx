@@ -853,11 +853,6 @@ iframe ._2pi8 {
 /* Labyrinth Custom Node Dots Mobile */ 
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
-
-    /* Alba 13 text back to characters */
-    .node_6437 .back-to-season span {
-        display: none;
-    }
     
     /* Marina 3 dot Mercado */
     .node_6452 .cover-selector:nth-child(2) {
@@ -870,14 +865,10 @@ iframe ._2pi8 {
     }
 
     /* Marina 17 dot Mercado */
-    .node_6459 .cover-selector:nth-child(3) {
+    .node_6466 .cover-selector:nth-child(3) {
         bottom: 25vh !important;
     }
 
-    /* Marina 18 text back to characters  */
-    .node_6468 .back-to-season span {
-        display: none;
-    }
 
     /* Carey 1 dot Marina */
     .node_6488 .cover-selector:nth-child(2) {
@@ -919,11 +910,6 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     } 
 
-    /* Mercado 3+4, 4 text back to characters  */
-    .node_6506 .back-to-season span,
-    .node_6507 .back-to-season span {
-        display: none;
-    }
 
     /* Mercado 7 dot Mercado */
     .node_6510 .cover-selector:nth-child(2) {
@@ -935,11 +921,6 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     }
 
-    /* Mercado 13 text back to characters  */
-    .node_6517 .back-to-season span {
-        display: none;
-    }
-
     /* Mercado Reward */
     .node_6518 .cover-reward {
         bottom: 10%;
@@ -948,6 +929,11 @@ iframe ._2pi8 {
     /* Sales Reward */
     .node_6481 .cover-reward {
         bottom: 10%;
+    }
+
+    /* Text back to characters  */
+    .nav a.back-to-season span {
+        display: none;
     }
 
 }
