@@ -72,7 +72,7 @@ const LabyrinthNode = ({ data, character }) => {
     const button_close_comments = document.querySelector('.close-comments');
     const pane_comments = document.querySelector('.pane-comments');
     const pane_cover_comments = document.querySelector('.pane-cover-comments');
-    // Video variables
+    // Video 
     const video = document.querySelector('.pane-video');
     const time_comments = video.dataset.comments;
     let video_duration = 0;
@@ -314,8 +314,9 @@ const LabyrinthNode = ({ data, character }) => {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
           videoForced = false;
-          fadeIn(pane, 60);
           player.stop();
+          fadeIn(pane, 20);
+
           pane.classList.add('open');
           pane.classList.remove('is-hidden');
           player.play();
@@ -326,7 +327,7 @@ const LabyrinthNode = ({ data, character }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          fadeOut(pane, 40);
+          fadeOut(pane, 20);
           pane.classList.remove('open');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
           document.getElementsByClassName('app-elcubo')[0].append(paneClose);
@@ -409,8 +410,9 @@ const LabyrinthNode = ({ data, character }) => {
                 pane.classList.add('is-hidden');
                 document.getElementsByClassName('app-elcubo')[0].append(headerTop);
                 document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                headerTop.classList.remove('hide');
                 videoAlreadyViewed = true;
-                fadeOut(pane, 80);
+                fadeOut(pane, 20);
 
                 paneClose.classList.add('hide');
                 hideComments();
@@ -423,6 +425,7 @@ const LabyrinthNode = ({ data, character }) => {
 
 
         }, 1000);
+
         // Add time marker
         const controls_extra = document.querySelector('.plyr--video');
         controls_extra.prepend(commentsBubble);
@@ -442,8 +445,9 @@ const LabyrinthNode = ({ data, character }) => {
         pane.classList.add('is-hidden');
         document.getElementsByClassName('app-elcubo')[0].append(headerTop);
         document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+        headerTop.classList.remove('hide');
         videoAlreadyViewed = true;
-        fadeOut(pane, 80);
+        fadeOut(pane, 20);
 
         paneClose.classList.add('hide');
         hideComments();
