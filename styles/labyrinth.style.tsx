@@ -332,7 +332,6 @@ body {
         font-size: 22px;
         left: 20px;
     }
-
     .cover-selector .pulse-text {
         font-size: 12px;
         margin-top: 30px;
@@ -831,8 +830,7 @@ iframe ._2pi8 {
 /* Marina */
 .node_6471  .cover-reward,
 .node_6472  .cover-reward {
-    left: 50.5%;
-    bottom: 20%;
+    left: 49.5%;
 }
 
 /* ELvira */
@@ -852,12 +850,11 @@ iframe ._2pi8 {
     left: unset;
 }
 
-
 /* Custom Node Dots Mobile */ 
 
 @media only screen and (max-width: 1024px) and (orientation: landscape) {
 
-    /* Alba 13 text back to characters /
+    /* Alba 13 text back to characters */
     .node_6437 .back-to-season span {
         display: none;
     }
@@ -877,7 +874,7 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     }
 
-    /* Marina 18 text back to characters /
+    /* Marina 18 text back to characters  */
     .node_6468 .back-to-season span {
         display: none;
     }
@@ -892,11 +889,10 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     }
 
-    /* Carey 14 text back to characters /
+    /* Carey 14 text back to characters */
     .node_6502 .back-to-season span {
         display: none;
     }
 
 }
-
 `;
