@@ -722,7 +722,7 @@ const ChronologicalReward = ({ character, chronology }) => {
                   </a>
                 </div>
                 <div>
-                  <a className="toggle" href="#" data-video="424276">
+                  <a className="toggle" href="#" data-video="a00391">
                     <img src="/images/recompensa/icon-play.svg" />
                     <span>Ver video</span>
                   </a>

@@ -319,6 +319,27 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       });
     }
 
+    /* IOS support */
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    if (isIOS) {
+      const videoIOS = document.querySelector('video');
+
+      videoIOS.onplay = (event) => {
+        addExtraControls();
+        onHideControls();
+      };
+
+      videoIOS.onended = (event) => {
+        button_close[0].click();
+        closeVideoReflex();
+      };
+
+      videoIOS.onpause = (event) => {
+        onShowControls();
+      };
+
+    }
+
   }, []);
 
   return (
