@@ -123,7 +123,7 @@ const CharacterReward = ({ character }) => {
         button_open.forEach(function (link) {
           link.addEventListener('click', () => {
             loadPlayer(paneVideo.dataset.video);
-            fadeIn(pane, 120);
+            fadeIn(pane, 40);
             pane.classList.remove('is-hidden');
             player.play();
           });
@@ -161,7 +161,7 @@ const CharacterReward = ({ character }) => {
           <img src="/images/pane-close.svg" />
         </a>
         <div className="pane-video" data-video={characterData ? characterData.field_ec_reward_lab : null} data-poster="" data-title={`Confesionario de ${character.toUpperCase()}`}>
-          <video className="hide" controls crossOrigin="true" playsInline></video>
+          <video className="hide" controls crossOrigin="true" ></video>
         </div>
       </div>
 

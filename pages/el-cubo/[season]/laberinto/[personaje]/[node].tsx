@@ -69,14 +69,14 @@ const LabyrinthNode = ({ data, character }) => {
     const time_comments = video.dataset.comments;
     let video_duration = 0;
     let videoForced = false;
-  
+
     // Facebook Comments
     const button_open_comments = document.querySelectorAll('.open-comments');
     const button_close_comments = document.querySelector('.close-comments');
     const commentsBubble = document.querySelectorAll('.comments-bullet')[0];
     const paneCoverComments = document.querySelectorAll('.pane-cover-comments')[0];
     const paneComments = document.querySelectorAll('.pane-comments')[0];
- 
+
     // Extra Elements
     const headerTop = document.querySelectorAll('.header-top')[0];
     const paneClose = document.querySelectorAll('.close')[0];
@@ -223,6 +223,16 @@ const LabyrinthNode = ({ data, character }) => {
       controls_extra.prepend(paneClose);
     }
 
+
+    const showVideoLab = (pPane) => {
+      videoForced = false;
+      pPane.classList.remove('open');
+      player.stop();
+      fadeIn(pPane, 20);
+      pPane.classList.add('open');
+      pPane.classList.remove('is-hidden');
+    }
+
     const hideVideoLab = (pPane) => {
       pPane.classList.add('is-hidden');
       document.getElementsByClassName('app-elcubo')[0].append(headerTop);
@@ -313,23 +323,17 @@ const LabyrinthNode = ({ data, character }) => {
       });
     }
 
-    // Replay Button
+    // Replay
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
-          videoForced = false;
-          pane.classList.remove('open');
-          player.stop();
-
-          fadeIn(pane, 20);
-
-          pane.classList.add('open');
-          pane.classList.remove('is-hidden');
+          showVideoLab(pane);
           player.play();
         });
       });
     }
 
+    // Close
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
@@ -383,7 +387,6 @@ const LabyrinthNode = ({ data, character }) => {
       videoIOS.onplay = (event) => {
 
         setInterval(() => {
-
           // Add Marker
           video_duration = player.duration;
           if (time_comments && video_duration > 0) {
@@ -417,7 +420,6 @@ const LabyrinthNode = ({ data, character }) => {
 
         document.getElementsByClassName('plyr_title')[0].classList.add('hide');
         paneClose.classList.add('hide');
-
       };
 
       videoIOS.onended = (event) => {

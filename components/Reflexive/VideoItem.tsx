@@ -6,15 +6,8 @@ const VideoItem = ({ order, data }) => {
 
   const formatText = (str) => {
     if ((str === null) || (str === '')) return false;
-    //str = str.toString();
-
     str = str.replace(/&#(\d+);/g, function (m, n) { return String.fromCharCode(n); })
     str = str.replace(/&quot;/g, '"');
-
-    //const parser = new DOMParser();
-    //str = parser.parseFromString(str, "text/html");
-    /* str = str.replace( /(<([^>]+)>)/ig, '');
-     str = str.replace(/  +/g, ' ');*/
     return str;
   };
 

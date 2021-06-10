@@ -89,7 +89,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
     const fadeOut = (el, pTime) => {
       el.style.opacity = 1;
-
       (function fadeO() {
         if ((el.style.opacity -= 0.07) < 0) {
           el.style.display = 'none';
@@ -102,7 +101,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     const fadeIn = (el, pTime) => {
       el.style.opacity = 0;
       el.style.display = 'block';
-
       (function fadeI() {
         var val = parseFloat(el.style.opacity);
         if (!((val += 0.07) > 1)) {
@@ -126,6 +124,37 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       elms.forEach((el) => el.remove());
     };
 
+    const closeVideoReflex = () => {
+      document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+      document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+
+      paneClose.classList.add('hide');
+
+      if (viewedAll()) {
+        document.getElementsByClassName('row-second')[0].classList.add('visible');
+        document.getElementsByClassName('characters')[0].classList.add('is-viewed');
+      }
+    };
+
+    const addExtraControls = () => {
+      // Add Comments Elements into Player
+      const controls_extra = document.querySelector('.plyr--video');
+      controls_extra.prepend(headerTop);
+      controls_extra.prepend(paneClose);
+    }
+
+    const onShowControls = () => {
+      document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+      headerTop.classList.remove('hide');
+      paneClose.classList.remove('hide');
+    }
+
+    const onHideControls = () => {
+      document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+      headerTop.classList.add('hide');
+      paneClose.classList.add('hide');
+    }
+
     const loadPlayer = (sURL) => {
       let source = UrlUtils.getVideoUrl(sURL);
       const video = document.querySelector('video');
@@ -147,7 +176,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         window.hls = hls;
         window.player = player;
 
-        // Fix mobile Tap play/pause
+        // Mobile Tap play/pause
         const { wrapper, container } = player.elements;
         if (container) {
           if (!container._clickListener) {
@@ -166,37 +195,20 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         }
 
         player.on('play', () => {
-          const controls_extra = document.querySelector('.plyr--video');
-          controls_extra.prepend(headerTop);
-          controls_extra.prepend(paneClose);
+          addExtraControls();
         });
 
         player.on('ended', () => {
-          //pane.classList.toggle('open');
-          //pane_video.classList.toggle('visible');
           button_close[0].click();
-          //fadeOut(pane, 40);
-
-          document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
-
-          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-
-          paneClose.classList.add('hide');
-
-          if (viewedAll()) {
-            document.getElementsByClassName('row-second')[0].classList.add('visible');
-            document.getElementsByClassName('characters')[0].classList.add('is-viewed');
-          }
+          closeVideoReflex();
         });
+
         player.on('controlsshown', () => {
-          document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
-          headerTop.classList.remove('hide');
-          paneClose.classList.remove('hide');
+          onShowControls();
         });
+
         player.on('controlshidden', () => {
-          document.getElementsByClassName('plyr_title')[0].classList.add('hide');
-          headerTop.classList.add('hide');
-          paneClose.classList.add('hide');
+          onHideControls();
         });
       }
       return player;
@@ -231,11 +243,9 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          //player.stop();
           pane.classList.toggle('open');
           fadeOut(pane, 40);
           pane_video.classList.toggle('visible');
-          //fake_cover.classList.add('visible');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
           player = loadPlayer(pane.dataset.relation);
           player.stop();
@@ -243,11 +253,10 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       });
     }
 
-    // Check si ya fueron visto los 3
+    // Check Viewed All
     const viewedAll = () => {
       let all_videos = document.querySelectorAll('.toggle').length;
       let viewed_videos = document.querySelectorAll('.toggle.selected').length;
-
       if (all_videos === viewed_videos) {
         return true;
       } else {
@@ -257,7 +266,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
     // Fake Cover
     const fake_cover = document.querySelector('.fake-cover');
-    
+
     const loadProgress = (sPar, sVelocity) => {
       // Timer
       let timer = 0;
@@ -274,7 +283,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             clearInterval(countdown);
           }
         }
-        
+
         if (timer >= timerEnd) {
           clearInterval(countdown);
           document.getElementsByClassName('toggle')[0].click();
@@ -324,38 +333,17 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       const videoIOS = document.querySelector('video');
 
       videoIOS.onplay = (event) => {
-        const controls_extra = document.querySelector('.plyr--video');
-        controls_extra.prepend(headerTop);
-        controls_extra.prepend(paneClose);
-
-        document.getElementsByClassName('plyr_title')[0].classList.add('hide');
-        headerTop.classList.add('hide');
-        paneClose.classList.add('hide');
+        addExtraControls();
+        onHideControls();
       };
 
-
       videoIOS.onended = (event) => {
-        //pane.classList.toggle('open');
-        //pane_video.classList.toggle('visible');
         button_close[0].click();
-        //fadeOut(pane, 40);
-
-        document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
-
-        document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-
-        paneClose.classList.add('hide');
-
-        if (viewedAll()) {
-          document.getElementsByClassName('row-second')[0].classList.add('visible');
-          document.getElementsByClassName('characters')[0].classList.add('is-viewed');
-        }
+        closeVideoReflex();
       };
 
       videoIOS.onpause = (event) => {
-        document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
-        headerTop.classList.remove('hide');
-        paneClose.classList.remove('hide');
+        onShowControls();
       };
 
     }
@@ -389,7 +377,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
             <div className="fake-cover visible" />
             <div className="row row-cero">
               <div className="column answers-copy">
-                Si ves los videos completos, tendrás una pregunta para contestar
+                Si ves todos los videos completos, tendrás una pregunta para contestar
               </div>
             </div>
             <div className="row row-first">
@@ -423,25 +411,25 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
                             );
                           })
                         ) : (
-                          <div>
-                            <h1>
-                              ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
+                            <div>
+                              <h1>
+                                ¡Has llegado al final del modo reflexivo de {character.toUpperCase()}!
                             </h1>
-                            <p>
-                              Puedes ver tu perfil según las respuetas que diste en el recorrido.
-                              ¡Esa es tu recompensa!
+                              <p>
+                                Puedes ver tu perfil según las respuetas que diste en el recorrido.
+                                ¡Esa es tu recompensa!
                             </p>
-                            <div className="cover-link">
-                              <a
-                                href={rewardLink}
-                                className="button-cyan"
-                              >
-                                <span>Ver recompensa</span>
-                                <img src="/images/icon-arrow-init.svg" />
-                              </a>
+                              <div className="cover-link">
+                                <a
+                                  href={rewardLink}
+                                  className="button-cyan"
+                                >
+                                  <span>Ver recompensa</span>
+                                  <img src="/images/icon-arrow-init.svg" />
+                                </a>
+                              </div>
                             </div>
-                          </div>
-                        )}
+                          )}
                       </ul>
                     </h1>
                   </div>

@@ -430,14 +430,10 @@ const CharactersPage = ({ data = {} }) => {
         if (!selector[0].classList.contains('active')) {
           selector[0].classList.add('active');
         }
-        //[].forEach.call(selector, function (el) {
-        //  el.classList.remove('is-hidden');
-        //});
 
         // Set image cube
         document.querySelector('#left img').src =
           '/images/thumbs/' + Names.getCharacterName(button_select.dataset.linkreflexivo) + '.jpg';
-
 
         const chrono = chronology.find((cr) => cr.field_ec_character === character);
         const episodes = chrono.field_ec_episodes_items.split(',').map((ep) => ep.trim());
@@ -544,8 +540,6 @@ const CharactersPage = ({ data = {} }) => {
                       );
                       return (
                         <div
-                          //onMouseEnter={() => handlePlaySound('rollover')}
-                          //onMouseOut={() => handleStopSound('rollover')}
                           className="column" key={character.tid}>
                           <div className="parent">
                             <div
@@ -595,23 +589,19 @@ const CharactersPage = ({ data = {} }) => {
                     </div>
                     <ul>
                       <li>
-                        <a href={videoLink}
-
+                        <a href="#"
                           className="cronologico mode">
                           Modo Cronológico
                       </a>
                       </li>
                       <li>
-                        <a href="/el-cubo/temporada-1/laberinto/alba"
-
+                        <a href="#"
                           className="laberinto mode">
                           Modo Laberinto
                       </a>
                       </li>
                       <li>
-                        <a href="/reflexivo/sales/sales-onboard.html"
-                          //onMouseEnter={() => handlePlaySound('click1')}
-                          //onMouseOut={() => handleStopSound('click1')}
+                        <a href="#"
                           className="reflexivo mode">
                           Modo Reflexivo
                       </a>

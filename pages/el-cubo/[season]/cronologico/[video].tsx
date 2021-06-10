@@ -247,7 +247,7 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>{title} - El cubo</title>
+        <title>{character}. {videoTitle} El Cubo</title>
       </Head>
       <ElcuboGlobalStyles />
       <MenuPlayerStyle />

@@ -41,6 +41,33 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     const setWindowSize = !window.matchMedia('(min-width: 1024px)').matches;
     setIsSmallScreen(setWindowSize);
 
+    const closeVideoReflex = () => {
+      document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
+      document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+      if (viewedAll()) {
+        document.getElementsByClassName('row-second')[0].classList.add('visible');
+        document.getElementsByClassName('characters')[0].classList.add('is-viewed');
+      }
+    };
+
+    const addExtraControls = () => {
+      const controls_extra = document.querySelector('.plyr--video');
+      controls_extra.prepend(headerTop);
+      controls_extra.prepend(paneClose);
+    }
+
+    const onShowControls = () => {
+      document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
+      headerTop.classList.remove('hide');
+      paneClose.classList.remove('hide');
+    }
+
+    const onHideControls = () => {
+      document.getElementsByClassName('plyr_title')[0].classList.add('hide');
+      headerTop.classList.add('hide');
+      paneClose.classList.add('hide');
+    }
+
     const loadPlayer = (sURL) => {
       let source = UrlUtils.getVideoUrl(sURL);
       const video = document.querySelector('video');
@@ -61,7 +88,7 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
         window.player = player;
         window.hls = hls;
 
-        // Fix mobile Tap play/pause
+        // Mobile Tap play/pause
         const { wrapper, container } = player.elements;
         if (container) {
           if (!container._clickListener) {
@@ -86,38 +113,20 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
 
 
         player.on('play', () => {
-          const controls_extra = document.querySelector('.plyr--video');
-          controls_extra.prepend(headerTop);
-          controls_extra.prepend(paneClose);
+          addExtraControls();
         })
 
         player.on('ended', () => {
-          //pane.classList.toggle('open');
-          //pane_video.classList.toggle('visible');
           button_close[0].click();
-          //fadeOut(pane, 40);
-
-          //player.stop();
-          document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
-          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-
-          if (viewedAll()) {
-            onViewedAll();
-            document.getElementsByClassName('row-second')[0].classList.add('visible');
-            document.getElementsByClassName('characters')[0].classList.add('is-viewed');
-          }
+          closeVideoReflex();
         });
 
         player.on('controlsshown', () => {
-          document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
-          headerTop.classList.remove('hide');
-          paneClose.classList.remove('hide');
+          onShowControls();
         });
 
         player.on('controlshidden', () => {
-          document.getElementsByClassName('plyr_title')[0].classList.add('hide');
-          headerTop.classList.add('hide');
-          paneClose.classList.add('hide');
+          onHideControls();
         });
       }
       return player;
@@ -134,11 +143,11 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
 
     const fadeOut = (el, pTime) => {
       el.style.opacity = 1;
-      (function fade() {
+      (function fadeO() {
         if ((el.style.opacity -= 0.07) < 0) {
           el.style.display = 'none';
         } else {
-          setTimeout(fade, pTime);
+          setTimeout(fadeO, pTime);
         }
       })();
     };
@@ -147,11 +156,11 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
       el.style.opacity = 0;
       el.style.display = 'block';
 
-      (function fade() {
+      (function fadeI() {
         var val = parseFloat(el.style.opacity);
         if (!((val += 0.07) > 1)) {
           el.style.opacity = val;
-          setTimeout(fade, pTime);
+          setTimeout(fadeI, pTime);
         } else {
           el.style.opacity = 1;
         }
@@ -184,7 +193,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
 
           player.stop();
-
         });
       });
     }
@@ -235,46 +243,27 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
 
-      const videoFake = document.querySelector('video');
+      const videoIOS = document.querySelector('video');
 
-      videoFake.addEventListener('click', () => {
+      videoIOS.addEventListener('click', () => {
         player.togglePlay();
       });
 
-      videoFake.onplay = (event) => {
-        const controls_extra = document.querySelector('.plyr--video');
-        controls_extra.prepend(headerTop);
-        controls_extra.prepend(paneClose);
-
-        document.getElementsByClassName('plyr_title')[0].classList.add('hide');
-        headerTop.classList.add('hide');
-        paneClose.classList.add('hide');
+      videoIOS.onplay = (event) => {
+        addExtraControls();
+        onHideControls();
       };
 
-      videoFake.onended = (event) => {
+      videoIOS.onended = (event) => {
         button_close[0].click();
-        //fadeOut(pane, 40);
-
-        //player.stop();
-        document.getElementsByClassName(pane.dataset.relation)[0].classList.add('selected');
-        document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-
-        if (viewedAll()) {
-          onViewedAll();
-          document.getElementsByClassName('row-second')[0].classList.add('visible');
-          document.getElementsByClassName('characters')[0].classList.add('is-viewed');
-        }
+        closeVideoReflex();
       };
 
-      videoFake.onpause = (event) => {
-        document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
-        headerTop.classList.remove('hide');
-        paneClose.classList.remove('hide');
+      videoIOS.onpause = (event) => {
+        onShowControls();
       }
 
     }
-
-
 
   }, []);
 
@@ -301,7 +290,7 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
         <div className="characters-wrapper">
           <div className="row row-cero">
             <div className="column answers-copy">
-              Si ves el video completo, tendrás una pregunta para contestar
+              Si ves todo el video completo, tendrás una pregunta para contestar
             </div>
           </div>
           <div className="row row-first">
