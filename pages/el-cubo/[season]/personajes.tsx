@@ -94,8 +94,8 @@ const CharactersPage = ({ data = {} }) => {
 
   React.useEffect(() => {
     getMe();
-    // Pane Slide
 
+    // Pane Slide
     const button_open = document.querySelectorAll('.toggle');
     const button_close = document.querySelectorAll('.close');
     const pane = document.querySelector('.pane');
@@ -123,7 +123,7 @@ const CharactersPage = ({ data = {} }) => {
     // Video popup
     let myVideo = document.getElementById('video1');
 
-    // call this to Disable
+    // Disable Scroll
     const disableScroll = () => {
       if (window) {
         window.addEventListener('DOMMouseScroll', preventDefault, false); // older FF
@@ -133,7 +133,7 @@ const CharactersPage = ({ data = {} }) => {
       }
     }
 
-    // call this to Enable
+    // Enable Scroll
     const enableScroll = () => {
       if (window) {
         window.removeEventListener('DOMMouseScroll', preventDefault, false);
@@ -161,7 +161,7 @@ const CharactersPage = ({ data = {} }) => {
         openModalTriggerEl.addEventListener('click', () => {
           const click = new Audio('/audios/actions/click_1.mp3');
           click.play();
-          // // handlePlaySound('rollover');
+
           modalEl.classList.toggle('open');
           disableScroll();
           openModalTriggerEl.classList.toggle('is-active');
@@ -212,7 +212,6 @@ const CharactersPage = ({ data = {} }) => {
             localStorage.setItem('help', '1');
 
             if (selector[0].classList.contains('active')) {
-              console.log('here');
               selector[0].classList.remove('is-hidden');
             }
           }

@@ -33,7 +33,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
   };
 
   React.useEffect(() => {
-
     if (isLoggedIn && user) {
       try {
         const userReflexiveDataString = user.elcubo_reflexivo;
@@ -91,11 +90,11 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     const fadeOut = (el, pTime) => {
       el.style.opacity = 1;
 
-      (function fade() {
+      (function fadeO() {
         if ((el.style.opacity -= 0.07) < 0) {
           el.style.display = 'none';
         } else {
-          setTimeout(fade, pTime);
+          setTimeout(fadeO, pTime);
         }
       })();
     };
@@ -104,11 +103,11 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       el.style.opacity = 0;
       el.style.display = 'block';
 
-      (function fade() {
+      (function fadeI() {
         var val = parseFloat(el.style.opacity);
         if (!((val += 0.07) > 1)) {
           el.style.opacity = val;
-          setTimeout(fade, pTime);
+          setTimeout(fadeI, pTime);
         } else {
           el.style.opacity = 1;
         }
@@ -219,8 +218,8 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
 
           // IOs TAP
           if (isIOS) {
-            const videoFake = document.querySelector('video');
-            videoFake.addEventListener('click', () => {
+            const videoIOS = document.querySelector('video');
+            videoIOS.addEventListener('click', () => {
               player.togglePlay();
             });
           }
@@ -255,11 +254,10 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         return false;
       }
     };
-    /* Fake cover */
+
+    // Fake Cover
     const fake_cover = document.querySelector('.fake-cover');
-    // Disabled fake cover
-    /*fake_cover.addEventListener('mousemove', () => {
-            fake_cover.classList.remove('visible');      });*/
+    
     const loadProgress = (sPar, sVelocity) => {
       // Timer
       let timer = 0;
@@ -272,12 +270,11 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         timer++;
         for (let i = 0; i < progress.length; ++i) {
           progress[i].style.width = timer * blockWidth + '%';
-          // setear a 0
           if (document.querySelector('.pane').classList.contains('open')) {
             clearInterval(countdown);
           }
         }
-        // document.getElementById("countdown").textContent = timer/100;
+        
         if (timer >= timerEnd) {
           clearInterval(countdown);
           document.getElementsByClassName('toggle')[0].click();
@@ -285,7 +282,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       }, 10);
     };
 
-    // Para cuando no hay modal al inicio
+    // Load Progress
     const progress_direct = document.getElementsByClassName('progress-direct')[0];
     if (progress_direct) {
       let velocity = document.getElementsByClassName('progress-0')[0].dataset.velocity;
@@ -296,14 +293,14 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       }
     }
 
-    /* Hover */
+    // Hover 
     let select_scene = document.querySelectorAll('.parent');
     if (select_scene) {
       [].forEach.call(select_scene, (el) => {
         el.addEventListener(
           'mouseenter',
           () => {
-            // highlight the mouseenter target
+            // Highlight the mouseenter target
             el.classList.add('focus');
           },
           false,
@@ -311,7 +308,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         el.addEventListener(
           'mouseleave',
           () => {
-            // highlight the leave target
+            // Highlight the leave target
             setTimeout(() => {
               el.classList.remove('focus');
             }, 0);
@@ -324,9 +321,9 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     /* IOS support */
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
-      const videoFake = document.querySelector('video');
+      const videoIOS = document.querySelector('video');
 
-      videoFake.onplay = (event) => {
+      videoIOS.onplay = (event) => {
         const controls_extra = document.querySelector('.plyr--video');
         controls_extra.prepend(headerTop);
         controls_extra.prepend(paneClose);
@@ -337,7 +334,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
       };
 
 
-      videoFake.onended = (event) => {
+      videoIOS.onended = (event) => {
         //pane.classList.toggle('open');
         //pane_video.classList.toggle('visible');
         button_close[0].click();
@@ -355,7 +352,7 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
         }
       };
 
-      videoFake.onpause = (event) => {
+      videoIOS.onpause = (event) => {
         document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
         headerTop.classList.remove('hide');
         paneClose.classList.remove('hide');

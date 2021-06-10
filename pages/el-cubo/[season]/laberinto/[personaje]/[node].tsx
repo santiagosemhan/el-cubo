@@ -59,31 +59,27 @@ const LabyrinthNode = ({ data, character }) => {
   }, [initial]);
 
   React.useEffect(() => {
-    // Comment trigger
     let videoAlreadyViewed = false;
-    // Pane Slide
+
+    // Video
     const button_open = document.querySelectorAll('.toggle');
     const button_close = document.querySelectorAll('.close');
     const pane = document.querySelector('.pane');
-    // Select option
-    const answer_select = document.querySelectorAll('.pulse');
-    // Pane Slide Comments
-    const button_open_comments = document.querySelectorAll('.open-comments');
-    const button_close_comments = document.querySelector('.close-comments');
-    const pane_comments = document.querySelector('.pane-comments');
-    const pane_cover_comments = document.querySelector('.pane-cover-comments');
-    
-    // Video 
     const video = document.querySelector('.pane-video');
     const time_comments = video.dataset.comments;
     let video_duration = 0;
+    let videoForced = false;
+  
+    // Facebook Comments
+    const button_open_comments = document.querySelectorAll('.open-comments');
+    const button_close_comments = document.querySelector('.close-comments');
     const commentsBubble = document.querySelectorAll('.comments-bullet')[0];
     const paneCoverComments = document.querySelectorAll('.pane-cover-comments')[0];
     const paneComments = document.querySelectorAll('.pane-comments')[0];
+ 
+    // Extra Elements
     const headerTop = document.querySelectorAll('.header-top')[0];
     const paneClose = document.querySelectorAll('.close')[0];
-
-    let videoForced = false;
 
     // Marker Comments
     const createSquare = (pClass) => {
@@ -150,14 +146,14 @@ const LabyrinthNode = ({ data, character }) => {
         hls.attachMedia(video);
         window.hls = hls;
         player.on('play', (event) => {
-        
+
           setInterval(() => {
 
             // Add Marker
             video_duration = player.duration;
-            if (time_comments && video_duration > 0 ) { 
-                  setTime(time_comments);
-                  addMarker('.plyr__progress');  
+            if (time_comments && video_duration > 0) {
+              setTime(time_comments);
+              addMarker('.plyr__progress');
             }
 
             // Before End
@@ -166,50 +162,21 @@ const LabyrinthNode = ({ data, character }) => {
                 if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
                   if (!videoForced) {
-                    pane.classList.add('is-hidden');
-                    document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-                    document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-                    headerTop.classList.remove('hide');
-                    videoAlreadyViewed = true;
-                    fadeOut(pane, 20);
-
-                    paneClose.classList.add('hide');
-                    hideComments();
-
+                    hideVideoLab(pane);
                     //player.pause();
-
                     videoForced = true;
                   }
                 }
               }
-          }
+            }
 
           }, 1000);
-
-          // Add Comments Elements into Player
-          const controls_extra = document.querySelector('.plyr--video');
-
-          if (time_comments) {
-            controls_extra.prepend(commentsBubble);
-            controls_extra.prepend(paneCoverComments);
-            controls_extra.prepend(paneComments);
-          }
-
-          // Add Header and Close button into Player
-          controls_extra.prepend(headerTop);
-          controls_extra.prepend(paneClose);
+          // Add Extra Elements into Player
+          addExtraControls();
         });
 
         player.on('ended', (event) => {
-          pane.classList.add('is-hidden');
-          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-          document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-          headerTop.classList.remove('hide');
-          videoAlreadyViewed = true;
-          fadeOut(pane, 40);
-
-          paneClose.classList.add('hide');
-          hideComments();
+          hideVideoLab(pane);
         });
 
         player.on('controlsshown', (event) => {
@@ -241,6 +208,32 @@ const LabyrinthNode = ({ data, character }) => {
       }
       return player;
     };
+
+    const addExtraControls = () => {
+      // Add Comments Elements into Player
+      const controls_extra = document.querySelector('.plyr--video');
+      if (time_comments) {
+        controls_extra.prepend(commentsBubble);
+        controls_extra.prepend(paneCoverComments);
+        controls_extra.prepend(paneComments);
+      }
+
+      // Add Header and Close button into Player
+      controls_extra.prepend(headerTop);
+      controls_extra.prepend(paneClose);
+    }
+
+    const hideVideoLab = (pPane) => {
+      pPane.classList.add('is-hidden');
+      document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+      document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+      headerTop.classList.remove('hide');
+      videoAlreadyViewed = true;
+      fadeOut(pPane, 40);
+
+      paneClose.classList.add('hide');
+      hideComments();
+    }
 
     const fadeIn = (el, pTime) => {
       el.style.opacity = 0;
@@ -279,12 +272,6 @@ const LabyrinthNode = ({ data, character }) => {
 
     const setTime = (pTimeComments) => {
       let time_end = parseInt(pTimeComments) + 15;
-      // Ver si es necesario
-      const marker = document.querySelector('.marker');
-      if (marker) {
-        updateMarker(marker);
-      }
-
       if (pTimeComments < player.currentTime && player.currentTime < time_end) {
         showComments();
       } else {
@@ -301,13 +288,12 @@ const LabyrinthNode = ({ data, character }) => {
 
     const player = loadPlayer(video.dataset.video);
 
-    // Fix mobile Tap play/pause
+    // Mobile Tap play/pause
     const { wrapper, container } = player.elements;
     if (container) {
       if (!container._clickListener) {
         container._clickListener = (event) => {
           const targets = [container, wrapper];
-
           // Ignore if click if not container or in video wrapper
           if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
             return;
@@ -319,14 +305,15 @@ const LabyrinthNode = ({ data, character }) => {
       }
     }
 
+    // Iphone Tap play/pause
     if (isIOS) {
-      const videoFake = document.querySelector('video');
-      videoFake.addEventListener('click', () => {
+      const videoIOS = document.querySelector('video');
+      videoIOS.addEventListener('click', () => {
         player.togglePlay();
       });
     }
 
-
+    // Replay Button
     if (button_open) {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
@@ -346,41 +333,28 @@ const LabyrinthNode = ({ data, character }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          fadeOut(pane, 20);
-          pane.classList.remove('open');
-          document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-          document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-
-          paneClose.classList.add('hide');
-
-          hideComments();
+          hideVideoLab(pane);
           player.stop();
         });
       });
     }
 
-    if (answer_select) {
-      answer_select.forEach((link) => {
-        link.addEventListener('click', () => {
-          window.location.href = link.dataset.rel;
-        });
-      });
-    }
-
+    // Comments Open
     if (button_open_comments) {
       button_open_comments.forEach((link) => {
         link.addEventListener('click', () => {
-          pane_comments.classList.add('open');
-          pane_cover_comments.classList.toggle('visible');
+          paneComments.classList.add('open');
+          paneCoverComments.classList.add('visible');
           player.pause();
         });
       });
     }
 
+    // Comments Close
     if (button_close_comments) {
       button_close_comments.addEventListener('click', () => {
-        pane_comments.classList.remove('open');
-        pane_cover_comments.classList.remove('visible');
+        paneComments.classList.remove('open');
+        paneCoverComments.classList.remove('visible');
         player.play();
       });
     }
@@ -404,17 +378,17 @@ const LabyrinthNode = ({ data, character }) => {
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
 
-      const videoFake = document.querySelector('video');
+      const videoIOS = document.querySelector('video');
 
-      videoFake.onplay = (event) => {
-        
+      videoIOS.onplay = (event) => {
+
         setInterval(() => {
 
           // Add Marker
           video_duration = player.duration;
-          if (time_comments && video_duration > 0 ) { 
-                setTime(time_comments);
-                addMarker('.plyr__progress');  
+          if (time_comments && video_duration > 0) {
+            setTime(time_comments);
+            addMarker('.plyr__progress');
           }
 
           // Force close end
@@ -423,17 +397,7 @@ const LabyrinthNode = ({ data, character }) => {
               if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
                 if (!videoForced) {
-                  pane.classList.add('is-hidden');
-                  document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-                  document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-                  headerTop.classList.remove('hide');
-                  videoAlreadyViewed = true;
-                  fadeOut(pane, 20);
-
-                  paneClose.classList.add('hide');
-                  hideComments();
-                  //player.stop();
-
+                  hideVideoLab(pane);
                   videoForced = true;
                 }
               }
@@ -443,34 +407,24 @@ const LabyrinthNode = ({ data, character }) => {
 
         }, 1000);
 
-        // Add time marker
-        const controls_extra = document.querySelector('.plyr--video');
-        controls_extra.prepend(commentsBubble);
-        controls_extra.prepend(paneCoverComments);
-        controls_extra.prepend(paneComments);
-        controls_extra.prepend(headerTop);
-        controls_extra.prepend(paneClose);
+        // Add Extra Elements into Player
+        addExtraControls();
 
+        // Only if video Not forced Close
+        if (!videoForced) {
+          headerTop.classList.add('hide');
+        }
 
         document.getElementsByClassName('plyr_title')[0].classList.add('hide');
-        headerTop.classList.add('hide');
         paneClose.classList.add('hide');
+
       };
 
-
-      videoFake.onended = (event) => {
-        pane.classList.add('is-hidden');
-        document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-        document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-        headerTop.classList.remove('hide');
-        videoAlreadyViewed = true;
-        fadeOut(pane, 0);
-
-        paneClose.classList.add('hide');
-        hideComments();
+      videoIOS.onended = (event) => {
+        hideVideoLab(pane);
       };
 
-      videoFake.onpause = (event) => {
+      videoIOS.onpause = (event) => {
         document.getElementsByClassName('plyr_title')[0].classList.remove('hide');
         headerTop.classList.remove('hide');
         paneClose.classList.remove('hide');
