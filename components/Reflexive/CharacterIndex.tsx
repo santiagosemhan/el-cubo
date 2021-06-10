@@ -238,33 +238,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
       controls_extra.prepend(createTitle(video.dataset.title));
     }, 3000);
 
-
-    /* IOS support */
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (isIOS) {
-
-      const videoIOS = document.querySelector('video');
-
-      videoIOS.addEventListener('click', () => {
-        player.togglePlay();
-      });
-
-      videoIOS.onplay = (event) => {
-        addExtraControls();
-        onHideControls();
-      };
-
-      videoIOS.onended = (event) => {
-        button_close[0].click();
-        closeVideoReflex();
-      };
-
-      videoIOS.onpause = (event) => {
-        onShowControls();
-      }
-
-    }
-
   }, []);
 
   return (

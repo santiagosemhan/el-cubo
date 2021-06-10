@@ -139,6 +139,10 @@ export const CharacterSelectorWrapper = styled.div`
     ul.list-personajes li {
       line-height: 1.4;
     }
+
+    .pane.open {
+      width: 45%;
+    }
   }
 
 
