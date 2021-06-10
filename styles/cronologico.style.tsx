@@ -209,6 +209,10 @@ h2 {
         width: 45%;
     }
 
+    .close-chrono-mobile {
+        position: absolute;
+        z-index: 100;
+    }
     .close-chrono-mobile img {
         margin-top: 20px;
     }
@@ -219,10 +223,11 @@ h2 {
 
     .pane-chrono-mobile .chrono-list {
         display: block;
+        margin-top: -
     }
 
     .pane-chrono-mobile ul {
-        height: 65vh;
+        height: 72vh;
         overflow-y: scroll;
     }
 
