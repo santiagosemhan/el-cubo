@@ -72,6 +72,7 @@ const LabyrinthNode = ({ data, character }) => {
     const button_close_comments = document.querySelector('.close-comments');
     const pane_comments = document.querySelector('.pane-comments');
     const pane_cover_comments = document.querySelector('.pane-cover-comments');
+    
     // Video 
     const video = document.querySelector('.pane-video');
     const time_comments = video.dataset.comments;
@@ -84,19 +85,7 @@ const LabyrinthNode = ({ data, character }) => {
 
     let videoForced = false;
 
-    if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
-      /* iOS hides Safari address bar */
-      //window.addEventListener("load", function () {
-      setTimeout(function () {
-        window.scrollTo(0, 1);
-      }, 1000);
-      //});
-    }
-
-    const calculatePercent = (num1, total) => {
-      return (num1 / total) * 100;
-    };
-
+    // Marker Comments
     const createSquare = (pClass) => {
       let percent = calculatePercent(time_comments, video_duration);
       let square = document.createElement('div');
@@ -105,9 +94,24 @@ const LabyrinthNode = ({ data, character }) => {
       return square;
     };
 
+    const addMarker = (pClass) => {
+      const controls = document.querySelector(pClass);
+      if (document.querySelector('.marker') == null) {
+        controls.appendChild(createSquare('marker'));
+        updateMarker(document.querySelector('.marker'));
+      }
+      else {
+        updateMarker(document.querySelector('.marker'));
+      }
+    }
+
     const updateMarker = (square) => {
       let percent = calculatePercent(time_comments, video_duration);
       square.setAttribute('style', 'left: ' + percent + '%;');
+    };
+
+    const calculatePercent = (num1, total) => {
+      return (num1 / total) * 100;
     };
 
     const updateQuality = (newQuality) => {
@@ -146,47 +150,52 @@ const LabyrinthNode = ({ data, character }) => {
         hls.attachMedia(video);
         window.hls = hls;
         player.on('play', (event) => {
-          video_duration = player.duration;
+        
           setInterval(() => {
-            if (time_comments) {
-              setTime(time_comments);
-              const controls = document.querySelector('.plyr__progress');
-              if (document.querySelector('.marker') == null) {
-                controls.appendChild(createSquare('marker'));
-              }
-              else {
-                updateMarker(document.querySelector('.marker'));
-              }
+
+            // Add Marker
+            video_duration = player.duration;
+            if (time_comments && video_duration > 0 ) { 
+                  setTime(time_comments);
+                  addMarker('.plyr__progress');  
             }
 
-            // Force close end
+            // Before End
             if (videoForceEnd && videoForceEnd > 0) {
-              if (player.duration - player.currentTime < Number(videoForceEnd)) {
+              if (player.duration > 0 && player.currentTime > 0) {
+                if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-                if (!videoForced) {
-                  pane.classList.add('is-hidden');
-                  document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-                  document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-                  headerTop.classList.remove('hide');
-                  videoAlreadyViewed = true;
-                  fadeOut(pane, 40);
+                  if (!videoForced) {
+                    pane.classList.add('is-hidden');
+                    document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+                    document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                    headerTop.classList.remove('hide');
+                    videoAlreadyViewed = true;
+                    fadeOut(pane, 20);
 
-                  paneClose.classList.add('hide');
-                  hideComments();
+                    paneClose.classList.add('hide');
+                    hideComments();
 
-                  //player.pause();
+                    //player.pause();
 
-                  videoForced = true;
+                    videoForced = true;
+                  }
                 }
               }
-            }
+          }
 
           }, 1000);
-          // Add time marker
+
+          // Add Comments Elements into Player
           const controls_extra = document.querySelector('.plyr--video');
-          controls_extra.prepend(commentsBubble);
-          controls_extra.prepend(paneCoverComments);
-          controls_extra.prepend(paneComments);
+
+          if (time_comments) {
+            controls_extra.prepend(commentsBubble);
+            controls_extra.prepend(paneCoverComments);
+            controls_extra.prepend(paneComments);
+          }
+
+          // Add Header and Close button into Player
           controls_extra.prepend(headerTop);
           controls_extra.prepend(paneClose);
         });
@@ -197,7 +206,7 @@ const LabyrinthNode = ({ data, character }) => {
           document.getElementsByClassName('app-elcubo')[0].append(paneClose);
           headerTop.classList.remove('hide');
           videoAlreadyViewed = true;
-          fadeOut(pane, 0);
+          fadeOut(pane, 40);
 
           paneClose.classList.add('hide');
           hideComments();
@@ -212,13 +221,8 @@ const LabyrinthNode = ({ data, character }) => {
               paneClose.classList.remove('hide');
             }
           }
-
-          const marker = document.querySelector('.marker');
-          if (marker) {
-            updateMarker(marker);
-          }
-
         });
+
         player.on('controlshidden', (event) => {
           const plyrTitle = document.getElementsByClassName('plyr_title');
           if (plyrTitle && plyrTitle.length) {
@@ -238,18 +242,6 @@ const LabyrinthNode = ({ data, character }) => {
       return player;
     };
 
-    const fadeOut = (el, pTime) => {
-      el.style.opacity = 1;
-      const fade = () => {
-        if ((el.style.opacity -= 0.07) < 0) {
-          el.style.display = 'none';
-        } else {
-          setTimeout(fade, pTime);
-        }
-      };
-      fade();
-    };
-
     const fadeIn = (el, pTime) => {
       el.style.opacity = 0;
       el.style.display = 'block';
@@ -265,6 +257,18 @@ const LabyrinthNode = ({ data, character }) => {
       fadeI();
     };
 
+    const fadeOut = (el, pTime) => {
+      el.style.opacity = 1;
+      const fadeO = () => {
+        if ((el.style.opacity -= 0.07) < 0) {
+          el.style.display = 'none';
+        } else {
+          setTimeout(fadeO, pTime);
+        }
+      };
+      fadeO();
+    };
+
     const showComments = () => {
       document.querySelectorAll('.comments-bullet')[0].classList.add('visible');
     };
@@ -275,6 +279,7 @@ const LabyrinthNode = ({ data, character }) => {
 
     const setTime = (pTimeComments) => {
       let time_end = parseInt(pTimeComments) + 15;
+      // Ver si es necesario
       const marker = document.querySelector('.marker');
       if (marker) {
         updateMarker(marker);
@@ -326,11 +331,8 @@ const LabyrinthNode = ({ data, character }) => {
       button_open.forEach((link) => {
         link.addEventListener('click', () => {
           videoForced = false;
-
           pane.classList.remove('open');
           player.stop();
-
-
 
           fadeIn(pane, 20);
 
@@ -344,7 +346,7 @@ const LabyrinthNode = ({ data, character }) => {
     if (button_close) {
       button_close.forEach((link) => {
         link.addEventListener('click', () => {
-          fadeOut(pane, 40);
+          fadeOut(pane, 20);
           pane.classList.remove('open');
           document.getElementsByClassName('app-elcubo')[0].append(headerTop);
           document.getElementsByClassName('app-elcubo')[0].append(paneClose);
@@ -405,37 +407,35 @@ const LabyrinthNode = ({ data, character }) => {
       const videoFake = document.querySelector('video');
 
       videoFake.onplay = (event) => {
-        video_duration = player.duration;
-
+        
         setInterval(() => {
-          if (time_comments) {
-            setTime(time_comments);
-            const controls = document.querySelector('.plyr__progress');
-            if (document.querySelector('.marker') == null) {
-              controls.appendChild(createSquare('marker'));
-            }
-            else {
-              updateMarker(document.querySelector('.marker'));
-            }
+
+          // Add Marker
+          video_duration = player.duration;
+          if (time_comments && video_duration > 0 ) { 
+                setTime(time_comments);
+                addMarker('.plyr__progress');  
           }
 
           // Force close end
           if (videoForceEnd && videoForceEnd > 0) {
-            if (player.duration - player.currentTime < Number(videoForceEnd)) {
+            if (player.duration > 0 && player.currentTime > 0) {
+              if (player.duration - player.currentTime < Number(videoForceEnd)) {
 
-              if (!videoForced) {
-                pane.classList.add('is-hidden');
-                document.getElementsByClassName('app-elcubo')[0].append(headerTop);
-                document.getElementsByClassName('app-elcubo')[0].append(paneClose);
-                headerTop.classList.remove('hide');
-                videoAlreadyViewed = true;
-                fadeOut(pane, 20);
+                if (!videoForced) {
+                  pane.classList.add('is-hidden');
+                  document.getElementsByClassName('app-elcubo')[0].append(headerTop);
+                  document.getElementsByClassName('app-elcubo')[0].append(paneClose);
+                  headerTop.classList.remove('hide');
+                  videoAlreadyViewed = true;
+                  fadeOut(pane, 20);
 
-                paneClose.classList.add('hide');
-                hideComments();
-                //player.stop();
+                  paneClose.classList.add('hide');
+                  hideComments();
+                  //player.stop();
 
-                videoForced = true;
+                  videoForced = true;
+                }
               }
             }
           }

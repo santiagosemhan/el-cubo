@@ -73,7 +73,7 @@ body {
 .pane {
     position: fixed;
     top: 0;
-    z-index: -1;
+    z-index: 50;
     /* left: -150%; */
     height: 100vh;
     width: 100%;
@@ -920,7 +920,7 @@ iframe ._2pi8 {
         bottom: 25vh !important;
     }
 
-    /* Mercado 10 dot Marina */
+    /* Mercado 10 dot Mercado */
     .node_6510 .cover-selector:nth-child(2) {
         bottom: 25vh !important;
     }
