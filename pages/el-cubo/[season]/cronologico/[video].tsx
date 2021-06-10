@@ -181,10 +181,10 @@ const VideoPage = ({ title, video, srcVideo, poster, poster980, chronology }) =>
 
       const onLoadFadeout = () => {
         window.setTimeout(() => {
-          fadeOut(document.querySelectorAll('.steal_title')[0], 10);
-          fadeOut(document.querySelectorAll('.steal')[0], 40);
+          fadeOut(document.querySelectorAll('.steal_title')[0], 30);
+          fadeOut(document.querySelectorAll('.steal')[0], 50);
           setStartVideo(true);
-        }, 4000)
+        }, 3000)
       };
       onLoadFadeout();
       // Pane Slide 

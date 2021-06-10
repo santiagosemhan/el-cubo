@@ -228,7 +228,7 @@ const LabyrinthNode = ({ data, character }) => {
       videoForced = false;
       pPane.classList.remove('open');
       player.stop();
-      fadeIn(pPane, 20);
+      fadeIn(pPane, 40);
       pPane.classList.add('open');
       pPane.classList.remove('is-hidden');
     }
@@ -412,6 +412,8 @@ const LabyrinthNode = ({ data, character }) => {
 
         // Add Extra Elements into Player
         addExtraControls();
+
+        headerTop.classList.remove('hide');
 
         // Only if video Not forced Close
         if (!videoForced) {

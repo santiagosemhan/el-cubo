@@ -228,14 +228,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           player.play();
           document.querySelectorAll('.progress-0')[0].classList.add('hide');
 
-          // IOs TAP
-          if (isIOS) {
-            const videoIOS = document.querySelector('video');
-            videoIOS.addEventListener('click', () => {
-              player.togglePlay();
-            });
-          }
-
         });
       });
     }
@@ -325,27 +317,6 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
           false,
         );
       });
-    }
-
-    /* IOS support */
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    if (isIOS) {
-      const videoIOS = document.querySelector('video');
-
-      videoIOS.onplay = (event) => {
-        addExtraControls();
-        onHideControls();
-      };
-
-      videoIOS.onended = (event) => {
-        button_close[0].click();
-        closeVideoReflex();
-      };
-
-      videoIOS.onpause = (event) => {
-        onShowControls();
-      };
-
     }
 
   }, []);
