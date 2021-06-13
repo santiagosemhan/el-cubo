@@ -7,11 +7,11 @@ import BackToCharacters from 'components/Labyrinth/BackToCharacters';
 import Links from 'constants/Links';
 
 const Error404Page = () => {
-    
+
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>El cubo</title>
+        <title>El Cubo</title>
       </Head>
       <Error404Styles />
       <NavRewardStyles />
@@ -19,18 +19,18 @@ const Error404Page = () => {
       <img src="/images/recompensa/bg.jpg" className="bg-error" />
       <div className="app-elcubo error error-404">
         <div>
-            <h1 className="number-error">404</h1>
-            <h1 className="title-error">¡página no encontrada!</h1>
-            <p className="desc-error"> No hay problema, intenta retomar la experiencia haciendo clic en el siguiente enlace:
+          <h1 className="number-error">404</h1>
+          <h1 className="title-error">¡página no encontrada!</h1>
+          <p className="desc-error"> No hay problema, intenta retomar la experiencia haciendo clic en el siguiente enlace:
             </p>
-            <div className="cover-link">
-                <a href={Links.characters} className="button-cyan toggle">
-                    <span>Volver a la experiencia</span>
-                    <img src="/images/icon-arrow-init.svg" />
-                </a>
-            </div>
+          <div className="cover-link">
+            <a href={Links.characters} className="button-cyan toggle">
+              <span>Volver a la experiencia</span>
+              <img src="/images/icon-arrow-init.svg" />
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
     </AppLayout>
   );
 };

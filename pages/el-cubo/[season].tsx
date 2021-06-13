@@ -196,7 +196,7 @@ export default function SeasonPage({ data }) {
     <AppLayout>
       <ElcuboGlobalStyles />
       <Head>
-        <title>Temporada 1 - El cubo</title>
+        <title>Temporada 1 - El Cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PaneLogin />

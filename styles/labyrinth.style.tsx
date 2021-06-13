@@ -947,4 +947,13 @@ iframe ._2pi8 {
 
 }
 
+// Only for iOS
+@supports (-webkit-overflow-scrolling: touch) {
+    .plyr__controls__item[data-plyr="airplay"],
+    .plyr__controls__item[data-plyr="captions"],
+    .plyr__controls__item[data-plyr="fullscreen"] {
+        display: none;
+    } 
+}
+
 `;

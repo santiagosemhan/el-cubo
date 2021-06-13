@@ -147,7 +147,7 @@ const CharacterReward = ({ character }) => {
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>Laberinto - El cubo</title>
+        <title>Laberinto - El Cubo</title>
       </Head>
       <RewardLabyrinthStyles />
       <NavRewardStyles />

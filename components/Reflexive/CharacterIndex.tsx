@@ -88,30 +88,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
         window.player = player;
         window.hls = hls;
 
-        // Mobile Tap play/pause
-        const { wrapper, container } = player.elements;
-        if (container) {
-          if (!container._clickListener) {
-            container._clickListener = (event) => {
-              const targets = [container, wrapper];
-
-              event.stopPropagation();
-              event.preventDefault();
-
-              // Ignore if click if not container or in video wrapper
-              if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
-                return;
-              }
-
-              if (player.touch) {
-                player.togglePlay();
-              }
-            };
-            container.addEventListener('click', container._clickListener);
-          }
-        }
-
-
         player.on('play', () => {
           addExtraControls();
         })
@@ -133,6 +109,26 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     };
 
     const player = loadPlayer(field_ec_asset_id);
+
+    // Mobile Tap play/pause
+    if (/Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      const { wrapper, container } = player.elements;
+      if (container) {
+        if (!container._clickListener) {
+          container._clickListener = (event) => {
+            const targets = [container, wrapper];
+            // Ignore if click if not container or in video wrapper
+            if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
+              return;
+            }
+
+            if (player.touch) player.togglePlay();
+          };
+          container.addEventListener('click', container._clickListener);
+        }
+      }
+    }
+
 
     const createTitle = (pTitle) => {
       let plyr_title = document.createElement('h2');
@@ -245,10 +241,6 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
 
       const videoIOS = document.querySelector('video');
 
-      videoIOS.addEventListener('click', () => {
-        player.togglePlay();
-      });
-
       videoIOS.onplay = (event) => {
         addExtraControls();
         onHideControls();
@@ -266,6 +258,8 @@ const CharacterIndex = ({ character, node, bgImage, episodeData, onViewedAll }) 
     }
 
   }, []);
+
+
 
   return (
     <div className="app-elcubo reflexivo" style={{ background: 'url("/images/reflexivo_bg.jpg") no-repeat' }} >

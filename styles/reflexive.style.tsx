@@ -772,7 +772,8 @@ img.img-color {
 @media screen and (max-width: 1025px) and (orientation: landscape) {
 
     .app-elcubo.reflexivo {
-        height: 140vh;
+        min-height: 110vh;
+        height: auto;
         background-size: cover !important;
     }
 
@@ -789,8 +790,14 @@ img.img-color {
         height: 270px;
     }
 
-    .questions .copy {
-        font-size: 18px;
+    .questions .copy-cover .copy {
+        font-size: 16px;
+    }
+
+    .characters-wrapper,
+    .is-viewed .characters-wrapper {
+        min-height: 110vh;
+        height: auto;
     }
 
 }
@@ -1008,13 +1015,10 @@ img.img-color {
 
 
 @media screen and (max-width: 1025px) {
-    /*.plyr video {
-        object-fit: contain;
-    }*/
 
     .questions .copy {
         font-size: 18px;
-        width: 100%;
+        width: 98%;
     }
 
     .columns-3 .row.row-first {
@@ -1048,4 +1052,14 @@ img.img-color {
     }
 
 }
+
+// Only for iOS
+@supports (-webkit-overflow-scrolling: touch) {
+    .plyr__controls__item[data-plyr="airplay"],
+    .plyr__controls__item[data-plyr="captions"],
+    .plyr__controls__item[data-plyr="fullscreen"] {
+        display: none;
+    } 
+}
+
 `;

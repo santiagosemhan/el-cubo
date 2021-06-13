@@ -7,11 +7,11 @@ import BackToCharacters from 'components/Labyrinth/BackToCharacters';
 import Links from 'constants/Links';
 
 const ReflexiveReward = ({ character }) => {
-    
+
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>El cubo</title>
+        <title>El Cubo</title>
       </Head>
       <NoLoginStyles />
       <NavRewardStyles />
@@ -19,19 +19,19 @@ const ReflexiveReward = ({ character }) => {
       <img src="/images/recompensa/bg.jpg" className="bg-recompensa" />
       <div className="app-elcubo recompensa">
         <div>
-            <h1 className="title-recompensa">¡Has llegado al final
+          <h1 className="title-recompensa">¡Has llegado al final
                 <br />de la experiencia!</h1>
-            <p className="desc-recompensa">Solo los usuarios registrados pueden acceder a las recompensas.
+          <p className="desc-recompensa">Solo los usuarios registrados pueden acceder a las recompensas.
                 <a href={Links.registerCharacters}> Regístrate ya</a> y no te pierdas lo que hemos diseñado especialmente para ti.
             </p>
-            <div className="cover-link">
-                <a href={Links.registerCharacters} className="button-cyan toggle">
-                    <span>Registrarme</span>
-                    <img src="/images/icon-arrow-init.svg" />
-                </a>
-            </div>
+          <div className="cover-link">
+            <a href={Links.registerCharacters} className="button-cyan toggle">
+              <span>Registrarme</span>
+              <img src="/images/icon-arrow-init.svg" />
+            </a>
+          </div>
         </div>
-    </div>
+      </div>
     </AppLayout>
   );
 };
@@ -46,7 +46,7 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
-      
+
     }
   };
 };

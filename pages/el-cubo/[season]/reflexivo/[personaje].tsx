@@ -70,7 +70,7 @@ const CharacterPage = ({ character, node, bgImage, bgImage980, episodeData }) =>
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>Reflexivo - El cubo</title>
+        <title>Reflexivo - El Cubo</title>
       </Head>
       <ReflexiveStyles />
       <NavReflexiveStyles />

@@ -86,7 +86,7 @@ const CharacterPage = ({ chronology, character, node, bgImage, bgImage980 }) => 
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>Cronológico - El cubo</title>
+        <title>Cronológico - El Cubo</title>
       </Head>
       <NavLabyrinthStyles />
       <OnboardStyles />

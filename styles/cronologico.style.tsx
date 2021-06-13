@@ -193,6 +193,10 @@ h2 {
         top: 50px;
     }
 
+    .back-to-season {
+        padding: 0 !important;
+    }
+
     #audio-player-container.audio-season {
         top: 120px;
     }
@@ -309,6 +313,14 @@ h2 {
     }
   }
 
+  // Only for iOS
+  @supports (-webkit-overflow-scrolling: touch) {
+    .plyr__controls__item[data-plyr="airplay"],
+    .plyr__controls__item[data-plyr="captions"],
+    .plyr__controls__item[data-plyr="fullscreen"] {
+        display: none;
+    } 
+  }
   
 
 `;

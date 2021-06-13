@@ -238,7 +238,7 @@ export default function Home({ data }) {
       <ElcuboGlobalStyles />
 
       <Head>
-        <title>El cubo</title>
+        <title>El Cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>

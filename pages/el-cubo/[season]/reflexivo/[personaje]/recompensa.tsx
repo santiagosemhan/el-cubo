@@ -41,7 +41,7 @@ const ReflexiveReward = ({ character }) => {
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>Reflexivo - El cubo</title>
+        <title>Reflexivo - El Cubo</title>
       </Head>
       <RewardReflexiveStyles />
       <NavRewardStyles />

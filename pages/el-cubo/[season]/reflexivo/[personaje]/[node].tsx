@@ -15,9 +15,11 @@ import ModesUtils from 'utils/Modes';
 import Links from 'constants/Links';
 import { season1_id } from 'constants/Season';
 import UrlUtils from 'utils/Url';
+import { useRouter } from 'next/router';
 
 const ReflexiveNode = ({ character, data, nodeId }) => {
   const isLoggedIn = AuthService.isLoggedIn();
+  const { query, isReady } = useRouter();
   const [user, setUser] = useState(null);
   const {
     field_ec_final_question,
@@ -25,12 +27,18 @@ const ReflexiveNode = ({ character, data, nodeId }) => {
     children_answer_json,
   } = data;
   const answers = JSON.parse(children_answer_json);
+  const [rewardLink, setRewardLink] = useState(Links.guest);
   const reflexItemsEpisode = JSON.parse(field_ec_order_reflex_items_json_episode_json);
-  const rewardLink = isLoggedIn ? `/el-cubo/temporada-1/reflexivo/${character.toLowerCase()}/recompensa` : Links.guest;
 
   const updateUser = async (id, data) => {
     await UserService.update(id, data);
   };
+
+  React.useEffect(() => {
+    if (isLoggedIn && isReady) {
+      setRewardLink(`/el-cubo/temporada-1/reflexivo/${character.toLowerCase()}/recompensa`)
+    }
+  }, [isReady]);
 
   React.useEffect(() => {
     if (isLoggedIn && user) {

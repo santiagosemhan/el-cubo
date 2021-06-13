@@ -117,8 +117,8 @@ const VideoPlayer = ({
       hls.loadSource(source);
       hls.attachMedia(video);
       window.hls = hls;
-      const { wrapper, container } = playerRef.current.elements;
 
+      const { wrapper, container } = playerRef.current.elements;
       // Tap Support
       if (container) {
         if (!container._clickListener) {
@@ -153,11 +153,11 @@ const VideoPlayer = ({
     `,
     );
 
-    // Fix IOS
+    // TAP IOS
     let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     if (isIOS) {
-      const videoFake = document.querySelector('video');
-      videoFake.addEventListener('click', () => {
+      const videoIOS = document.querySelector('video');
+      videoIOS.addEventListener('click', () => {
         playerRef.current.togglePlay();
       });
     }

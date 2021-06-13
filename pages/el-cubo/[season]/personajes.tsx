@@ -473,7 +473,7 @@ const CharactersPage = ({ data = {} }) => {
   return (
     <AppLayout>
       <Head>
-        <title>Personajes - El cubo</title>
+        <title>Personajes - El Cubo</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <PersonajesGlobalStyle />

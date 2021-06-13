@@ -308,19 +308,10 @@ const LabyrinthNode = ({ data, character }) => {
           if (!targets.includes(event.target) && !wrapper.contains(event.target)) {
             return;
           }
-
           if (player.touch) player.togglePlay();
         };
         container.addEventListener('click', container._clickListener);
       }
-    }
-
-    // Iphone Tap play/pause
-    if (isIOS) {
-      const videoIOS = document.querySelector('video');
-      videoIOS.addEventListener('click', () => {
-        player.togglePlay();
-      });
     }
 
     // Replay
@@ -442,7 +433,7 @@ const LabyrinthNode = ({ data, character }) => {
       <NavLabyrinthStyles />
       <LabyrinthStyles />
       <Head>
-        <title>Laberinto - El cubo</title>
+        <title>Laberinto - El Cubo</title>
       </Head>
       <BackToCharacters text={'Volver a elegir personajes'} />
       <LabVideoPlayer data={data} currentCharacter={currentCharacter} isLoggedIn={isLoggedIn} />

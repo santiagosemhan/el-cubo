@@ -46,7 +46,7 @@ const CharacterPage = ({ character, bgImage, bgImage980 }) => {
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>Reflexivo - El cubo</title>
+        <title>Reflexivo - El Cubo</title>
       </Head>
       <NavLabyrinthStyles />
       <OnboardStyles />
