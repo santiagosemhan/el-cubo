@@ -9,11 +9,13 @@ import UserService from 'services/User';
 import AuthService from 'services/Auth';
 import Characters from 'constants/Characters';
 import { season1_id } from 'constants/Season';
+import { useRouter } from 'next/router';
 
 const ReflexiveReward = ({ character }) => {
 
   const isLoggedIn = AuthService.isLoggedIn();
   const [rewards, setRewards] = useState(null);
+  const { query, isReady } = useRouter();
 
   const getUserRewards = async () => {
     try {
@@ -32,11 +34,11 @@ const ReflexiveReward = ({ character }) => {
     }
   };
 
-  useEffect(() => {
-    if (isLoggedIn) {
+  React.useEffect(() => {
+    if (isLoggedIn && isReady) {
       getUserRewards();
     }
-  }, []);
+  }, [isReady]);
 
   return (
     <AppLayout onlyContent>
