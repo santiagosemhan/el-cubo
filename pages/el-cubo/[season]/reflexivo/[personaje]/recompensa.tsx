@@ -12,7 +12,6 @@ import { season1_id } from 'constants/Season';
 import { useRouter } from 'next/router';
 
 const ReflexiveReward = ({ character }) => {
-
   const isLoggedIn = AuthService.isLoggedIn();
   const [rewards, setRewards] = useState(null);
   const { query, isReady } = useRouter();
@@ -60,6 +59,14 @@ const ReflexiveReward = ({ character }) => {
             {rewards
               ? rewards.map((reward, index) => <p key={`reward_${index}`}>{reward}</p>)
               : null}
+
+            {!rewards ?
+              <div style={{ width: '100%', textAlign: 'center' }}>
+                <img className="reward-loading" style={{}} src="/images/recompensa/cube-loading.gif" />
+              </div>
+              :
+              null
+            }
           </div>
           <div className="cover-link">
             <a href={`/el-cubo/temporada-1/personajes`} className="button-cyan">

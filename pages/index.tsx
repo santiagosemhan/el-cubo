@@ -111,8 +111,6 @@ export default function Home({ data }) {
 
 
     // Scroll for Hero-0
-    //const main = document.querySelector('.scroll-container');
-
     const main = window;
     main.focus();
 
@@ -147,7 +145,7 @@ export default function Home({ data }) {
       if (isScrolledIntoView(reveal_4)) {
         document.getElementsByClassName('cover-reveal-row-4')[0].classList.add('active');
         document.getElementsByClassName('cover-reveal-row-4')[1].classList.add('active');
-      } 
+      }
 
 
       var someDiv4 = document.getElementsByClassName('cover-reveal-row-5')[0];
@@ -192,9 +190,6 @@ export default function Home({ data }) {
     }
 
     main.addEventListener('scroll', scrollEvent);
-
-
-
 
 
 
@@ -244,33 +239,6 @@ export default function Home({ data }) {
       <Container>
         <MouseCircle href="/el-cubo/temporada-1" text="Ver más" isBig={bigMouse} />
 
-        <div>
-          <audio id="track" /*autoPlay*/>
-            <source src="/audios/loop.mp3" type="audio/mpeg" />
-          </audio>
-
-          <div id="audio-player-container">
-            <div id="play-pause" className="play no-link">
-              <div className="column-1">
-                <span className="mute hide play-text">
-                  silenciar</span>
-                <span className="listen play-text">
-                  escuchar</span>
-              </div>
-              <div className="column-2">
-                <div className="Sound off">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
         <div className="header-top header-temporal">
           <div className="header-top-inner">
             <div className="logo-elcubo" onMouseEnter={() => setBigMouse(false)}>
@@ -278,8 +246,34 @@ export default function Home({ data }) {
                 <img className="logo--image" src="/images/logo2021.png" />
               </a>
             </div>
-
           </div>
+
+          <div className="component-sound">
+            <audio id="track" /*autoPlay*/>
+              <source src="/audios/loop.mp3" type="audio/mpeg" />
+            </audio>
+
+            <div id="audio-player-container">
+              <div id="play-pause" className="play no-link">
+                <div className="column-1">
+                  <span className="mute hide play-text">
+                    silenciar</span>
+                  <span className="listen play-text">
+                    escuchar</span>
+                </div>
+                <div className="column-2">
+                  <div className="Sound off">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
 
         <div id="hero-0" className="hero hero-0 no-link hero-pc">

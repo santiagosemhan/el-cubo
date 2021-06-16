@@ -176,10 +176,21 @@ const CharacterReward = ({ character }) => {
               <img src="/images/icon-arrow-init.svg" />
             </a>
           </div>
+
+          <div className="cover-link-back">
+          <a href={`/el-cubo/temporada-1/personajes`} className="button-cyan">
+            <img src="/images/recompensa/icon-arrow-back-blue.svg" />
+            <span>Volver a iniciar la experiencia</span>
+          </a>
+          </div>
+
         </div>
         <div className="right">
           <img src="/images/recompensa/rubiano.png" />
         </div>
+
+        
+
       </div>
 
     </AppLayout >

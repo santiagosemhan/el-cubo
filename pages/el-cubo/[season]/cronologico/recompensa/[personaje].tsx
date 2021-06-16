@@ -172,7 +172,7 @@ const ChronologicalReward = ({ character, chronology }) => {
   return (
     <AppLayout onlyContent>
       <Head>
-        <title>El cubo</title>
+        <title>El Cubo</title>
       </Head>
       <RewardCronoStyles />
       <NavRewardStyles />
@@ -1144,6 +1144,14 @@ const ChronologicalReward = ({ character, chronology }) => {
               </li>
 
             </ul>
+
+            <div className="cover-link">
+            <a href={`/el-cubo/temporada-1/personajes`} className="button-cyan">
+              <img src="/images/recompensa/icon-arrow-back-blue.svg" />
+              <span>Volver a la experiencia</span>
+            </a>
+            </div>
+            
           </div>
           :
           null

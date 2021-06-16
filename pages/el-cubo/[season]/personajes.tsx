@@ -18,35 +18,6 @@ import { season1_id } from 'constants/Season';
 const CharactersPage = ({ data = {} }) => {
 
   const { isFallback } = useRouter();
-  const [click1Sound, setClick1Sound] = useState(null);
-  const [rolloverSound, setRolloverSound] = useState(null);
-  const [closeSound, setCloseSound] = useState(null);
-  const sounds = {
-    rollover: rolloverSound,
-    click1: click1Sound,
-    close: closeSound,
-  };
-
-  React.useEffect(() => {
-    setClick1Sound(new Audio('/audios/actions/click_1.mp3'));
-    setRolloverSound(new Audio('/audios/actions/rollover.mp3'));
-    setCloseSound(new Audio('/audios/actions/close.mp3'));
-  }, []);
-
-  let soundTimeOut;
-
-  const handlePlaySound = (sound) => {
-    if (sounds[sound]) {
-      soundTimeOut = setTimeout(sounds[sound].play(), 1000);
-    }
-  };
-
-  const handleStopSound = (sound) => {
-    if (sounds[sound]) {
-      clearTimeout(soundTimeOut);
-      sounds[sound].currentTime = 0;
-    }
-  };
 
   if (!isFallback && !data) {
     return <Error statusCode={404} title="Page could not be found" />;
@@ -453,9 +424,9 @@ const CharactersPage = ({ data = {} }) => {
 
     // Sound hover links Mode
     const linkModes = document.querySelectorAll(".mode");
+    let playMode = new Audio('/audios/actions/click_1.mp3');
     linkModes.forEach(link => {
       link.addEventListener("mouseover", function () {
-        let playMode = new Audio('/audios/actions/click_1.mp3');
         playMode.play();
       })
     })
@@ -504,7 +475,7 @@ const CharactersPage = ({ data = {} }) => {
                     </nav>
                   }
                 />
-                {auth}
+                
                 <Help />
 
               </div>
@@ -612,6 +583,7 @@ const CharactersPage = ({ data = {} }) => {
               </div>
             </>
           )}
+        {auth}
       </Container>
     </AppLayout >
   );
