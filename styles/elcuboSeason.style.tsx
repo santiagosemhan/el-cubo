@@ -1473,4 +1473,15 @@ footer {
 
   }
 
+  // Footer
+@supports (-webkit-overflow-scrolling: touch) {
+    footer ul, .gwLyLi {
+    margin: 0;
+    }
+
+    footer a {
+    color: white;
+    }
+}
+
 `;

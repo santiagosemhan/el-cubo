@@ -80,7 +80,6 @@ body {
 }
 
 /* button */
-
 .cover-link {
     width: 365px;
     margin: auto;
@@ -135,6 +134,17 @@ body {
     .cover-link a img {
         width: 25px;
     }
+
+}
+
+@media (max-width: 480px) {
+    .reward-loading {
+        width: 100%;
+    }
+}
+
+.reward-loading {
+    opacity: .5;
 }
 
 `;

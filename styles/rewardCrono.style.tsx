@@ -83,7 +83,7 @@ display: block !important;
     padding: 0;
     float: left;
     list-style-type: none;
-    margin-bottom: 40vh;
+    margin-bottom: 40px;
     margin-top: 80px;
 }
 
@@ -537,6 +537,7 @@ display: block !important;
 .content-viewed {
     width: 100%;
     float: left;
+    margin-bottom: 40px;
 }
 
 .chrono-list {
@@ -635,6 +636,64 @@ ul.list-chrono.height-medium li span.circle {
     margin-top: 26px;
 }
 
+/* button */
+.cover-link {
+    width: 365px;
+    margin: auto;
+}
+.cover-link a {
+    padding: 3px 30px 3px 0px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-family: Inter;
+    text-decoration: none;
+    float: left;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.cover-link a:hover {
+    background: #56EBFD;
+}
+
+.cover-link a span {
+    font-size: 20px;
+    line-height: 2.2em;
+    float: left;
+}
+
+.cover-link a img {
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-right: 5px;
+    float: left;
+}
+
+.copy button img {
+    float: right;
+    margin-left: 10px;
+}
+
+.button-cyan {
+    background-color: rgb(69, 180, 193);
+    color: rgb(26, 40, 57);
+}
+
+@media (max-width: 860px) {
+
+    .cover-link {
+        width: 250px;
+        text-align: center;
+    }
+    .cover-link a span {
+        font-size: 16px;
+    }
+
+    .cover-link a img {
+        width: 25px;
+    }
+}
+
 
 .plyr audio,
 .plyr iframe,
@@ -697,6 +756,7 @@ ul.list-chrono.height-medium li span.circle {
 .reward-loading {
     opacity: .5;
 }
+
 @media only screen and (max-width: 480px) and (orientation: portrait) {
     .close-comments {
         left: unset;
@@ -719,10 +779,6 @@ ul.list-chrono.height-medium li span.circle {
         width: 100%;
     }
 }
-
-
-
-
 
 
 /* Plyr Color */

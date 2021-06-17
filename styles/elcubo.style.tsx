@@ -110,7 +110,7 @@ body.fade {
     min-height: 100%;
     object-fit: contain;
     /* Display video below overlay */
-    z-index: 1;
+    z-index: 0;
 }
 
 .video-bg-mobile {
@@ -537,7 +537,7 @@ h2 {
 .img-bg-pc {
     position: absolute;
     width: 100%;
-    z-index: 0;
+    z-index: -1;
 }
 
 .img-bg-mobile {
@@ -665,8 +665,6 @@ h2 {
         height: 23px
     }
 }
-
-
 
 #hero-0 .video-overlay {
     align-content: flex-start;
@@ -1302,5 +1300,17 @@ footer {
   #hero-2-mobile h1 {
       position: relative;
   } 
+
+
+// Footer
+@supports (-webkit-overflow-scrolling: touch) {
+    footer ul, .gwLyLi {
+    margin: 0;
+    }
+
+    footer a {
+    color: white;
+    }
+}
 
 `;

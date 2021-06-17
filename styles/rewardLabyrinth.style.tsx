@@ -167,6 +167,65 @@ body {
     z-index: 100;
 }
 
+/* button back */
+.cover-link-back {
+    width: 365px;
+    margin: auto;
+    margin-left: 0;
+}
+.cover-link-back a {
+    padding: 3px 30px 3px 0px;
+    border-radius: 30px;
+    font-weight: 500;
+    font-family: Inter;
+    text-decoration: none;
+    float: left;
+    margin-bottom: 40px;
+}
+
+.cover-link-back a:hover {
+    background: #56EBFD;
+}
+
+.cover-link-back a span {
+    font-size: 20px;
+    line-height: 2.2em;
+    float: left;
+}
+
+.cover-link-back a img {
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-right: 5px;
+    float: left;
+}
+
+
+
+
+@media (max-width: 860px) {
+    .cover-link,
+    .cover-link-back {
+        width: 100%;
+    }
+
+    .cover-link a span,
+    .cover-link-back a span {
+        font-size: 16px;
+    }
+
+    .cover-link a {
+        padding: 3px 10px 5px 30px;
+        margin-right: 20px;
+        margin-top: 0;
+    }
+
+    .cover-link a img,
+    .cover-link-back a img {
+        width: 25px;
+    }
+}
+
 .plyr_title {
     color: white;
     font-family: Inter;

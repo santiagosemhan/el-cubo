@@ -4,29 +4,7 @@ import theme from '../theme';
 import { SWRConfig } from 'swr';
 import fetcher from '../libs/fetcher';
 
-import React from 'react';
-import { useRouter } from 'next/router'
-
-import * as ga from '../libs/ga'
-
 function MyApp({ Component, pageProps }) {
-
-  const router = useRouter()
-
-  React.useEffect(() => {
-    const handleRouteChange = (url) => {
-      ga.pageview(url)
-    }
-    //When the component is mounted, subscribe to router changes
-    //and log those page views
-    router.events.on('routeChangeComplete', handleRouteChange)
-
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method
-    return () => {
-      router.events.off('routeChangeComplete', handleRouteChange)
-    }
-  }, [router.events])
 
   return (
     <>
@@ -42,7 +20,20 @@ function MyApp({ Component, pageProps }) {
 
         <meta charSet="utf-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta property="og:site_name" content="El Cubo." />
+
+        <meta property="og:site_name" content="El Cubo" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="El Cubo" />
+        <meta property="og:description" content="Historias Tridimensionales" />
+        <meta property="og:url" content="https://elcubo.rtvcplay.co/" />
+        <meta property="og:site_name" content="El Cubo" />
+        <meta property="og:image" content="/images/social.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="El Cubo" />
+        <meta name="twitter:description" content="Historias Tridimensionales" />
+        <meta name="twitter:image" content="/images/social.jpg" />
 
       </Head>
       <ThemeProvider theme={theme}>

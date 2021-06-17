@@ -297,7 +297,7 @@ export default function SeasonPage({ data }) {
                 <p>
                   Del lat. vulg.
                     <em>*potēre</em>, creado sobre ciertas formas del verbo lat. posse 'poder1',
-              como potes 'puedes',
+          como potes 'puedes',
                     <em> potĕram</em> 'podía',
                     <em> potuisti</em> 'pudiste', etc.
                     <br /> Conjug. modelo. ◆ U. solo en 3.ª pers. en acep. 6.
@@ -432,7 +432,7 @@ export default function SeasonPage({ data }) {
                       Yesid Vásquez – Sonido Directo Y Supervisión De Postproducción De Sonido<br />
                       Cristian Vargas – Microfonista<br />
                       Daniel Gómez	- Edición Y Mezcla De Sonido<br />
-                      Stephany Betancourt- Laura Portilla – Fernanda Cortés – Edición De Sonido<br />
+                      Stephanie Betancourt- Laura Portilla – Fernanda Cortés – Edición De Sonido<br />
                       Carlos Humberto Motta - Interpretación Músical - Trompeta
 
                   <strong>Diseño y Producción de Arte - I´ts A Wrap</strong><br />
@@ -483,7 +483,7 @@ export default function SeasonPage({ data }) {
                       Sergio Hernández - Chef Y Servicio
 
                   <strong>Logística Teatro Petra</strong>	<br />
-                      Sandra Suárez - a De Sala<br />
+                      Sandra Suárez - Jefa De Sala<br />
                       Martha Isabel Espinosa - Servicios Generales<br />
                       July Niño - Auxiliar De Enfermería
 
